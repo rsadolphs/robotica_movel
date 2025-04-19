@@ -1,0 +1,102 @@
+[0.018s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/richard/ros2_ws/src/tp1 -DCMAKE_INSTALL_PREFIX=/home/richard/ros2_ws/install/tp1
+[0.078s] -- The C compiler identification is GNU 13.3.0
+[0.149s] -- The CXX compiler identification is GNU 13.3.0
+[0.168s] -- Detecting C compiler ABI info
+[0.273s] -- Detecting C compiler ABI info - done
+[0.283s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.284s] -- Detecting C compile features
+[0.284s] -- Detecting C compile features - done
+[0.296s] -- Detecting CXX compiler ABI info
+[0.391s] -- Detecting CXX compiler ABI info - done
+[0.401s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.403s] -- Detecting CXX compile features
+[0.403s] -- Detecting CXX compile features - done
+[0.407s] -- Found ament_cmake: 2.5.3 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.549s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.680s] -- Found rclcpp: 28.1.8 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.733s] -- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.747s] -- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.768s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.788s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.884s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.889s] -- Found rmw_fastrtps_cpp: 8.4.2 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[0.966s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[0.985s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[1.012s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.121s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[1.197s] -- Found ament_lint_auto: 0.17.2 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[1.315s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.315s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/richard/ros2_ws/src/tp1/include>
+[1.315s] -- Configured cppcheck exclude dirs and/or files: 
+[1.316s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.316s] -- Configured 'flake8' exclude dirs and/or files: 
+[1.317s] -- Added test 'lint_cmake' to check CMake code style
+[1.317s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.321s] -- Added test 'uncrustify' to check C / C++ code style
+[1.321s] -- Configured uncrustify additional arguments: 
+[1.321s] -- Added test 'xmllint' to check XML markup files
+[1.321s] -- Configuring done (1.3s)
+[1.333s] -- Generating done (0.0s)
+[1.336s] -- Build files have been written to: /home/richard/ros2_ws/build/tp1
+[1.346s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/richard/ros2_ws/src/tp1 -DCMAKE_INSTALL_PREFIX=/home/richard/ros2_ws/install/tp1
+[1.347s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[1.413s] [ 20%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/main.cpp.o[0m
+[1.417s] [ 40%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o[0m
+[2.013s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KavoidObstacles[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[2.014s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:11:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.014s]    11 | void Action::avoidObstacles([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+[2.014s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[2.014s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:11:75:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksonars[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.014s]    11 | void Action::avoidObstacles(std::vector<float> lasers, [01;35m[Kstd::vector<float> sonars[m[K)
+[2.014s]       |                                                        [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[2.014s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KkeepAsFarthestAsPossibleFromWalls[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[2.014s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:19:67:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.014s]    19 | void Action::keepAsFarthestAsPossibleFromWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+[2.014s]       |                                                [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[2.014s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:19:94:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksonars[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.014s]    19 | void Action::keepAsFarthestAsPossibleFromWalls(std::vector<float> lasers, [01;35m[Kstd::vector<float> sonars[m[K)
+[2.014s]       |                                                                           [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[2.186s] [ 60%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Perception.cpp.o[0m
+[3.368s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:[m[K In member function ‘[01m[Kstd::vector<float, std::allocator<float> > Perception::[01;32m[KgetLatestSonarRanges[m[K()[m[K’:
+[3.368s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:146:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Knumbytes[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.368s]   146 |     int [01;35m[Knumbytes[m[K = sonarROS.data.size();
+[3.369s]       |         [01;35m[K^~~~~~~~[m[K
+[3.369s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:147:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Knumfields[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.369s]   147 |     int [01;35m[Knumfields[m[K = sonarROS.fields.size();
+[3.369s]       |         [01;35m[K^~~~~~~~~[m[K
+[3.882s] [ 80%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Utils.cpp.o[0m
+[6.000s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K keyboardThreadFunction[m[K(void*)[m[K’:
+[6.001s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:78:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[6.004s]    78 | void *keyboardThreadFunction([01;35m[Kvoid *arg[m[K)
+[6.004s]       |                              [01;35m[K~~~~~~^~~[m[K
+[6.009s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mainThreadFunction[m[K(void*)[m[K’:
+[6.009s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:92:32:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[6.009s]    92 | void *mainThreadFunction([01;35m[Kvoid *arg[m[K)
+[6.010s]       |                          [01;35m[K~~~~~~^~~[m[K
+[16.122s] [100%] [32m[1mLinking CXX executable navigation[0m
+[16.587s] [100%] Built target navigation
+[16.602s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[16.613s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1
+[16.623s] -- Install configuration: ""
+[16.623s] -- Installing: /home/richard/ros2_ws/install/tp1/lib/tp1/navigation
+[16.627s] -- Set non-toolchain portion of runtime path of "/home/richard/ros2_ws/install/tp1/lib/tp1/navigation" to ""
+[16.628s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/launch
+[16.628s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/launch/p3dx-rosaria.launch.py
+[16.628s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/config
+[16.629s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/config/p3dx.rviz
+[16.629s] -- Installing: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/package_run_dependencies/tp1
+[16.629s] -- Installing: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/parent_prefix_path/tp1
+[16.630s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.sh
+[16.633s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.dsv
+[16.634s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.sh
+[16.634s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.dsv
+[16.634s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.bash
+[16.635s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.sh
+[16.635s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.zsh
+[16.636s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.dsv
+[16.636s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/package.dsv
+[16.636s] -- Installing: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/packages/tp1
+[16.636s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config.cmake
+[16.638s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config-version.cmake
+[16.639s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/package.xml
+[16.639s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1
