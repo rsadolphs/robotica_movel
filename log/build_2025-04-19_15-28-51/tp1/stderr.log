@@ -1,0 +1,38 @@
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KavoidObstacles[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:14:24:[m[K [01;31m[Kerror: [m[K‘[01m[KmediaLeituras[m[K’ was not declared in this scope
+   14 |     float mediaLaser = [01;31m[KmediaLeituras[m[K(lasers);
+      |                        [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KkeepAsFarthestAsPossibleFromWalls[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:23:67:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   23 | ction::keepAsFarthestAsPossibleFromWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+      |                                          [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:23:94:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksonars[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   23 | PossibleFromWalls(std::vector<float> lasers, [01;35m[Kstd::vector<float> sonars[m[K)
+      |                                              [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+
+[01m[K/home/richard/ros2_ws/src/tp1/src/Utils.cpp:54:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kvector[m[K’ in namespace ‘[01m[Kstd[m[K’ does not name a template type
+   54 | float mediaLeituras(const std::[01;31m[Kvector[m[K<float>& leituras) {
+      |                                [01;31m[K^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Utils.cpp:6:1:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::vector[m[K’ is defined in header ‘[01m[K<vector>[m[K’; did you forget to ‘[01m[K#include <vector>[m[K’?
+    5 | #include <cstdio>
+  +++ |+[32m[K#include <vector>[m[K
+    6 | 
+[01m[K/home/richard/ros2_ws/src/tp1/src/Utils.cpp:54:38:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K...[m[K’ before ‘[01m[K<[m[K’ token
+   54 | float mediaLeituras(const std::vector[01;31m[K<[m[Kfloat>& leituras) {
+      |                                      [01;31m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Utils.cpp:[m[K In function ‘[01m[Kfloat[01;32m[K mediaLeituras[m[K(int)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Utils.cpp:55:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kleituras[m[K’ was not declared in this scope
+   55 |     if ([01;31m[Kleituras[m[K.empty()) return 0.0f;
+      |         [01;31m[K^~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Utils.cpp:59:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kleituras[m[K’ was not declared in this scope
+   59 |     for (float valor : [01;31m[Kleituras[m[K) {
+      |                        [01;31m[K^~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Utils.cpp:63:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kleituras[m[K’ was not declared in this scope
+   63 |     return soma / [01;31m[Kleituras[m[K.size();
+      |                   [01;31m[K^~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:90: CMakeFiles/navigation.dir/src/Action.cpp.o] Erro 1
+gmake[2]: ** Esperando que outros processos terminem.
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:118: CMakeFiles/navigation.dir/src/Utils.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

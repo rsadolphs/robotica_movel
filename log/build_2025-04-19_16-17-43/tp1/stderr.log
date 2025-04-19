@@ -1,0 +1,29 @@
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kstd::vector<float>[01;32m[K smoothVectorByBlocks[m[K(const std::vector<float>&, int)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:20:50:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   20 |         for (int j = i * N; j < (i + 1) * N && [01;35m[Kj < inputVector.size()[m[K; ++j) {
+      |                                                [01;35m[K~~^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kint[01;32m[K findMinPosition[m[K(const std::vector<float>&)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:50:12:[m[K [01;35m[Kwarning: [m[Kleft operand of comma operator has no effect [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+   50 |     return [01;35m[KminPosition[m[K, minValue;  // Retorna a posição do menor valor
+      |            [01;35m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KavoidObstacles[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:62:11:[m[K [01;31m[Kerror: [m[K‘[01m[KblockSize[m[K’ does not name a type
+   62 |     const [01;31m[KblockSize[m[K = 5;
+      |           [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:63:60:[m[K [01;31m[Kerror: [m[K‘[01m[KblockSize[m[K’ was not declared in this scope; did you mean ‘[01m[Kflockfile[m[K’?
+   63 |     std::vector<float> smoothLasers = smoothVector(lasers, [01;31m[KblockSize[m[K);
+      |                                                            [01;31m[K^~~~~~~~~[m[K
+      |                                                            [32m[Kflockfile[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:63:39:[m[K [01;31m[Kerror: [m[K‘[01m[KsmoothVector[m[K’ was not declared in this scope
+   63 |     std::vector<float> smoothLasers = [01;31m[KsmoothVector[m[K(lasers, blockSize);
+      |                                       [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:67:5:[m[K [01;35m[Kwarning: [m[Kleft operand of comma operator has no effect [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+   67 |     [01;35m[KminDistPos[m[K, minDistance = findMinPosition(smoothLasers);
+      |     [01;35m[K^~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:59:75:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksonars[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   59 | n::avoidObstacles(std::vector<float> lasers, [01;35m[Kstd::vector<float> sonars[m[K)
+      |                                              [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:90: CMakeFiles/navigation.dir/src/Action.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

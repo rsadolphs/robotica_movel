@@ -1,0 +1,20 @@
+[0.012s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.079s] [ 20%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o[0m
+[0.708s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kstd::vector<float>[01;32m[K smoothVector[m[K(const std::vector<float>&, int)[m[K’:
+[0.709s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:20:50:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.709s]    20 |         for (int j = i * N; j < (i + 1) * N && [01;35m[Kj < inputVector.size()[m[K; ++j) {
+[0.709s]       |                                                [01;35m[K~~^~~~~~~~~~~~~~~~~~~~[m[K
+[0.725s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KavoidObstacles[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[0.725s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:72:28:[m[K [01;31m[Kerror: [m[K‘[01m[Kvec[m[K’ was not declared in this scope
+[0.725s]    72 |     for (size_t i = 0; i < [01;31m[Kvec[m[K.size(); ++i) {
+[0.725s]       |                            [01;31m[K^~~[m[K
+[0.726s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:64:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistance[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[0.727s]    64 |     float [01;35m[KminDistance[m[K = 0.0f;
+[0.727s]       |           [01;35m[K^~~~~~~~~~~[m[K
+[0.727s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:65:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistPos[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[0.727s]    65 |     int [01;35m[KminDistPos[m[K = 0;
+[0.727s]       |         [01;35m[K^~~~~~~~~~[m[K
+[0.845s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:90: CMakeFiles/navigation.dir/src/Action.cpp.o] Erro 1
+[0.846s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[0.846s] gmake: *** [Makefile:146: all] Erro 2
+[0.851s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2

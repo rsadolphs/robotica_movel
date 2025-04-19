@@ -1,0 +1,27 @@
+[0.023s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.087s] [ 20%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Utils.cpp.o[0m
+[0.102s] [ 40%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o[0m
+[0.831s] [01m[K/home/richard/ros2_ws/src/tp1/src/Utils.cpp:54:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kvector[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.833s]    54 | float mediaLeituras(std::[01;31m[Kvector[m[K<float>& leituras) {
+[0.833s]       |                          [01;31m[K^~~~~~[m[K
+[0.834s] [01m[K/home/richard/ros2_ws/src/tp1/src/Utils.cpp:6:1:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::vector[m[K’ is defined in header ‘[01m[K<vector>[m[K’; did you forget to ‘[01m[K#include <vector>[m[K’?
+[0.834s]     5 | #include <cstdio>
+[0.834s]   +++ |+[32m[K#include <vector>[m[K
+[0.834s]     6 | 
+[0.834s] [01m[K/home/richard/ros2_ws/src/tp1/src/Utils.cpp:54:33:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kfloat[m[K’
+[0.834s]    54 | float mediaLeituras(std::vector<[01;31m[Kfloat[m[K>& leituras) {
+[0.834s]       |                                 [01;31m[K^~~~~[m[K
+[0.871s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KkeepAsFarthestAsPossibleFromWalls[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[0.872s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:26:67:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.872s]    26 | ction::keepAsFarthestAsPossibleFromWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+[0.872s]       |                                          [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[0.872s] 
+[0.872s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:26:94:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksonars[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.872s]    26 | PossibleFromWalls(std::vector<float> lasers, [01;35m[Kstd::vector<float> sonars[m[K)
+[0.872s]       |                                              [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[0.872s] 
+[0.992s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:118: CMakeFiles/navigation.dir/src/Utils.cpp.o] Erro 1
+[0.992s] gmake[2]: ** Esperando que outros processos terminem.
+[1.041s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[1.041s] gmake: *** [Makefile:146: all] Erro 2
+[1.045s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2

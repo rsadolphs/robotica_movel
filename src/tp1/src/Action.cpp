@@ -1,6 +1,55 @@
 #include "Action.h"
-
 #include "Utils.h"
+
+#include <vector>
+#include <iostream>
+#include <limits>
+
+/*
+std::vector<float> smoothVector(const std::vector<float>& inputVector, int N) {
+    // O tamanho do vetor resultante será o tamanho do vetor original dividido por N
+    int resultSize = inputVector.size() / N;
+    std::vector<float> smoothedVector(resultSize, 0.0f);  // Vetor resultante da suavização
+
+    // Iterando em blocos de N em N
+    for (int i = 0; i < resultSize; ++i) {
+        float sum = 0.0f;
+        int count = 0;
+
+        // Somando os valores dentro de cada bloco de tamanho N
+        for (int j = i * N; j < (i + 1) * N && j < inputVector.size(); ++j) {
+            sum += inputVector[j];
+            count++;
+        }
+
+        // Calculando a média e armazenando no vetor de resultado
+        smoothedVector[i] = sum / count;
+    }
+
+    return smoothedVector;
+}
+*/
+
+std::pair<int, float> findMinPosition(const std::vector<float>& vec) {
+    // Verifica se o vetor está vazio
+    if (vec.empty()) {
+        std::cerr << "O vetor está vazio!" << std::endl;
+        return {-1, 0.0f};  // Retorna posição inválida e valor 0 se vetor vazio
+    }
+
+    int minPosition = 0;  // Inicializa a posição com o primeiro índice
+    float minValue = vec[0];  // Inicializa o menor valor com o primeiro elemento
+
+    // Percorre o vetor
+    for (size_t i = 1; i < vec.size(); ++i) {
+        if (vec[i] < minValue) {
+            minValue = vec[i];  // Atualiza o menor valor
+            minPosition = i;    // Atualiza a posição do menor valor
+        }
+    }
+
+    return {minPosition, minValue};  // Retorna a posição e o valor do menor elemento
+}
 
 Action::Action()
 {
@@ -11,8 +60,24 @@ Action::Action()
 void Action::avoidObstacles(std::vector<float> lasers, std::vector<float> sonars)
 {
     // TODO: COMPLETAR FUNCAO
+    // const int blockSize = 5;
+    // std::vector<float> smoothLasers = smoothVector(lasers, blockSize);
+    float minDistance = 0.0f;
+    int minDistPos = 0;
 
+    auto [minPos, minDist] = findMinPosition(sonars);  // retorna o sensor com menor distancia e o valor.
 
+    if (minPos>=0 && minPos <=7 && minDist <= 1){
+        if (minPos <= 3){
+            linVel= 0.0; angVel=-1.0; // rotação em sentido horário
+        }
+        else{
+            linVel= 0.0; angVel=1.0; // rotação em sentido anti horário
+        }
+    }
+    else{
+        linVel= 3.0; angVel= 0.0; // movimenta pra frente
+    }
 
 }
 
@@ -20,9 +85,34 @@ void Action::keepAsFarthestAsPossibleFromWalls(std::vector<float> lasers, std::v
 {
     // TODO: COMPLETAR FUNCAO
 
+    float minDistance = 0.0f;
+    int minDistPos = 0;
+
+    auto [minPos, minDist] = findMinPosition(sonars); 
 
 
-
+    if (minPos > 7 && minDist >= 1){
+        if (sonars[0] < sonars[7]){
+            linVel=1.0; angVel=-0.5;
+        }
+        else{
+            if (sonars[7] < sonars[0]){
+                linVel=1.0; angVel=0.5;
+            }
+            else{
+                linVel=1.0; angVel=0.0;
+            }
+        }
+    }
+    else{
+        if (minPos <= 3){
+            linVel= 0.0; angVel=-1.0; // rotação em sentido horário
+        }
+        else{
+            linVel= 0.0; angVel=1.0; // rotação em sentido anti horário
+        }
+        
+    }
 
 }
 

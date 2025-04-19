@@ -1,0 +1,28 @@
+[ 20%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o[0m
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kstd::vector<float>[01;32m[K smoothVector[m[K(const std::vector<float>&, int)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:18:33:[m[K [01;35m[Kwarning: [m[Kcomparison of unsigned expression in ‘[01m[K>= 0[m[K’ is always true [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wtype-limits-Wtype-limits]8;;[m[K]
+   18 |         int start = ([01;35m[Ki - janela >= 0[m[K) ? i - N : 0; // Não vai ficar abaixo de 0
+      |                      [01;35m[K~~~~~~~~~~~^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:18:45:[m[K [01;31m[Kerror: [m[K‘[01m[KN[m[K’ was not declared in this scope
+   18 |         int start = (i - janela >= 0) ? i - [01;31m[KN[m[K : 0; // Não vai ficar abaixo de 0
+      |                                             [01;31m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kint[01;32m[K findMinPosition[m[K(const std::vector<float>&)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:52:12:[m[K [01;35m[Kwarning: [m[Kleft operand of comma operator has no effect [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+   52 |     return [01;35m[KminPosition[m[K, minValue;  // Retorna a posição do menor valor
+      |            [01;35m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KavoidObstacles[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:64:38:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kstd::vector<float>[m[K’ to ‘[01m[Kfloat[m[K’ in initialization
+   64 |     float smoothLasers = [01;31m[KsmoothVector(lasers, 5)[m[K
+      |                          [01;31m[K~~~~~~~~~~~~^~~~~~~~~~~[m[K
+      |                                      [01;31m[K|[m[K
+      |                                      [01;31m[Kstd::vector<float>[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:64:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KsmoothLasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   64 |     float [01;35m[KsmoothLasers[m[K = smoothVector(lasers, 5)
+      |           [01;35m[K^~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:61:75:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksonars[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   61 | n::avoidObstacles(std::vector<float> lasers, [01;35m[Kstd::vector<float> sonars[m[K)
+      |                                              [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:90: CMakeFiles/navigation.dir/src/Action.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

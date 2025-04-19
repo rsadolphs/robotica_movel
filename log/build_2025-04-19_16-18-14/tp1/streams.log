@@ -1,0 +1,29 @@
+[0.012s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.094s] [ 20%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o[0m
+[0.948s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kstd::vector<float>[01;32m[K smoothVector[m[K(const std::vector<float>&, int)[m[K’:
+[0.948s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:20:50:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.948s]    20 |         for (int j = i * N; j < (i + 1) * N && [01;35m[Kj < inputVector.size()[m[K; ++j) {
+[0.948s]       |                                                [01;35m[K~~^~~~~~~~~~~~~~~~~~~~[m[K
+[0.953s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kint[01;32m[K findMinPosition[m[K(const std::vector<float>&)[m[K’:
+[0.953s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:50:12:[m[K [01;35m[Kwarning: [m[Kleft operand of comma operator has no effect [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+[0.953s]    50 |     return [01;35m[KminPosition[m[K, minValue;  // Retorna a posição do menor valor
+[0.953s]       |            [01;35m[K^~~~~~~~~~~[m[K
+[0.954s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KavoidObstacles[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[0.954s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:62:11:[m[K [01;31m[Kerror: [m[K‘[01m[KblockSize[m[K’ does not name a type
+[0.954s]    62 |     const [01;31m[KblockSize[m[K = 5;
+[0.954s]       |           [01;31m[K^~~~~~~~~[m[K
+[0.962s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:63:60:[m[K [01;31m[Kerror: [m[K‘[01m[KblockSize[m[K’ was not declared in this scope; did you mean ‘[01m[Kflockfile[m[K’?
+[0.962s]    63 |     std::vector<float> smoothLasers = smoothVector(lasers, [01;31m[KblockSize[m[K);
+[0.962s]       |                                                            [01;31m[K^~~~~~~~~[m[K
+[0.962s]       |                                                            [32m[Kflockfile[m[K
+[0.963s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:67:5:[m[K [01;35m[Kwarning: [m[Kleft operand of comma operator has no effect [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+[0.963s]    67 |     [01;35m[KminDistPos[m[K, minDistance = findMinPosition(smoothLasers);
+[0.963s]       |     [01;35m[K^~~~~~~~~~[m[K
+[0.969s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:59:75:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksonars[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.969s]    59 | n::avoidObstacles(std::vector<float> lasers, [01;35m[Kstd::vector<float> sonars[m[K)
+[0.969s]       |                                              [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[0.969s] 
+[1.087s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:90: CMakeFiles/navigation.dir/src/Action.cpp.o] Erro 1
+[1.087s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[1.087s] gmake: *** [Makefile:146: all] Erro 2
+[1.096s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
