@@ -55,6 +55,10 @@ private:
     {
       action_.keepAsFarthestAsPossibleFromWalls(lasers, sonars);
     }
+    else if (mc.mode == FOLLOWWALLS)
+    {
+      action_.followTheWalls(lasers, sonars);
+    }
 
     action_.correctVelocitiesIfInvalid();
 

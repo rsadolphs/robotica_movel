@@ -1,0 +1,46 @@
+[0.019s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.082s] [ 20%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o[0m
+[0.749s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kstd::vector<std::vector<int> >[01;32m[K senseWalls[m[K(const std::vector<float>&)[m[K’:
+[0.749s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:15:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.750s]    15 |     for (int i = 0; [01;35m[Ki < sonars.size()[m[K; ++i) {
+[0.750s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~[m[K
+[0.751s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:20:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kco[m[K’ was not declared in this scope; did you mean ‘[01m[Kcos[m[K’?
+[0.751s]    20 |         [01;31m[Kco[m[K = reading * std::sin(angleRad);
+[0.751s]       |         [01;31m[K^~[m[K
+[0.751s]       |         [32m[Kcos[m[K
+[0.755s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:21:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kca[m[K’ was not declared in this scope
+[0.755s]    21 |         [01;31m[Kca[m[K = reading * std::cos(angleRad);
+[0.755s]       |         [01;31m[K^~[m[K
+[0.760s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:23:9:[m[K [01;31m[Kerror: [m[K‘[01m[KcoordX[m[K’ was not declared in this scope
+[0.760s]    23 |         [01;31m[KcoordX[m[K = 50 + co;
+[0.760s]       |         [01;31m[K^~~~~~[m[K
+[0.776s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:24:9:[m[K [01;31m[Kerror: [m[K‘[01m[KcoordY[m[K’ was not declared in this scope
+[0.776s]    24 |         [01;31m[KcoordY[m[K = 50 + ca;
+[0.777s]       |         [01;31m[K^~~~~~[m[K
+[0.777s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:28:12:[m[K [01;31m[Kerror: [m[Kcould not convert ‘[01m[KknownSpace[m[K’ from ‘[01m[Kint [100][100][m[K’ to ‘[01m[Kstd::vector<std::vector<int> >[m[K’
+[0.777s]    28 |     return [01;31m[KknownSpace[m[K;
+[0.777s]       |            [01;31m[K^~~~~~~~~~[m[K
+[0.777s]       |            [01;31m[K|[m[K
+[0.777s]       |            [01;31m[Kint [100][100][m[K
+[0.777s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KavoidObstacles[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[0.777s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:82:38:[m[K [01;31m[Kerror: [m[Karray must be initialized with a brace-enclosed initializer
+[0.777s]    82 |     int matrix[100][100] = [01;31m[KsenseWalls(sonars)[m[K;
+[0.777s]       |                            [01;31m[K~~~~~~~~~~^~~~~~~~[m[K
+[0.777s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:58:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.777s]    58 | void Action::avoidObstacles([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+[0.777s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[0.781s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KkeepAsFarthestAsPossibleFromWalls[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[0.781s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:97:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistance[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[0.781s]    97 |     float [01;35m[KminDistance[m[K = 0.0f;
+[0.781s]       |           [01;35m[K^~~~~~~~~~~[m[K
+[0.781s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:98:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistPos[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[0.781s]    98 |     int [01;35m[KminDistPos[m[K = 0;
+[0.781s]       |         [01;35m[K^~~~~~~~~~[m[K
+[0.782s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:93:67:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.782s]    93 | ction::keepAsFarthestAsPossibleFromWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+[0.782s]       |                                          [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[0.782s] 
+[0.918s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:90: CMakeFiles/navigation.dir/src/Action.cpp.o] Erro 1
+[0.922s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[0.923s] gmake: *** [Makefile:146: all] Erro 2
+[0.927s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2

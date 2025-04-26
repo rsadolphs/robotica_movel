@@ -4,31 +4,71 @@
 #include <vector>
 #include <iostream>
 #include <limits>
+#include <cmath>
+#include <tuple>
+#include <array>
 
-/*
-std::vector<float> smoothVector(const std::vector<float>& inputVector, int N) {
-    // O tamanho do vetor resultante será o tamanho do vetor original dividido por N
-    int resultSize = inputVector.size() / N;
-    std::vector<float> smoothedVector(resultSize, 0.0f);  // Vetor resultante da suavização
+const std::vector<double> angles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
 
-    // Iterando em blocos de N em N
-    for (int i = 0; i < resultSize; ++i) {
-        float sum = 0.0f;
-        int count = 0;
+std::vector<std::vector<int>> senseWalls(const std::vector<float>& sonars) { 
 
-        // Somando os valores dentro de cada bloco de tamanho N
-        for (int j = i * N; j < (i + 1) * N && j < inputVector.size(); ++j) {
-            sum += inputVector[j];
-            count++;
+    std::vector<std::vector<int>> knownSpace(100, std::vector<int>(100, 0));
+    std::vector<std::tuple<int, int>> capturedPoints;
+
+    for (int i = 0; i < sonars.size(); ++i) {
+
+        float reading = sonars[i] * 10.0;
+        float angleRad = angles[i] * M_PI / 180.0;
+
+        int dx = static_cast<int>(std::round(reading * std::cos(angleRad)));
+        int dy = static_cast<int>(std::round(reading * std::sin(angleRad)));
+
+        int x = 50 + dx;
+        int y = 50 + dy;
+
+        if (x<0){x=0;}
+        if (y<0){y=0;}
+
+        std::cout << "COORD " << i << ": (" << x << "," << y << ")" << std::endl;
+        capturedPoints.emplace_back(x, y);
+
+        if (x >= 0 && x < 100 && y >= 0 && y < 100) {
+            knownSpace[x][y] = 1;
+        }
+    } 
+    
+    for (int i = 0; i < capturedPoints.size(); ++i) {
+
+        int a = i + 1;
+        int b = i + 2;
+
+        if (i + 2 == capturedPoints.size()){ 
+            b = 0;
+        }
+        else{
+            if (i + 1 == capturedPoints.size()){ 
+                a = 0; 
+                b = 1;
+            }
         }
 
-        // Calculando a média e armazenando no vetor de resultado
-        smoothedVector[i] = sum / count;
+        std::array<std::array<int, 3>, 3> mat = {{
+            {std::get<0>(capturedPoints[i]), std::get<1>(capturedPoints[i]), 1},
+            {std::get<0>(capturedPoints[a]), std::get<1>(capturedPoints[a]), 1},
+            {std::get<0>(capturedPoints[b]), std::get<1>(capturedPoints[b]), 1}
+        }};
+
+        int det = mat[0][0]*(mat[1][1]*mat[2][2] - mat[1][2]*mat[2][1])
+            - mat[0][1]*(mat[1][0]*mat[2][2] - mat[1][2]*mat[2][0])
+            + mat[0][2]*(mat[1][0]*mat[2][1] - mat[1][1]*mat[2][0]);
+
+        
+        std::cout << "Det (" << i << "," << a << "," << b << ") : " << det << std::endl;
+
     }
 
-    return smoothedVector;
+    return knownSpace;
 }
-*/
 
 std::pair<int, float> findMinPosition(const std::vector<float>& vec) {
     // Verifica se o vetor está vazio
@@ -59,9 +99,6 @@ Action::Action()
 
 void Action::avoidObstacles(std::vector<float> lasers, std::vector<float> sonars)
 {
-    // TODO: COMPLETAR FUNCAO
-    // const int blockSize = 5;
-    // std::vector<float> smoothLasers = smoothVector(lasers, blockSize);
     float minDistance = 0.0f;
     int minDistPos = 0;
 
@@ -79,12 +116,13 @@ void Action::avoidObstacles(std::vector<float> lasers, std::vector<float> sonars
         linVel= 3.0; angVel= 0.0; // movimenta pra frente
     }
 
+
 }
 
 void Action::keepAsFarthestAsPossibleFromWalls(std::vector<float> lasers, std::vector<float> sonars)
 {
     // TODO: COMPLETAR FUNCAO
-
+    /*
     float minDistance = 0.0f;
     int minDistPos = 0;
 
@@ -113,6 +151,85 @@ void Action::keepAsFarthestAsPossibleFromWalls(std::vector<float> lasers, std::v
         }
         
     }
+    */
+
+    auto matrix = senseWalls(sonars);
+
+}
+
+bool hasFoundWall = false;
+bool hasReachedWall = false;
+float targetDistance = 0.0f;
+float lastDist = 0.0f;
+int firstMinDistPos = 0;
+bool firstInfo = false;
+
+void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars)
+{
+    float minDistance = 0.0f;
+    int minDistPos = 0;
+
+    auto [minPos, minDist] = findMinPosition(sonars); 
+    
+    int sonar0 = static_cast<int>(sonars[0] / 10);
+    int sonar15 = static_cast<int>(sonars[15] / 10);
+
+    
+    if (!firstInfo){
+        firstMinDistPos = minPos;
+        firstInfo = true;
+    }
+
+    if (minPos != 0 || (sonar0 != sonar15) ){ // encontrar a parede
+        if (sonar0 < sonar15){
+            linVel= 0.0; angVel=-0.5; 
+        }else{
+            linVel= 0.0; angVel=0.5; 
+        }
+    } else{                            // seguir a parede
+        if (sonar0 < sonar15){
+            linVel= 0.0; angVel=-0.5; 
+        }else{
+            if (sonar0 < sonar15){
+                linVel= 0.0; angVel= 0.5; 
+            }else{
+                linVel= 1.0; angVel= 0.0;
+            }
+        }
+        if ( minDist < 0.8){
+            angVel= -0.1; 
+        }else{
+            if ( minDist > 1.0){
+                angVel= 0.1; 
+            }
+        }
+    }
+
+
+    /*
+    if (!hasReachedWall){
+        if (!hasFoundWall){
+            targetDistance = minDist;
+            hasFoundWall = true;
+        }
+        if (sonars[3] != sonars[4] && !(minDistPos == 3 || minDistPos == 4) ){
+            if (minDistPos < 4 || minDistPos > 11){
+                linVel= 0.0; angVel=0.5; // rotação em sentido anti horário
+            }
+            else{
+                linVel= 0.0; angVel=-0.5; // rotação em sentido horário
+            }
+        }
+        else{
+            if (minDist > 1.0f){
+                linVel= 1.0; angVel= 0.0;
+            }
+        }
+    } else{
+
+    }
+
+    */
 
 }
 
@@ -183,6 +300,9 @@ MotionControl Action::handlePressedKey(char key)
         mc.direction=AUTO;
     }else if(key=='3'){
         mc.mode=FARFROMWALLS;
+        mc.direction=AUTO;
+    }else if(key=='4'){
+        mc.mode=FOLLOWWALLS;
         mc.direction=AUTO;
     }else if(key=='w' or key=='W'){
         mc.mode=MANUAL;

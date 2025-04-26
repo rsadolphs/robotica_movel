@@ -1,0 +1,61 @@
+[0.021s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.083s] [ 20%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o[0m
+[0.810s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kstd::vector<std::vector<int> >[01;32m[K senseWalls[m[K(const std::vector<float>&)[m[K’:
+[0.812s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:18:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.812s]    18 |     for (int i = 0; [01;35m[Ki < sonars.size()[m[K; ++i) {
+[0.812s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~[m[K
+[0.820s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:40:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.820s]    40 |     for (int i = 0; [01;35m[Ki < capturedPoints.size()[m[K; ++i) {
+[0.820s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.820s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:45:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.820s]    45 |         if ([01;35m[Ki + 2 == capturedPoints.size()[m[K){
+[0.820s]       |             [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.820s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:49:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.821s]    49 |             if ([01;35m[Ki + 1 == capturedPoints.size()[m[K){
+[0.821s]       |                 [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.835s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KavoidObstacles[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[0.835s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:102:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistance[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[0.835s]   102 |     float [01;35m[KminDistance[m[K = 0.0f;
+[0.835s]       |           [01;35m[K^~~~~~~~~~~[m[K
+[0.836s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:103:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistPos[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[0.836s]   103 |     int [01;35m[KminDistPos[m[K = 0;
+[0.836s]       |         [01;35m[K^~~~~~~~~~[m[K
+[0.837s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:100:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.837s]   100 | void Action::avoidObstacles([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+[0.837s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[0.838s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KkeepAsFarthestAsPossibleFromWalls[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[0.838s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:122:67:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.838s]   122 | ction::keepAsFarthestAsPossibleFromWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+[0.838s]       |                                          [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[0.838s] 
+[0.841s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KfollowTheWalls[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[0.841s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:162:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.841s]   162 | void Action::followTheWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+[0.841s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[1.096s] [ 40%] [32m[1mLinking CXX executable navigation[0m
+[1.724s] [100%] Built target navigation
+[1.737s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[1.738s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1
+[1.746s] -- Install configuration: ""
+[1.747s] -- Installing: /home/richard/ros2_ws/install/tp1/lib/tp1/navigation
+[1.761s] -- Set non-toolchain portion of runtime path of "/home/richard/ros2_ws/install/tp1/lib/tp1/navigation" to ""
+[1.762s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch
+[1.762s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch/p3dx-rosaria.launch.py
+[1.763s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config
+[1.763s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config/p3dx.rviz
+[1.763s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/package_run_dependencies/tp1
+[1.763s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/parent_prefix_path/tp1
+[1.763s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.sh
+[1.763s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.dsv
+[1.763s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.sh
+[1.763s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.dsv
+[1.763s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.bash
+[1.764s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.sh
+[1.764s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.zsh
+[1.764s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.dsv
+[1.764s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/package.dsv
+[1.764s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/packages/tp1
+[1.765s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config.cmake
+[1.765s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config-version.cmake
+[1.765s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/package.xml
+[1.767s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1

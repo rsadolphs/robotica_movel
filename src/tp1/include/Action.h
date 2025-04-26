@@ -3,7 +3,7 @@
 
 #include <vector>
 
-enum MotionMode {MANUAL, WANDER, FARFROMWALLS};
+enum MotionMode {MANUAL, WANDER, FARFROMWALLS, FOLLOWWALLS};
 enum MovingDirection {STOP, FRONT, BACK, LEFT, RIGHT, AUTO};
 
 typedef struct
@@ -20,6 +20,7 @@ public:
     void manualRobotMotion(MovingDirection direction);
     void avoidObstacles(std::vector<float> lasers, std::vector<float> sonars);
     void keepAsFarthestAsPossibleFromWalls(std::vector<float> lasers, std::vector<float> sonars);
+    void followTheWalls(std::vector<float> lasers, std::vector<float> sonars);
 
     MotionControl handlePressedKey(char key);
 

@@ -1,0 +1,60 @@
+[ 20%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o[0m
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kstd::vector<std::vector<int> >[01;32m[K senseWalls[m[K(const std::vector<float>&)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:17:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   17 |     for (int i = 0; [01;35m[Ki < sonars.size()[m[K; ++i) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:39:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   39 |     for (int i = 0; [01;35m[Ki < capturedPoints.size()[m[K; ++i) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:43:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   43 |         if ([01;35m[Ki + 2 == capturedPoints.size()[m[K){ b = 0;}
+      |             [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:45:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   45 |             if ([01;35m[Ki + 1 == capturedPoints.size()[m[K){ a = 0; b = 1;}
+      |                 [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:48:43:[m[K [01;31m[Kerror: [m[Kvariable ‘[01m[Kstd::array<std::array<int, 3>, 3> mat[m[K’ has initializer but incomplete type
+   48 |         std::array<std::array<int, 3>, 3> [01;31m[Kmat[m[K = {{
+      |                                           [01;31m[K^~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:49:32:[m[K [01;31m[Kerror: [m[K‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<std::tuple<int, int> >, std::tuple<int, int> >::value_type[m[K’ {aka ‘[01m[Kclass std::tuple<int, int>[m[K’} has no member named ‘[01m[Kfirst[m[K’
+   49 |             {capturedPoints[i].[01;31m[Kfirst[m[K, capturedPoints[i].second, 1},
+      |                                [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:49:57:[m[K [01;31m[Kerror: [m[K‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<std::tuple<int, int> >, std::tuple<int, int> >::value_type[m[K’ {aka ‘[01m[Kclass std::tuple<int, int>[m[K’} has no member named ‘[01m[Ksecond[m[K’
+   49 |             {capturedPoints[i].first, capturedPoints[i].[01;31m[Ksecond[m[K, 1},
+      |                                                         [01;31m[K^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:50:32:[m[K [01;31m[Kerror: [m[K‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<std::tuple<int, int> >, std::tuple<int, int> >::value_type[m[K’ {aka ‘[01m[Kclass std::tuple<int, int>[m[K’} has no member named ‘[01m[Kfirst[m[K’
+   50 |             {capturedPoints[a].[01;31m[Kfirst[m[K, capturedPoints[a].second, 1},
+      |                                [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:50:57:[m[K [01;31m[Kerror: [m[K‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<std::tuple<int, int> >, std::tuple<int, int> >::value_type[m[K’ {aka ‘[01m[Kclass std::tuple<int, int>[m[K’} has no member named ‘[01m[Ksecond[m[K’
+   50 |             {capturedPoints[a].first, capturedPoints[a].[01;31m[Ksecond[m[K, 1},
+      |                                                         [01;31m[K^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:51:32:[m[K [01;31m[Kerror: [m[K‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<std::tuple<int, int> >, std::tuple<int, int> >::value_type[m[K’ {aka ‘[01m[Kclass std::tuple<int, int>[m[K’} has no member named ‘[01m[Kfirst[m[K’
+   51 |             {capturedPoints[b].[01;31m[Kfirst[m[K, capturedPoints[b].second, 1}
+      |                                [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:51:57:[m[K [01;31m[Kerror: [m[K‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<std::tuple<int, int> >, std::tuple<int, int> >::value_type[m[K’ {aka ‘[01m[Kclass std::tuple<int, int>[m[K’} has no member named ‘[01m[Ksecond[m[K’
+   51 |             {capturedPoints[b].first, capturedPoints[b].[01;31m[Ksecond[m[K, 1}
+      |                                                         [01;31m[K^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:58:47:[m[K [01;31m[Kerror: [m[K‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<std::tuple<int, int> >, std::tuple<int, int> >::value_type[m[K’ {aka ‘[01m[Kclass std::tuple<int, int>[m[K’} has no member named ‘[01m[Kfirst[m[K’
+   58 |         std::cout << "(" << capturedPoints[i].[01;31m[Kfirst[m[K << "," << capturedPoints[i].second << ")" << std::endl;
+      |                                               [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:58:81:[m[K [01;31m[Kerror: [m[K‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<std::tuple<int, int> >, std::tuple<int, int> >::value_type[m[K’ {aka ‘[01m[Kclass std::tuple<int, int>[m[K’} has no member named ‘[01m[Ksecond[m[K’
+   58 |  "(" << capturedPoints[i].first << "," << capturedPoints[i].[01;31m[Ksecond[m[K << ")" << std::endl;
+      |                                                             [01;31m[K^~~~~~[m[K
+
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KavoidObstacles[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:96:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistance[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   96 |     float [01;35m[KminDistance[m[K = 0.0f;
+      |           [01;35m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:97:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistPos[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   97 |     int [01;35m[KminDistPos[m[K = 0;
+      |         [01;35m[K^~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:94:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   94 | void Action::avoidObstacles([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KkeepAsFarthestAsPossibleFromWalls[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:116:67:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  116 | ction::keepAsFarthestAsPossibleFromWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+      |                                          [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:90: CMakeFiles/navigation.dir/src/Action.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2
