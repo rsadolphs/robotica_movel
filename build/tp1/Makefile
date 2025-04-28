@@ -234,6 +234,30 @@ src/Action.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Action.cpp.s
 .PHONY : src/Action.cpp.s
 
+src/Graph.o: src/Graph.cpp.o
+.PHONY : src/Graph.o
+
+# target to build an object file
+src/Graph.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Graph.cpp.o
+.PHONY : src/Graph.cpp.o
+
+src/Graph.i: src/Graph.cpp.i
+.PHONY : src/Graph.i
+
+# target to preprocess a source file
+src/Graph.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Graph.cpp.i
+.PHONY : src/Graph.cpp.i
+
+src/Graph.s: src/Graph.cpp.s
+.PHONY : src/Graph.s
+
+# target to generate assembly for a file
+src/Graph.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Graph.cpp.s
+.PHONY : src/Graph.cpp.s
+
 src/Perception.o: src/Perception.cpp.o
 .PHONY : src/Perception.o
 
@@ -325,6 +349,9 @@ help:
 	@echo "... src/Action.o"
 	@echo "... src/Action.i"
 	@echo "... src/Action.s"
+	@echo "... src/Graph.o"
+	@echo "... src/Graph.i"
+	@echo "... src/Graph.s"
 	@echo "... src/Perception.o"
 	@echo "... src/Perception.i"
 	@echo "... src/Perception.s"

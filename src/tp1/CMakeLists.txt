@@ -10,17 +10,24 @@ find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+find_package(OpenGL REQUIRED)
+find_package(glfw3 3.3 REQUIRED)
 
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
-add_executable(navigation src/main.cpp src/Action.cpp src/Perception.cpp src/Utils.cpp)
+add_executable(navigation src/main.cpp src/Action.cpp src/Perception.cpp src/Utils.cpp src/Graph.cpp)
 target_include_directories(navigation PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 target_compile_features(navigation PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 ament_target_dependencies(navigation rclcpp sensor_msgs geometry_msgs)
+
+target_link_libraries(navigation
+  OpenGL::GL
+  glfw
+)
 
 install(
   TARGETS navigation

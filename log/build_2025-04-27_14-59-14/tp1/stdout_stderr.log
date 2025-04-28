@@ -1,0 +1,33 @@
+[ 16%] [32m[1mLinking CXX executable navigation[0m
+/usr/bin/ld: CMakeFiles/navigation.dir/src/Graph.cpp.o: na função "graphicsThreadFunction(void*)":
+Graph.cpp:(.text+0x20): undefined reference to `glfwInit'
+/usr/bin/ld: Graph.cpp:(.text+0x57): undefined reference to `glfwCreateWindow'
+/usr/bin/ld: Graph.cpp:(.text+0x67): undefined reference to `glfwTerminate'
+/usr/bin/ld: Graph.cpp:(.text+0x7d): undefined reference to `glfwMakeContextCurrent'
+/usr/bin/ld: Graph.cpp:(.text+0xa4): undefined reference to `glClearColor'
+/usr/bin/ld: Graph.cpp:(.text+0xcc): undefined reference to `glClear'
+/usr/bin/ld: Graph.cpp:(.text+0xd6): undefined reference to `glMatrixMode'
+/usr/bin/ld: Graph.cpp:(.text+0xdb): undefined reference to `glLoadIdentity'
+/usr/bin/ld: Graph.cpp:(.text+0x128): undefined reference to `glOrtho'
+/usr/bin/ld: Graph.cpp:(.text+0x132): undefined reference to `glMatrixMode'
+/usr/bin/ld: Graph.cpp:(.text+0x137): undefined reference to `glLoadIdentity'
+/usr/bin/ld: Graph.cpp:(.text+0x14e): undefined reference to `glColor3f'
+/usr/bin/ld: Graph.cpp:(.text+0x158): undefined reference to `glBegin'
+/usr/bin/ld: Graph.cpp:(.text+0x1b0): undefined reference to `glVertex2f'
+/usr/bin/ld: Graph.cpp:(.text+0x1d8): undefined reference to `glEnd'
+/usr/bin/ld: Graph.cpp:(.text+0x1f3): undefined reference to `glColor3f'
+/usr/bin/ld: Graph.cpp:(.text+0x20a): undefined reference to `glBegin'
+/usr/bin/ld: Graph.cpp:(.text+0x234): undefined reference to `glVertex2f'
+/usr/bin/ld: Graph.cpp:(.text+0x25e): undefined reference to `glVertex2f'
+/usr/bin/ld: Graph.cpp:(.text+0x288): undefined reference to `glVertex2f'
+/usr/bin/ld: Graph.cpp:(.text+0x2b2): undefined reference to `glVertex2f'
+/usr/bin/ld: Graph.cpp:(.text+0x2b7): undefined reference to `glEnd'
+/usr/bin/ld: Graph.cpp:(.text+0x2c3): undefined reference to `glfwSwapBuffers'
+/usr/bin/ld: Graph.cpp:(.text+0x2c8): undefined reference to `glfwPollEvents'
+/usr/bin/ld: Graph.cpp:(.text+0x2d4): undefined reference to `glfwWindowShouldClose'
+/usr/bin/ld: Graph.cpp:(.text+0x2ed): undefined reference to `glfwDestroyWindow'
+/usr/bin/ld: Graph.cpp:(.text+0x2f2): undefined reference to `glfwTerminate'
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:250: navigation] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

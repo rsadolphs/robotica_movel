@@ -1,0 +1,40 @@
+[0.024s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.090s] [ 16%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Graph.cpp.o[0m
+[0.349s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K graphicsThreadFunction[m[K(void*)[m[K’:
+[0.350s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:12:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.350s]    12 | void* graphicsThreadFunction([01;35m[Kvoid* arg[m[K) {
+[0.350s]       |                              [01;35m[K~~~~~~^~~[m[K
+[0.435s] [ 33%] [32m[1mLinking CXX executable navigation[0m
+[1.162s] /usr/bin/ld: CMakeFiles/navigation.dir/src/Graph.cpp.o: na função "graphicsThreadFunction(void*)":
+[1.162s] Graph.cpp:(.text+0x20): undefined reference to `glfwInit'
+[1.162s] /usr/bin/ld: Graph.cpp:(.text+0x57): undefined reference to `glfwCreateWindow'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0x67): undefined reference to `glfwTerminate'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0x7d): undefined reference to `glfwMakeContextCurrent'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0xa4): undefined reference to `glClearColor'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0xcc): undefined reference to `glClear'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0xd6): undefined reference to `glMatrixMode'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0xdb): undefined reference to `glLoadIdentity'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0x128): undefined reference to `glOrtho'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0x132): undefined reference to `glMatrixMode'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0x137): undefined reference to `glLoadIdentity'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0x14e): undefined reference to `glColor3f'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0x158): undefined reference to `glBegin'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0x1b0): undefined reference to `glVertex2f'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0x1d8): undefined reference to `glEnd'
+[1.163s] /usr/bin/ld: Graph.cpp:(.text+0x1f3): undefined reference to `glColor3f'
+[1.164s] /usr/bin/ld: Graph.cpp:(.text+0x20a): undefined reference to `glBegin'
+[1.164s] /usr/bin/ld: Graph.cpp:(.text+0x234): undefined reference to `glVertex2f'
+[1.164s] /usr/bin/ld: Graph.cpp:(.text+0x25e): undefined reference to `glVertex2f'
+[1.164s] /usr/bin/ld: Graph.cpp:(.text+0x288): undefined reference to `glVertex2f'
+[1.164s] /usr/bin/ld: Graph.cpp:(.text+0x2b2): undefined reference to `glVertex2f'
+[1.164s] /usr/bin/ld: Graph.cpp:(.text+0x2b7): undefined reference to `glEnd'
+[1.164s] /usr/bin/ld: Graph.cpp:(.text+0x2c3): undefined reference to `glfwSwapBuffers'
+[1.164s] /usr/bin/ld: Graph.cpp:(.text+0x2c8): undefined reference to `glfwPollEvents'
+[1.164s] /usr/bin/ld: Graph.cpp:(.text+0x2d4): undefined reference to `glfwWindowShouldClose'
+[1.167s] /usr/bin/ld: Graph.cpp:(.text+0x2ed): undefined reference to `glfwDestroyWindow'
+[1.167s] /usr/bin/ld: Graph.cpp:(.text+0x2f2): undefined reference to `glfwTerminate'
+[1.228s] collect2: error: ld returned 1 exit status
+[1.229s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:250: navigation] Erro 1
+[1.229s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[1.229s] gmake: *** [Makefile:146: all] Erro 2
+[1.231s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2

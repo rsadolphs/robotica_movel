@@ -1,5 +1,6 @@
 #include "Action.h"
 #include "Utils.h"
+#include "graphics.hpp"
 
 #include <vector>
 #include <iostream>
@@ -157,12 +158,20 @@ void Action::keepAsFarthestAsPossibleFromWalls(std::vector<float> lasers, std::v
 
 }
 
-bool hasFoundWall = false;
-bool hasReachedWall = false;
-float targetDistance = 0.0f;
-float lastDist = 0.0f;
+//bool hasFoundWall = false;
+//bool hasReachedWall = false;
+//float targetDistance = 0.0f;
+//float lastDist = 0.0f;
 int firstMinDistPos = 0;
 bool firstInfo = false;
+Position roboPosicao = {0.0f, 0.0f}; 
+Position lastPos = {0.0f, 0.0f};
+
+float dx = 0.0f;
+float dy = 0.0f;
+float dalpha = 0.0f;
+float timeInterval = 0.010f; // em s
+float currAngle = 0.0f;
 
 void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars)
 {
@@ -173,7 +182,6 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
     
     int sonar0 = static_cast<int>(sonars[0] / 10);
     int sonar15 = static_cast<int>(sonars[15] / 10);
-
     
     if (!firstInfo){
         firstMinDistPos = minPos;
@@ -186,7 +194,7 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
         }else{
             linVel= 0.0; angVel=0.5; 
         }
-    } else{                            // seguir a parede
+    }else{                            // seguir a parede
         if (sonar0 < sonar15){
             linVel= 0.0; angVel=-0.5; 
         }else{
@@ -196,7 +204,7 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
                 linVel= 1.0; angVel= 0.0;
             }
         }
-        if ( minDist < 0.8){
+        if ( minDist < 0.8){  // manter distancia dentro de uma faixa de histerese
             angVel= -0.1; 
         }else{
             if ( minDist > 1.0){
@@ -205,31 +213,17 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
         }
     }
 
+    
+    currAngle += angVel * timeInterval;
+    dx = linVel * timeInterval * cos(currAngle * 180 / M_PI) / 10;
+    dy = linVel * timeInterval * sin(currAngle * 180 / M_PI) / 10;
 
-    /*
-    if (!hasReachedWall){
-        if (!hasFoundWall){
-            targetDistance = minDist;
-            hasFoundWall = true;
-        }
-        if (sonars[3] != sonars[4] && !(minDistPos == 3 || minDistPos == 4) ){
-            if (minDistPos < 4 || minDistPos > 11){
-                linVel= 0.0; angVel=0.5; // rotação em sentido anti horário
-            }
-            else{
-                linVel= 0.0; angVel=-0.5; // rotação em sentido horário
-            }
-        }
-        else{
-            if (minDist > 1.0f){
-                linVel= 1.0; angVel= 0.0;
-            }
-        }
-    } else{
+    roboPosicao = {roboPosicao.x + dx, roboPosicao.y + dy};
 
-    }
+    //std::cout << pos.theta << std::endl;
+    
 
-    */
+    std::cout << "Posição do robô: (" << roboPosicao.x << ", " << roboPosicao.y << ")" << std::endl;
 
 }
 
