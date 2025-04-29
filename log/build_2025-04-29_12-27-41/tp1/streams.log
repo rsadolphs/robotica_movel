@@ -1,0 +1,16 @@
+[0.016s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.105s] [ 16%] [32m[1mLinking CXX executable navigation[0m
+[0.848s] /usr/bin/ld: CMakeFiles/navigation.dir/src/Graph.cpp.o: aviso: relocalização contra "roboPosicao" em secção só de leitura ".text"
+[1.029s] /usr/bin/ld: CMakeFiles/navigation.dir/src/Graph.cpp.o: na função "graphicsThreadFunction(void*)":
+[1.029s] Graph.cpp:(.text+0xb0): undefined reference to `roboPosicao'
+[1.029s] /usr/bin/ld: Graph.cpp:(.text+0x212): undefined reference to `roboPosicao'
+[1.029s] /usr/bin/ld: Graph.cpp:(.text+0x222): undefined reference to `roboPosicao'
+[1.030s] /usr/bin/ld: Graph.cpp:(.text+0x23c): undefined reference to `roboPosicao'
+[1.030s] /usr/bin/ld: Graph.cpp:(.text+0x24c): undefined reference to `roboPosicao'
+[1.030s] /usr/bin/ld: CMakeFiles/navigation.dir/src/Graph.cpp.o:Graph.cpp:(.text+0x266): mais referências não definidas para "roboPosicao" seguir
+[1.093s] /usr/bin/ld: aviso: a criar DT_TEXTREL num PIE.
+[1.129s] collect2: error: ld returned 1 exit status
+[1.131s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:252: navigation] Erro 1
+[1.131s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[1.131s] gmake: *** [Makefile:146: all] Erro 2
+[1.134s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2

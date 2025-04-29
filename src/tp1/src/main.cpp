@@ -26,6 +26,8 @@ class NavigationNode : public rclcpp::Node
                                                                             std::bind(&Perception::receiveLaser, &perception, _1));
       sub_sonar = this->create_subscription<sensor_msgs::msg::PointCloud2>("/sonar", 100,
                                                                           std::bind(&Perception::receiveSonar, &perception, _1));
+      //sub_pose = this->create_subscription<sensor_msgs::msg::PointCloud2>("/pose", 100,
+      //                                                                      std::bind(&Perception::receivePose, &perception, _1));
       timer_ = this->create_wall_timer(100ms, std::bind(&NavigationNode::timer_callback, this));
     }
 
@@ -59,6 +61,9 @@ class NavigationNode : public rclcpp::Node
       else if (mc.mode == FOLLOWWALLS)
       {
         action_.followTheWalls(lasers, sonars);
+      }else if (mc.mode == TESTMODE)
+      {
+        action_.testMode(lasers, sonars);
       }
 
       action_.correctVelocitiesIfInvalid();
@@ -117,12 +122,12 @@ int main(int argc, char **argv)
 
   pthread_create(&(mainThread), NULL, mainThreadFunction, NULL);
   pthread_create(&(keyboardThread), NULL, keyboardThreadFunction, NULL);
-  pthread_create(&(graphicsThread), NULL, graphicsThreadFunction, NULL);
+  //pthread_create(&(graphicsThread), NULL, graphicsThreadFunction, NULL);
 
 
   pthread_join(mainThread, 0);
   pthread_join(keyboardThread, 0);
-  pthread_join(graphicsThread, 0);
+  //pthread_join(graphicsThread, 0);
 
   rclcpp::shutdown();
 

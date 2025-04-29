@@ -158,73 +158,66 @@ void Action::keepAsFarthestAsPossibleFromWalls(std::vector<float> lasers, std::v
 
 }
 
-//bool hasFoundWall = false;
-//bool hasReachedWall = false;
-//float targetDistance = 0.0f;
-//float lastDist = 0.0f;
+Position roboPosicao = {0.0f, 0.0f}; 
+//Position lastPos = {0.0f, 0.0f};
+
+MovingDirection side;
 int firstMinDistPos = 0;
 bool firstInfo = false;
-Position roboPosicao = {0.0f, 0.0f}; 
-Position lastPos = {0.0f, 0.0f};
-
-float dx = 0.0f;
-float dy = 0.0f;
-float dalpha = 0.0f;
-float timeInterval = 0.010f; // em s
-float currAngle = 0.0f;
 
 void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars)
 {
     float minDistance = 0.0f;
     int minDistPos = 0;
+    auto [minPos, minDist] = findMinPosition(sonars);
 
-    auto [minPos, minDist] = findMinPosition(sonars); 
-    
-    int sonar0 = static_cast<int>(sonars[0] / 10);
-    int sonar15 = static_cast<int>(sonars[15] / 10);
-    
     if (!firstInfo){
         firstMinDistPos = minPos;
+        // verifica qual lado está mais próximo de uma parede
+        if (firstMinDistPos >= 12 || firstMinDistPos <= 3){ 
+            side = LEFT;
+        }else{
+            side = RIGHT;
+        }
         firstInfo = true;
     }
 
-    if (minPos != 0 || (sonar0 != sonar15) ){ // encontrar a parede
-        if (sonar0 < sonar15){
-            linVel= 0.0; angVel=-0.5; 
-        }else{
-            linVel= 0.0; angVel=0.5; 
-        }
-    }else{                            // seguir a parede
-        if (sonar0 < sonar15){
-            linVel= 0.0; angVel=-0.5; 
-        }else{
-            if (sonar0 < sonar15){
-                linVel= 0.0; angVel= 0.5; 
-            }else{
-                linVel= 1.0; angVel= 0.0;
+    int sonar0 = static_cast<int>(sonars[0] / 10);
+    int sonar15 = static_cast<int>(sonars[15] / 10);
+
+    if (side = LEFT){
+        // Parede mais proxima a frente pela esquerda
+        if (minPos>0 && minPos<5){
+            linVel=0.0; angVel=-0.2; // gira H
+        }else 
+            // Parede mais proxima atrás pela esquerda
+            if (minPos>10){
+                linVel=0.0; angVel=0.2; // gira AH
+            }
+        // Apenas quando a menor posição for 0 >> Alinhamento com a parede
+        else{
+            linVel=0.5; angVel=0.0; // anda reto
+
+            if(sonars[0]<0.7){
+                angVel=-0.2; // gira H
+            }else
+
+            if(sonars[0]>0.9){
+                angVel=0.2; // gira AH
             }
         }
-        if ( minDist < 0.8){  // manter distancia dentro de uma faixa de histerese
-            angVel= -0.1; 
-        }else{
-            if ( minDist > 1.0){
-                angVel= 0.1; 
-            }
+
+        std::cout << sonars[0] << std::endl;
+        // Anti colisão frontal
+        if (sonars[3] <= 1.1 || sonars[4] <= 1.1){
+            linVel= 0.0; angVel=-0.5; // rotação em sentido horário
         }
     }
+}
 
+void Action::testMode(std::vector<float> lasers, std::vector<float> sonars)
+{
     
-    currAngle += angVel * timeInterval;
-    dx = linVel * timeInterval * cos(currAngle * 180 / M_PI) / 10;
-    dy = linVel * timeInterval * sin(currAngle * 180 / M_PI) / 10;
-
-    roboPosicao = {roboPosicao.x + dx, roboPosicao.y + dy};
-
-    //std::cout << pos.theta << std::endl;
-    
-
-    std::cout << "Posição do robô: (" << roboPosicao.x << ", " << roboPosicao.y << ")" << std::endl;
-
 }
 
 void Action::manualRobotMotion(MovingDirection direction)
@@ -297,6 +290,9 @@ MotionControl Action::handlePressedKey(char key)
         mc.direction=AUTO;
     }else if(key=='4'){
         mc.mode=FOLLOWWALLS;
+        mc.direction=AUTO;
+    }else if(key=='5'){
+        mc.mode=TESTMODE;
         mc.direction=AUTO;
     }else if(key=='w' or key=='W'){
         mc.mode=MANUAL;
