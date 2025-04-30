@@ -1,0 +1,43 @@
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:[m[K In member function ‘[01m[Kvoid Perception::[01;32m[KrecievePose[m[K(const nav_msgs::msg::Odometry_<std::allocator<void> >::ConstSharedPtr&)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:130:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing nav_msgs::msg::Odometry = struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdata[m[K’
+  130 |     poseROS.[01;31m[Kdata[m[K = value->data;
+      |             [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:130:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing std::__shared_ptr_access<const nav_msgs::msg::Odometry_<std::allocator<void> >, __gnu_cxx::_S_atomic, false, false>::element_type = const struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’ {aka ‘[01m[Kconst struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdata[m[K’
+  130 |     poseROS.data = value->[01;31m[Kdata[m[K;
+      |                           [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:[m[K In member function ‘[01m[Kstd::vector<float, std::allocator<float> > Perception::[01;32m[KgetLatestSonarRanges[m[K()[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:153:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Knumbytes[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  153 |     int [01;35m[Knumbytes[m[K = sonarROS.data.size();
+      |         [01;35m[K^~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:154:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Knumfields[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  154 |     int [01;35m[Knumfields[m[K = sonarROS.fields.size();
+      |         [01;35m[K^~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:[m[K In member function ‘[01m[Kstd::vector<float, std::allocator<float> > Perception::[01;32m[KgetLatestPose[m[K()[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:178:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing nav_msgs::msg::Odometry = struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdata[m[K’
+  178 |         poseROS.[01;31m[Kdata[m[K[0],
+      |                 [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:179:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing nav_msgs::msg::Odometry = struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdata[m[K’
+  179 |         poseROS.[01;31m[Kdata[m[K[1],
+      |                 [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:180:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing nav_msgs::msg::Odometry = struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdata[m[K’
+  180 |         poseROS.[01;31m[Kdata[m[K[2]
+      |                 [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:181:5:[m[K [01;31m[Kerror: [m[Kcould not convert ‘[01m[K{<expression error>, <expression error>, <expression error>}[m[K’ from ‘[01m[K<brace-enclosed initializer list>[m[K’ to ‘[01m[Kstd::vector<float, std::allocator<float> >[m[K’
+  181 |     [01;31m[K}[m[K;
+      |     [01;31m[K^[m[K
+      |     [01;31m[K|[m[K
+      |     [01;31m[K<brace-enclosed initializer list>[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:183:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing nav_msgs::msg::Odometry = struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdata[m[K’
+  183 |     std::cout << "POSE: " << poseROS.[01;31m[Kdata[m[K[0] << " " << poseROS.data[1] << " " <<  poseROS.data[2] << std::endl;
+      |                                      [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:183:64:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing nav_msgs::msg::Odometry = struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdata[m[K’
+  183 |  std::cout << "POSE: " << poseROS.data[0] << " " << poseROS.[01;31m[Kdata[m[K[1] << " " <<  poseROS.data[2] << std::endl;
+      |                                                             [01;31m[K^~~~[m[K
+
+[01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:183:91:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing nav_msgs::msg::Odometry = struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdata[m[K’
+  183 | oseROS.data[0] << " " << poseROS.data[1] << " " <<  poseROS.[01;31m[Kdata[m[K[2] << std::endl;
+      |                                                             [01;31m[K^~~~[m[K
+
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:104: CMakeFiles/navigation.dir/src/Perception.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

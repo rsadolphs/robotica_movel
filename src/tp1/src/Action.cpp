@@ -158,18 +158,32 @@ void Action::keepAsFarthestAsPossibleFromWalls(std::vector<float> lasers, std::v
 
 }
 
+float distPontos(Position p1, Position p2){
+    return std::sqrt((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y));
+}
+
 Position roboPosicao = {0.0f, 0.0f}; 
-//Position lastPos = {0.0f, 0.0f};
+Position pontoParede = {0.0f, 0.0f}; 
+Position lastPontoParede = {0.0f, 0.0f}; 
 
 MovingDirection side;
 int firstMinDistPos = 0;
 bool firstInfo = false;
 
-void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars)
+void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
 {
     float minDistance = 0.0f;
     int minDistPos = 0;
     auto [minPos, minDist] = findMinPosition(sonars);
+    roboPosicao = {pose[0], pose[1]};
+
+    if (linVel > 0){
+        float angulo = pose[2] * 180 / M_PI;
+        float paredeX = pose[0] - sonars[0] * sin(angulo);
+        float paredeY = pose[1] + sonars[0] * cos(angulo);
+        pontoParede = {paredeX, paredeY};
+        std::cout << "paredeX: " << paredeX << ", paredeY: " << paredeY << ", anguloRobo: " << angulo << std::endl;
+    }
 
     if (!firstInfo){
         firstMinDistPos = minPos;
@@ -217,7 +231,6 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
 
 void Action::testMode(std::vector<float> lasers, std::vector<float> sonars)
 {
-    
 }
 
 void Action::manualRobotMotion(MovingDirection direction)

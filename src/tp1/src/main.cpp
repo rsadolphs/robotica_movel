@@ -26,8 +26,8 @@ class NavigationNode : public rclcpp::Node
                                                                             std::bind(&Perception::receiveLaser, &perception, _1));
       sub_sonar = this->create_subscription<sensor_msgs::msg::PointCloud2>("/sonar", 100,
                                                                           std::bind(&Perception::receiveSonar, &perception, _1));
-      //sub_pose = this->create_subscription<sensor_msgs::msg::PointCloud2>("/pose", 100,
-      //                                                                      std::bind(&Perception::receivePose, &perception, _1));
+      sub_pose = this->create_subscription<nav_msgs::msg::Odometry>("/pose", 100,
+                                                                    std::bind(&Perception::recievePose, &perception, _1));
       timer_ = this->create_wall_timer(100ms, std::bind(&NavigationNode::timer_callback, this));
     }
 
@@ -37,8 +37,10 @@ class NavigationNode : public rclcpp::Node
       // Get latest sensor readings
       std::vector<float> lasers = perception_.getLatestLaserRanges();
       std::vector<float> sonars = perception_.getLatestSonarRanges();
+      std::vector<float> pose = perception_.getLatestPose();
       std::cout << "Read " << lasers.size() << " laser measurements" << std::endl;
       std::cout << "Read " << sonars.size() << " sonar measurements" << std::endl;
+      std::cout << "Read " << pose.size() << " pose measurements" << std::endl;
 
       // Get keyboard input
       char ch = pressedKey;
@@ -60,7 +62,7 @@ class NavigationNode : public rclcpp::Node
       }
       else if (mc.mode == FOLLOWWALLS)
       {
-        action_.followTheWalls(lasers, sonars);
+        action_.followTheWalls(lasers, sonars, pose);
       }else if (mc.mode == TESTMODE)
       {
         action_.testMode(lasers, sonars);
@@ -80,6 +82,7 @@ class NavigationNode : public rclcpp::Node
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub_twist;
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr sub_laserscan;
     rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr sub_sonar;
+    rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr sub_pose;
 
     Action &action_;
     Perception &perception_;
@@ -122,12 +125,12 @@ int main(int argc, char **argv)
 
   pthread_create(&(mainThread), NULL, mainThreadFunction, NULL);
   pthread_create(&(keyboardThread), NULL, keyboardThreadFunction, NULL);
-  //pthread_create(&(graphicsThread), NULL, graphicsThreadFunction, NULL);
+  pthread_create(&(graphicsThread), NULL, graphicsThreadFunction, NULL);
 
 
   pthread_join(mainThread, 0);
   pthread_join(keyboardThread, 0);
-  //pthread_join(graphicsThread, 0);
+  pthread_join(graphicsThread, 0);
 
   rclcpp::shutdown();
 

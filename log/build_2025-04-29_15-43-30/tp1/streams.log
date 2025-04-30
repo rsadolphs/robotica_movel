@@ -1,0 +1,65 @@
+[0.015s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.097s] [ 16%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Perception.cpp.o[0m
+[0.114s] [ 33%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/main.cpp.o[0m
+[1.819s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:[m[K In member function ‘[01m[Kvoid Perception::[01;32m[KrecievePose[m[K(const nav_msgs::msg::Odometry_<std::allocator<void> >::ConstSharedPtr&)[m[K’:
+[1.819s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:130:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing nav_msgs::msg::Odometry = struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdata[m[K’
+[1.819s]   130 |     poseROS.[01;31m[Kdata[m[K = value->data;
+[1.819s]       |             [01;31m[K^~~~[m[K
+[1.819s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:130:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing std::__shared_ptr_access<const nav_msgs::msg::Odometry_<std::allocator<void> >, __gnu_cxx::_S_atomic, false, false>::element_type = const struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’ {aka ‘[01m[Kconst struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdata[m[K’
+[1.819s]   130 |     poseROS.data = value->[01;31m[Kdata[m[K;
+[1.819s]       |                           [01;31m[K^~~~[m[K
+[1.819s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:[m[K In member function ‘[01m[Kstd::vector<float, std::allocator<float> > Perception::[01;32m[KgetLatestSonarRanges[m[K()[m[K’:
+[1.820s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:153:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Knumbytes[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[1.820s]   153 |     int [01;35m[Knumbytes[m[K = sonarROS.data.size();
+[1.826s]       |         [01;35m[K^~~~~~~~[m[K
+[1.827s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:154:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Knumfields[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[1.827s]   154 |     int [01;35m[Knumfields[m[K = sonarROS.fields.size();
+[1.827s]       |         [01;35m[K^~~~~~~~~[m[K
+[1.827s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:[m[K In member function ‘[01m[Kstd::vector<float, std::allocator<float> > Perception::[01;32m[KgetLatestPose[m[K()[m[K’:
+[1.827s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:175:5:[m[K [01;31m[Kerror: [m[K‘[01m[KPose[m[K’ has not been declared
+[1.827s]   175 |     [01;31m[KPose[m[K::Pose pose = new Pose::Pose(poseROS.data[0], poseROS.data[1], poseROS.data[2]);
+[1.827s]       |     [01;31m[K^~~~[m[K
+[1.830s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:176:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing nav_msgs::msg::Odometry = struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdata[m[K’
+[1.830s]   176 |     std::cout << "POSE: " << poseROS.[01;31m[Kdata[m[K[0] << " " << poseROS.data[1] << " " <<  poseROS.data[2] << std::endl;
+[1.830s]       |                                      [01;31m[K^~~~[m[K
+[1.830s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:176:64:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing nav_msgs::msg::Odometry = struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdata[m[K’
+[1.830s]   176 |     std::cout << "POSE: " << poseROS.data[0] << " " << poseROS.[01;31m[Kdata[m[K[1] << " " <<  poseROS.data[2] << std::endl;
+[1.830s]       |                                                                [01;31m[K^~~~[m[K
+[1.831s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:176:91:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing nav_msgs::msg::Odometry = struct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::Odometry_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kdata[m[K’
+[1.831s]   176 |     std::cout << "POSE: " << poseROS.data[0] << " " << poseROS.data[1] << " " <<  poseROS.[01;31m[Kdata[m[K[2] << std::endl;
+[1.831s]       |                                                                                           [01;31m[K^~~~[m[K
+[1.831s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:177:12:[m[K [01;31m[Kerror: [m[K‘[01m[Kpose[m[K’ was not declared in this scope
+[1.832s]   177 |     return [01;31m[Kpose[m[K
+[1.832s]       |            [01;31m[K^~~~[m[K
+[1.834s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:177:16:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[K}[m[K’ token
+[1.834s]   177 |     return pose
+[1.834s]       |                [01;31m[K^[m[K
+[1.834s]       |                [32m[K;[m[K
+[1.834s]   178 | [32m[K}[m[K
+[1.834s]       | [32m[K~[m[K               
+[2.083s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:104: CMakeFiles/navigation.dir/src/Perception.cpp.o] Erro 1
+[2.083s] gmake[2]: ** Esperando que outros processos terminem.
+[3.923s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In constructor ‘[01m[KNavigationNode::[01;32m[KNavigationNode[m[K(Action&, Perception&)[m[K’:
+[3.923s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:29:7:[m[K [01;31m[Kerror: [m[K‘[01m[Ksub_pose[m[K’ was not declared in this scope
+[3.923s]    29 |       [01;31m[Ksub_pose[m[K = this->create_subscription<sensor_msgs::msg::PointCloud2>("/pose", 100,
+[3.924s]       |       [01;31m[K^~~~~~~~[m[K
+[3.925s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:30:98:[m[K [01;31m[Kerror: [m[K‘[01m[KreceivePose[m[K’ is not a member of ‘[01m[KPerception[m[K’
+[3.925s]    30 |                                      std::bind(&Perception::[01;31m[KreceivePose[m[K, &perception, _1));
+[3.925s]       |                                                             [01;31m[K^~~~~~~~~~~[m[K
+[3.925s] 
+[3.935s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K keyboardThreadFunction[m[K(void*)[m[K’:
+[3.936s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:90:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[3.936s]    90 | void *keyboardThreadFunction([01;35m[Kvoid *arg[m[K)
+[3.936s]       |                              [01;35m[K~~~~~~^~~[m[K
+[3.939s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mainThreadFunction[m[K(void*)[m[K’:
+[3.939s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:104:32:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[3.939s]   104 | void *mainThreadFunction([01;35m[Kvoid *arg[m[K)
+[3.939s]       |                          [01;35m[K~~~~~~^~~[m[K
+[3.939s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[3.939s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:123:41:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KgraphicsThread[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.939s]   123 |   pthread_t mainThread, keyboardThread, [01;35m[KgraphicsThread[m[K;
+[3.939s]       |                                         [01;35m[K^~~~~~~~~~~~~~[m[K
+[7.558s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:76: CMakeFiles/navigation.dir/src/main.cpp.o] Erro 1
+[7.558s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[7.558s] gmake: *** [Makefile:146: all] Erro 2
+[7.560s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2

@@ -20,7 +20,7 @@ public:
     void manualRobotMotion(MovingDirection direction);
     void avoidObstacles(std::vector<float> lasers, std::vector<float> sonars);
     void keepAsFarthestAsPossibleFromWalls(std::vector<float> lasers, std::vector<float> sonars);
-    void followTheWalls(std::vector<float> lasers, std::vector<float> sonars);
+    void followTheWalls(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose);
     void testMode(std::vector<float> lasers, std::vector<float> sonars);
 
     MotionControl handlePressedKey(char key);

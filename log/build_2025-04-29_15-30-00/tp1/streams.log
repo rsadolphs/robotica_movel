@@ -1,0 +1,59 @@
+[0.013s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.109s] [ 16%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/main.cpp.o[0m
+[0.118s] [ 33%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Perception.cpp.o[0m
+[1.789s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:[m[K In member function ‘[01m[Kvoid Perception::[01;32m[KreceivePose[m[K(const nav_msgs::msg::Odometry_<std::allocator<void> >::ConstSharedPtr&)[m[K’:
+[1.789s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:127:77:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kvalue[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[1.789s]   127 | void Perception::receivePose([01;35m[Kconst nav_msgs::msg::Odometry::ConstSharedPtr &value[m[K)
+[1.789s]       |                              [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[1.790s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:[m[K In member function ‘[01m[Kstd::vector<float, std::allocator<float> > Perception::[01;32m[KgetLatestSonarRanges[m[K()[m[K’:
+[1.794s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:152:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Knumbytes[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[1.794s]   152 |     int [01;35m[Knumbytes[m[K = sonarROS.data.size();
+[1.794s]       |         [01;35m[K^~~~~~~~[m[K
+[1.795s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:153:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Knumfields[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[1.795s]   153 |     int [01;35m[Knumfields[m[K = sonarROS.fields.size();
+[1.795s]       |         [01;35m[K^~~~~~~~~[m[K
+[2.248s] [ 50%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Utils.cpp.o[0m
+[2.770s] [ 66%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Graph.cpp.o[0m
+[2.974s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K graphicsThreadFunction[m[K(void*)[m[K’:
+[2.975s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:12:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.975s]    12 | void* graphicsThreadFunction([01;35m[Kvoid* arg[m[K) {
+[2.975s]       |                              [01;35m[K~~~~~~^~~[m[K
+[4.338s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K keyboardThreadFunction[m[K(void*)[m[K’:
+[4.338s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:88:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[4.338s]    88 | void *keyboardThreadFunction([01;35m[Kvoid *arg[m[K)
+[4.338s]       |                              [01;35m[K~~~~~~^~~[m[K
+[4.342s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mainThreadFunction[m[K(void*)[m[K’:
+[4.342s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:102:32:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[4.342s]   102 | void *mainThreadFunction([01;35m[Kvoid *arg[m[K)
+[4.342s]       |                          [01;35m[K~~~~~~^~~[m[K
+[4.343s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[4.343s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:121:41:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KgraphicsThread[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[4.344s]   121 |   pthread_t mainThread, keyboardThread, [01;35m[KgraphicsThread[m[K;
+[4.344s]       |                                         [01;35m[K^~~~~~~~~~~~~~[m[K
+[13.819s] [ 83%] [32m[1mLinking CXX executable navigation[0m
+[14.362s] [100%] Built target navigation
+[14.375s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[14.377s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1
+[14.385s] -- Install configuration: ""
+[14.386s] -- Installing: /home/richard/ros2_ws/install/tp1/lib/tp1/navigation
+[14.394s] -- Set non-toolchain portion of runtime path of "/home/richard/ros2_ws/install/tp1/lib/tp1/navigation" to ""
+[14.396s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch
+[14.396s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch/p3dx-rosaria.launch.py
+[14.396s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config
+[14.396s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config/p3dx.rviz
+[14.396s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/package_run_dependencies/tp1
+[14.397s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/parent_prefix_path/tp1
+[14.397s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.sh
+[14.397s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.dsv
+[14.397s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.sh
+[14.397s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.dsv
+[14.397s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.bash
+[14.397s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.sh
+[14.397s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.zsh
+[14.397s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.dsv
+[14.397s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/package.dsv
+[14.397s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/packages/tp1
+[14.397s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config.cmake
+[14.397s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config-version.cmake
+[14.397s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/package.xml
+[14.401s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1

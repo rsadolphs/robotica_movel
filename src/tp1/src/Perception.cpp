@@ -2,6 +2,7 @@
 #include "Utils.h"
 
 #include <cstring>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 
 Perception::Perception()
 {
@@ -124,6 +125,14 @@ void Perception::receiveSonar(const sensor_msgs::msg::PointCloud2::ConstSharedPt
     sonarROS.is_dense = value->is_dense;
 }
 
+void Perception::recievePose(const nav_msgs::msg::Odometry::ConstSharedPtr &value)
+{
+    poseROS.header = value->header;
+    poseROS.pose.pose.position.x = value->pose.pose.position.x;
+    poseROS.pose.pose.position.y = value->pose.pose.position.y;
+    poseROS.pose.pose.orientation = value->pose.pose.orientation;
+}
+
 std::vector<float> Perception::getLatestLaserRanges()
 {
     int numLasers = laserROS.ranges.size();
@@ -140,6 +149,7 @@ std::vector<float> Perception::getLatestLaserRanges()
 
     return lasers;
 }
+
 
 std::vector<float> Perception::getLatestSonarRanges()
 {
@@ -162,4 +172,24 @@ std::vector<float> Perception::getLatestSonarRanges()
     // std::cout << std::endl;
 
     return sonars;
+}
+
+
+std::vector<float>  Perception::getLatestPose(){
+    float x = poseROS.pose.pose.position.x;
+    float y = poseROS.pose.pose.position.y;
+
+    geometry_msgs::msg::Quaternion q = poseROS.pose.pose.orientation;
+
+    tf2::Quaternion tf_quat;
+    tf2::fromMsg(q, tf_quat);
+    
+    double roll, pitch, yaw;
+    tf2::Matrix3x3(tf_quat).getRPY(roll, pitch, yaw);
+
+    std::vector<float> pose = {x, y, static_cast<float>(yaw)};
+
+    std::cout << "x: " << x << ", y: " << y << ", yaw: " << yaw << std::endl;
+
+    return pose;
 }
