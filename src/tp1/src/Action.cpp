@@ -162,9 +162,33 @@ float distPontos(Position p1, Position p2){
     return std::sqrt((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y));
 }
 
+Position detectarParede(const std::vector<float>& pose, float distancia_sonar, bool esquerda) {
+    float angulo = pose[2];
+
+    float paredeX = pose[0];
+    float paredeY = pose[1];
+
+    float sinAng = sin(angulo);
+    float cosAng = cos(angulo);
+
+    if (esquerda){
+        paredeX -=  distancia_sonar * sinAng;
+        paredeY +=  distancia_sonar * cosAng;
+    } else{
+        paredeX +=  distancia_sonar * sinAng;
+        paredeY -=  distancia_sonar * cosAng;        
+    }
+
+    Position pontoParede = {paredeX, paredeY};
+    return {pontoParede};  
+}
+
 Position roboPosicao = {0.0f, 0.0f}; 
 Position pontoParede = {0.0f, 0.0f}; 
+Position pontoParedeE = {0.0f, 0.0f}; 
+Position pontoParedeD = {0.0f, 0.0f}; 
 Position lastPontoParede = {0.0f, 0.0f}; 
+Position paredeDetectada = {0.0f, 0.0f};
 
 MovingDirection side;
 int firstMinDistPos = 0;
@@ -177,12 +201,16 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
     auto [minPos, minDist] = findMinPosition(sonars);
     roboPosicao = {pose[0], pose[1]};
 
-    if (linVel > 0){
-        float angulo = pose[2] * 180 / M_PI;
-        float paredeX = pose[0] - sonars[0] * sin(angulo);
-        float paredeY = pose[1] + sonars[0] * cos(angulo);
-        pontoParede = {paredeX, paredeY};
-        std::cout << "paredeX: " << paredeX << ", paredeY: " << paredeY << ", anguloRobo: " << angulo << std::endl;
+    Position paredeEsquerda = detectarParede(pose, sonars[0], true);
+    Position paredeDireita = detectarParede(pose, sonars[7], false);
+    
+    if(sonars[0]<5.0f){
+        pontoParede = paredeEsquerda;
+        pontoParedeE = paredeEsquerda;
+    }
+
+    if(sonars[7]<5.0f){
+        pontoParedeD = paredeDireita;
     }
 
     if (!firstInfo){
@@ -215,10 +243,12 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
             if(sonars[0]<0.7){
                 angVel=-0.2; // gira H
             }else
-
-            if(sonars[0]>0.9){
-                angVel=0.2; // gira AH
-            }
+                if(sonars[0]>0.9){
+                    angVel=0.2; // gira AH
+                }
+            //if (sonars[0]!=0.8){
+            //    angVel = 2*(sonars[0]-0.8);
+            //}
         }
 
         std::cout << sonars[0] << std::endl;
