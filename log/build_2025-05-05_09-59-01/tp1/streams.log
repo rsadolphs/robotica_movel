@@ -1,0 +1,96 @@
+[0.017s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.064s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.331s] [33mCMake Warning (dev) at /usr/share/cmake-3.28/Modules/FindOpenGL.cmake:381 (message):
+[0.331s]   Policy CMP0072 is not set: FindOpenGL prefers GLVND by default when
+[0.331s]   available.  Run "cmake --help-policy CMP0072" for policy details.  Use the
+[0.331s]   cmake_policy command to set the policy and suppress this warning.
+[0.331s] 
+[0.331s]   FindOpenGL found both a legacy GL library:
+[0.331s] 
+[0.331s]     OPENGL_gl_LIBRARY: /usr/lib/x86_64-linux-gnu/libGL.so
+[0.331s] 
+[0.332s]   and GLVND libraries for OpenGL and GLX:
+[0.332s] 
+[0.332s]     OPENGL_opengl_LIBRARY: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+[0.332s]     OPENGL_glx_LIBRARY: /usr/lib/x86_64-linux-gnu/libGLX.so
+[0.332s] 
+[0.332s]   OpenGL_GL_PREFERENCE has not been set to "GLVND" or "LEGACY", so for
+[0.332s]   compatibility with CMake 3.10 and below the legacy GL library will be used.
+[0.332s] Call Stack (most recent call first):
+[0.332s]   CMakeLists.txt:13 (find_package)
+[0.332s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.332s] [0m
+[0.339s] -- Found rclcpp: 28.1.9 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.384s] -- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.405s] -- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.422s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.455s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.558s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.562s] -- Found rmw_fastrtps_cpp: 8.4.2 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[0.642s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.715s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[0.814s] -- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)
+[0.840s] -- Found tf2: 0.36.10 (/opt/ros/jazzy/share/tf2/cmake)
+[0.848s] -- Found tf2_geometry_msgs: 0.36.10 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+[0.859s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[0.859s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[0.990s] -- Found ament_lint_auto: 0.17.2 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[1.113s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.113s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/richard/ros2_ws/src/tp1/include>
+[1.113s] -- Configured cppcheck exclude dirs and/or files: 
+[1.113s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.113s] -- Configured 'flake8' exclude dirs and/or files: 
+[1.116s] -- Added test 'lint_cmake' to check CMake code style
+[1.116s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.116s] -- Added test 'uncrustify' to check C / C++ code style
+[1.117s] -- Configured uncrustify additional arguments: 
+[1.118s] -- Added test 'xmllint' to check XML markup files
+[1.120s] -- Configuring done (1.1s)
+[1.154s] -- Generating done (0.0s)
+[1.167s] -- Build files have been written to: /home/richard/ros2_ws/build/tp1
+[1.251s] [ 16%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Graph.cpp.o[0m
+[1.542s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K marcaMatriz[m[K(float, float, float, float, std::vector<std::vector<int> >&)[m[K’:
+[1.542s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:82:29:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[1.543s]    82 |     if (linha >= 0 && [01;35m[Klinha < matriz.size()[m[K && coluna >= 0 && coluna < matriz[0].size()) {
+[1.543s]       |                       [01;35m[K~~~~~~^~~~~~~~~~~~~~~[m[K
+[1.544s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:82:70:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[1.544s]    82 | inha >= 0 && linha < matriz.size() && coluna >= 0 && [01;35m[Kcoluna < matriz[0].size()[m[K) {
+[1.545s]       |                                                      [01;35m[K~~~~~~~^~~~~~~~~~~~~~~~~~[m[K
+[1.545s] 
+[1.546s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K graphicsThreadFunction[m[K(void*)[m[K’:
+[1.546s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:107:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::x * scaleFactor)) - 8.0000000000000004e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+[1.546s]   107 |         Position posRobo = {[01;35m[KroboPosicao.x * scaleFactor - 0.8[m[K,
+[1.546s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[1.548s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:108:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::y * scaleFactor)) - 6.9999999999999996e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+[1.548s]   108 |                             [01;35m[KroboPosicao.y * scaleFactor - 0.7[m[K};
+[1.549s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[1.549s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:87:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[1.550s]    87 | void* graphicsThreadFunction([01;35m[Kvoid* arg[m[K) {
+[1.550s]       |                              [01;35m[K~~~~~~^~~[m[K
+[1.841s] [ 33%] [32m[1mLinking CXX executable navigation[0m
+[2.965s] [100%] Built target navigation
+[2.986s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[3.008s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1
+[3.032s] -- Install configuration: ""
+[3.032s] -- Installing: /home/richard/ros2_ws/install/tp1/lib/tp1/navigation
+[3.052s] -- Set non-toolchain portion of runtime path of "/home/richard/ros2_ws/install/tp1/lib/tp1/navigation" to ""
+[3.053s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch
+[3.053s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch/p3dx-rosaria.launch.py
+[3.053s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config
+[3.053s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config/p3dx.rviz
+[3.053s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/package_run_dependencies/tp1
+[3.053s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/parent_prefix_path/tp1
+[3.054s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.sh
+[3.054s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.dsv
+[3.059s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.sh
+[3.059s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.dsv
+[3.059s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.bash
+[3.059s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.sh
+[3.059s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.zsh
+[3.059s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.dsv
+[3.059s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/package.dsv
+[3.059s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/packages/tp1
+[3.059s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config.cmake
+[3.059s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config-version.cmake
+[3.060s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/package.xml
+[3.063s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1

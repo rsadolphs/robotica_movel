@@ -4,10 +4,10 @@
 
 #include <string.h>
 
+#include "turtlesim/srv/detail/teleport_relative__functions.h"
+#include "rosidl_typesupport_interface/macros.h"
 #include "turtlesim/srv/detail/teleport_relative__struct.h"
 #include "turtlesim/srv/detail/teleport_relative__type_support.h"
-#include "rosidl_typesupport_interface/macros.h"
-#include "turtlesim/srv/detail/teleport_relative__functions.h"
 
 #ifdef __cplusplus
 extern "C"

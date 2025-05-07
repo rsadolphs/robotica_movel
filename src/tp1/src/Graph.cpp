@@ -6,15 +6,14 @@
 
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
-extern Position pontoParede;
 extern Position pontoParedeE;
 extern Position pontoParedeD;
 
 // Histórico de posições
 std::vector<Position> caminho;
-std::vector<Position> paredes;
-std::vector<Position> paredesE;
-std::vector<Position> paredesD;
+//std::vector<Position> paredes;
+//std::vector<Position> paredesE;
+//std::vector<Position> paredesD;
 
 struct GridInfo {
     float inicio;
@@ -27,6 +26,7 @@ GridInfo grid = {-5.0f, 5.0f, 0.02f};
 
 int size = (grid.fim - grid.inicio) / grid.passo;  
 std::vector<std::vector<int>> matrizMundo(size, std::vector<int>(size, 0));
+std::vector<std::vector<int>> matrizPath(size, std::vector<int>(size, 0));
 
 float round2(float valor) {
     return std::round(valor * 100.0f) / 100.0f;
@@ -51,15 +51,16 @@ void desenhaGrade(float inicio, float fim, float passo) {
     glEnd();
 }
 
-void pintaCelulas(const std::vector<std::vector<int>>& matriz, float inicio, float passo) {
+void pintaCelulas(const std::vector<std::vector<int>>& matriz, float inicio, float passo, std::tuple<float, float, float> cor) {
     int linhas = matriz.size();
     int colunas = matriz[0].size();
+    auto [r, g, b] = cor; 
 
-    glColor3f(0.3f, 0.3f, 0.3f);  // cinza escuro para células ocupadas
+    glColor3f(r, g, b);
 
     for (int i = 0; i < linhas; ++i) {
         for (int j = 0; j < colunas; ++j) {
-            if (matriz[i][j] == 1) {
+            if (matriz[i][j] >= 1) {
                 float x = inicio + j * passo;
                 float y = inicio + i * passo;
 
@@ -79,7 +80,7 @@ void marcaMatriz(float x, float y, float inicio, float passo, std::vector<std::v
     int linha  = static_cast<int>((y - inicio) / passo);
 
     if (linha >= 0 && linha < matriz.size() && coluna >= 0 && coluna < matriz[0].size()) {
-        matriz[linha][coluna] = 1;
+        matriz[linha][coluna] += 1;
     }
 }
 
@@ -105,8 +106,6 @@ void* graphicsThreadFunction(void* arg) {
         // Atualiza o caminho
         Position posRobo = {roboPosicao.x * scaleFactor - 0.8, 
                             roboPosicao.y * scaleFactor - 0.7};
-        Position posParede = {round2(pontoParede.x * scaleFactor - 0.8), 
-                              round2(pontoParede.y * scaleFactor - 0.7)};
 
         Position posParedeE = {round2(pontoParedeE.x * scaleFactor - 0.8), 
             round2(pontoParedeE.y * scaleFactor - 0.7)};
@@ -115,17 +114,22 @@ void* graphicsThreadFunction(void* arg) {
             round2(pontoParedeD.y * scaleFactor - 0.7)};
 
         caminho.push_back(posRobo);  // ATENÇÃO: precisa garantir que acesso à roboPosicao é seguro!
-        paredes.push_back(posParede);
-        paredesE.push_back(posParedeE);
-        paredesD.push_back(posParedeD);
+
 
         // Renderizar
         glClear(GL_COLOR_BUFFER_BIT);
 
+        // Adiciona pontos nas matrizes parede e path
         marcaMatriz(posParedeE.x, posParedeE.y, grid.inicio, grid.passo, matrizMundo);
         marcaMatriz(posParedeD.x, posParedeD.y, grid.inicio, grid.passo, matrizMundo);
+        marcaMatriz(posRobo.x, posRobo.y, grid.inicio, grid.passo, matrizPath);
+        
+        // Desenha a grade
         desenhaGrade(grid.inicio, grid.fim, grid.passo);
-        pintaCelulas(matrizMundo, grid.inicio, grid.passo);
+
+        // Pinta células
+        pintaCelulas(matrizMundo, grid.inicio, grid.passo, std::make_tuple(0.3f, 0.3f, 0.3f));
+        pintaCelulas(matrizPath, grid.inicio, grid.passo, std::make_tuple(1.0f, 0.0f, 0.0f));
 
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
@@ -154,14 +158,6 @@ void* graphicsThreadFunction(void* arg) {
             glVertex2f(posRobo.x + tamanho, posRobo.y - tamanho);
             glVertex2f(posRobo.x + tamanho, posRobo.y + tamanho);
             glVertex2f(posRobo.x - tamanho, posRobo.y + tamanho);
-        glEnd();
-
-        // Desenha as paredes
-        glColor3f(0.0f, 0.0f, 0.0f);  // preto
-        glBegin(GL_POINTS);
-        for (auto& parede : paredes) {
-            glVertex2f(parede.x, parede.y);  // desenha cada ponto das paredes
-        }
         glEnd();
 
         glfwSwapBuffers(window);

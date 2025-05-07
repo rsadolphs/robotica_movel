@@ -4,8 +4,8 @@
 
 #include <string.h>
 
-#include "turtlesim/srv/detail/spawn__struct.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "turtlesim/srv/detail/spawn__struct.h"
 #include "turtlesim/srv/detail/spawn__type_support.h"
 #include "turtlesim/srv/detail/spawn__functions.h"
 

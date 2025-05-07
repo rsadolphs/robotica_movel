@@ -184,11 +184,8 @@ Position detectarParede(const std::vector<float>& pose, float distancia_sonar, b
 }
 
 Position roboPosicao = {0.0f, 0.0f}; 
-Position pontoParede = {0.0f, 0.0f}; 
 Position pontoParedeE = {0.0f, 0.0f}; 
 Position pontoParedeD = {0.0f, 0.0f}; 
-Position lastPontoParede = {0.0f, 0.0f}; 
-Position paredeDetectada = {0.0f, 0.0f};
 
 MovingDirection side;
 int firstMinDistPos = 0;
@@ -205,7 +202,6 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
     Position paredeDireita = detectarParede(pose, sonars[7], false);
     
     if(sonars[0]<5.0f){
-        pontoParede = paredeEsquerda;
         pontoParedeE = paredeEsquerda;
     }
 
@@ -223,9 +219,6 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
         }
         firstInfo = true;
     }
-
-    int sonar0 = static_cast<int>(sonars[0] / 10);
-    int sonar15 = static_cast<int>(sonars[15] / 10);
 
     if (side = LEFT){
         // Parede mais proxima a frente pela esquerda
