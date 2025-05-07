@@ -11,9 +11,6 @@ extern Position pontoParedeD;
 
 // Histórico de posições
 std::vector<Position> caminho;
-//std::vector<Position> paredes;
-//std::vector<Position> paredesE;
-//std::vector<Position> paredesD;
 
 struct GridInfo {
     float inicio;

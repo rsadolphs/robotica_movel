@@ -183,13 +183,26 @@ Position detectarParede(const std::vector<float>& pose, float distancia_sonar, b
     return {pontoParede};  
 }
 
+bool estaTrancado(const std::vector<Position>& posicoes, int ultimos = 10) {
+    if (posicoes.size() < ultimos) return false;
+
+    const Position& ref = posicoes[posicoes.size() - ultimos];
+    for (size_t i = posicoes.size() - ultimos + 1; i < posicoes.size(); ++i) {
+        if (!posicoes[i].isEqual(ref)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 Position roboPosicao = {0.0f, 0.0f}; 
 Position pontoParedeE = {0.0f, 0.0f}; 
 Position pontoParedeD = {0.0f, 0.0f}; 
-
 MovingDirection side;
+
 int firstMinDistPos = 0;
 bool firstInfo = false;
+std::vector<Position> positionArray;
 
 void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
 {
@@ -197,6 +210,8 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
     int minDistPos = 0;
     auto [minPos, minDist] = findMinPosition(sonars);
     roboPosicao = {pose[0], pose[1]};
+
+    positionArray.push_back(roboPosicao);
 
     Position paredeEsquerda = detectarParede(pose, sonars[0], true);
     Position paredeDireita = detectarParede(pose, sonars[7], false);
@@ -249,6 +264,12 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
         if (sonars[3] <= 1.1 || sonars[4] <= 1.1){
             linVel= 0.0; angVel=-0.5; // rotação em sentido horário
         }
+    }
+
+
+    if (estaTrancado(positionArray)) {
+        std::cout << "O robô está trancado!\n";
+        linVel= 0.1;
     }
 }
 

@@ -1,0 +1,32 @@
+[0.012s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.093s] [ 16%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Graph.cpp.o[0m
+[0.230s] In file included from [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:2[m[K:
+[0.232s] [01m[K/home/richard/ros2_ws/src/tp1/include/graphics.hpp:[m[K In member function ‘[01m[Kbool Position::[01;32m[KisEqual[m[K(const Position&, float) const[m[K’:
+[0.232s] [01m[K/home/richard/ros2_ws/src/tp1/include/graphics.hpp:10:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kabs[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.232s]    10 |         return std::[01;31m[Kabs[m[K(x - other.x) < epsilon && std::abs(y - other.y) < epsilon;
+[0.233s]       |                     [01;31m[K^~~[m[K
+[0.233s] [01m[K/home/richard/ros2_ws/src/tp1/include/graphics.hpp:10:56:[m[K [01;31m[Kerror: [m[K‘[01m[Kabs[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.233s]    10 |         return std::abs(x - other.x) < epsilon && std::[01;31m[Kabs[m[K(y - other.y) < epsilon;
+[0.233s]       |                                                        [01;31m[K^~~[m[K
+[0.641s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K marcaMatriz[m[K(float, float, float, float, std::vector<std::vector<int> >&)[m[K’:
+[0.641s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:79:29:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.641s]    79 |     if (linha >= 0 && [01;35m[Klinha < matriz.size()[m[K && coluna >= 0 && coluna < matriz[0].size()) {
+[0.641s]       |                       [01;35m[K~~~~~~^~~~~~~~~~~~~~~[m[K
+[0.641s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:79:70:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.641s]    79 | inha >= 0 && linha < matriz.size() && coluna >= 0 && [01;35m[Kcoluna < matriz[0].size()[m[K) {
+[0.641s]       |                                                      [01;35m[K~~~~~~~^~~~~~~~~~~~~~~~~~[m[K
+[0.641s] 
+[0.642s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K graphicsThreadFunction[m[K(void*)[m[K’:
+[0.642s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:104:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::x * scaleFactor)) - 8.0000000000000004e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+[0.642s]   104 |         Position posRobo = {[01;35m[KroboPosicao.x * scaleFactor - 0.8[m[K,
+[0.642s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[0.643s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:105:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::y * scaleFactor)) - 6.9999999999999996e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+[0.643s]   105 |                             [01;35m[KroboPosicao.y * scaleFactor - 0.7[m[K};
+[0.643s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[0.649s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:84:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.649s]    84 | void* graphicsThreadFunction([01;35m[Kvoid* arg[m[K) {
+[0.649s]       |                              [01;35m[K~~~~~~^~~[m[K
+[0.917s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:132: CMakeFiles/navigation.dir/src/Graph.cpp.o] Erro 1
+[0.917s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[0.918s] gmake: *** [Makefile:146: all] Erro 2
+[0.922s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
