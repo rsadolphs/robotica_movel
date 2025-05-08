@@ -86,8 +86,8 @@ void* graphicsThreadFunction(void* arg) {
         return NULL;
     }
 
-    int width = 400;
-    int height = 300;
+    int width = 600;
+    int height = 600;
     float scaleFactor = 0.09f;
 
     GLFWwindow* window = glfwCreateWindow(width, height, "Caminho do Robo", NULL, NULL);
@@ -147,16 +147,20 @@ void* graphicsThreadFunction(void* arg) {
         // Cor do robô
         glColor3f(0.0f, 0.0f, 0.8f); // azul
 
-        float tamanho = 0.02f;  // metade do lado do quadrado
+        float tamanho = 0.02f;  // raio do círculo
+        int numSegmentos = 30;  // mais segmentos = círculo mais suave
 
-        // Desenhar o quadrado (corpo do robô)
-        glBegin(GL_QUADS);
-            glVertex2f(posRobo.x - tamanho, posRobo.y - tamanho);
-            glVertex2f(posRobo.x + tamanho, posRobo.y - tamanho);
-            glVertex2f(posRobo.x + tamanho, posRobo.y + tamanho);
-            glVertex2f(posRobo.x - tamanho, posRobo.y + tamanho);
+        glBegin(GL_TRIANGLE_FAN);
+            glVertex2f(posRobo.x, posRobo.y); // centro do círculo
+            for (int i = 0; i <= numSegmentos; i++) {
+                float angulo = 2.0f * M_PI * i / numSegmentos;
+                float x = posRobo.x + cos(angulo) * tamanho;
+                float y = posRobo.y + sin(angulo) * tamanho;
+                glVertex2f(x, y);
+            }
         glEnd();
 
+        
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
