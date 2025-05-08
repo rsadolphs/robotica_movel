@@ -31,6 +31,7 @@ float round2(float valor) {
 
 void desenhaGrade(float inicio, float fim, float passo) {
     glColor3f(0.85f, 0.85f, 0.85f); // cinza claro
+    glLineWidth(1.0f);
     glBegin(GL_LINES);
 
     // Linhas verticais
@@ -102,7 +103,9 @@ void* graphicsThreadFunction(void* arg) {
     while (!glfwWindowShouldClose(window)) {
         // Atualiza o caminho
         Position posRobo = {roboPosicao.x * scaleFactor - 0.8, 
-                            roboPosicao.y * scaleFactor - 0.7};
+                            roboPosicao.y * scaleFactor - 0.7,
+                            roboPosicao.theta
+        };
 
         Position posParedeE = {round2(pontoParedeE.x * scaleFactor - 0.8), 
             round2(pontoParedeE.y * scaleFactor - 0.7)};
@@ -160,7 +163,19 @@ void* graphicsThreadFunction(void* arg) {
             }
         glEnd();
 
-        
+        // Desenhar a linha de direção
+        float comprimentoLinha = 0.1f; // comprimento da linha indicadora
+        float xFinal = posRobo.x + cos(posRobo.theta) * comprimentoLinha;
+        float yFinal = posRobo.y + sin(posRobo.theta) * comprimentoLinha;
+
+        glColor3f(0.1f, 0.6f, 0.2f); // verde escuro
+        glLineWidth(3.0f);
+        glBegin(GL_LINES);
+            glVertex2f(posRobo.x, posRobo.y);      // início no centro do robô
+            glVertex2f(xFinal, yFinal);            // fim na direção de theta
+        glEnd();
+
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     }

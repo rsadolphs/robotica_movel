@@ -7,7 +7,7 @@
 void* graphicsThreadFunction(void* arg);
 
 struct Position {
-    float x, y;
+    float x, y, theta;
     bool isEqual(const Position& other, float epsilon = 1e-4f) const {
         return std::abs(x - other.x) < epsilon && std::abs(y - other.y) < epsilon;
     }

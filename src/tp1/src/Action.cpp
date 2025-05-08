@@ -195,7 +195,7 @@ bool estaTrancado(const std::vector<Position>& posicoes, int ultimos = 10) {
     return true;
 }
 
-Position roboPosicao = {0.0f, 0.0f}; 
+Position roboPosicao = {0.0f, 0.0f, 0.0f}; 
 Position pontoParedeE = {0.0f, 0.0f}; 
 Position pontoParedeD = {0.0f, 0.0f}; 
 MovingDirection side;
@@ -209,7 +209,7 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
     float minDistance = 0.0f;
     int minDistPos = 0;
     auto [minPos, minDist] = findMinPosition(sonars);
-    roboPosicao = {pose[0], pose[1]};
+    roboPosicao = {pose[0], pose[1], pose[2]};
 
     positionArray.push_back(roboPosicao);
 
