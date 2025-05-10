@@ -8,6 +8,9 @@
 extern Position roboPosicao;
 extern Position pontoParedeE;
 extern Position pontoParedeD;
+extern std::vector<float> sonares;
+const std::vector<double> sensorAngles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
+
 
 // Histórico de posições
 std::vector<Position> caminho;
@@ -146,8 +149,30 @@ void* graphicsThreadFunction(void* arg) {
         }
         glEnd();
 
+        float xFinal = 0.0f;
+        float yFinal = 0.0f;
+
+        // desenhar sensores
+        float sensorLength = 0.0f;
+        if (!sonares.empty()) {
+            glLineWidth(1.5f);
+                for (int i = 0; i <= 15; i++) {
+                    glBegin(GL_LINES);
+                    glColor3f(0.9f, 0.7f, 0.1f); // laranja escuro
+                        if(i==0 || i==7 || i==8|| i==15){
+                            glColor3f(0.9f, 0.1f, 0.9f); // magenta
+                        }
+                        sensorLength = sonares[i] * scaleFactor;
+                        xFinal = posRobo.x + cos(posRobo.theta-sensorAngles[i]*M_PI/180) * sensorLength;
+                        yFinal = posRobo.y + sin(posRobo.theta-sensorAngles[i]*M_PI/180) * sensorLength;
+                        glVertex2f(posRobo.x, posRobo.y);
+                        glVertex2f(xFinal, yFinal);
+                    glEnd();
+                }
+        }
+
+
         // Desenha o robo
-        // Cor do robô
         glColor3f(0.0f, 0.0f, 0.8f); // azul
 
         float tamanho = 0.02f;  // raio do círculo
@@ -165,8 +190,8 @@ void* graphicsThreadFunction(void* arg) {
 
         // Desenhar a linha de direção
         float comprimentoLinha = 0.1f; // comprimento da linha indicadora
-        float xFinal = posRobo.x + cos(posRobo.theta) * comprimentoLinha;
-        float yFinal = posRobo.y + sin(posRobo.theta) * comprimentoLinha;
+        xFinal = posRobo.x + cos(posRobo.theta) * comprimentoLinha;
+        yFinal = posRobo.y + sin(posRobo.theta) * comprimentoLinha;
 
         glColor3f(0.1f, 0.6f, 0.2f); // verde escuro
         glLineWidth(3.0f);

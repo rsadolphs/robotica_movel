@@ -203,6 +203,7 @@ MovingDirection side;
 int firstMinDistPos = 0;
 bool firstInfo = false;
 std::vector<Position> positionArray;
+std::vector<float> sonares;
 
 void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
 {
@@ -210,6 +211,7 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
     int minDistPos = 0;
     auto [minPos, minDist] = findMinPosition(sonars);
     roboPosicao = {pose[0], pose[1], pose[2]};
+    sonares = sonars;
 
     positionArray.push_back(roboPosicao);
 
