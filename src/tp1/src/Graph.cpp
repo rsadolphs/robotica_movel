@@ -92,7 +92,7 @@ void* graphicsThreadFunction(void* arg) {
 
     int width = 600;
     int height = 600;
-    float scaleFactor = 0.09f;
+    float scaleFactor = 0.1f;
 
     GLFWwindow* window = glfwCreateWindow(width, height, "Caminho do Robo", NULL, NULL);
     if (!window) {
