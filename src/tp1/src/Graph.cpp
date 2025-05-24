@@ -4,6 +4,7 @@
 #include <vector>
 #include <cmath>
 #include <iostream>
+#include <fstream>
 
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
@@ -20,7 +21,7 @@ std::vector<Position> caminho;
 // Cria Grade e Matrizes
 GridInfo grid = {-5.0f, 5.0f, 0.02f};
 int size = (grid.fim - grid.inicio) / grid.passo;  
-std::vector<std::vector<int>> matrizMundo(size, std::vector<int>(size, 0));
+std::vector<std::vector<float>> matrizMundo(size, std::vector<float>(size, 0.0f));
 std::vector<std::vector<int>> matrizPath(size, std::vector<int>(size, 0));
 
 float round2(float valor) {
@@ -47,7 +48,26 @@ void desenhaGrade(float inicio, float fim, float passo) {
     glEnd();
 }
 
-void pintaCelulas(const std::vector<std::vector<int>>& matriz, float inicio, float passo, std::tuple<float, float, float> cor) {
+void salvaMatriz(const std::vector<std::vector<float>>& matriz, const std::string& nomeArquivo) {
+    std::ofstream arquivo(nomeArquivo);
+
+    if (!arquivo.is_open()) {
+        std::cerr << "Erro ao abrir o arquivo " << nomeArquivo << " para escrita." << std::endl;
+        return;
+    }
+
+    for (const auto& linha : matriz) {
+        for (const auto& valor : linha) {
+            arquivo << valor << " ";
+        }
+        arquivo << "\n";
+    }
+
+    arquivo.close();
+    std::cout << "Matriz salva com sucesso em " << nomeArquivo << std::endl;
+}
+
+void pintaCelulas(const std::vector<std::vector<float>>& matriz, float inicio, float passo, std::tuple<float, float, float> cor) {
     int linhas = matriz.size();
     int colunas = matriz[0].size();
     auto [r, g, b] = cor; 
@@ -97,35 +117,56 @@ CellRelativeInfo calculaDistanciaEAngulo(
     float distancia = std::sqrt(dx * dx + dy * dy);
     float anguloAbsoluto = std::atan2(dy, dx);
 
+    if(anguloAbsoluto < 0){
+        anguloAbsoluto = 2 * M_PI + anguloAbsoluto;
+    }
+
     float anguloRelativo = anguloAbsoluto - yawRobo;
 
-    // Normaliza para estar entre -pi e pi
-    while (anguloRelativo > M_PI)  anguloRelativo -= 2 * M_PI;
-    while (anguloRelativo < -M_PI) anguloRelativo += 2 * M_PI;
+    // Converte para graus
+    float anguloRelativoGraus = anguloRelativo * 180.0f / M_PI;
 
-    return {distancia, anguloRelativo};
+    return {distancia, anguloRelativoGraus};
 }
+
 
 bool posicaoValida(const MatrixPosition& pos, int linhas, int colunas) {
     return (pos.linha >= 0 && pos.linha < linhas &&
             pos.coluna >= 0 && pos.coluna < colunas);
 }
 
-float bayes(float R, float r, float beta, float alpha, float max, float pOcup) {
+float bayes(float R, float r, float s, float beta, float alpha, float max, float pOcup) {
+
+    float rangeDetect = 0.2f;
 
     if(pOcup == 0.0f){ pOcup = 0.5f; } // iteração inicial
 
-    float pSOcup = 0.5f * ( (R-r)/R + (beta-alpha)/alpha ) * max;
-    float pSVaz = 1.0f - pSOcup;
-    float pSOcup_pOcup = pSOcup * pOcup;
-    float pSVaz_pVaz = pSVaz * ( 1 - pOcup );
+    if ((r >= s - rangeDetect) && ( r <= s + rangeDetect)){
+        float pSOcup = 0.5f * ( (R-r)/R + (beta-std::abs(alpha)/beta ) )* max;
+        float pSVaz = 1.0f - pSOcup;
+        float pSOcup_pOcup = pSOcup * pOcup;
+        float pSVaz_pVaz = pSVaz * ( 1 - pOcup );
 
-    float pOcupS = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
+        float pOcupS = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
+        std::cout << "pOcupS" << std::endl;
 
-    return pOcupS;
+        return pOcupS;
+    }
+    else{
+        float pVaz = 1 - pOcup;
+        float pSVaz = 0.5f * ( (R-r)/R + (beta-std::abs(alpha))/beta ) * max;
+        float pSOcup = 1.0f - pSVaz;
+        float pSVaz_pVaz = pSVaz * pVaz;
+        float pSOcup_pOcup = pSOcup * ( 1 - pVaz );
+
+        float pVazS = (pSVaz_pVaz / (pSVaz_pVaz + pSOcup_pOcup));
+        std::cout << "pVazS" << std::endl;
+        return 1 - pVazS;
+    }
+
 }
 
-void atualizaMatriz(std::vector<std::vector<int>>& matriz, MatrixPosition detection, Robot robot){
+void atualizaMatriz(std::vector<std::vector<float>>& matriz, MatrixPosition detection, Robot robot){
 
     if (detection.linha >= 0 && detection.linha < matriz.size() 
         && detection.coluna >= 0 && detection.coluna < matriz[0].size()) 
@@ -135,7 +176,7 @@ void atualizaMatriz(std::vector<std::vector<int>>& matriz, MatrixPosition detect
 
     int linhas = matriz.size();
     int colunas = matriz[0].size();
-
+    int cont = 0;
     for (int i = 0; i < linhas; ++i) {
         for (int j = 0; j < colunas; ++j) {
             // Locate stuff
@@ -145,25 +186,26 @@ void atualizaMatriz(std::vector<std::vector<int>>& matriz, MatrixPosition detect
             CellInfo celulaAtual = {posAtual, centroAtual, relations};
             
             // infos legibilidade
-            float dist = celulaAtual.relations.distancia;
-            float gama = celulaAtual.relations.anguloRelativo;
-            float delta = sensorAngles[0] * M_PI / 180; // por enquanto apenas um sensor
+            float r = celulaAtual.relations.distancia;
+            float alpha = celulaAtual.relations.anguloRelativo;
+            float delta = sensorAngles[0];// * M_PI / 180; // por enquanto apenas um sensor
             float beta = robot.beta;
-            float R = robot.R;
+            float R = 4.0f;
             // Está no cone?
-            if ((dist <= 4.0f) && (gama >= delta-beta) && (gama <= delta+beta)){ // Está no cone!
+            if ((r <= robot.s) && (alpha >= -beta+delta) && (alpha <= beta+delta)){ // Está no cone!
                 
-                float pOcup = bayes(R, dist, beta, gama,  0.9f,  matriz[i][j]);
-                std::cout << "[DEBUG] pOcup calculado: " << pOcup << std::endl;
-                matriz[i][j] == pOcup;
+                float pOcup = bayes(R, r, robot.s, beta, alpha,  0.9f,  matriz[i][j]);
+                std::cout << "R: " << R << " r: " << r << " s: " << robot.s <<
+                        " beta: "  << beta << " alpha: "  << alpha <<
+                        " pOcup: "  << pOcup << std::endl;
+                matriz[i][j] = pOcup;
+                cont += 1;
             }
-
-            
-
-
         }
     }
+    std::cout << cont << " celulas atualizadas. " << std::endl;
 
+    salvaMatriz(matriz, "matriz.txt");
     
 }
 
@@ -218,7 +260,7 @@ void* graphicsThreadFunction(void* arg) {
             !sonares.empty()) {
 
             CellCenter centroCelRobo = centroDaCelula(matPosRobo, grid.inicio, grid.passo);
-            Robot robotInfo = {matPosRobo, posRobo, centroCelRobo, sonares[0]*scaleFactor};
+            Robot robotInfo = {matPosRobo, posRobo, centroCelRobo, sonares[0]};
 
             atualizaMatriz(matrizMundo, matPosParedeE, robotInfo);
             atualizaMatriz(matrizMundo, matPosParedeD, robotInfo);

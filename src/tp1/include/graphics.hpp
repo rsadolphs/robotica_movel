@@ -34,8 +34,8 @@ struct Robot {
     MatrixPosition gridPos;
     Position pos;
     CellCenter cellCenter;
-    double R;
-    float beta = M_PI / 36; //5 graus
+    double s;
+    float beta = 5; //5 graus
 };
 
 struct CellRelativeInfo {

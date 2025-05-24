@@ -242,6 +242,7 @@ CMakeFiles/navigation.dir/src/Graph.cpp.o: /home/richard/ros2_ws/src/tp1/src/Gra
   /usr/include/c++/13/bits/basic_string.tcc \
   /usr/include/c++/13/bits/char_traits.h \
   /usr/include/c++/13/bits/charconv.h \
+  /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
@@ -249,6 +250,7 @@ CMakeFiles/navigation.dir/src/Graph.cpp.o: /home/richard/ros2_ws/src/tp1/src/Gra
   /usr/include/c++/13/bits/exception.h \
   /usr/include/c++/13/bits/exception_defines.h \
   /usr/include/c++/13/bits/exception_ptr.h \
+  /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hash_bytes.h \
@@ -310,6 +312,7 @@ CMakeFiles/navigation.dir/src/Graph.cpp.o: /home/richard/ros2_ws/src/tp1/src/Gra
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/string_conversions.h \
   /usr/include/c++/13/ext/type_traits.h \
+  /usr/include/c++/13/fstream \
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
@@ -429,8 +432,10 @@ CMakeFiles/navigation.dir/src/Graph.cpp.o: /home/richard/ros2_ws/src/tp1/src/Gra
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/cpu_defines.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h \
@@ -2533,8 +2538,6 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 
 /usr/include/c++/13/bits/deque.tcc:
 
-/usr/include/c++/13/bits/codecvt.h:
-
 /usr/include/c++/13/bits/stl_heap.h:
 
 /usr/include/c++/13/bits/atomic_lockfree_defines.h:
@@ -2839,17 +2842,11 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_parameters_interface.hpp:
 
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point_stamped__traits.hpp:
+/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_clock_interface_traits.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/termios-c_oflag.h:
+/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_base_interface.hpp:
 
-/opt/ros/jazzy/include/rmw/rmw/init.h:
-
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point_stamped__builder.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/termios-tcflow.h:
-
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/wrench_stamped__struct.hpp:
+/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_base.hpp:
 
 /usr/include/c++/13/bits/cxxabi_forced.h:
 
@@ -2858,8 +2855,6 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 /opt/ros/jazzy/include/rcutils/rcutils/sha256.h:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point32__builder.hpp:
-
-/usr/include/c++/13/bits/stl_function.h:
 
 /opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/time__traits.hpp:
 
@@ -2881,11 +2876,19 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:
 
+/usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h:
+
+/opt/ros/jazzy/include/service_msgs/service_msgs/msg/detail/service_event_info__struct.h:
+
+/usr/include/c++/13/typeinfo:
+
 /opt/ros/jazzy/include/rclcpp/rclcpp/subscription_options.hpp:
 
 /usr/include/endian.h:
 
 /opt/ros/jazzy/include/rcl_yaml_param_parser/rcl_yaml_param_parser/parser.h:
+
+/usr/include/c++/13/bits/codecvt.h:
 
 /usr/include/x86_64-linux-gnu/bits/termios-misc.h:
 
@@ -3029,15 +3032,7 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 
 /usr/include/c++/13/string_view:
 
-/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_base.hpp:
-
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
-
-/usr/include/c++/13/ext/aligned_buffer.h:
-
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/polygon__struct.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__traits.hpp:
 
@@ -3078,8 +3073,6 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 /opt/ros/jazzy/include/rmw/rmw/event.h:
 
 /usr/include/c++/13/ext/numeric_traits.h:
-
-/opt/ros/jazzy/include/rcl/rcl/arguments.h:
 
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_event__struct.hpp:
 
@@ -3145,6 +3138,10 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 
 /usr/include/c++/13/bits/memory_resource.h:
 
+/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_clock_interface.hpp:
+
+/usr/include/c++/13/streambuf:
+
 /usr/include/c++/13/bits/invoke.h:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/wait_set_policies/detail/write_preferring_read_write_lock.hpp:
@@ -3188,10 +3185,6 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 /opt/ros/jazzy/include/rcpputils/rcpputils/thread_safety_annotations.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/experimental/subscription_intra_process_base.hpp:
-
-/opt/ros/jazzy/include/tracetools/tracetools/visibility_control.hpp:
-
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point_stamped__type_support.hpp:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
@@ -3463,10 +3456,6 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 
 /home/richard/ros2_ws/src/tp1/include/Utils.h:
 
-/usr/include/c++/13/streambuf:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_clock_interface.hpp:
-
 /usr/include/GL/glext.h:
 
 /opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/time__builder.hpp:
@@ -3478,6 +3467,12 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 /usr/include/c++/13/cstddef:
 
 /usr/include/c++/13/vector:
+
+/opt/ros/jazzy/include/rcl/rcl/arguments.h:
+
+/usr/include/c++/13/fstream:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point_stamped__traits.hpp:
 
 /opt/ros/jazzy/include/rmw/rmw/message_sequence.h:
 
@@ -3587,13 +3582,17 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/set_parameters_atomically__type_support.hpp:
 
-/opt/ros/jazzy/include/service_msgs/service_msgs/msg/detail/service_event_info__struct.h:
-
-/usr/include/c++/13/typeinfo:
-
 /usr/include/c++/13/math.h:
 
 /usr/include/c++/13/tr1/exp_integral.tcc:
+
+/usr/include/c++/13/bits/stl_function.h:
+
+/usr/include/c++/13/ext/aligned_buffer.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/polygon__struct.hpp:
 
 /usr/include/c++/13/bits/utility.h:
 
@@ -3633,13 +3632,27 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 
 /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
 
-/opt/ros/jazzy/include/rclcpp/rclcpp/experimental/executors/events_executor/simple_events_queue.hpp:
-
-/usr/include/pthread.h:
-
 /usr/include/c++/13/bits/atomic_futex.h:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/callback_group.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/termios-c_oflag.h:
+
+/opt/ros/jazzy/include/rmw/rmw/init.h:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point_stamped__builder.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/termios-tcflow.h:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/wrench_stamped__struct.hpp:
+
+/usr/include/pthread.h:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/experimental/executors/events_executor/simple_events_queue.hpp:
+
+/opt/ros/jazzy/include/tracetools/tracetools/visibility_control.hpp:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point_stamped__type_support.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/subscription_base.hpp:
 
@@ -3676,6 +3689,8 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/velocity_stamped__struct.hpp:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/pose_stamped__type_support.hpp:
+
+/usr/include/c++/13/bits/fstream.tcc:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance__struct.hpp:
 
@@ -4123,6 +4138,8 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/function_traits.hpp:
 
+/usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h:
+
 /opt/ros/jazzy/include/rclcpp/rclcpp/expand_topic_or_service_name.hpp:
 
 /usr/include/c++/13/bits/unordered_map.h:
@@ -4194,7 +4211,3 @@ CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main
 /opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/get_node_parameters_interface.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/get_node_timers_interface.hpp:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_base_interface.hpp:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_clock_interface_traits.hpp:
