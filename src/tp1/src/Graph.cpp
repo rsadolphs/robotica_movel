@@ -3,6 +3,7 @@
 #include <GLFW/glfw3.h>
 #include <vector>
 #include <cmath>
+#include <iostream>
 
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
@@ -15,15 +16,9 @@ const std::vector<double> sensorAngles = {-90, -50, -30, -10, 10, 30, 50, 90, 90
 // Histórico de posições
 std::vector<Position> caminho;
 
-struct GridInfo {
-    float inicio;
-    float fim;
-    float passo;
-};
 
-// Exemplo de uso:
+// Cria Grade e Matrizes
 GridInfo grid = {-5.0f, 5.0f, 0.02f};
-
 int size = (grid.fim - grid.inicio) / grid.passo;  
 std::vector<std::vector<int>> matrizMundo(size, std::vector<int>(size, 0));
 std::vector<std::vector<int>> matrizPath(size, std::vector<int>(size, 0));
@@ -57,32 +52,119 @@ void pintaCelulas(const std::vector<std::vector<int>>& matriz, float inicio, flo
     int colunas = matriz[0].size();
     auto [r, g, b] = cor; 
 
-    glColor3f(r, g, b);
-
     for (int i = 0; i < linhas; ++i) {
         for (int j = 0; j < colunas; ++j) {
-            if (matriz[i][j] >= 1) {
-                float x = inicio + j * passo;
-                float y = inicio + i * passo;
+            float x = inicio + j * passo;
+            float y = inicio + i * passo;
 
-                glBegin(GL_QUADS);
-                    glVertex2f(x, y);
-                    glVertex2f(x + passo, y);
-                    glVertex2f(x + passo, y + passo);
-                    glVertex2f(x, y + passo);
-                glEnd();
-            }
+            float matVal = matriz[i][j];
+            float cellColor = 1.0f * (1 - matVal);
+
+            glColor3f(cellColor, cellColor, cellColor);
+
+            glBegin(GL_QUADS);
+                glVertex2f(x, y);
+                glVertex2f(x + passo, y);
+                glVertex2f(x + passo, y + passo);
+                glVertex2f(x, y + passo);
+            glEnd();
+        
         }
     }
 }
 
-void marcaMatriz(float x, float y, float inicio, float passo, std::vector<std::vector<int>>& matriz) {
+MatrixPosition findCell(float x, float y, float inicio, float passo) {
     int coluna = static_cast<int>((x - inicio) / passo);
     int linha  = static_cast<int>((y - inicio) / passo);
 
-    if (linha >= 0 && linha < matriz.size() && coluna >= 0 && coluna < matriz[0].size()) {
-        matriz[linha][coluna] += 1;
+    return {linha, coluna};
+}
+
+CellCenter centroDaCelula(const MatrixPosition& pos, float inicio, float passo) {
+    float x = inicio + pos.coluna * passo + passo / 2.0f;
+    float y = inicio + pos.linha  * passo + passo / 2.0f;
+    return {x, y};
+}
+
+CellRelativeInfo calculaDistanciaEAngulo(
+    const CellCenter& centroRobo,
+    const CellCenter& centroPonto,
+    float yawRobo) 
+{
+    float dx = centroPonto.x - centroRobo.x;
+    float dy = centroPonto.y - centroRobo.y;
+
+    float distancia = std::sqrt(dx * dx + dy * dy);
+    float anguloAbsoluto = std::atan2(dy, dx);
+
+    float anguloRelativo = anguloAbsoluto - yawRobo;
+
+    // Normaliza para estar entre -pi e pi
+    while (anguloRelativo > M_PI)  anguloRelativo -= 2 * M_PI;
+    while (anguloRelativo < -M_PI) anguloRelativo += 2 * M_PI;
+
+    return {distancia, anguloRelativo};
+}
+
+bool posicaoValida(const MatrixPosition& pos, int linhas, int colunas) {
+    return (pos.linha >= 0 && pos.linha < linhas &&
+            pos.coluna >= 0 && pos.coluna < colunas);
+}
+
+float bayes(float R, float r, float beta, float alpha, float max, float pOcup) {
+
+    if(pOcup == 0.0f){ pOcup = 0.5f; } // iteração inicial
+
+    float pSOcup = 0.5f * ( (R-r)/R + (beta-alpha)/alpha ) * max;
+    float pSVaz = 1.0f - pSOcup;
+    float pSOcup_pOcup = pSOcup * pOcup;
+    float pSVaz_pVaz = pSVaz * ( 1 - pOcup );
+
+    float pOcupS = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
+
+    return pOcupS;
+}
+
+void atualizaMatriz(std::vector<std::vector<int>>& matriz, MatrixPosition detection, Robot robot){
+
+    if (detection.linha >= 0 && detection.linha < matriz.size() 
+        && detection.coluna >= 0 && detection.coluna < matriz[0].size()) 
+    {
+        matriz[detection.linha][detection.coluna] += 1;
     }
+
+    int linhas = matriz.size();
+    int colunas = matriz[0].size();
+
+    for (int i = 0; i < linhas; ++i) {
+        for (int j = 0; j < colunas; ++j) {
+            // Locate stuff
+            MatrixPosition posAtual = {i, j};
+            CellCenter centroAtual = centroDaCelula(posAtual, grid.inicio, grid.passo);
+            CellRelativeInfo relations = calculaDistanciaEAngulo(centroAtual, robot.cellCenter, robot.pos.theta);
+            CellInfo celulaAtual = {posAtual, centroAtual, relations};
+            
+            // infos legibilidade
+            float dist = celulaAtual.relations.distancia;
+            float gama = celulaAtual.relations.anguloRelativo;
+            float delta = sensorAngles[0] * M_PI / 180; // por enquanto apenas um sensor
+            float beta = robot.beta;
+            float R = robot.R;
+            // Está no cone?
+            if ((dist <= 4.0f) && (gama >= delta-beta) && (gama <= delta+beta)){ // Está no cone!
+                
+                float pOcup = bayes(R, dist, beta, gama,  0.9f,  matriz[i][j]);
+                std::cout << "[DEBUG] pOcup calculado: " << pOcup << std::endl;
+                matriz[i][j] == pOcup;
+            }
+
+            
+
+
+        }
+    }
+
+    
 }
 
 void* graphicsThreadFunction(void* arg) {
@@ -123,16 +205,31 @@ void* graphicsThreadFunction(void* arg) {
         glClear(GL_COLOR_BUFFER_BIT);
 
         // Adiciona pontos nas matrizes parede e path
-        marcaMatriz(posParedeE.x, posParedeE.y, grid.inicio, grid.passo, matrizMundo);
-        marcaMatriz(posParedeD.x, posParedeD.y, grid.inicio, grid.passo, matrizMundo);
-        marcaMatriz(posRobo.x, posRobo.y, grid.inicio, grid.passo, matrizPath);
+        MatrixPosition matPosParedeE = findCell(posParedeE.x, posParedeE.y, grid.inicio, grid.passo);
+        MatrixPosition matPosParedeD = findCell(posParedeD.x, posParedeD.y, grid.inicio, grid.passo);
+        MatrixPosition matPosRobo = findCell(posRobo.x, posRobo.y, grid.inicio, grid.passo);
         
+
+        int linhas = matrizMundo.size();
+        int colunas = matrizMundo[0].size();
+        if (posicaoValida(matPosParedeE, linhas, colunas) &&
+            posicaoValida(matPosParedeD, linhas, colunas) &&
+            posicaoValida(matPosRobo, linhas, colunas) &&
+            !sonares.empty()) {
+
+            CellCenter centroCelRobo = centroDaCelula(matPosRobo, grid.inicio, grid.passo);
+            Robot robotInfo = {matPosRobo, posRobo, centroCelRobo, sonares[0]*scaleFactor};
+
+            atualizaMatriz(matrizMundo, matPosParedeE, robotInfo);
+            atualizaMatriz(matrizMundo, matPosParedeD, robotInfo);
+        }
+
         // Desenha a grade
         desenhaGrade(grid.inicio, grid.fim, grid.passo);
 
         // Pinta células
         pintaCelulas(matrizMundo, grid.inicio, grid.passo, std::make_tuple(0.3f, 0.3f, 0.3f));
-        pintaCelulas(matrizPath, grid.inicio, grid.passo, std::make_tuple(1.0f, 0.0f, 0.0f));
+        //pintaCelulas(matrizPath, grid.inicio, grid.passo, std::make_tuple(1.0f, 0.0f, 0.0f));
 
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
