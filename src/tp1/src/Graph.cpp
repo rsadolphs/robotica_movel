@@ -19,7 +19,7 @@ std::vector<Position> caminho;
 
 
 // Cria Grade e Matrizes
-GridInfo grid = {-5.0f, 5.0f, 0.02f};
+GridInfo grid = {-1.0f, 1.0f, 0.004f};
 int size = (grid.fim - grid.inicio) / grid.passo;  
 std::vector<std::vector<float>> matrizMundo(size, std::vector<float>(size, 0.0f));
 std::vector<std::vector<int>> matrizPath(size, std::vector<int>(size, 0));
@@ -117,18 +117,25 @@ CellRelativeInfo calculaDistanciaEAngulo(
     float distancia = std::sqrt(dx * dx + dy * dy);
     float anguloAbsoluto = std::atan2(dy, dx);
 
+    // Normaliza para [0, 2PI)
     if(anguloAbsoluto < 0){
-        anguloAbsoluto = 2 * M_PI + anguloAbsoluto;
+        anguloAbsoluto += 2 * M_PI;
     }
 
-    float anguloRelativo = anguloAbsoluto - yawRobo;
+    float yawRad = yawRobo;
+    if (yawRad < 0) yawRad += 2 * M_PI;
+
+    float anguloRelativo = anguloAbsoluto - yawRad;
+
+    // Normaliza para [-PI, PI]
+    if (anguloRelativo > M_PI) anguloRelativo -= 2 * M_PI;
+    if (anguloRelativo < -M_PI) anguloRelativo += 2 * M_PI;
 
     // Converte para graus
     float anguloRelativoGraus = anguloRelativo * 180.0f / M_PI;
 
     return {distancia, anguloRelativoGraus};
 }
-
 
 bool posicaoValida(const MatrixPosition& pos, int linhas, int colunas) {
     return (pos.linha >= 0 && pos.linha < linhas &&
@@ -137,7 +144,7 @@ bool posicaoValida(const MatrixPosition& pos, int linhas, int colunas) {
 
 float bayes(float R, float r, float s, float beta, float alpha, float max, float pOcup) {
 
-    float rangeDetect = 0.2f;
+    float rangeDetect = 0.02f;
 
     if(pOcup == 0.0f){ pOcup = 0.5f; } // iteração inicial
 
@@ -166,48 +173,53 @@ float bayes(float R, float r, float s, float beta, float alpha, float max, float
 
 }
 
-void atualizaMatriz(std::vector<std::vector<float>>& matriz, MatrixPosition detection, Robot robot){
-
-    if (detection.linha >= 0 && detection.linha < matriz.size() 
-        && detection.coluna >= 0 && detection.coluna < matriz[0].size()) 
-    {
-        matriz[detection.linha][detection.coluna] += 1;
-    }
-
+void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float sensorAngle) {
     int linhas = matriz.size();
     int colunas = matriz[0].size();
+
     int cont = 0;
     for (int i = 0; i < linhas; ++i) {
         for (int j = 0; j < colunas; ++j) {
-            // Locate stuff
+            
             MatrixPosition posAtual = {i, j};
             CellCenter centroAtual = centroDaCelula(posAtual, grid.inicio, grid.passo);
-            CellRelativeInfo relations = calculaDistanciaEAngulo(centroAtual, robot.cellCenter, robot.pos.theta);
-            CellInfo celulaAtual = {posAtual, centroAtual, relations};
-            
-            // infos legibilidade
-            float r = celulaAtual.relations.distancia;
-            float alpha = celulaAtual.relations.anguloRelativo;
-            float delta = sensorAngles[0];// * M_PI / 180; // por enquanto apenas um sensor
+
+            // Calcula ângulo relativo e distância entre célula e centro do robô
+            CellRelativeInfo relations = calculaDistanciaEAngulo(
+                robot.cellCenter, 
+                centroAtual, 
+                robot.pos.theta - sensorAngle // yaw do robô + ângulo do sensor
+            );
+
+            float r = relations.distancia;
+            float alpha = relations.anguloRelativo;
             float beta = robot.beta;
-            float R = 4.0f;
-            // Está no cone?
-            if ((r <= robot.s) && (alpha >= -beta+delta) && (alpha <= beta+delta)){ // Está no cone!
-                
-                float pOcup = bayes(R, r, robot.s, beta, alpha,  0.9f,  matriz[i][j]);
-                std::cout << "R: " << R << " r: " << r << " s: " << robot.s <<
-                        " beta: "  << beta << " alpha: "  << alpha <<
-                        " pOcup: "  << pOcup << std::endl;
+            float R = 4.0f; // alcance máximo do sensor que considero válido
+
+            // Está no cone do sensor?
+            if (r <= robot.s && alpha >= -beta && alpha <= beta) {
+                float pOcup = bayes(R, r, robot.s, beta, alpha, 0.9f, matriz[i][j]);
                 matriz[i][j] = pOcup;
-                cont += 1;
+                cont++;
+
+                // Debug 
+                std::cout 
+                    << "Celula [" << i << "," << j << "] - "
+                    << "Robô [" << robot.gridPos.linha << "," << robot.gridPos.coluna << "] - "
+                    << "Dist: " << r << "  "
+                    << "Alpha: " << alpha << "  "
+                    << "Yaw: " << robot.pos.theta * 180 / M_PI << "  "
+                    << "pOcup: " << pOcup 
+                << std::endl;
             }
         }
     }
-    std::cout << cont << " celulas atualizadas. " << std::endl;
+    std::cout << cont << " células atualizadas pelo sensor 0 (-90 graus).\n";
 
     salvaMatriz(matriz, "matriz.txt");
-    
 }
+
+
 
 void* graphicsThreadFunction(void* arg) {
     if (!glfwInit()) {
@@ -250,20 +262,21 @@ void* graphicsThreadFunction(void* arg) {
         MatrixPosition matPosParedeE = findCell(posParedeE.x, posParedeE.y, grid.inicio, grid.passo);
         MatrixPosition matPosParedeD = findCell(posParedeD.x, posParedeD.y, grid.inicio, grid.passo);
         MatrixPosition matPosRobo = findCell(posRobo.x, posRobo.y, grid.inicio, grid.passo);
-        
+
 
         int linhas = matrizMundo.size();
         int colunas = matrizMundo[0].size();
-        if (posicaoValida(matPosParedeE, linhas, colunas) &&
-            posicaoValida(matPosParedeD, linhas, colunas) &&
-            posicaoValida(matPosRobo, linhas, colunas) &&
-            !sonares.empty()) {
+        std::vector<int> sensorIndices = {13, 14, 0, 1, 2};
 
+        if (posicaoValida(matPosRobo, linhas, colunas) && !sonares.empty()) {
             CellCenter centroCelRobo = centroDaCelula(matPosRobo, grid.inicio, grid.passo);
-            Robot robotInfo = {matPosRobo, posRobo, centroCelRobo, sonares[0]};
+            Robot robotInfo = {matPosRobo, posRobo, centroCelRobo, 0.0f}; // s será atualizado abaixo
 
-            atualizaMatriz(matrizMundo, matPosParedeE, robotInfo);
-            atualizaMatriz(matrizMundo, matPosParedeD, robotInfo);
+            for (int idx : sensorIndices) {
+                float sensorAngle = sensorAngles[idx] * M_PI / 180.0f;
+                robotInfo.s = sonares[idx] * scaleFactor;
+                atualizaMatriz(matrizMundo, robotInfo, sensorAngle);
+            }   
         }
 
         // Desenha a grade

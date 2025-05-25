@@ -35,7 +35,7 @@ struct Robot {
     Position pos;
     CellCenter cellCenter;
     double s;
-    float beta = 5; //5 graus
+    float beta = 10; //5 graus
 };
 
 struct CellRelativeInfo {
