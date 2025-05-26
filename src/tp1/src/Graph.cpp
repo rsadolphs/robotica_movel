@@ -149,13 +149,25 @@ float bayes(float R, float r, float s, float beta, float alpha, float max, float
     if(pOcup == 0.0f){ pOcup = 0.5f; } // iteração inicial
 
     if ((r >= s - rangeDetect) && ( r <= s + rangeDetect)){
-        float pSOcup = 0.5f * ( (R-r)/R + (beta-std::abs(alpha)/beta ) )* max;
+        float pSOcup = 0.5f * ( (R-r)/R + (beta-std::abs(alpha))/beta )* max;
         float pSVaz = 1.0f - pSOcup;
         float pSOcup_pOcup = pSOcup * pOcup;
         float pSVaz_pVaz = pSVaz * ( 1 - pOcup );
 
         float pOcupS = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
-        std::cout << "pOcupS" << std::endl;
+        //std::cout << "pOcupS" << std::endl;
+
+        // Debug 
+        if (pOcupS > 1){
+            std::cout 
+                << "pSOcup: " << pSOcup << " "
+                << "pSVaz: " << pSVaz << " "
+                << "pOcup: " << pOcup << " "
+                << "pSOcup_pOcup: " << pSOcup_pOcup << " "
+                << "pSVaz_pVaz: " << pSVaz_pVaz << " "
+                << "pOcupS: " << pOcupS << " "
+            << std::endl;
+        }
 
         return pOcupS;
     }
@@ -167,7 +179,7 @@ float bayes(float R, float r, float s, float beta, float alpha, float max, float
         float pSOcup_pOcup = pSOcup * ( 1 - pVaz );
 
         float pVazS = (pSVaz_pVaz / (pSVaz_pVaz + pSOcup_pOcup));
-        std::cout << "pVazS" << std::endl;
+        //std::cout << "pVazS" << std::endl;
         return 1 - pVazS;
     }
 
@@ -197,20 +209,25 @@ void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float 
             float R = 4.0f; // alcance máximo do sensor que considero válido
 
             // Está no cone do sensor?
-            if (r <= robot.s && alpha >= -beta && alpha <= beta) {
-                float pOcup = bayes(R, r, robot.s, beta, alpha, 0.9f, matriz[i][j]);
+            if (robot.s <= R && r <= robot.s && alpha >= -beta && alpha <= beta) {
+                float pOcup_atual = matriz[i][j];
+                float pOcup = bayes(R, r, robot.s, beta, alpha, 0.9f, pOcup_atual);
                 matriz[i][j] = pOcup;
                 cont++;
 
                 // Debug 
-                std::cout 
-                    << "Celula [" << i << "," << j << "] - "
-                    << "Robô [" << robot.gridPos.linha << "," << robot.gridPos.coluna << "] - "
-                    << "Dist: " << r << "  "
-                    << "Alpha: " << alpha << "  "
-                    << "Yaw: " << robot.pos.theta * 180 / M_PI << "  "
-                    << "pOcup: " << pOcup 
-                << std::endl;
+                if (false){
+                    std::cout 
+                        << "Celula [" << i << "," << j << "] "
+                        << "Robô [" << robot.gridPos.linha << "," << robot.gridPos.coluna << "] "
+                        << "Dist: " << r << " "
+                        << "s: " << robot.s << " "
+                        << "Alpha: " << alpha << " "
+                        //<< "Yaw: " << (robot.pos.theta * 180 / M_PI) << " "
+                        << "pOcup: " << pOcup << " "
+                        << "pOcup_ant: " << pOcup_atual 
+                    << std::endl;
+                }
             }
         }
     }
@@ -266,7 +283,7 @@ void* graphicsThreadFunction(void* arg) {
 
         int linhas = matrizMundo.size();
         int colunas = matrizMundo[0].size();
-        std::vector<int> sensorIndices = {13, 14, 0, 1, 2};
+        std::vector<int> sensorIndices = {0}; //{14, 0, 1, 7};
 
         if (posicaoValida(matPosRobo, linhas, colunas) && !sonares.empty()) {
             CellCenter centroCelRobo = centroDaCelula(matPosRobo, grid.inicio, grid.passo);
@@ -276,7 +293,8 @@ void* graphicsThreadFunction(void* arg) {
                 float sensorAngle = sensorAngles[idx] * M_PI / 180.0f;
                 robotInfo.s = sonares[idx] * scaleFactor;
                 atualizaMatriz(matrizMundo, robotInfo, sensorAngle);
-            }   
+            }  
+            
         }
 
         // Desenha a grade
