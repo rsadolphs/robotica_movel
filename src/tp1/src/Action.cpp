@@ -105,6 +105,9 @@ void Action::avoidObstacles(std::vector<float> lasers, std::vector<float> sonars
 
     auto [minPos, minDist] = findMinPosition(sonars);  // retorna o sensor com menor distancia e o valor.
 
+    // Position roboPosicao = {pose[0], pose[1], pose[2]};
+    // positionArray.push_back(roboPosicao);
+
     if (minPos>=0 && minPos <=7 && minDist <= 1){
         if (minPos <= 3){
             linVel= 0.0; angVel=-1.0; // rotação em sentido horário
@@ -248,7 +251,7 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
             }
         // Apenas quando a menor posição for 0 >> Alinhamento com a parede
         else{
-            linVel=0.5; angVel=0.0; // anda reto
+            linVel=0.25; angVel=0.0; // anda reto
 
             if(sonars[0]<0.7){
                 angVel=-0.2; // gira H

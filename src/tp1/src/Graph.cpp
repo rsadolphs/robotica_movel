@@ -144,7 +144,7 @@ bool posicaoValida(const MatrixPosition& pos, int linhas, int colunas) {
 
 float bayes(float R, float r, float s, float beta, float alpha, float max, float pOcup) {
 
-    float rangeDetect = 0.02f;
+    float rangeDetect = 0.01f;
 
     if(pOcup == 0.0f){ pOcup = 0.5f; } // iteração inicial
 
@@ -206,7 +206,7 @@ void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float 
             float r = relations.distancia;
             float alpha = relations.anguloRelativo;
             float beta = robot.beta;
-            float R = 4.0f; // alcance máximo do sensor que considero válido
+            float R = 2.0f; // alcance máximo do sensor que considero válido
 
             // Está no cone do sensor?
             if (robot.s <= R && r <= robot.s && alpha >= -beta && alpha <= beta) {
@@ -245,7 +245,7 @@ void* graphicsThreadFunction(void* arg) {
 
     int width = 600;
     int height = 600;
-    float scaleFactor = 0.1f;
+    float scaleFactor = 0.08f;
 
     GLFWwindow* window = glfwCreateWindow(width, height, "Caminho do Robo", NULL, NULL);
     if (!window) {
