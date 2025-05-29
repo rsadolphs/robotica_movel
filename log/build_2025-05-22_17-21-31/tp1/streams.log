@@ -1,0 +1,94 @@
+[0.017s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.090s] [ 16%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Graph.cpp.o[0m
+[0.598s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K atualizaMatriz[m[K(std::vector<std::vector<int> >&, MatrixPosition, Robot)[m[K’:
+[0.599s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:147:49:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.600s]   147 |     if (detection.linha >= 0 && [01;35m[Kdetection.linha < matriz.size()[m[K
+[0.600s]       |                                 [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~[m[K
+[0.600s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:148:54:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.600s]   148 |         && detection.coluna >= 0 && [01;35m[Kdetection.coluna < matriz[0].size()[m[K)
+[0.601s]       |                                     [01;35m[K~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~[m[K
+[0.601s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:175:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kcout[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.601s]   175 |                 std::[01;31m[Kcout[m[K << "===== Informações da Célula =====" << std::endl;
+[0.602s]       |                      [01;31m[K^~~~[m[K
+[0.602s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:6:1:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::cout[m[K’ is defined in header ‘[01m[K<iostream>[m[K’; did you forget to ‘[01m[K#include <iostream>[m[K’?
+[0.602s]     5 | #include <cmath>
+[0.602s]   +++ |+[32m[K#include <iostream>[m[K
+[0.602s]     6 | 
+[0.607s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:175:74:[m[K [01;31m[Kerror: [m[K‘[01m[Kendl[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.607s]   175 |                 std::cout << "===== Informações da Célula =====" << std::[01;31m[Kendl[m[K;
+[0.607s]       |                                                                          [01;31m[K^~~~[m[K
+[0.607s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:6:1:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::endl[m[K’ is defined in header ‘[01m[K<ostream>[m[K’; did you forget to ‘[01m[K#include <ostream>[m[K’?
+[0.607s]     5 | #include <cmath>
+[0.607s]   +++ |+[32m[K#include <ostream>[m[K
+[0.608s]     6 | 
+[0.608s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:176:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kcout[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.608s]   176 |                 std::[01;31m[Kcout[m[K << "Distância (dist): " << dist << std::endl;
+[0.608s]       |                      [01;31m[K^~~~[m[K
+[0.608s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:176:22:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::cout[m[K’ is defined in header ‘[01m[K<iostream>[m[K’; did you forget to ‘[01m[K#include <iostream>[m[K’?
+[0.608s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:176:67:[m[K [01;31m[Kerror: [m[K‘[01m[Kendl[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.608s]   176 |                 std::cout << "Distância (dist): " << dist << std::[01;31m[Kendl[m[K;
+[0.608s]       |                                                                   [01;31m[K^~~~[m[K
+[0.608s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:176:67:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::endl[m[K’ is defined in header ‘[01m[K<ostream>[m[K’; did you forget to ‘[01m[K#include <ostream>[m[K’?
+[0.608s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:177:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kcout[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.608s]   177 |                 std::[01;31m[Kcout[m[K << "Ângulo relativo (gama): " << gama << " rad (" << gama * 180.0f / M_PI << " graus)" << std::endl;
+[0.608s]       |                      [01;31m[K^~~~[m[K
+[0.608s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:177:22:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::cout[m[K’ is defined in header ‘[01m[K<iostream>[m[K’; did you forget to ‘[01m[K#include <iostream>[m[K’?
+[0.608s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:177:122:[m[K [01;31m[Kerror: [m[K‘[01m[Kendl[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.609s]   177 |  std::cout << "Ângulo relativo (gama): " << gama << " rad (" << gama * 180.0f / M_PI << " graus)" << std::[01;31m[Kendl[m[K;
+[0.609s]       |                                                                                                           [01;31m[K^~~~[m[K
+[0.609s] 
+[0.609s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:177:122:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::endl[m[K’ is defined in header ‘[01m[K<ostream>[m[K’; did you forget to ‘[01m[K#include <ostream>[m[K’?
+[0.609s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:178:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kcout[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.613s]   178 |                 std::[01;31m[Kcout[m[K << "Delta (ângulo do sensor): " << delta << " rad (" << delta * 180.0f / M_PI << " graus)" << std::endl;
+[0.613s]       |                      [01;31m[K^~~~[m[K
+[0.614s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:178:22:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::cout[m[K’ is defined in header ‘[01m[K<iostream>[m[K’; did you forget to ‘[01m[K#include <iostream>[m[K’?
+[0.614s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:178:126:[m[K [01;31m[Kerror: [m[K‘[01m[Kendl[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.614s]   178 | ::cout << "Delta (ângulo do sensor): " << delta << " rad (" << delta * 180.0f / M_PI << " graus)" << std::[01;31m[Kendl[m[K;
+[0.614s]       |                                                                                                           [01;31m[K^~~~[m[K
+[0.614s] 
+[0.614s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:178:126:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::endl[m[K’ is defined in header ‘[01m[K<ostream>[m[K’; did you forget to ‘[01m[K#include <ostream>[m[K’?
+[0.614s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:179:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kcout[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.614s]   179 |                 std::[01;31m[Kcout[m[K << "Beta (meio ângulo do cone): " << beta << " rad (" << beta * 180.0f / M_PI << " graus)" << std::endl;
+[0.614s]       |                      [01;31m[K^~~~[m[K
+[0.614s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:179:22:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::cout[m[K’ is defined in header ‘[01m[K<iostream>[m[K’; did you forget to ‘[01m[K#include <iostream>[m[K’?
+[0.614s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:179:126:[m[K [01;31m[Kerror: [m[K‘[01m[Kendl[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.614s]   179 | ::cout << "Beta (meio ângulo do cone): " << beta << " rad (" << beta * 180.0f / M_PI << " graus)" << std::[01;31m[Kendl[m[K;
+[0.614s]       |                                                                                                           [01;31m[K^~~~[m[K
+[0.614s] 
+[0.615s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:179:126:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::endl[m[K’ is defined in header ‘[01m[K<ostream>[m[K’; did you forget to ‘[01m[K#include <ostream>[m[K’?
+[0.615s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:180:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kcout[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.615s]   180 |                 std::[01;31m[Kcout[m[K << "R (raio do sensor): " << R << " metros" << std::endl;
+[0.615s]       |                      [01;31m[K^~~~[m[K
+[0.615s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:180:22:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::cout[m[K’ is defined in header ‘[01m[K<iostream>[m[K’; did you forget to ‘[01m[K#include <iostream>[m[K’?
+[0.615s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:180:79:[m[K [01;31m[Kerror: [m[K‘[01m[Kendl[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.615s]   180 |                 std::cout << "R (raio do sensor): " << R << " metros" << std::[01;31m[Kendl[m[K;
+[0.615s]       |                                                                               [01;31m[K^~~~[m[K
+[0.615s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:180:79:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::endl[m[K’ is defined in header ‘[01m[K<ostream>[m[K’; did you forget to ‘[01m[K#include <ostream>[m[K’?
+[0.615s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:181:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kcout[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.621s]   181 |                 std::[01;31m[Kcout[m[K << "==================================" << std::endl;
+[0.621s]       |                      [01;31m[K^~~~[m[K
+[0.621s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:181:22:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::cout[m[K’ is defined in header ‘[01m[K<iostream>[m[K’; did you forget to ‘[01m[K#include <iostream>[m[K’?
+[0.622s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:181:75:[m[K [01;31m[Kerror: [m[K‘[01m[Kendl[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.622s]   181 |                 std::cout << "==================================" << std::[01;31m[Kendl[m[K;
+[0.622s]       |                                                                           [01;31m[K^~~~[m[K
+[0.622s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:181:75:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::endl[m[K’ is defined in header ‘[01m[K<ostream>[m[K’; did you forget to ‘[01m[K#include <ostream>[m[K’?
+[0.622s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K graphicsThreadFunction[m[K(void*)[m[K’:
+[0.622s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:216:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::x * scaleFactor)) - 8.0000000000000004e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+[0.622s]   216 |         Position posRobo = {[01;35m[KroboPosicao.x * scaleFactor - 0.8[m[K,
+[0.622s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[0.622s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:217:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::y * scaleFactor)) - 6.9999999999999996e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+[0.622s]   217 |                             [01;35m[KroboPosicao.y * scaleFactor - 0.7[m[K,
+[0.622s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[0.622s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:222:55:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[0.622s]   222 |             round2(pontoParedeE.y * scaleFactor - 0.7)[01;35m[K}[m[K;
+[0.622s]       |                                                       [01;35m[K^[m[K
+[0.623s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:225:55:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[0.623s]   225 |             round2(pontoParedeD.y * scaleFactor - 0.7)[01;35m[K}[m[K;
+[0.623s]       |                                                       [01;35m[K^[m[K
+[0.623s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:196:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.623s]   196 | void* graphicsThreadFunction([01;35m[Kvoid* arg[m[K) {
+[0.623s]       |                              [01;35m[K~~~~~~^~~[m[K
+[0.788s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:132: CMakeFiles/navigation.dir/src/Graph.cpp.o] Erro 1
+[0.789s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[0.789s] gmake: *** [Makefile:146: all] Erro 2
+[0.797s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2

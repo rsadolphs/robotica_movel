@@ -1,0 +1,46 @@
+[ 16%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Graph.cpp.o[0m
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kfloat[01;32m[K bayes[m[K(float, float, float, float, float, float)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:119:24:[m[K [01;31m[Kerror: [m[K‘[01m[KpSNOcup[m[K’ was not declared in this scope; did you mean ‘[01m[KpSOcup[m[K’?
+  119 |     float pSVaz_pVaz = [01;31m[KpSNOcup[m[K * ( 1 - pOcup );
+      |                        [01;31m[K^~~~~~~[m[K
+      |                        [32m[KpSOcup[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:123:5:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K;[m[K’ before ‘[01m[Kreturn[m[K’
+  123 |     [01;31m[Kreturn[m[K pOcupS;
+      |     [01;31m[K^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:117:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KpSVaz[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  117 |     float [01;35m[KpSVaz[m[K = 1.0f - pSOcup;
+      |           [01;35m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:121:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KpOcupS[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  121 |     float [01;35m[KpOcupS[m[K = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz))
+      |           [01;35m[K^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:124:1:[m[K [01;35m[Kwarning: [m[Kno return statement in function returning non-void [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type-Wreturn-type]8;;[m[K]
+  124 | [01;35m[K}[m[K
+      | [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K atualizaMatriz[m[K(std::vector<std::vector<int> >&, MatrixPosition, Robot)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:128:49:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  128 |     if (detection.linha >= 0 && [01;35m[Kdetection.linha < matriz.size()[m[K
+      |                                 [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:129:54:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  129 |         && detection.coluna >= 0 && [01;35m[Kdetection.coluna < matriz[0].size()[m[K)
+      |                                     [01;35m[K~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:155:30:[m[K [01;35m[Kwarning: [m[Kvalue computed is not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+  155 |                 matriz[i][j] == pOcup;
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K graphicsThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:187:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::x * scaleFactor)) - 8.0000000000000004e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+  187 |         Position posRobo = {[01;35m[KroboPosicao.x * scaleFactor - 0.8[m[K,
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:188:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::y * scaleFactor)) - 6.9999999999999996e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+  188 |                             [01;35m[KroboPosicao.y * scaleFactor - 0.7[m[K,
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:193:55:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+  193 |             round2(pontoParedeE.y * scaleFactor - 0.7)[01;35m[K}[m[K;
+      |                                                       [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:196:55:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+  196 |             round2(pontoParedeD.y * scaleFactor - 0.7)[01;35m[K}[m[K;
+      |                                                       [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:167:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  167 | void* graphicsThreadFunction([01;35m[Kvoid* arg[m[K) {
+      |                              [01;35m[K~~~~~~^~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:132: CMakeFiles/navigation.dir/src/Graph.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

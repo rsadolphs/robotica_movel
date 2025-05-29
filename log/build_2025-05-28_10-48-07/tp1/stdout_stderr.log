@@ -1,0 +1,29 @@
+[ 16%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/main.cpp.o[0m
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:126:39:[m[K [01;31m[Kerror: [m[Kinvalid conversion from ‘[01m[Kvoid* (*)()[m[K’ to ‘[01m[Kvoid* (*)(void*)[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+  126 |   pthread_create(&(mainThread), NULL, [01;31m[KmainThreadFunction[m[K, NULL);
+      |                                       [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+      |                                       [01;31m[K|[m[K
+      |                                       [01;31m[Kvoid* (*)()[m[K
+In file included from [01m[K/usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h:35[m[K,
+                 from [01m[K/usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h:148[m[K,
+                 from [01m[K/usr/include/c++/13/ext/atomicity.h:35[m[K,
+                 from [01m[K/usr/include/c++/13/bits/ios_base.h:39[m[K,
+                 from [01m[K/usr/include/c++/13/ios:44[m[K,
+                 from [01m[K/usr/include/c++/13/ostream:40[m[K,
+                 from [01m[K/usr/include/c++/13/iostream:41[m[K,
+                 from [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:1[m[K:
+[01m[K/usr/include/pthread.h:204:36:[m[K [01;36m[Knote: [m[K  initializing argument 3 of ‘[01m[Kint[01;32m[K pthread_create[m[K(pthread_t*, const pthread_attr_t*, void* (*)(void*), void*)[m[K’
+  204 |                            [01;36m[Kvoid *(*__start_routine) (void *)[m[K,
+      |                            [01;36m[K~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:127:43:[m[K [01;31m[Kerror: [m[Kinvalid conversion from ‘[01m[Kvoid* (*)()[m[K’ to ‘[01m[Kvoid* (*)(void*)[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+  127 |   pthread_create(&(keyboardThread), NULL, [01;31m[KkeyboardThreadFunction[m[K, NULL);
+      |                                           [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                           [01;31m[K|[m[K
+      |                                           [01;31m[Kvoid* (*)()[m[K
+[01m[K/usr/include/pthread.h:204:36:[m[K [01;36m[Knote: [m[K  initializing argument 3 of ‘[01m[Kint[01;32m[K pthread_create[m[K(pthread_t*, const pthread_attr_t*, void* (*)(void*), void*)[m[K’
+  204 |                            [01;36m[Kvoid *(*__start_routine) (void *)[m[K,
+      |                            [01;36m[K~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:76: CMakeFiles/navigation.dir/src/main.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

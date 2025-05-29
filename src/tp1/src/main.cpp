@@ -113,7 +113,7 @@ void *mainThreadFunction(void *arg)
   return NULL;
 }
 
-void* graphicsThreadFunction(void* arg);
+void* graphicsThreadFunction();
 
 int main(int argc, char **argv)
 {

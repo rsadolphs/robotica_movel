@@ -1,0 +1,55 @@
+[0.016s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.181s] [ 16%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Graph.cpp.o[0m
+[2.315s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K pintaCelulas[m[K(const std::vector<std::vector<float> >&, float, float, std::tuple<float, float, float>)[m[K’:
+[2.316s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:73:10:[m[K [01;35m[Kwarning: [m[Kstructured binding declaration set but not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable-Wunused-but-set-variable]8;;[m[K]
+[2.316s]    73 |     auto [01;35m[K[r, g, b][m[K = cor;
+[2.316s]       |          [01;35m[K^~~~~~~~~[m[K
+[2.331s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K graphicsThreadFunction[m[K(void*)[m[K’:
+[2.334s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:247:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::x * scaleFactor)) - 8.0000000000000004e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+[2.334s]   247 |         Position posRobo = {[01;35m[KroboPosicao.x * scaleFactor - 0.8[m[K,
+[2.334s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[2.334s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:248:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::y * scaleFactor)) - 6.9999999999999996e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+[2.334s]   248 |                             [01;35m[KroboPosicao.y * scaleFactor - 0.7[m[K,
+[2.334s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[2.334s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:253:55:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[2.334s]   253 |             round2(pontoParedeE.y * scaleFactor - 0.7)[01;35m[K}[m[K;
+[2.335s]       |                                                       [01;35m[K^[m[K
+[2.335s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:256:55:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[2.335s]   256 |             round2(pontoParedeD.y * scaleFactor - 0.7)[01;35m[K}[m[K;
+[2.335s]       |                                                       [01;35m[K^[m[K
+[2.353s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:265:24:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[KmatPosParedeE[m[K’ set but not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable-Wunused-but-set-variable]8;;[m[K]
+[2.353s]   265 |         MatrixPosition [01;35m[KmatPosParedeE[m[K = findCell(posParedeE.x, posParedeE.y, grid.inicio, grid.passo);
+[2.353s]       |                        [01;35m[K^~~~~~~~~~~~~[m[K
+[2.353s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:266:24:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[KmatPosParedeD[m[K’ set but not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable-Wunused-but-set-variable]8;;[m[K]
+[2.353s]   266 |         MatrixPosition [01;35m[KmatPosParedeD[m[K = findCell(posParedeD.x, posParedeD.y, grid.inicio, grid.passo);
+[2.353s]       |                        [01;35m[K^~~~~~~~~~~~~[m[K
+[2.353s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:227:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.353s]   227 | void* graphicsThreadFunction([01;35m[Kvoid* arg[m[K) {
+[2.353s]       |                              [01;35m[K~~~~~~^~~[m[K
+[3.688s] [ 33%] [32m[1mLinking CXX executable navigation[0m
+[4.821s] [100%] Built target navigation
+[4.850s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[4.850s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1
+[4.867s] -- Install configuration: ""
+[4.867s] -- Installing: /home/richard/ros2_ws/install/tp1/lib/tp1/navigation
+[4.895s] -- Set non-toolchain portion of runtime path of "/home/richard/ros2_ws/install/tp1/lib/tp1/navigation" to ""
+[4.896s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch
+[4.896s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch/p3dx-rosaria.launch.py
+[4.896s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config
+[4.896s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config/p3dx.rviz
+[4.896s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/package_run_dependencies/tp1
+[4.897s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/parent_prefix_path/tp1
+[4.898s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.sh
+[4.898s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.dsv
+[4.898s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.sh
+[4.898s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.dsv
+[4.898s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.bash
+[4.898s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.sh
+[4.898s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.zsh
+[4.899s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.dsv
+[4.899s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/package.dsv
+[4.901s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/packages/tp1
+[4.901s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config.cmake
+[4.901s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config-version.cmake
+[4.901s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/package.xml
+[4.901s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1

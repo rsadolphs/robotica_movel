@@ -3,6 +3,8 @@
 #include <GLFW/glfw3.h>
 #include <vector>
 #include <cmath>
+#include <iostream>
+#include <fstream>
 
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
@@ -15,17 +17,11 @@ const std::vector<double> sensorAngles = {-90, -50, -30, -10, 10, 30, 50, 90, 90
 // Histórico de posições
 std::vector<Position> caminho;
 
-struct GridInfo {
-    float inicio;
-    float fim;
-    float passo;
-};
 
-// Exemplo de uso:
-GridInfo grid = {-5.0f, 5.0f, 0.02f};
-
+// Cria Grade e Matrizes
+GridInfo grid = {-1.0f, 1.0f, 0.004f};
 int size = (grid.fim - grid.inicio) / grid.passo;  
-std::vector<std::vector<int>> matrizMundo(size, std::vector<int>(size, 0));
+std::vector<std::vector<float>> matrizMundo(size, std::vector<float>(size, 0.0f));
 std::vector<std::vector<int>> matrizPath(size, std::vector<int>(size, 0));
 
 float round2(float valor) {
@@ -52,38 +48,210 @@ void desenhaGrade(float inicio, float fim, float passo) {
     glEnd();
 }
 
-void pintaCelulas(const std::vector<std::vector<int>>& matriz, float inicio, float passo, std::tuple<float, float, float> cor) {
+void salvaMatriz(const std::vector<std::vector<float>>& matriz, const std::string& nomeArquivo) {
+    std::ofstream arquivo(nomeArquivo);
+
+    if (!arquivo.is_open()) {
+        std::cerr << "Erro ao abrir o arquivo " << nomeArquivo << " para escrita." << std::endl;
+        return;
+    }
+
+    for (const auto& linha : matriz) {
+        for (const auto& valor : linha) {
+            arquivo << valor << " ";
+        }
+        arquivo << "\n";
+    }
+
+    arquivo.close();
+    std::cout << "Matriz salva com sucesso em " << nomeArquivo << std::endl;
+}
+
+void pintaCelulas(const std::vector<std::vector<float>>& matriz, float inicio, float passo, std::tuple<float, float, float> cor) {
     int linhas = matriz.size();
     int colunas = matriz[0].size();
     auto [r, g, b] = cor; 
 
-    glColor3f(r, g, b);
-
     for (int i = 0; i < linhas; ++i) {
         for (int j = 0; j < colunas; ++j) {
-            if (matriz[i][j] >= 1) {
-                float x = inicio + j * passo;
-                float y = inicio + i * passo;
+            float x = inicio + j * passo;
+            float y = inicio + i * passo;
 
-                glBegin(GL_QUADS);
-                    glVertex2f(x, y);
-                    glVertex2f(x + passo, y);
-                    glVertex2f(x + passo, y + passo);
-                    glVertex2f(x, y + passo);
-                glEnd();
-            }
+            float matVal = matriz[i][j];
+            float cellColor = 1.0f * (1 - matVal);
+
+            glColor3f(cellColor, cellColor, cellColor);
+
+            glBegin(GL_QUADS);
+                glVertex2f(x, y);
+                glVertex2f(x + passo, y);
+                glVertex2f(x + passo, y + passo);
+                glVertex2f(x, y + passo);
+            glEnd();
+        
         }
     }
 }
 
-void marcaMatriz(float x, float y, float inicio, float passo, std::vector<std::vector<int>>& matriz) {
+MatrixPosition findCell(float x, float y, float inicio, float passo) {
     int coluna = static_cast<int>((x - inicio) / passo);
     int linha  = static_cast<int>((y - inicio) / passo);
 
-    if (linha >= 0 && linha < matriz.size() && coluna >= 0 && coluna < matriz[0].size()) {
-        matriz[linha][coluna] += 1;
-    }
+    return {linha, coluna};
 }
+
+CellCenter centroDaCelula(const MatrixPosition& pos, float inicio, float passo) {
+    float x = inicio + pos.coluna * passo + passo / 2.0f;
+    float y = inicio + pos.linha  * passo + passo / 2.0f;
+    return {x, y};
+}
+
+CellRelativeInfo calculaDistanciaEAngulo(
+    const CellCenter& centroRobo,
+    const CellCenter& centroPonto,
+    float yawRobo) 
+{
+    float dx = centroPonto.x - centroRobo.x;
+    float dy = centroPonto.y - centroRobo.y;
+
+    float distancia = std::sqrt(dx * dx + dy * dy);
+    float anguloAbsoluto = std::atan2(dy, dx);
+
+    // Normaliza para [0, 2PI)
+    if(anguloAbsoluto < 0){
+        anguloAbsoluto += 2 * M_PI;
+    }
+
+    float yawRad = yawRobo;
+    if (yawRad < 0) yawRad += 2 * M_PI;
+
+    float anguloRelativo = anguloAbsoluto - yawRad;
+
+    // Normaliza para [-PI, PI]
+    if (anguloRelativo > M_PI) anguloRelativo -= 2 * M_PI;
+    if (anguloRelativo < -M_PI) anguloRelativo += 2 * M_PI;
+
+    // Converte para graus
+    float anguloRelativoGraus = anguloRelativo * 180.0f / M_PI;
+
+    return {distancia, anguloRelativoGraus};
+}
+
+bool posicaoValida(const MatrixPosition& pos, int linhas, int colunas) {
+    return (pos.linha >= 0 && pos.linha < linhas &&
+            pos.coluna >= 0 && pos.coluna < colunas);
+}
+
+float bayes(float R, float r, float s, float beta, float alpha, float max, float pOcup) {
+
+    float rangeDetect = 0.01f;
+
+    if(pOcup == 0.0f){ pOcup = 0.5f; } // iteração inicial
+
+    if ((r >= s - rangeDetect) && ( r <= s + rangeDetect)){
+        float pSOcup = 0.5f * ( (R-r)/R + (beta-std::abs(alpha))/beta ) * max;
+        float pSVaz = 1.0f - pSOcup;
+        float pSOcup_pOcup = pSOcup * pOcup;
+        float pSVaz_pVaz = pSVaz * ( 1 - pOcup );
+
+        float pOcupS = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
+        //std::cout << "pOcupS" << std::endl;
+
+        // Debug 
+        if (false){
+            std::cout 
+                << "pSOcup: " << pSOcup << " "
+                << "pSVaz: " << pSVaz << " "
+                << "pOcup: " << pOcup << " "
+                << "pSOcup_pOcup: " << pSOcup_pOcup << " "
+                << "pSVaz_pVaz: " << pSVaz_pVaz << " "
+                << "pOcupS: " << pOcupS << " "
+            << std::endl;
+        }
+
+        return pOcupS;
+    }
+    else{
+        float pVaz = 1 - pOcup;
+        float pSVaz = 0.5f * ( (R-r)/R + (beta-std::abs(alpha))/beta ) * max;
+        float pSOcup = 1.0f - pSVaz;
+        float pSVaz_pVaz = pSVaz * pVaz;
+        float pSOcup_pOcup = pSOcup * pOcup;
+
+        //float pVazS = (pSVaz_pVaz / (pSVaz_pVaz + pSOcup_pOcup));
+        //std::cout << "pVazS" << std::endl;
+        //return 1 - pVazS;
+        float pOcupS = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
+
+        // Debug 
+        if (false){
+            std::cout 
+                << "pSOcup: " << pSOcup << " "
+                << "pSVaz: " << pSVaz << " "
+                << "pOcup: " << pOcup << " "
+                << "pSOcup_pOcup: " << pSOcup_pOcup << " "
+                << "pSVaz_pVaz: " << pSVaz_pVaz << " "
+                << "pOcupS: " << pOcupS << " "
+            << std::endl;
+        }
+
+        return pOcupS;
+    }
+
+}
+
+void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float sensorAngle) {
+    int linhas = matriz.size();
+    int colunas = matriz[0].size();
+
+    int cont = 0;
+    for (int i = 0; i < linhas; ++i) {
+        for (int j = 0; j < colunas; ++j) {
+            
+            MatrixPosition posAtual = {i, j};
+            CellCenter centroAtual = centroDaCelula(posAtual, grid.inicio, grid.passo);
+
+            // Calcula ângulo relativo e distância entre célula e centro do robô
+            CellRelativeInfo relations = calculaDistanciaEAngulo(
+                robot.cellCenter, 
+                centroAtual, 
+                robot.pos.theta - sensorAngle // yaw do robô + ângulo do sensor
+            );
+
+            float r = relations.distancia;
+            float alpha = relations.anguloRelativo;
+            float beta = robot.beta;
+            float R = 2.0f; // alcance máximo do sensor que considero válido
+
+            // Está no cone do sensor?
+            if (robot.s <= R && r <= robot.s && alpha >= -beta && alpha <= beta) {
+                float pOcup_atual = matriz[i][j];
+                float pOcup = bayes(R, r, robot.s, beta, alpha, 0.95f, pOcup_atual);
+                matriz[i][j] = pOcup;
+                cont++;
+
+                // Debug 
+                if (true){
+                    std::cout 
+                        << "Celula [" << i << "," << j << "] "
+                        << "Robô [" << robot.gridPos.linha << "," << robot.gridPos.coluna << "] "
+                        << "Dist: " << r << " "
+                        << "s: " << robot.s << " "
+                        << "Alpha: " << alpha << " "
+                        //<< "Yaw: " << (robot.pos.theta * 180 / M_PI) << " "
+                        << "pOcup: " << pOcup << " "
+                        << "pOcup_ant: " << pOcup_atual 
+                    << std::endl;
+                }
+            }
+        }
+    }
+    std::cout << cont << " células atualizadas pelo sensor 0 (-90 graus).\n";
+
+    salvaMatriz(matriz, "matriz.txt");
+}
+
+
 
 void* graphicsThreadFunction(void* arg) {
     if (!glfwInit()) {
@@ -92,7 +260,7 @@ void* graphicsThreadFunction(void* arg) {
 
     int width = 600;
     int height = 600;
-    float scaleFactor = 0.1f;
+    float scaleFactor = 0.08f;
 
     GLFWwindow* window = glfwCreateWindow(width, height, "Caminho do Robo", NULL, NULL);
     if (!window) {
@@ -123,16 +291,35 @@ void* graphicsThreadFunction(void* arg) {
         glClear(GL_COLOR_BUFFER_BIT);
 
         // Adiciona pontos nas matrizes parede e path
-        marcaMatriz(posParedeE.x, posParedeE.y, grid.inicio, grid.passo, matrizMundo);
-        marcaMatriz(posParedeD.x, posParedeD.y, grid.inicio, grid.passo, matrizMundo);
-        marcaMatriz(posRobo.x, posRobo.y, grid.inicio, grid.passo, matrizPath);
-        
+        MatrixPosition matPosParedeE = findCell(posParedeE.x, posParedeE.y, grid.inicio, grid.passo);
+        MatrixPosition matPosParedeD = findCell(posParedeD.x, posParedeD.y, grid.inicio, grid.passo);
+        MatrixPosition matPosRobo = findCell(posRobo.x, posRobo.y, grid.inicio, grid.passo);
+
+
+        int linhas = matrizMundo.size();
+        int colunas = matrizMundo[0].size();
+        std::vector<int> sensorIndices = {0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14}; //{14, 0, 1, 7};
+
+        if (posicaoValida(matPosRobo, linhas, colunas) && !sonares.empty()) {
+            CellCenter centroCelRobo = centroDaCelula(matPosRobo, grid.inicio, grid.passo);
+            Robot robotInfo = {matPosRobo, posRobo, centroCelRobo, 0.0f}; // s será atualizado abaixo
+
+            for (int idx : sensorIndices) {
+                if(sonares[idx] <= 2.0f){
+                    float sensorAngle = sensorAngles[idx] * M_PI / 180.0f;
+                    robotInfo.s = sonares[idx] * scaleFactor;
+                    atualizaMatriz(matrizMundo, robotInfo, sensorAngle);
+                }
+            }  
+            
+        }
+
         // Desenha a grade
         desenhaGrade(grid.inicio, grid.fim, grid.passo);
 
         // Pinta células
         pintaCelulas(matrizMundo, grid.inicio, grid.passo, std::make_tuple(0.3f, 0.3f, 0.3f));
-        pintaCelulas(matrizPath, grid.inicio, grid.passo, std::make_tuple(1.0f, 0.0f, 0.0f));
+        //pintaCelulas(matrizPath, grid.inicio, grid.passo, std::make_tuple(1.0f, 0.0f, 0.0f));
 
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();

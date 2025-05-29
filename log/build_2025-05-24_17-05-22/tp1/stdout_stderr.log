@@ -1,0 +1,95 @@
+[ 16%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Graph.cpp.o[0m
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:24:76:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kstd::vector<std::vector<float> >::vector(int&, std::vector<int>)[m[K’
+   24 | std::vector<std::vector<float>> matrizMundo(size, std::vector<int>(size, 0)[01;31m[K)[m[K;
+      |                                                                            [01;31m[K^[m[K
+In file included from [01m[K/usr/include/c++/13/vector:66[m[K,
+                 from [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:4[m[K:
+[01m[K/usr/include/c++/13/bits/stl_vector.h:707:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _InputIterator, class> std::vector<_Tp, _Alloc>::[01;32m[Kvector[m[K(_InputIterator, _InputIterator, const allocator_type&) [35m[K[with <template-parameter-2-2> = _InputIterator; _Tp = std::vector<float>; _Alloc = std::allocator<std::vector<float> >][m[K[m[K’
+  707 |         [01;36m[Kvector[m[K(_InputIterator __first, _InputIterator __last,
+      |         [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:707:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:24:76:[m[K [01;36m[Knote: [m[K  deduced conflicting types for parameter ‘[01m[K_InputIterator[m[K’ (‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>[m[K’)
+   24 | std::vector<std::vector<float>> matrizMundo(size, std::vector<int>(size, 0)[01;36m[K)[m[K;
+      |                                                                            [01;36m[K^[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:678:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>::[01;32m[Kvector[m[K(std::initializer_list<_Tp>, const allocator_type&) [35m[K[with _Tp = std::vector<float>; _Alloc = std::allocator<std::vector<float> >; allocator_type = std::allocator<std::vector<float> >][m[K[m[K’
+  678 |       [01;36m[Kvector[m[K(initializer_list<value_type> __l,
+      |       [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:678:43:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kint[m[K’ to ‘[01m[Kstd::initializer_list<std::vector<float> >[m[K’
+  678 |       vector([01;36m[Kinitializer_list<value_type> __l[m[K,
+      |              [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:659:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>::[01;32m[Kvector[m[K(std::vector<_Tp, _Alloc>&&, std::__type_identity_t<_Alloc>&) [35m[K[with _Tp = std::vector<float>; _Alloc = std::allocator<std::vector<float> >; std::__type_identity_t<_Alloc> = std::allocator<std::vector<float> >][m[K[m[K’
+  659 |       [01;36m[Kvector[m[K(vector&& __rv, const __type_identity_t<allocator_type>& __m)
+      |       [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:659:23:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kint[m[K’ to ‘[01m[Kstd::vector<std::vector<float> >&&[m[K’
+  659 |       vector([01;36m[Kvector&& __rv[m[K, const __type_identity_t<allocator_type>& __m)
+      |              [01;36m[K~~~~~~~~~^~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:640:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>::[01;32m[Kvector[m[K(std::vector<_Tp, _Alloc>&&, const allocator_type&, std::false_type) [35m[K[with _Tp = std::vector<float>; _Alloc = std::allocator<std::vector<float> >; allocator_type = std::allocator<std::vector<float> >; std::false_type = std::integral_constant<bool, false>][m[K[m[K’
+  640 |       [01;36m[Kvector[m[K(vector&& __rv, const allocator_type& __m, false_type)
+      |       [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:640:7:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 2 provided
+[01m[K/usr/include/c++/13/bits/stl_vector.h:635:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>::[01;32m[Kvector[m[K(std::vector<_Tp, _Alloc>&&, const allocator_type&, std::true_type) [35m[K[with _Tp = std::vector<float>; _Alloc = std::allocator<std::vector<float> >; allocator_type = std::allocator<std::vector<float> >; std::true_type = std::integral_constant<bool, true>][m[K[m[K’
+  635 |       [01;36m[Kvector[m[K(vector&& __rv, const allocator_type& __m, true_type) noexcept
+      |       [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:635:7:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 2 provided
+[01m[K/usr/include/c++/13/bits/stl_vector.h:624:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>::[01;32m[Kvector[m[K(const std::vector<_Tp, _Alloc>&, std::__type_identity_t<_Alloc>&) [35m[K[with _Tp = std::vector<float>; _Alloc = std::allocator<std::vector<float> >; std::__type_identity_t<_Alloc> = std::allocator<std::vector<float> >][m[K[m[K’
+  624 |       [01;36m[Kvector[m[K(const vector& __x, const __type_identity_t<allocator_type>& __a)
+      |       [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:624:28:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kint[m[K’ to ‘[01m[Kconst std::vector<std::vector<float> >&[m[K’
+  624 |       vector([01;36m[Kconst vector& __x[m[K, const __type_identity_t<allocator_type>& __a)
+      |              [01;36m[K~~~~~~~~~~~~~~^~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:620:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>::[01;32m[Kvector[m[K(std::vector<_Tp, _Alloc>&&) [35m[K[with _Tp = std::vector<float>; _Alloc = std::allocator<std::vector<float> >][m[K[m[K’
+  620 |       [01;36m[Kvector[m[K(vector&&) noexcept = default;
+      |       [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:620:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[01m[K/usr/include/c++/13/bits/stl_vector.h:601:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>::[01;32m[Kvector[m[K(const std::vector<_Tp, _Alloc>&) [35m[K[with _Tp = std::vector<float>; _Alloc = std::allocator<std::vector<float> >][m[K[m[K’
+  601 |       [01;36m[Kvector[m[K(const vector& __x)
+      |       [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:601:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[01m[K/usr/include/c++/13/bits/stl_vector.h:569:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>::[01;32m[Kvector[m[K(size_type, const value_type&, const allocator_type&) [35m[K[with _Tp = std::vector<float>; _Alloc = std::allocator<std::vector<float> >; size_type = long unsigned int; value_type = std::vector<float>; allocator_type = std::allocator<std::vector<float> >][m[K[m[K’
+  569 |       [01;36m[Kvector[m[K(size_type __n, const value_type& __value,
+      |       [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:569:47:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kstd::vector<int>[m[K’ to ‘[01m[Kconst std::vector<std::vector<float> >::value_type&[m[K’ {aka ‘[01m[Kconst std::vector<float>&[m[K’}
+  569 |       vector(size_type __n, [01;36m[Kconst value_type& __value[m[K,
+      |                             [01;36m[K~~~~~~~~~~~~~~~~~~^~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:556:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>::[01;32m[Kvector[m[K(size_type, const allocator_type&) [35m[K[with _Tp = std::vector<float>; _Alloc = std::allocator<std::vector<float> >; size_type = long unsigned int; allocator_type = std::allocator<std::vector<float> >][m[K[m[K’
+  556 |       [01;36m[Kvector[m[K(size_type __n, const allocator_type& __a = allocator_type())
+      |       [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:556:51:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kstd::vector<int>[m[K’ to ‘[01m[Kconst std::vector<std::vector<float> >::allocator_type&[m[K’ {aka ‘[01m[Kconst std::allocator<std::vector<float> >&[m[K’}
+  556 |       vector(size_type __n, [01;36m[Kconst allocator_type& __a = allocator_type()[m[K)
+      |                             [01;36m[K~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:542:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>::[01;32m[Kvector[m[K(const allocator_type&) [35m[K[with _Tp = std::vector<float>; _Alloc = std::allocator<std::vector<float> >; allocator_type = std::allocator<std::vector<float> >][m[K[m[K’
+  542 |       [01;36m[Kvector[m[K(const allocator_type& __a) _GLIBCXX_NOEXCEPT
+      |       [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:542:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[01m[K/usr/include/c++/13/bits/stl_vector.h:531:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>::[01;32m[Kvector[m[K() [35m[K[with _Tp = std::vector<float>; _Alloc = std::allocator<std::vector<float> >][m[K[m[K’
+  531 |       [01;36m[Kvector[m[K() = default;
+      |       [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/stl_vector.h:531:7:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 2 provided
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K atualizaMatriz[m[K(std::vector<std::vector<float> >&, MatrixPosition, Robot)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:171:49:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<float> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  171 |     if (detection.linha >= 0 && [01;35m[Kdetection.linha < matriz.size()[m[K
+      |                                 [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:172:54:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  172 |         && detection.coluna >= 0 && [01;35m[Kdetection.coluna < matriz[0].size()[m[K)
+      |                                     [01;35m[K~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:201:30:[m[K [01;35m[Kwarning: [m[Kvalue computed is not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+  201 |                 matriz[i][j] == pOcup;
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K graphicsThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:232:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::x * scaleFactor)) - 8.0000000000000004e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+  232 |         Position posRobo = {[01;35m[KroboPosicao.x * scaleFactor - 0.8[m[K,
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:233:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::y * scaleFactor)) - 6.9999999999999996e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+  233 |                             [01;35m[KroboPosicao.y * scaleFactor - 0.7[m[K,
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:238:55:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+  238 |             round2(pontoParedeE.y * scaleFactor - 0.7)[01;35m[K}[m[K;
+      |                                                       [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:241:55:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+  241 |             round2(pontoParedeD.y * scaleFactor - 0.7)[01;35m[K}[m[K;
+      |                                                       [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:212:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  212 | void* graphicsThreadFunction([01;35m[Kvoid* arg[m[K) {
+      |                              [01;35m[K~~~~~~^~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:132: CMakeFiles/navigation.dir/src/Graph.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

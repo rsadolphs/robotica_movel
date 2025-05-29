@@ -1,0 +1,58 @@
+[ 16%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Graph.cpp.o[0m
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:35:10:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[Kgrid[m[K’
+   35 | GridInfo [01;31m[Kgrid[m[K = {-5.0f, 5.0f, 0.02f};
+      |          [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:37:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kgrid[m[K’ was not declared in this scope
+   37 | int size = ([01;31m[Kgrid[m[K.fim - grid.inicio) / grid.passo;
+      |             [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:37:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kgrid[m[K’ was not declared in this scope
+   37 | int size = (grid.fim - [01;31m[Kgrid[m[K.inicio) / grid.passo;
+      |                        [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:37:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kgrid[m[K’ was not declared in this scope
+   37 | int size = (grid.fim - grid.inicio) / [01;31m[Kgrid[m[K.passo;
+      |                                       [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[KCellCenter[01;32m[K centroDaCelula[m[K(const MatrixPosition&, float, float)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:97:37:[m[K [01;31m[Kerror: [m[K‘[01m[Kgrid[m[K’ was not declared in this scope
+   97 |     float x = inicio + pos.coluna * [01;31m[Kgrid[m[K.passo + grid.passo / 2.0f;
+      |                                     [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:96:74:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpasso[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   96 |  centroDaCelula(const MatrixPosition& pos, float inicio, [01;35m[Kfloat passo[m[K) {
+      |                                                          [01;35m[K~~~~~~^~~~~[m[K
+
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K atualizaMatriz[m[K(std::vector<std::vector<int> >&, MatrixPosition)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:104:37:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  104 |     if (pos.linha >= 0 && [01;35m[Kpos.linha < matriz.size()[m[K && pos.coluna >= 0 && pos.coluna < matriz[0].size()) {
+      |                           [01;35m[K~~~~~~~~~~^~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:104:86:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  104 |  pos.linha < matriz.size() && pos.coluna >= 0 && [01;35m[Kpos.coluna < matriz[0].size()[m[K) {
+      |                                                  [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~[m[K
+
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:105:16:[m[K [01;31m[Kerror: [m[K‘[01m[Klinha[m[K’ was not declared in this scope
+  105 |         matriz[[01;31m[Klinha[m[K][coluna] += 1;
+      |                [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:105:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kcoluna[m[K’ was not declared in this scope
+  105 |         matriz[linha][[01;31m[Kcoluna[m[K] += 1;
+      |                       [01;31m[K^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K graphicsThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:129:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::x * scaleFactor)) - 8.0000000000000004e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+  129 |         Position posRobo = {[01;35m[KroboPosicao.x * scaleFactor - 0.8[m[K,
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:130:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::y * scaleFactor)) - 6.9999999999999996e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+  130 |                             [01;35m[KroboPosicao.y * scaleFactor - 0.7[m[K,
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:135:55:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+  135 |             round2(pontoParedeE.y * scaleFactor - 0.7)[01;35m[K}[m[K;
+      |                                                       [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:138:55:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+  138 |             round2(pontoParedeD.y * scaleFactor - 0.7)[01;35m[K}[m[K;
+      |                                                       [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:147:77:[m[K [01;31m[Kerror: [m[K‘[01m[Kgrid[m[K’ was not declared in this scope
+  147 | sition matPosParedeE = findCell(posParedeE.x, posParedeE.y, [01;31m[Kgrid[m[K.inicio, grid.passo);
+      |                                                             [01;31m[K^~~~[m[K
+
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:109:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  109 | void* graphicsThreadFunction([01;35m[Kvoid* arg[m[K) {
+      |                              [01;35m[K~~~~~~^~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:132: CMakeFiles/navigation.dir/src/Graph.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2
