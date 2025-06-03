@@ -1,0 +1,218 @@
+[ 16%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Graph.cpp.o[0m
+In file included from [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:3[m[K:
+[01m[K/home/richard/ros2_ws/src/tp1/include/Mapping.hpp:60:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kstd::vector[m[K’ has not been declared
+   60 |     void atualizaMatriz([01;31m[Kstd[m[K::vector<std::vector<float>>& matriz, Robot robot, float sensorAngle);
+      |                         [01;31m[K^~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/include/Mapping.hpp:60:36:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K...[m[K’ before ‘[01m[K<[m[K’ token
+   60 |     void atualizaMatriz(std::vector[01;31m[K<[m[Kstd::vector<float>>& matriz, Robot robot, float sensorAngle);
+      |                                    [01;31m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/include/Mapping.hpp:61:33:[m[K [01;31m[Kerror: [m[K‘[01m[Kvector[m[K’ in namespace ‘[01m[Kstd[m[K’ does not name a template type
+   61 |     void salvaMatriz(const std::[01;31m[Kvector[m[K<std::vector<float>>& matriz, const std::string& nomeArquivo);
+      |                                 [01;31m[K^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/include/Mapping.hpp:6:1:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::vector[m[K’ is defined in header ‘[01m[K<vector>[m[K’; did you forget to ‘[01m[K#include <vector>[m[K’?
+    5 | #include <cmath>
+  +++ |+[32m[K#include <vector>[m[K
+    6 | 
+[01m[K/home/richard/ros2_ws/src/tp1/include/Mapping.hpp:61:39:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K...[m[K’ before ‘[01m[K<[m[K’ token
+   61 |     void salvaMatriz(const std::vector[01;31m[K<[m[Kstd::vector<float>>& matriz, const std::string& nomeArquivo);
+      |                                       [01;31m[K^[m[K
+In file included from [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:4[m[K:
+[01m[K/usr/include/GLFW/glfw3.h:33:8:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before string constant
+   33 | extern [01;31m[K"C"[m[K {
+      |        [01;31m[K^~~[m[K
+In file included from [01m[K/usr/include/c++/13/bits/memory_resource.h:38[m[K,
+                 from [01m[K/usr/include/c++/13/vector:80[m[K,
+                 from [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:5[m[K:
+[01m[K/usr/include/c++/13/cstddef:58:11:[m[K [01;31m[Kerror: [m[K‘[01m[Kmax_align_t[m[K’ has not been declared in ‘[01m[K::[m[K’
+   58 |   using ::[01;31m[Kmax_align_t[m[K;
+      |           [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/memory_resource.h:63:52:[m[K [01;31m[Kerror: [m[K‘[01m[Kmax_align_t[m[K’ was not declared in this scope
+   63 |     static constexpr size_t _S_max_align = alignof([01;31m[Kmax_align_t[m[K);
+      |                                                    [01;31m[K^~~~~~~~~~~[m[K
+In file included from [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:4[m[K:
+[01m[K/home/richard/ros2_ws/src/tp1/include/Mapping.hpp:71:2:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ after class definition
+   71 | }
+      |  [01;31m[K^[m[K
+      |  [32m[K;[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kstd::vector<std::vector<int> >[01;32m[K senseWalls[m[K(const std::vector<float>&)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:20:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   20 |     for (int i = 0; [01;35m[Ki < sonars.size()[m[K; ++i) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:42:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   42 |     for (int i = 0; [01;35m[Ki < capturedPoints.size()[m[K; ++i) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:47:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   47 |         if ([01;35m[Ki + 2 == capturedPoints.size()[m[K){
+      |             [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:51:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   51 |             if ([01;35m[Ki + 1 == capturedPoints.size()[m[K){
+      |                 [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KavoidObstacles[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:104:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistance[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  104 |     float [01;35m[KminDistance[m[K = 0.0f;
+      |           [01;35m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:105:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistPos[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  105 |     int [01;35m[KminDistPos[m[K = 0;
+      |         [01;35m[K^~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:102:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  102 | void Action::avoidObstacles([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KkeepAsFarthestAsPossibleFromWalls[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:127:67:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  127 | void Action::keepAsFarthestAsPossibleFromWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+      |                                                [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[KPosition[01;32m[K detectarParede[m[K(const std::vector<float>&, float, bool)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:186:45:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+  186 |     Position pontoParede = {paredeX, paredeY[01;35m[K}[m[K;
+      |                                             [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kbool[01;32m[K estaTrancado[m[K(const std::vector<Position>&, int)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:191:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<Position>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  191 |     if ([01;35m[Kposicoes.size() < ultimos[m[K) return false;
+      |         [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K At global scope:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:203:36:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+  203 | Position pontoParedeE = {0.0f, 0.0f[01;35m[K}[m[K;
+      |                                    [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:204:36:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+  204 | Position pontoParedeD = {0.0f, 0.0f[01;35m[K}[m[K;
+      |                                    [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KfollowTheWalls[m[K(std::vector<float>, std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:233:14:[m[K [01;35m[Kwarning: [m[Ksuggest parentheses around assignment used as truth value [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wparentheses-Wparentheses]8;;[m[K]
+  233 |     if ([01;35m[Kside = LEFT[m[K){
+      |         [01;35m[K~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:214:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistance[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  214 |     float [01;35m[KminDistance[m[K = 0.0f;
+      |           [01;35m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:215:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistPos[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  215 |     int [01;35m[KminDistPos[m[K = 0;
+      |         [01;35m[K^~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:212:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  212 | void Action::followTheWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars, std::vector<float> pose)
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KtestMode[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:271:42:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  271 | void Action::testMode([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+      |                       [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:271:69:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksonars[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  271 | void Action::testMode(std::vector<float> lasers, [01;35m[Kstd::vector<float> sonars[m[K)
+      |                                                  [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K desenhaGrade[m[K(float, float, float)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:29:5:[m[K [01;31m[Kerror: [m[K‘[01m[KglColor3f[m[K’ was not declared in this scope
+   29 |     [01;31m[KglColor3f[m[K(0.85f, 0.85f, 0.85f); // cinza claro
+      |     [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:30:5:[m[K [01;31m[Kerror: [m[K‘[01m[KglLineWidth[m[K’ was not declared in this scope
+   30 |     [01;31m[KglLineWidth[m[K(1.0f);
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:31:5:[m[K [01;31m[Kerror: [m[K‘[01m[KglBegin[m[K’ was not declared in this scope
+   31 |     [01;31m[KglBegin[m[K(GL_LINES);
+      |     [01;31m[K^~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:35:9:[m[K [01;31m[Kerror: [m[K‘[01m[KglVertex2f[m[K’ was not declared in this scope
+   35 |         [01;31m[KglVertex2f[m[K(x, inicio);
+      |         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:41:9:[m[K [01;31m[Kerror: [m[K‘[01m[KglVertex2f[m[K’ was not declared in this scope
+   41 |         [01;31m[KglVertex2f[m[K(inicio, y);
+      |         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:45:5:[m[K [01;31m[Kerror: [m[K‘[01m[KglEnd[m[K’ was not declared in this scope
+   45 |     [01;31m[KglEnd[m[K();
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K pintaCelulas[m[K(const std::vector<std::vector<float> >&, float, float, std::tuple<float, float, float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:80:13:[m[K [01;31m[Kerror: [m[K‘[01m[KglColor3f[m[K’ was not declared in this scope
+   80 |             [01;31m[KglColor3f[m[K(cellColor, cellColor, cellColor);
+      |             [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:82:13:[m[K [01;31m[Kerror: [m[K‘[01m[KglBegin[m[K’ was not declared in this scope
+   82 |             [01;31m[KglBegin[m[K(GL_QUADS);
+      |             [01;31m[K^~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:83:17:[m[K [01;31m[Kerror: [m[K‘[01m[KglVertex2f[m[K’ was not declared in this scope
+   83 |                 [01;31m[KglVertex2f[m[K(x, y);
+      |                 [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:87:13:[m[K [01;31m[Kerror: [m[K‘[01m[KglEnd[m[K’ was not declared in this scope
+   87 |             [01;31m[KglEnd[m[K();
+      |             [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K graphicsThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:251:10:[m[K [01;31m[Kerror: [m[K‘[01m[KglfwInit[m[K’ was not declared in this scope
+  251 |     if (![01;31m[KglfwInit[m[K()) {
+      |          [01;31m[K^~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:259:5:[m[K [01;31m[Kerror: [m[K‘[01m[KGLFWwindow[m[K’ was not declared in this scope
+  259 |     [01;31m[KGLFWwindow[m[K* window = glfwCreateWindow(width, height, "Caminho do Robo", NULL, NULL);
+      |     [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:259:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kwindow[m[K’ was not declared in this scope
+  259 |     GLFWwindow* [01;31m[Kwindow[m[K = glfwCreateWindow(width, height, "Caminho do Robo", NULL, NULL);
+      |                 [01;31m[K^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:259:26:[m[K [01;31m[Kerror: [m[K‘[01m[KglfwCreateWindow[m[K’ was not declared in this scope
+  259 |     GLFWwindow* window = [01;31m[KglfwCreateWindow[m[K(width, height, "Caminho do Robo", NULL, NULL);
+      |                          [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:261:9:[m[K [01;31m[Kerror: [m[K‘[01m[KglfwTerminate[m[K’ was not declared in this scope
+  261 |         [01;31m[KglfwTerminate[m[K();
+      |         [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:265:5:[m[K [01;31m[Kerror: [m[K‘[01m[KglfwMakeContextCurrent[m[K’ was not declared in this scope
+  265 |     [01;31m[KglfwMakeContextCurrent[m[K(window);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:266:5:[m[K [01;31m[Kerror: [m[K‘[01m[KglClearColor[m[K’ was not declared in this scope
+  266 |     [01;31m[KglClearColor[m[K(1, 1, 1, 1); // fundo branco
+      |     [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:268:13:[m[K [01;31m[Kerror: [m[K‘[01m[KglfwWindowShouldClose[m[K’ was not declared in this scope
+  268 |     while (![01;31m[KglfwWindowShouldClose[m[K(window)) {
+      |             [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:270:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::x * scaleFactor)) - 8.0000000000000004e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+  270 |         Position posRobo = {[01;35m[KroboPosicao.x * scaleFactor - 0.8[m[K,
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:271:57:[m[K [01;35m[Kwarning: [m[Knarrowing conversion of ‘[01m[K(((double)(roboPosicao.Position::y * scaleFactor)) - 6.9999999999999996e-1)[m[K’ from ‘[01m[Kdouble[m[K’ to ‘[01m[Kfloat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnarrowing-Wnarrowing]8;;[m[K]
+  271 |                             [01;35m[KroboPosicao.y * scaleFactor - 0.7[m[K,
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:277:9:[m[K [01;31m[Kerror: [m[K‘[01m[KglClear[m[K’ was not declared in this scope
+  277 |         [01;31m[KglClear[m[K(GL_COLOR_BUFFER_BIT);
+      |         [01;31m[K^~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:309:9:[m[K [01;31m[Kerror: [m[K‘[01m[KglMatrixMode[m[K’ was not declared in this scope
+  309 |         [01;31m[KglMatrixMode[m[K(GL_PROJECTION);
+      |         [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:310:9:[m[K [01;31m[Kerror: [m[K‘[01m[KglLoadIdentity[m[K’ was not declared in this scope
+  310 |         [01;31m[KglLoadIdentity[m[K();
+      |         [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:311:9:[m[K [01;31m[Kerror: [m[K‘[01m[KglOrtho[m[K’ was not declared in this scope
+  311 |         [01;31m[KglOrtho[m[K(-1, 1, -1, 1, -1, 1);
+      |         [01;31m[K^~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:317:9:[m[K [01;31m[Kerror: [m[K‘[01m[KglColor3f[m[K’ was not declared in this scope
+  317 |         [01;31m[KglColor3f[m[K(1.0f, 0.0f, 0.0f); // vermelho
+      |         [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:318:9:[m[K [01;31m[Kerror: [m[K‘[01m[KglBegin[m[K’ was not declared in this scope
+  318 |         [01;31m[KglBegin[m[K(GL_LINE_STRIP);
+      |         [01;31m[K^~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:320:13:[m[K [01;31m[Kerror: [m[K‘[01m[KglVertex2f[m[K’ was not declared in this scope
+  320 |             [01;31m[KglVertex2f[m[K(pos.x, pos.y);
+      |             [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:322:9:[m[K [01;31m[Kerror: [m[K‘[01m[KglEnd[m[K’ was not declared in this scope
+  322 |         [01;31m[KglEnd[m[K();
+      |         [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:330:13:[m[K [01;31m[Kerror: [m[K‘[01m[KglLineWidth[m[K’ was not declared in this scope
+  330 |             [01;31m[KglLineWidth[m[K(1.5f);
+      |             [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:340:25:[m[K [01;31m[Kerror: [m[K‘[01m[KglVertex2f[m[K’ was not declared in this scope
+  340 |                         [01;31m[KglVertex2f[m[K(posRobo.x, posRobo.y);
+      |                         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:354:13:[m[K [01;31m[Kerror: [m[K‘[01m[KglVertex2f[m[K’ was not declared in this scope
+  354 |             [01;31m[KglVertex2f[m[K(posRobo.x, posRobo.y); // centro do círculo
+      |             [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:369:9:[m[K [01;31m[Kerror: [m[K‘[01m[KglLineWidth[m[K’ was not declared in this scope
+  369 |         [01;31m[KglLineWidth[m[K(3.0f);
+      |         [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:376:9:[m[K [01;31m[Kerror: [m[K‘[01m[KglfwSwapBuffers[m[K’ was not declared in this scope
+  376 |         [01;31m[KglfwSwapBuffers[m[K(window);
+      |         [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:377:9:[m[K [01;31m[Kerror: [m[K‘[01m[KglfwPollEvents[m[K’ was not declared in this scope
+  377 |         [01;31m[KglfwPollEvents[m[K();
+      |         [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:380:5:[m[K [01;31m[Kerror: [m[K‘[01m[KglfwDestroyWindow[m[K’ was not declared in this scope
+  380 |     [01;31m[KglfwDestroyWindow[m[K(window);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:381:5:[m[K [01;31m[Kerror: [m[K‘[01m[KglfwTerminate[m[K’ was not declared in this scope
+  381 |     [01;31m[KglfwTerminate[m[K();
+      |     [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:250:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  250 | void* graphicsThreadFunction([01;35m[Kvoid* arg[m[K) {
+      |                              [01;35m[K~~~~~~^~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:90: CMakeFiles/navigation.dir/src/Action.cpp.o] Erro 1
+gmake[2]: ** Esperando que outros processos terminem.
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:132: CMakeFiles/navigation.dir/src/Graph.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

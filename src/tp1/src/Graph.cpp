@@ -1,5 +1,6 @@
 // graphics.cpp
 #include "graphics.hpp"
+#include "Mapping.hpp"
 #include <GLFW/glfw3.h>
 #include <vector>
 #include <cmath>
@@ -8,20 +9,16 @@
 
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
-extern Position pontoParedeE;
-extern Position pontoParedeD;
 extern std::vector<float> sonares;
 const std::vector<double> sensorAngles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
-
 
 // Histórico de posições
 std::vector<Position> caminho;
 
-
 // Cria Grade e Matrizes
 GridInfo grid = {-1.0f, 1.0f, 0.004f};
 int size = (grid.fim - grid.inicio) / grid.passo;  
-std::vector<std::vector<float>> matrizMundo(size, std::vector<float>(size, 0.0f));
+std::vector<std::vector<float>> matrizMundo(size, std::vector<float>(size, 0.5f));
 std::vector<std::vector<int>> matrizPath(size, std::vector<int>(size, 0));
 
 float round2(float valor) {
@@ -146,8 +143,6 @@ float bayes(float R, float r, float s, float beta, float alpha, float max, float
 
     float rangeDetect = 0.01f;
 
-    if(pOcup == 0.0f){ pOcup = 0.5f; } // iteração inicial
-
     if ((r >= s - rangeDetect) && ( r <= s + rangeDetect)){
         float pSOcup = 0.5f * ( (R-r)/R + (beta-std::abs(alpha))/beta ) * max;
         float pSVaz = 1.0f - pSOcup;
@@ -231,7 +226,7 @@ void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float 
                 cont++;
 
                 // Debug 
-                if (true){
+                if (false){
                     std::cout 
                         << "Celula [" << i << "," << j << "] "
                         << "Robô [" << robot.gridPos.linha << "," << robot.gridPos.coluna << "] "
@@ -246,9 +241,8 @@ void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float 
             }
         }
     }
-    std::cout << cont << " células atualizadas pelo sensor 0 (-90 graus).\n";
 
-    salvaMatriz(matriz, "matriz.txt");
+    //salvaMatriz(matriz, "matriz.txt");
 }
 
 
@@ -277,25 +271,15 @@ void* graphicsThreadFunction(void* arg) {
                             roboPosicao.y * scaleFactor - 0.7,
                             roboPosicao.theta
         };
-
-        Position posParedeE = {round2(pontoParedeE.x * scaleFactor - 0.8), 
-            round2(pontoParedeE.y * scaleFactor - 0.7)};
-
-        Position posParedeD = {round2(pontoParedeD.x * scaleFactor - 0.8), 
-            round2(pontoParedeD.y * scaleFactor - 0.7)};
-
         caminho.push_back(posRobo);  // ATENÇÃO: precisa garantir que acesso à roboPosicao é seguro!
-
 
         // Renderizar
         glClear(GL_COLOR_BUFFER_BIT);
 
         // Adiciona pontos nas matrizes parede e path
-        MatrixPosition matPosParedeE = findCell(posParedeE.x, posParedeE.y, grid.inicio, grid.passo);
-        MatrixPosition matPosParedeD = findCell(posParedeD.x, posParedeD.y, grid.inicio, grid.passo);
         MatrixPosition matPosRobo = findCell(posRobo.x, posRobo.y, grid.inicio, grid.passo);
 
-
+        // mapeamento com bayes
         int linhas = matrizMundo.size();
         int colunas = matrizMundo[0].size();
         std::vector<int> sensorIndices = {0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14}; //{14, 0, 1, 7};
@@ -313,6 +297,7 @@ void* graphicsThreadFunction(void* arg) {
             }  
             
         }
+        // fim mapeamento com bayes
 
         // Desenha a grade
         desenhaGrade(grid.inicio, grid.fim, grid.passo);

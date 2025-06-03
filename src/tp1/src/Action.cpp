@@ -1,6 +1,7 @@
 #include "Action.h"
 #include "Utils.h"
 #include "graphics.hpp"
+#include "Mapping.hpp"
 
 #include <vector>
 #include <iostream>
@@ -104,9 +105,6 @@ void Action::avoidObstacles(std::vector<float> lasers, std::vector<float> sonars
     int minDistPos = 0;
 
     auto [minPos, minDist] = findMinPosition(sonars);  // retorna o sensor com menor distancia e o valor.
-
-    // Position roboPosicao = {pose[0], pose[1], pose[2]};
-    // positionArray.push_back(roboPosicao);
 
     if (minPos>=0 && minPos <=7 && minDist <= 1){
         if (minPos <= 3){
@@ -217,17 +215,6 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
     sonares = sonars;
 
     positionArray.push_back(roboPosicao);
-
-    Position paredeEsquerda = detectarParede(pose, sonars[0], true);
-    Position paredeDireita = detectarParede(pose, sonars[7], false);
-    
-    if(sonars[0]<5.0f){
-        pontoParedeE = paredeEsquerda;
-    }
-
-    if(sonars[7]<5.0f){
-        pontoParedeD = paredeDireita;
-    }
 
     if (!firstInfo){
         firstMinDistPos = minPos;
