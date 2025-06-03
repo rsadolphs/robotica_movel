@@ -1,0 +1,38 @@
+[0.020s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.145s] [ 14%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Mapping.cpp.o[0m
+[1.136s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kfloat[01;32m[K bayes[m[K(float, float, float, float, float, float, float)[m[K’:
+[1.136s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:102:15:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KpOcupS[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[1.136s]   102 |         float [01;35m[KpOcupS[m[K = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
+[1.136s]       |               [01;35m[K^~~~~~[m[K
+[1.138s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:110:15:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KpOcupS[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[1.138s]   110 |         float [01;35m[KpOcupS[m[K = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
+[1.138s]       |               [01;35m[K^~~~~~[m[K
+[1.148s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:116:30:[m[K [01;31m[Kerror: [m[K‘[01m[KpSOcup[m[K’ was not declared in this scope; did you mean ‘[01m[KpOcup[m[K’?
+[1.149s]   116 |             << "pSOcup: " << [01;31m[KpSOcup[m[K << " "
+[1.149s]       |                              [01;31m[K^~~~~~[m[K
+[1.149s]       |                              [32m[KpOcup[m[K
+[1.160s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:117:29:[m[K [01;31m[Kerror: [m[K‘[01m[KpSVaz[m[K’ was not declared in this scope
+[1.160s]   117 |             << "pSVaz: " << [01;31m[KpSVaz[m[K << " "
+[1.160s]       |                             [01;31m[K^~~~~[m[K
+[1.171s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:119:36:[m[K [01;31m[Kerror: [m[K‘[01m[KpSOcup_pOcup[m[K’ was not declared in this scope
+[1.171s]   119 |             << "pSOcup_pOcup: " << [01;31m[KpSOcup_pOcup[m[K << " "
+[1.171s]       |                                    [01;31m[K^~~~~~~~~~~~[m[K
+[1.191s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:120:34:[m[K [01;31m[Kerror: [m[K‘[01m[KpSVaz_pVaz[m[K’ was not declared in this scope
+[1.194s]   120 |             << "pSVaz_pVaz: " << [01;31m[KpSVaz_pVaz[m[K << " "
+[1.194s]       |                                  [01;31m[K^~~~~~~~~~[m[K
+[1.200s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:121:30:[m[K [01;31m[Kerror: [m[K‘[01m[KpOcupS[m[K’ was not declared in this scope; did you mean ‘[01m[KpOcup[m[K’?
+[1.200s]   121 |             << "pOcupS: " << [01;31m[KpOcupS[m[K << " "
+[1.200s]       |                              [01;31m[K^~~~~~[m[K
+[1.200s]       |                              [32m[KpOcup[m[K
+[1.209s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:125:12:[m[K [01;31m[Kerror: [m[K‘[01m[KpOcupS[m[K’ was not declared in this scope; did you mean ‘[01m[KpOcup[m[K’?
+[1.209s]   125 |     return [01;31m[KpOcupS[m[K;
+[1.209s]       |            [01;31m[K^~~~~~[m[K
+[1.209s]       |            [32m[KpOcup[m[K
+[1.213s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mappingThreadFunction[m[K(void*)[m[K’:
+[1.214s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:164:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[1.214s]   164 | void* mappingThreadFunction([01;35m[Kvoid* arg[m[K) {
+[1.214s]       |                             [01;35m[K~~~~~~^~~[m[K
+[1.389s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:146: CMakeFiles/navigation.dir/src/Mapping.cpp.o] Erro 1
+[1.389s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[1.390s] gmake: *** [Makefile:146: all] Erro 2
+[1.393s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2

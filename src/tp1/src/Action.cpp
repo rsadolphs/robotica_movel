@@ -1,6 +1,7 @@
 #include "Action.h"
 #include "Utils.h"
 #include "graphics.hpp"
+#include "Mapping.hpp"
 
 #include <vector>
 #include <iostream>
@@ -8,6 +9,16 @@
 #include <cmath>
 #include <tuple>
 #include <array>
+
+Position roboPosicao = {0.0f, 0.0f, 0.0f}; 
+Position pontoParedeE = {0.0f, 0.0f}; 
+Position pontoParedeD = {0.0f, 0.0f}; 
+MovingDirection side;
+
+int firstMinDistPos = 0;
+bool firstInfo = false;
+std::vector<Position> positionArray;
+std::vector<float> sonares;
 
 const std::vector<double> angles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
 
@@ -105,9 +116,6 @@ void Action::avoidObstacles(std::vector<float> lasers, std::vector<float> sonars
 
     auto [minPos, minDist] = findMinPosition(sonars);  // retorna o sensor com menor distancia e o valor.
 
-    // Position roboPosicao = {pose[0], pose[1], pose[2]};
-    // positionArray.push_back(roboPosicao);
-
     if (minPos>=0 && minPos <=7 && minDist <= 1){
         if (minPos <= 3){
             linVel= 0.0; angVel=-1.0; // rotação em sentido horário
@@ -198,16 +206,6 @@ bool estaTrancado(const std::vector<Position>& posicoes, int ultimos = 10) {
     return true;
 }
 
-Position roboPosicao = {0.0f, 0.0f, 0.0f}; 
-Position pontoParedeE = {0.0f, 0.0f}; 
-Position pontoParedeD = {0.0f, 0.0f}; 
-MovingDirection side;
-
-int firstMinDistPos = 0;
-bool firstInfo = false;
-std::vector<Position> positionArray;
-std::vector<float> sonares;
-
 void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
 {
     float minDistance = 0.0f;
@@ -217,17 +215,6 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
     sonares = sonars;
 
     positionArray.push_back(roboPosicao);
-
-    Position paredeEsquerda = detectarParede(pose, sonars[0], true);
-    Position paredeDireita = detectarParede(pose, sonars[7], false);
-    
-    if(sonars[0]<5.0f){
-        pontoParedeE = paredeEsquerda;
-    }
-
-    if(sonars[7]<5.0f){
-        pontoParedeD = paredeDireita;
-    }
 
     if (!firstInfo){
         firstMinDistPos = minPos;
@@ -282,8 +269,12 @@ void Action::testMode(std::vector<float> lasers, std::vector<float> sonars)
 {
 }
 
-void Action::manualRobotMotion(MovingDirection direction)
+void Action::manualRobotMotion(MovingDirection direction, std::vector<float> sonars, std::vector<float> pose)
 {
+    roboPosicao = {pose[0], pose[1], pose[2]};
+    sonares = sonars;
+    positionArray.push_back(roboPosicao);
+
     if(direction == FRONT){
         linVel= 0.5; angVel= 0.0;
     }else if(direction == BACK){
@@ -294,6 +285,14 @@ void Action::manualRobotMotion(MovingDirection direction)
         linVel= 0.0; angVel=-0.5;
     }else if(direction == STOP){
         linVel= 0.0; angVel= 0.0;
+    }
+
+    float minDistance = 0.0f;
+    int minDistPos = 0;
+    auto [minPos, minDist] = findMinPosition(sonars);
+    
+    if (sonars[3] <= 1.1 || sonars[4] <= 1.1){
+        linVel= 0.0; 
     }
 }
 

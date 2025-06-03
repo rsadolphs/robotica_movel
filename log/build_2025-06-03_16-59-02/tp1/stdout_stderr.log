@@ -1,0 +1,82 @@
+[ 14%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Mapping.cpp.o[0m
+[ 28%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o[0m
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:14:36:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+   14 | Position pontoParedeE = {0.0f, 0.0f[01;35m[K}[m[K;
+      |                                    [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:15:36:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+   15 | Position pontoParedeD = {0.0f, 0.0f[01;35m[K}[m[K;
+      |                                    [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kstd::vector<std::vector<int> >[01;32m[K senseWalls[m[K(const std::vector<float>&)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:30:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   30 |     for (int i = 0; [01;35m[Ki < sonars.size()[m[K; ++i) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:52:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   52 |     for (int i = 0; [01;35m[Ki < capturedPoints.size()[m[K; ++i) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:57:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   57 |         if ([01;35m[Ki + 2 == capturedPoints.size()[m[K){
+      |             [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:61:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   61 |             if ([01;35m[Ki + 1 == capturedPoints.size()[m[K){
+      |                 [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KavoidObstacles[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:114:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistance[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  114 |     float [01;35m[KminDistance[m[K = 0.0f;
+      |           [01;35m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:115:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistPos[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  115 |     int [01;35m[KminDistPos[m[K = 0;
+      |         [01;35m[K^~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:112:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  112 | void Action::avoidObstacles([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KkeepAsFarthestAsPossibleFromWalls[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:134:67:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  134 | void Action::keepAsFarthestAsPossibleFromWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+      |                                                [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[KPosition[01;32m[K detectarParede[m[K(const std::vector<float>&, float, bool)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:193:45:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+  193 |     Position pontoParede = {paredeX, paredeY[01;35m[K}[m[K;
+      |                                             [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kbool[01;32m[K estaTrancado[m[K(const std::vector<Position>&, int)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:198:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<Position>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  198 |     if ([01;35m[Kposicoes.size() < ultimos[m[K) return false;
+      |         [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KfollowTheWalls[m[K(std::vector<float>, std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:230:14:[m[K [01;35m[Kwarning: [m[Ksuggest parentheses around assignment used as truth value [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wparentheses-Wparentheses]8;;[m[K]
+  230 |     if ([01;35m[Kside = LEFT[m[K){
+      |         [01;35m[K~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:211:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistance[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  211 |     float [01;35m[KminDistance[m[K = 0.0f;
+      |           [01;35m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:212:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KminDistPos[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  212 |     int [01;35m[KminDistPos[m[K = 0;
+      |         [01;35m[K^~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:209:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  209 | void Action::followTheWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars, std::vector<float> pose)
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KtestMode[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:268:42:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  268 | void Action::testMode([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+      |                       [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:268:69:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksonars[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  268 | void Action::testMode(std::vector<float> lasers, [01;35m[Kstd::vector<float> sonars[m[K)
+      |                                                  [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K At global scope:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:272:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kvoid Action::[01;32m[KmanualRobotMotion[m[K(MovingDirection, std::vector<float>, std::vector<float>)[m[K’
+  272 | void [01;31m[KAction[m[K::manualRobotMotion(MovingDirection direction, std::vector<float> sonars, std::vector<float> pose)
+      |      [01;31m[K^~~~~~[m[K
+In file included from [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:1[m[K:
+[01m[K/home/richard/ros2_ws/src/tp1/include/Action.h:20:10:[m[K [01;36m[Knote: [m[Kcandidate is: ‘[01m[Kvoid Action::[01;32m[KmanualRobotMotion[m[K(MovingDirection)[m[K’
+   20 |     void [01;36m[KmanualRobotMotion[m[K(MovingDirection direction);
+      |          [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/include/Action.h:15:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass Action[m[K’ defined here
+   15 | class [01;36m[KAction[m[K
+      |       [01;36m[K^~~~~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:90: CMakeFiles/navigation.dir/src/Action.cpp.o] Erro 1
+gmake[2]: ** Esperando que outros processos terminem.
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mappingThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:166:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  166 | void* mappingThreadFunction([01;35m[Kvoid* arg[m[K) {
+      |                             [01;35m[K~~~~~~^~~[m[K
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

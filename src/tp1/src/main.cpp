@@ -10,6 +10,7 @@
 #include "Perception.h"
 #include "Utils.h"
 #include "graphics.hpp"
+#include "Mapping.hpp"
 
 using std::placeholders::_1;
 using namespace std::chrono_literals;
@@ -50,7 +51,7 @@ class NavigationNode : public rclcpp::Node
       // Compute next action
       if (mc.mode == MANUAL)
       {
-        action_.manualRobotMotion(mc.direction);
+        action_.manualRobotMotion(mc.direction, sonars, pose);
       }
       else if (mc.mode == WANDER)
       {
@@ -114,6 +115,7 @@ void *mainThreadFunction(void *arg)
 }
 
 void* graphicsThreadFunction();
+void* mappingThreadFunction();
 
 int main(int argc, char **argv)
 {
@@ -121,16 +123,18 @@ int main(int argc, char **argv)
 
   rclcpp::init(argc, argv);
 
-  pthread_t mainThread, keyboardThread, graphicsThread;
+  pthread_t mainThread, keyboardThread, graphicsThread, mappingThread;
 
   pthread_create(&(mainThread), NULL, mainThreadFunction, NULL);
   pthread_create(&(keyboardThread), NULL, keyboardThreadFunction, NULL);
   pthread_create(&(graphicsThread), NULL, graphicsThreadFunction, NULL);
+  pthread_create(&(mappingThread), NULL, mappingThreadFunction, NULL);
 
 
   pthread_join(mainThread, 0);
   pthread_join(keyboardThread, 0);
   pthread_join(graphicsThread, 0);
+  pthread_join(mappingThread, 0);
 
   rclcpp::shutdown();
 

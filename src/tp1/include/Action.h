@@ -17,7 +17,7 @@ class Action
 public:
     Action();
     
-    void manualRobotMotion(MovingDirection direction);
+    void manualRobotMotion(MovingDirection direction, std::vector<float> sonars, std::vector<float> pose);
     void avoidObstacles(std::vector<float> lasers, std::vector<float> sonars);
     void keepAsFarthestAsPossibleFromWalls(std::vector<float> lasers, std::vector<float> sonars);
     void followTheWalls(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose);
