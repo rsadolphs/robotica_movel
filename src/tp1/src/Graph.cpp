@@ -13,17 +13,14 @@ extern std::vector<float> sonares;
 const std::vector<double> sensorAngles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
 
 // Histórico de posições
-std::vector<Position> caminho;
+extern std::vector<Position> caminho;
 
 // Cria Grade e Matrizes
-GridInfo grid = {-1.0f, 1.0f, 0.004f};
-int size = (grid.fim - grid.inicio) / grid.passo;  
-std::vector<std::vector<float>> matrizMundo(size, std::vector<float>(size, 0.5f));
-std::vector<std::vector<int>> matrizPath(size, std::vector<int>(size, 0));
+extern GridInfo grid;
+extern int size;  
+extern std::vector<std::vector<float>> matrizMundo;
+extern std::vector<std::vector<int>> matrizPath;
 
-float round2(float valor) {
-    return std::round(valor * 100.0f) / 100.0f;
-}
 
 void desenhaGrade(float inicio, float fim, float passo) {
     glColor3f(0.85f, 0.85f, 0.85f); // cinza claro
@@ -45,29 +42,9 @@ void desenhaGrade(float inicio, float fim, float passo) {
     glEnd();
 }
 
-void salvaMatriz(const std::vector<std::vector<float>>& matriz, const std::string& nomeArquivo) {
-    std::ofstream arquivo(nomeArquivo);
-
-    if (!arquivo.is_open()) {
-        std::cerr << "Erro ao abrir o arquivo " << nomeArquivo << " para escrita." << std::endl;
-        return;
-    }
-
-    for (const auto& linha : matriz) {
-        for (const auto& valor : linha) {
-            arquivo << valor << " ";
-        }
-        arquivo << "\n";
-    }
-
-    arquivo.close();
-    std::cout << "Matriz salva com sucesso em " << nomeArquivo << std::endl;
-}
-
-void pintaCelulas(const std::vector<std::vector<float>>& matriz, float inicio, float passo, std::tuple<float, float, float> cor) {
+void pintaCelulas(const std::vector<std::vector<float>>& matriz, float inicio, float passo) {
     int linhas = matriz.size();
     int colunas = matriz[0].size();
-    auto [r, g, b] = cor; 
 
     for (int i = 0; i < linhas; ++i) {
         for (int j = 0; j < colunas; ++j) {
@@ -90,163 +67,6 @@ void pintaCelulas(const std::vector<std::vector<float>>& matriz, float inicio, f
     }
 }
 
-MatrixPosition findCell(float x, float y, float inicio, float passo) {
-    int coluna = static_cast<int>((x - inicio) / passo);
-    int linha  = static_cast<int>((y - inicio) / passo);
-
-    return {linha, coluna};
-}
-
-CellCenter centroDaCelula(const MatrixPosition& pos, float inicio, float passo) {
-    float x = inicio + pos.coluna * passo + passo / 2.0f;
-    float y = inicio + pos.linha  * passo + passo / 2.0f;
-    return {x, y};
-}
-
-CellRelativeInfo calculaDistanciaEAngulo(
-    const CellCenter& centroRobo,
-    const CellCenter& centroPonto,
-    float yawRobo) 
-{
-    float dx = centroPonto.x - centroRobo.x;
-    float dy = centroPonto.y - centroRobo.y;
-
-    float distancia = std::sqrt(dx * dx + dy * dy);
-    float anguloAbsoluto = std::atan2(dy, dx);
-
-    // Normaliza para [0, 2PI)
-    if(anguloAbsoluto < 0){
-        anguloAbsoluto += 2 * M_PI;
-    }
-
-    float yawRad = yawRobo;
-    if (yawRad < 0) yawRad += 2 * M_PI;
-
-    float anguloRelativo = anguloAbsoluto - yawRad;
-
-    // Normaliza para [-PI, PI]
-    if (anguloRelativo > M_PI) anguloRelativo -= 2 * M_PI;
-    if (anguloRelativo < -M_PI) anguloRelativo += 2 * M_PI;
-
-    // Converte para graus
-    float anguloRelativoGraus = anguloRelativo * 180.0f / M_PI;
-
-    return {distancia, anguloRelativoGraus};
-}
-
-bool posicaoValida(const MatrixPosition& pos, int linhas, int colunas) {
-    return (pos.linha >= 0 && pos.linha < linhas &&
-            pos.coluna >= 0 && pos.coluna < colunas);
-}
-
-float bayes(float R, float r, float s, float beta, float alpha, float max, float pOcup) {
-
-    float rangeDetect = 0.01f;
-
-    if ((r >= s - rangeDetect) && ( r <= s + rangeDetect)){
-        float pSOcup = 0.5f * ( (R-r)/R + (beta-std::abs(alpha))/beta ) * max;
-        float pSVaz = 1.0f - pSOcup;
-        float pSOcup_pOcup = pSOcup * pOcup;
-        float pSVaz_pVaz = pSVaz * ( 1 - pOcup );
-
-        float pOcupS = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
-        //std::cout << "pOcupS" << std::endl;
-
-        // Debug 
-        if (false){
-            std::cout 
-                << "pSOcup: " << pSOcup << " "
-                << "pSVaz: " << pSVaz << " "
-                << "pOcup: " << pOcup << " "
-                << "pSOcup_pOcup: " << pSOcup_pOcup << " "
-                << "pSVaz_pVaz: " << pSVaz_pVaz << " "
-                << "pOcupS: " << pOcupS << " "
-            << std::endl;
-        }
-
-        return pOcupS;
-    }
-    else{
-        float pVaz = 1 - pOcup;
-        float pSVaz = 0.5f * ( (R-r)/R + (beta-std::abs(alpha))/beta ) * max;
-        float pSOcup = 1.0f - pSVaz;
-        float pSVaz_pVaz = pSVaz * pVaz;
-        float pSOcup_pOcup = pSOcup * pOcup;
-
-        //float pVazS = (pSVaz_pVaz / (pSVaz_pVaz + pSOcup_pOcup));
-        //std::cout << "pVazS" << std::endl;
-        //return 1 - pVazS;
-        float pOcupS = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
-
-        // Debug 
-        if (false){
-            std::cout 
-                << "pSOcup: " << pSOcup << " "
-                << "pSVaz: " << pSVaz << " "
-                << "pOcup: " << pOcup << " "
-                << "pSOcup_pOcup: " << pSOcup_pOcup << " "
-                << "pSVaz_pVaz: " << pSVaz_pVaz << " "
-                << "pOcupS: " << pOcupS << " "
-            << std::endl;
-        }
-
-        return pOcupS;
-    }
-
-}
-
-void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float sensorAngle) {
-    int linhas = matriz.size();
-    int colunas = matriz[0].size();
-
-    int cont = 0;
-    for (int i = 0; i < linhas; ++i) {
-        for (int j = 0; j < colunas; ++j) {
-            
-            MatrixPosition posAtual = {i, j};
-            CellCenter centroAtual = centroDaCelula(posAtual, grid.inicio, grid.passo);
-
-            // Calcula ângulo relativo e distância entre célula e centro do robô
-            CellRelativeInfo relations = calculaDistanciaEAngulo(
-                robot.cellCenter, 
-                centroAtual, 
-                robot.pos.theta - sensorAngle // yaw do robô + ângulo do sensor
-            );
-
-            float r = relations.distancia;
-            float alpha = relations.anguloRelativo;
-            float beta = robot.beta;
-            float R = 2.0f; // alcance máximo do sensor que considero válido
-
-            // Está no cone do sensor?
-            if (robot.s <= R && r <= robot.s && alpha >= -beta && alpha <= beta) {
-                float pOcup_atual = matriz[i][j];
-                float pOcup = bayes(R, r, robot.s, beta, alpha, 0.95f, pOcup_atual);
-                matriz[i][j] = pOcup;
-                cont++;
-
-                // Debug 
-                if (false){
-                    std::cout 
-                        << "Celula [" << i << "," << j << "] "
-                        << "Robô [" << robot.gridPos.linha << "," << robot.gridPos.coluna << "] "
-                        << "Dist: " << r << " "
-                        << "s: " << robot.s << " "
-                        << "Alpha: " << alpha << " "
-                        //<< "Yaw: " << (robot.pos.theta * 180 / M_PI) << " "
-                        << "pOcup: " << pOcup << " "
-                        << "pOcup_ant: " << pOcup_atual 
-                    << std::endl;
-                }
-            }
-        }
-    }
-
-    //salvaMatriz(matriz, "matriz.txt");
-}
-
-
-
 void* graphicsThreadFunction(void* arg) {
     if (!glfwInit()) {
         return NULL;
@@ -256,7 +76,7 @@ void* graphicsThreadFunction(void* arg) {
     int height = 600;
     float scaleFactor = 0.08f;
 
-    GLFWwindow* window = glfwCreateWindow(width, height, "Caminho do Robo", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(width, height, "Mapping 1.0", NULL, NULL);
     if (!window) {
         glfwTerminate();
         return NULL;
@@ -266,92 +86,54 @@ void* graphicsThreadFunction(void* arg) {
     glClearColor(1, 1, 1, 1); // fundo branco
 
     while (!glfwWindowShouldClose(window)) {
-        // Atualiza o caminho
+        // Atualiza o caminho do robo para desenho
         Position posRobo = {roboPosicao.x * scaleFactor - 0.8, 
-                            roboPosicao.y * scaleFactor - 0.7,
-                            roboPosicao.theta
+                             roboPosicao.y * scaleFactor - 0.7,
+                             roboPosicao.theta
         };
-        caminho.push_back(posRobo);  // ATENÇÃO: precisa garantir que acesso à roboPosicao é seguro!
+        caminho.push_back(posRobo);
 
-        // Renderizar
+        // Renderização
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // Adiciona pontos nas matrizes parede e path
-        MatrixPosition matPosRobo = findCell(posRobo.x, posRobo.y, grid.inicio, grid.passo);
-
-        // mapeamento com bayes
-        int linhas = matrizMundo.size();
-        int colunas = matrizMundo[0].size();
-        std::vector<int> sensorIndices = {0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14}; //{14, 0, 1, 7};
-
-        if (posicaoValida(matPosRobo, linhas, colunas) && !sonares.empty()) {
-            CellCenter centroCelRobo = centroDaCelula(matPosRobo, grid.inicio, grid.passo);
-            Robot robotInfo = {matPosRobo, posRobo, centroCelRobo, 0.0f}; // s será atualizado abaixo
-
-            for (int idx : sensorIndices) {
-                if(sonares[idx] <= 2.0f){
-                    float sensorAngle = sensorAngles[idx] * M_PI / 180.0f;
-                    robotInfo.s = sonares[idx] * scaleFactor;
-                    atualizaMatriz(matrizMundo, robotInfo, sensorAngle);
-                }
-            }  
-            
-        }
-        // fim mapeamento com bayes
-
-        // Desenha a grade
         desenhaGrade(grid.inicio, grid.fim, grid.passo);
-
-        // Pinta células
-        pintaCelulas(matrizMundo, grid.inicio, grid.passo, std::make_tuple(0.3f, 0.3f, 0.3f));
-        //pintaCelulas(matrizPath, grid.inicio, grid.passo, std::make_tuple(1.0f, 0.0f, 0.0f));
-
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        glOrtho(-1, 1, -1, 1, -1, 1);
-
-        glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
+        pintaCelulas(matrizMundo, grid.inicio, grid.passo);
 
         // Desenha caminho
-        glColor3f(1.0f, 0.0f, 0.0f); // vermelho
+        glColor3f(1.0f, 0.0f, 0.0f);
         glBegin(GL_LINE_STRIP);
         for (auto& pos : caminho) {
             glVertex2f(pos.x, pos.y);
         }
         glEnd();
 
-        float xFinal = 0.0f;
-        float yFinal = 0.0f;
-
-        // desenhar sensores
-        float sensorLength = 0.0f;
+        // Desenha sensores
         if (!sonares.empty()) {
             glLineWidth(1.5f);
-                for (int i = 0; i <= 15; i++) {
-                    glBegin(GL_LINES);
-                    glColor3f(0.9f, 0.7f, 0.1f); // laranja escuro
-                        if(i==0 || i==7 || i==8|| i==15){
-                            glColor3f(0.9f, 0.1f, 0.9f); // magenta
-                        }
-                        sensorLength = sonares[i] * scaleFactor;
-                        xFinal = posRobo.x + cos(posRobo.theta-sensorAngles[i]*M_PI/180) * sensorLength;
-                        yFinal = posRobo.y + sin(posRobo.theta-sensorAngles[i]*M_PI/180) * sensorLength;
-                        glVertex2f(posRobo.x, posRobo.y);
-                        glVertex2f(xFinal, yFinal);
-                    glEnd();
-                }
+            for (int i = 0; i <= 15; i++) {
+                float sensorLength = sonares[i] * scaleFactor;
+                float xFinal = posRobo.x + cos(posRobo.theta - sensorAngles[i] * M_PI / 180) * sensorLength;
+                float yFinal = posRobo.y + sin(posRobo.theta - sensorAngles[i] * M_PI / 180) * sensorLength;
+
+                glBegin(GL_LINES);
+                if (i == 0 || i == 7 || i == 8 || i == 15)
+                    glColor3f(0.9f, 0.1f, 0.9f);
+                else
+                    glColor3f(0.9f, 0.7f, 0.1f);
+
+                glVertex2f(posRobo.x, posRobo.y);
+                glVertex2f(xFinal, yFinal);
+                glEnd();
+            }
         }
 
-
-        // Desenha o robo
-        glColor3f(0.0f, 0.0f, 0.8f); // azul
-
-        float tamanho = 0.02f;  // raio do círculo
-        int numSegmentos = 30;  // mais segmentos = círculo mais suave
+        // Desenha o robo (círculo)
+        glColor3f(0.0f, 0.0f, 0.8f);
+        float tamanho = 0.02f;
+        int numSegmentos = 30;
 
         glBegin(GL_TRIANGLE_FAN);
-            glVertex2f(posRobo.x, posRobo.y); // centro do círculo
+            glVertex2f(posRobo.x, posRobo.y);
             for (int i = 0; i <= numSegmentos; i++) {
                 float angulo = 2.0f * M_PI * i / numSegmentos;
                 float x = posRobo.x + cos(angulo) * tamanho;
@@ -360,18 +142,17 @@ void* graphicsThreadFunction(void* arg) {
             }
         glEnd();
 
-        // Desenhar a linha de direção
-        float comprimentoLinha = 0.1f; // comprimento da linha indicadora
-        xFinal = posRobo.x + cos(posRobo.theta) * comprimentoLinha;
-        yFinal = posRobo.y + sin(posRobo.theta) * comprimentoLinha;
+        // Linha de direção
+        float comprimentoLinha = 0.1f;
+        float xFinal = posRobo.x + cos(posRobo.theta) * comprimentoLinha;
+        float yFinal = posRobo.y + sin(posRobo.theta) * comprimentoLinha;
 
-        glColor3f(0.1f, 0.6f, 0.2f); // verde escuro
+        glColor3f(0.1f, 0.6f, 0.2f);
         glLineWidth(3.0f);
         glBegin(GL_LINES);
-            glVertex2f(posRobo.x, posRobo.y);      // início no centro do robô
-            glVertex2f(xFinal, yFinal);            // fim na direção de theta
+            glVertex2f(posRobo.x, posRobo.y);
+            glVertex2f(xFinal, yFinal);
         glEnd();
-
 
         glfwSwapBuffers(window);
         glfwPollEvents();

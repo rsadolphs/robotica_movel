@@ -4,6 +4,7 @@
 #include <cmath>
 #include <iostream>
 #include <fstream>
+#include <unistd.h>
 
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
@@ -92,7 +93,7 @@ float bayes(float R, float r, float s, float beta, float alpha, float max, float
 
     float rangeDetect = 0.01f;
 
-    if ((r >= s - rangeDetect) && ( r <= s + rangeDetect)){
+    if ((r >= s - rangeDetect) && (r <= s + rangeDetect) && (s <= R)){
         float pSOcup = 0.5f * ( (R-r)/R + (beta-std::abs(alpha))/beta ) * max;
         float pSVaz = 1.0f - pSOcup;
         float pSOcup_pOcup = pSOcup * pOcup;
@@ -148,7 +149,6 @@ void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float 
     int linhas = matriz.size();
     int colunas = matriz[0].size();
 
-    int cont = 0;
     for (int i = 0; i < linhas; ++i) {
         for (int j = 0; j < colunas; ++j) {
             
@@ -172,24 +172,41 @@ void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float 
                 float pOcup_atual = matriz[i][j];
                 float pOcup = bayes(R, r, robot.s, beta, alpha, 0.95f, pOcup_atual);
                 matriz[i][j] = pOcup;
-                cont++;
-
-                // Debug 
-                if (false){
-                    std::cout 
-                        << "Celula [" << i << "," << j << "] "
-                        << "Robô [" << robot.gridPos.linha << "," << robot.gridPos.coluna << "] "
-                        << "Dist: " << r << " "
-                        << "s: " << robot.s << " "
-                        << "Alpha: " << alpha << " "
-                        //<< "Yaw: " << (robot.pos.theta * 180 / M_PI) << " "
-                        << "pOcup: " << pOcup << " "
-                        << "pOcup_ant: " << pOcup_atual 
-                    << std::endl;
-                }
             }
         }
     }
 
     //salvaMatriz(matriz, "matriz.txt");
 } // Método de atualização das células da matriz para ocupação
+
+void* mappingThreadFunction(void* arg) {
+    float scaleFactor = 0.08f;
+    std::vector<int> sensorIndices = {0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14};
+
+    while (true) {
+        MatrixPosition matPosRobo = findCell(roboPosicao.x * scaleFactor - 0.8, 
+                                              roboPosicao.y * scaleFactor - 0.7, 
+                                              grid.inicio, grid.passo);
+
+        int linhas = matrizMundo.size();
+        int colunas = matrizMundo[0].size();
+
+        if (posicaoValida(matPosRobo, linhas, colunas) && !sonares.empty()) {
+            CellCenter centroCelRobo = centroDaCelula(matPosRobo, grid.inicio, grid.passo);
+            Robot robotInfo = {matPosRobo, roboPosicao, centroCelRobo, 0.0f};
+
+            for (int idx : sensorIndices) {
+                //if (sonares[idx] <= 2.0f) {
+                    float sensorAngle = sensorAngles[idx] * M_PI / 180.0f;
+                    robotInfo.s = sonares[idx] * scaleFactor;
+                    atualizaMatriz(matrizMundo, robotInfo, sensorAngle);
+               // }
+            }
+        }
+
+        // Pequena pausa para não sobrecarregar a CPU
+        usleep(100000); // 100ms
+    }
+
+    return NULL;
+}

@@ -10,6 +10,16 @@
 #include <tuple>
 #include <array>
 
+Position roboPosicao = {0.0f, 0.0f, 0.0f}; 
+Position pontoParedeE = {0.0f, 0.0f}; 
+Position pontoParedeD = {0.0f, 0.0f}; 
+MovingDirection side;
+
+int firstMinDistPos = 0;
+bool firstInfo = false;
+std::vector<Position> positionArray;
+std::vector<float> sonares;
+
 const std::vector<double> angles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
 
 std::vector<std::vector<int>> senseWalls(const std::vector<float>& sonars) { 
@@ -195,16 +205,6 @@ bool estaTrancado(const std::vector<Position>& posicoes, int ultimos = 10) {
     }
     return true;
 }
-
-Position roboPosicao = {0.0f, 0.0f, 0.0f}; 
-Position pontoParedeE = {0.0f, 0.0f}; 
-Position pontoParedeD = {0.0f, 0.0f}; 
-MovingDirection side;
-
-int firstMinDistPos = 0;
-bool firstInfo = false;
-std::vector<Position> positionArray;
-std::vector<float> sonares;
 
 void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
 {

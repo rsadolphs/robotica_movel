@@ -36,7 +36,7 @@ struct Robot {
     Position pos;
     CellCenter cellCenter;
     double s;
-    float beta = 15.0f; 
+    float beta = 5.0f; 
 };
 
 struct CellRelativeInfo {
@@ -50,25 +50,19 @@ struct CellInfo {
     CellRelativeInfo relations;
 };
 
+float round2(float valor);
+float bayes(float R, float r, float s, float beta, float alpha, float max, float pOcup);
 
-// Adicionar protótipos dos métodos
-class Mapping{
-public:
-    Mapping();
+void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float sensorAngle);
+void salvaMatriz(const std::vector<std::vector<float>>& matriz, const std::string& nomeArquivo);
 
-    float round2(float valor);
-    float bayes(float R, float r, float s, float beta, float alpha, float max, float pOcup);
+bool posicaoValida(const MatrixPosition& pos, int linhas, int colunas);
 
-    void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float sensorAngle);
-    void salvaMatriz(const std::vector<std::vector<float>>& matriz, const std::string& nomeArquivo);
+MatrixPosition findCell(float x, float y, float inicio, float passo);
 
-    bool posicaoValida(const MatrixPosition& pos, int linhas, int colunas);
+CellCenter centroDaCelula(const MatrixPosition& pos, float inicio, float passo);
 
-    MatrixPosition findCell(float x, float y, float inicio, float passo);
+CellRelativeInfo calculaDistanciaEAngulo(const CellCenter& centroRobo,const CellCenter& centroPonto,float yawRobo);
 
-    CellCenter centroDaCelula(const MatrixPosition& pos, float inicio, float passo);
 
-    CellRelativeInfo calculaDistanciaEAngulo(const CellCenter& centroRobo,const CellCenter& centroPonto,float yawRobo);
-    
-};
 #endif // MAPPING_HPP
