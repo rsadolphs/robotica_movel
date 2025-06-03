@@ -269,8 +269,12 @@ void Action::testMode(std::vector<float> lasers, std::vector<float> sonars)
 {
 }
 
-void Action::manualRobotMotion(MovingDirection direction)
+void Action::manualRobotMotion(MovingDirection direction, std::vector<float> sonars, std::vector<float> pose)
 {
+    roboPosicao = {pose[0], pose[1], pose[2]};
+    sonares = sonars;
+    positionArray.push_back(roboPosicao);
+
     if(direction == FRONT){
         linVel= 0.5; angVel= 0.0;
     }else if(direction == BACK){
@@ -281,6 +285,14 @@ void Action::manualRobotMotion(MovingDirection direction)
         linVel= 0.0; angVel=-0.5;
     }else if(direction == STOP){
         linVel= 0.0; angVel= 0.0;
+    }
+
+    float minDistance = 0.0f;
+    int minDistPos = 0;
+    auto [minPos, minDist] = findMinPosition(sonars);
+    
+    if (sonars[3] <= 1.1 || sonars[4] <= 1.1){
+        linVel= 0.0; 
     }
 }
 

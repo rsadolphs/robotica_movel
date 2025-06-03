@@ -6,6 +6,7 @@
 #include <cmath>
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
@@ -111,7 +112,7 @@ void* graphicsThreadFunction(void* arg) {
         if (!sonares.empty()) {
             glLineWidth(1.5f);
             for (int i = 0; i <= 15; i++) {
-                float sensorLength = sonares[i] * scaleFactor;
+                float sensorLength = std::min(sonares[i], 2.0f) * scaleFactor;
                 float xFinal = posRobo.x + cos(posRobo.theta - sensorAngles[i] * M_PI / 180) * sensorLength;
                 float yFinal = posRobo.y + sin(posRobo.theta - sensorAngles[i] * M_PI / 180) * sensorLength;
 

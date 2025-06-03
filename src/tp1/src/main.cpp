@@ -51,7 +51,7 @@ class NavigationNode : public rclcpp::Node
       // Compute next action
       if (mc.mode == MANUAL)
       {
-        action_.manualRobotMotion(mc.direction);
+        action_.manualRobotMotion(mc.direction, sonars, pose);
       }
       else if (mc.mode == WANDER)
       {

@@ -10,6 +10,7 @@
 extern Position roboPosicao;
 extern std::vector<float> sonares;
 const std::vector<double> sensorAngles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
+float scaleFactor = 0.08f;
 
 // Histórico de posições
 std::vector<Position> caminho;
@@ -92,29 +93,14 @@ bool posicaoValida(const MatrixPosition& pos, int linhas, int colunas) {
 float bayes(float R, float r, float s, float beta, float alpha, float max, float pOcup) {
 
     float rangeDetect = 0.01f;
+    float pOcupS = 0.5f;
 
     if ((r >= s - rangeDetect) && (r <= s + rangeDetect) && (s <= R)){
         float pSOcup = 0.5f * ( (R-r)/R + (beta-std::abs(alpha))/beta ) * max;
         float pSVaz = 1.0f - pSOcup;
         float pSOcup_pOcup = pSOcup * pOcup;
         float pSVaz_pVaz = pSVaz * ( 1 - pOcup );
-
-        float pOcupS = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
-        //std::cout << "pOcupS" << std::endl;
-
-        // Debug 
-        if (false){
-            std::cout 
-                << "pSOcup: " << pSOcup << " "
-                << "pSVaz: " << pSVaz << " "
-                << "pOcup: " << pOcup << " "
-                << "pSOcup_pOcup: " << pSOcup_pOcup << " "
-                << "pSVaz_pVaz: " << pSVaz_pVaz << " "
-                << "pOcupS: " << pOcupS << " "
-            << std::endl;
-        }
-
-        return pOcupS;
+        pOcupS = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
     }
     else{
         float pVaz = 1 - pOcup;
@@ -123,25 +109,22 @@ float bayes(float R, float r, float s, float beta, float alpha, float max, float
         float pSVaz_pVaz = pSVaz * pVaz;
         float pSOcup_pOcup = pSOcup * pOcup;
 
-        //float pVazS = (pSVaz_pVaz / (pSVaz_pVaz + pSOcup_pOcup));
-        //std::cout << "pVazS" << std::endl;
-        //return 1 - pVazS;
-        float pOcupS = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
-
-        // Debug 
-        if (false){
-            std::cout 
-                << "pSOcup: " << pSOcup << " "
-                << "pSVaz: " << pSVaz << " "
-                << "pOcup: " << pOcup << " "
-                << "pSOcup_pOcup: " << pSOcup_pOcup << " "
-                << "pSVaz_pVaz: " << pSVaz_pVaz << " "
-                << "pOcupS: " << pOcupS << " "
-            << std::endl;
-        }
-
-        return pOcupS;
+        pOcupS = (pSOcup_pOcup / (pSOcup_pOcup + pSVaz_pVaz));
     }
+
+    // Debug 
+    /*if (false){
+        std::cout 
+            << "pSOcup: " << pSOcup << " "
+            << "pSVaz: " << pSVaz << " "
+            << "pOcup: " << pOcup << " "
+            << "pSOcup_pOcup: " << pSOcup_pOcup << " "
+            << "pSVaz_pVaz: " << pSVaz_pVaz << " "
+            << "pOcupS: " << pOcupS << " "
+        << std::endl;
+    }*/
+
+    return pOcupS;
 
 } // Calculo da probabilidade de ocupação por bayes
 
@@ -162,15 +145,15 @@ void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float 
                 robot.pos.theta - sensorAngle // yaw do robô + ângulo do sensor
             );
 
-            float r = relations.distancia;
-            float alpha = relations.anguloRelativo;
+            float r = relations.distancia; // em relação ao mapa
+            float alpha = relations.anguloRelativo; // em relação ao mapa
             float beta = robot.beta;
             float R = 2.0f; // alcance máximo do sensor que considero válido
 
             // Está no cone do sensor?
-            if (robot.s <= R && r <= robot.s && alpha >= -beta && alpha <= beta) {
+            if (r <= R * scaleFactor && r <= robot.s && alpha >= -beta && alpha <= beta) {
                 float pOcup_atual = matriz[i][j];
-                float pOcup = bayes(R, r, robot.s, beta, alpha, 0.95f, pOcup_atual);
+                float pOcup = bayes(R, r, robot.s, beta, alpha, 0.98f, pOcup_atual);
                 matriz[i][j] = pOcup;
             }
         }
@@ -179,8 +162,9 @@ void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float 
     //salvaMatriz(matriz, "matriz.txt");
 } // Método de atualização das células da matriz para ocupação
 
+
 void* mappingThreadFunction(void* arg) {
-    float scaleFactor = 0.08f;
+
     std::vector<int> sensorIndices = {0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14};
 
     while (true) {
@@ -196,11 +180,9 @@ void* mappingThreadFunction(void* arg) {
             Robot robotInfo = {matPosRobo, roboPosicao, centroCelRobo, 0.0f};
 
             for (int idx : sensorIndices) {
-                //if (sonares[idx] <= 2.0f) {
-                    float sensorAngle = sensorAngles[idx] * M_PI / 180.0f;
-                    robotInfo.s = sonares[idx] * scaleFactor;
-                    atualizaMatriz(matrizMundo, robotInfo, sensorAngle);
-               // }
+                float sensorAngle = sensorAngles[idx] * M_PI / 180.0f;
+                robotInfo.s = sonares[idx] * scaleFactor;
+                atualizaMatriz(matrizMundo, robotInfo, sensorAngle); // Bayes
             }
         }
 

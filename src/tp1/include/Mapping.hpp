@@ -36,7 +36,7 @@ struct Robot {
     Position pos;
     CellCenter cellCenter;
     double s;
-    float beta = 5.0f; 
+    float beta = 10.0f; 
 };
 
 struct CellRelativeInfo {
