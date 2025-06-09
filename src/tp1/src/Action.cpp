@@ -10,9 +10,9 @@
 #include <tuple>
 #include <array>
 
+extern std::vector<std::vector<float>> matrizMundo;  // mapping.cpp
+
 Position roboPosicao = {0.0f, 0.0f, 0.0f}; 
-Position pontoParedeE = {0.0f, 0.0f}; 
-Position pontoParedeD = {0.0f, 0.0f}; 
 MovingDirection side;
 
 int firstMinDistPos = 0;
@@ -109,10 +109,12 @@ Action::Action()
     angVel = 0.0;
 }
 
-void Action::avoidObstacles(std::vector<float> lasers, std::vector<float> sonars)
+void Action::avoidObstacles(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
 {
-    float minDistance = 0.0f;
-    int minDistPos = 0;
+
+    roboPosicao = {pose[0], pose[1], pose[2]};
+    sonares = sonars;
+    positionArray.push_back(roboPosicao);
 
     auto [minPos, minDist] = findMinPosition(sonars);  // retorna o sensor com menor distancia e o valor.
 
@@ -208,8 +210,6 @@ bool estaTrancado(const std::vector<Position>& posicoes, int ultimos = 10) {
 
 void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
 {
-    float minDistance = 0.0f;
-    int minDistPos = 0;
     auto [minPos, minDist] = findMinPosition(sonars);
     roboPosicao = {pose[0], pose[1], pose[2]};
     sonares = sonars;
@@ -286,10 +286,6 @@ void Action::manualRobotMotion(MovingDirection direction, std::vector<float> son
     }else if(direction == STOP){
         linVel= 0.0; angVel= 0.0;
     }
-
-    float minDistance = 0.0f;
-    int minDistPos = 0;
-    auto [minPos, minDist] = findMinPosition(sonars);
     
     if (sonars[3] <= 1.1 || sonars[4] <= 1.1){
         linVel= 0.0; 
@@ -334,11 +330,11 @@ float Action::getAngularVelocity()
     return angVel;
 }
 
+bool salvouMapa = false;
+bool carregouMapa = false;
 MotionControl Action::handlePressedKey(char key)
 {
     MotionControl mc;
-    mc.mode=MANUAL;
-    mc.direction=STOP;
 
     if(key=='1'){
         mc.mode=MANUAL;
@@ -370,6 +366,20 @@ MotionControl Action::handlePressedKey(char key)
     }else if(key==' '){
         mc.mode=MANUAL;
         mc.direction = STOP;
+    }else if(key=='m' or key=='M'){  // Salva mapa 
+        if(!salvouMapa){
+            salvaMatriz(matrizMundo, "matriz.txt");
+            salvouMapa = true;
+        }else{
+            salvouMapa = false;
+        }
+    }else if(key=='l' or key=='L'){  // Carrega mapa 
+        if(!carregouMapa){
+            matrizMundo = loadMatrix("matriz.txt");
+            carregouMapa = true;
+        }else{
+            carregouMapa = false;
+        }
     }
     
     return mc;

@@ -1,0 +1,33 @@
+[ 14%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Mapping.cpp.o[0m
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mappingThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:261:13:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K;[m[K’ before ‘[01m[Kif[m[K’
+  261 |             [01;31m[Kif[m[K(mode=="BAYES"){
+      |             [01;31m[K^~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:267:14:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K}[m[K’ before ‘[01m[Kelse[m[K’
+  267 |             }[01;31m[Kelse[m[K{
+      |              [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:253:77:[m[K [01;36m[Knote: [m[Kto match this ‘[01m[K{[m[K’
+  253 |         if (posicaoValida(matPosRobo, linhas, colunas) && !sonares.empty()) [01;36m[K{[m[K
+      |                                                                             [01;36m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:256:19:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KrobotInfo[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  256 |             Robot [01;35m[KrobotInfo[m[K = {matPosRobo, roboPosicao, centroCelRobo, 0.0f};
+      |                   [01;35m[K^~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:258:18:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  258 |             auto [01;35m[Kmode[m[K = "BAYES"
+      |                  [01;35m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:270:21:[m[K [01;31m[Kerror: [m[K‘[01m[KrobotInfo[m[K’ was not declared in this scope
+  270 |                     [01;31m[KrobotInfo[m[K.s = std::min(sonares[idx], 2.0f) * scaleFactor;
+      |                     [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:241:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  241 | void* mappingThreadFunction([01;35m[Kvoid* arg[m[K) {
+      |                             [01;35m[K~~~~~~^~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K At global scope:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:281:5:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kreturn[m[K’
+  281 |     [01;31m[Kreturn[m[K NULL;
+      |     [01;31m[K^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:282:1:[m[K [01;31m[Kerror: [m[Kexpected declaration before ‘[01m[K}[m[K’ token
+  282 | [01;31m[K}[m[K
+      | [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:146: CMakeFiles/navigation.dir/src/Mapping.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

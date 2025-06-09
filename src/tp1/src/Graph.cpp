@@ -11,7 +11,10 @@
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
 extern std::vector<float> sonares;
+const std::vector<float> offset = {0.0, 0.0};
+const float scaleFactor = 0.03f;
 const std::vector<double> sensorAngles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
+
 
 // Histórico de posições
 extern std::vector<Position> caminho;
@@ -53,6 +56,9 @@ void pintaCelulas(const std::vector<std::vector<float>>& matriz, float inicio, f
             float y = inicio + i * passo;
 
             float matVal = matriz[i][j];
+            if(matVal >= 1){
+                matVal = matVal/15.0f;
+            }
             float cellColor = 1.0f * (1 - matVal);
 
             glColor3f(cellColor, cellColor, cellColor);
@@ -75,7 +81,6 @@ void* graphicsThreadFunction(void* arg) {
 
     int width = 600;
     int height = 600;
-    float scaleFactor = 0.08f;
 
     GLFWwindow* window = glfwCreateWindow(width, height, "Mapping 1.0", NULL, NULL);
     if (!window) {
@@ -88,8 +93,8 @@ void* graphicsThreadFunction(void* arg) {
 
     while (!glfwWindowShouldClose(window)) {
         // Atualiza o caminho do robo para desenho
-        Position posRobo = {roboPosicao.x * scaleFactor - 0.8, 
-                             roboPosicao.y * scaleFactor - 0.7,
+        Position posRobo = {roboPosicao.x * scaleFactor - offset[0], 
+                             roboPosicao.y * scaleFactor - offset[1],
                              roboPosicao.theta
         };
         caminho.push_back(posRobo);
@@ -110,7 +115,7 @@ void* graphicsThreadFunction(void* arg) {
 
         // Desenha sensores
         if (!sonares.empty()) {
-            glLineWidth(1.5f);
+            glLineWidth(1.0f);
             for (int i = 0; i <= 15; i++) {
                 float sensorLength = std::min(sonares[i], 2.0f) * scaleFactor;
                 float xFinal = posRobo.x + cos(posRobo.theta - sensorAngles[i] * M_PI / 180) * sensorLength;
@@ -130,7 +135,7 @@ void* graphicsThreadFunction(void* arg) {
 
         // Desenha o robo (círculo)
         glColor3f(0.0f, 0.0f, 0.8f);
-        float tamanho = 0.02f;
+        float tamanho = 0.01f;
         int numSegmentos = 30;
 
         glBegin(GL_TRIANGLE_FAN);
@@ -144,12 +149,12 @@ void* graphicsThreadFunction(void* arg) {
         glEnd();
 
         // Linha de direção
-        float comprimentoLinha = 0.1f;
+        float comprimentoLinha = 0.05f;
         float xFinal = posRobo.x + cos(posRobo.theta) * comprimentoLinha;
         float yFinal = posRobo.y + sin(posRobo.theta) * comprimentoLinha;
 
         glColor3f(0.1f, 0.6f, 0.2f);
-        glLineWidth(3.0f);
+        glLineWidth(1.0f);
         glBegin(GL_LINES);
             glVertex2f(posRobo.x, posRobo.y);
             glVertex2f(xFinal, yFinal);

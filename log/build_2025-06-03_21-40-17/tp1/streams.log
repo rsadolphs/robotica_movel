@@ -1,0 +1,9 @@
+[0.023s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.157s] [ 14%] [32m[1mLinking CXX executable navigation[0m
+[1.735s] /usr/bin/ld: CMakeFiles/navigation.dir/src/Mapping.cpp.o: na função "mappingThreadFunction(void*)":
+[1.735s] Mapping.cpp:(.text+0x123f): undefined reference to `atualizaMatrizHIMM(std::vector<std::vector<float, std::allocator<float> >, std::allocator<std::vector<float, std::allocator<float> > > >&, Robot, float)'
+[1.828s] collect2: error: ld returned 1 exit status
+[1.834s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:306: navigation] Erro 1
+[1.836s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[1.839s] gmake: *** [Makefile:146: all] Erro 2
+[1.840s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2

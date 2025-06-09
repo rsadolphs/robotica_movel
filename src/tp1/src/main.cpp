@@ -55,7 +55,7 @@ class NavigationNode : public rclcpp::Node
       }
       else if (mc.mode == WANDER)
       {
-        action_.avoidObstacles(lasers, sonars);
+        action_.avoidObstacles(lasers, sonars, pose);
       }
       else if (mc.mode == FARFROMWALLS)
       {
