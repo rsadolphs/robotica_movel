@@ -52,9 +52,21 @@ struct CellInfo {
 
 float round2(float valor);
 float bayes(float R, float r, float s, float beta, float alpha, float max, float pOcup);
+int himm();
 
-void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float sensorAngle);
+void atualizaMatrizHIMM(
+    std::vector<std::vector<int>>& matriz,
+    const Robot& robot,
+    float sensorAngle,
+    float maxRange = 2.0f,
+    int incremento = 3,
+    int decremento = 1,
+    int minValor = 0,
+    int maxValor = 15
+);
+void atualizaMatrizBayes(std::vector<std::vector<float>>& matriz, Robot robot, float sensorAngle);
 void salvaMatriz(const std::vector<std::vector<float>>& matriz, const std::string& nomeArquivo);
+std::vector<std::vector<float>> loadMatrix(const std::string& nomeArquivo);
 
 bool posicaoValida(const MatrixPosition& pos, int linhas, int colunas);
 

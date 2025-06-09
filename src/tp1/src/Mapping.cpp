@@ -5,12 +5,17 @@
 #include <iostream>
 #include <fstream>
 #include <unistd.h>
+#include <sstream>
+
 
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
 extern std::vector<float> sonares;
 const std::vector<double> sensorAngles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
-float scaleFactor = 0.08f;
+const std::vector<int> sensorIndices = {0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14};
+//std::vector<float> offset = {0.8, 0.7};
+const std::vector<float> offset = {0.0, 0.0};
+float scaleFactor = 0.03f;
 
 // Histórico de posições
 std::vector<Position> caminho;
@@ -18,7 +23,10 @@ std::vector<Position> caminho;
 // Cria Grade e Matrizes
 GridInfo grid = {-1.0f, 1.0f, 0.004f};
 int size = (grid.fim - grid.inicio) / grid.passo;  
-std::vector<std::vector<float>> matrizMundo(size, std::vector<float>(size, 0.5f));
+// Bayes
+// std::vector<std::vector<float>> matrizMundo(size, std::vector<float>(size, 0.5f));
+// HIMM
+std::vector<std::vector<float>> matrizMundo(size, std::vector<float>(size, 7.5f));
 std::vector<std::vector<int>> matrizPath(size, std::vector<int>(size, 0));
 
 
@@ -43,6 +51,35 @@ void salvaMatriz(const std::vector<std::vector<float>>& matriz, const std::strin
 
     arquivo.close();
     std::cout << "Matriz salva com sucesso em " << nomeArquivo << std::endl;
+}
+
+std::vector<std::vector<float>> loadMatrix(const std::string& nomeArquivo) {
+    std::ifstream arquivo(nomeArquivo);
+    std::vector<std::vector<float>> matriz;
+
+    if (!arquivo.is_open()) {
+        std::cerr << "Erro ao abrir o arquivo " << nomeArquivo << " para leitura." << std::endl;
+        return matriz;
+    }
+
+    std::string linha;
+    while (std::getline(arquivo, linha)) {
+        std::istringstream stream(linha);
+        std::vector<float> linhaMatriz;
+        float valor;
+
+        while (stream >> valor) {
+            linhaMatriz.push_back(valor);
+        }
+
+        if (!linhaMatriz.empty()) {
+            matriz.push_back(linhaMatriz);
+        }
+    }
+
+    arquivo.close();
+    std::cout << "Matriz carregada com sucesso de " << nomeArquivo << std::endl;
+    return matriz;
 }
 
 MatrixPosition findCell(float x, float y, float inicio, float passo) {
@@ -128,7 +165,7 @@ float bayes(float R, float r, float s, float beta, float alpha, float max, float
 
 } // Calculo da probabilidade de ocupação por bayes
 
-void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float sensorAngle) {
+void atualizaMatrizBayes(std::vector<std::vector<float>>& matriz, Robot robot, float sensorAngle) {
     int linhas = matriz.size();
     int colunas = matriz[0].size();
 
@@ -148,10 +185,11 @@ void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float 
             float r = relations.distancia; // em relação ao mapa
             float alpha = relations.anguloRelativo; // em relação ao mapa
             float beta = robot.beta;
+            float delta = 0.01f;
             float R = 2.0f; // alcance máximo do sensor que considero válido
 
             // Está no cone do sensor?
-            if (r <= R * scaleFactor && r <= robot.s && alpha >= -beta && alpha <= beta) {
+            if (r <= R * scaleFactor && (r <= robot.s + delta) && alpha >= -beta && alpha <= beta) {
                 float pOcup_atual = matriz[i][j];
                 float pOcup = bayes(R, r, robot.s, beta, alpha, 0.98f, pOcup_atual);
                 matriz[i][j] = pOcup;
@@ -162,32 +200,147 @@ void atualizaMatriz(std::vector<std::vector<float>>& matriz, Robot robot, float 
     //salvaMatriz(matriz, "matriz.txt");
 } // Método de atualização das células da matriz para ocupação
 
+std::vector<MatrixPosition> bresenham(MatrixPosition start, MatrixPosition end) {
+    std::vector<MatrixPosition> points;
 
-void* mappingThreadFunction(void* arg) {
+    int x0 = start.coluna;
+    int y0 = start.linha;
+    int x1 = end.coluna;
+    int y1 = end.linha;
 
-    std::vector<int> sensorIndices = {0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14};
+    int dx = abs(x1 - x0);
+    int dy = -abs(y1 - y0);
+    int sx = (x0 < x1) ? 1 : -1;
+    int sy = (y0 < y1) ? 1 : -1;
+    int err = dx + dy;
 
     while (true) {
-        MatrixPosition matPosRobo = findCell(roboPosicao.x * scaleFactor - 0.8, 
-                                              roboPosicao.y * scaleFactor - 0.7, 
-                                              grid.inicio, grid.passo);
+        points.push_back({y0, x0});
 
+        if (x0 == x1 && y0 == y1) break;
+
+        int e2 = 2 * err;
+        if (e2 >= dy) {
+            err += dy;
+            x0 += sx;
+        }
+        if (e2 <= dx) {
+            err += dx;
+            y0 += sy;
+        }
+    }
+
+    return points;
+}
+
+void atualizaMatrizHIMM(
+    std::vector<std::vector<float>>& matriz,
+    const Robot& robot,
+    float sensorAngle,
+    float maxRange = 2.0f,
+    float incremento = 3.0f,
+    float decremento = 1.0f,
+    float minValor = 0.0f,
+    float maxValor = 15.0f
+) {
+    // Calcula a posição final do feixe do sensor
+    float anguloGlobal = robot.pos.theta - sensorAngle;
+    bool noDetect = false;
+
+    float distanciaSensor = robot.s;
+    if (distanciaSensor > maxRange*scaleFactor) {
+        distanciaSensor = maxRange*scaleFactor;
+        noDetect = true;
+    }
+
+    float xFinal = robot.cellCenter.x + cos(anguloGlobal) * distanciaSensor;
+    float yFinal = robot.cellCenter.y + sin(anguloGlobal) * distanciaSensor;
+
+    // Converte posições reais em posições de célula
+    MatrixPosition celulaInicial = robot.gridPos;
+    MatrixPosition celulaFinal = findCell(xFinal, yFinal, grid.inicio, grid.passo);
+    if (!posicaoValida(celulaFinal, matriz.size(), matriz[0].size())) return;
+
+    // Algoritmo de Bresenham para traçar o feixe entre celulaInicial e celulaFinal
+    std::vector<MatrixPosition> caminho = bresenham(celulaInicial, celulaFinal);
+
+    // Marca as células atravessadas como livres
+    for (size_t i = 0; i + 1 < caminho.size(); ++i) { // exceto a última
+        float& cell = matriz[caminho[i].linha][caminho[i].coluna];
+        cell = std::max(minValor, cell - decremento);
+    }
+
+    // Marca a última célula (possível obstáculo) como ocupada
+    if (!caminho.empty()) {
+        MatrixPosition ocupada = caminho.back();
+        float& cellCentral = matriz[ocupada.linha][ocupada.coluna];
+
+        if (!noDetect) {
+            float soma = 0.0f;
+            float pesos[3][3] = {
+                {0.5f, 0.5f, 0.5f},
+                {0.5f, 1.0f, 0.5f},
+                {0.5f, 0.5f, 0.5f}
+            };
+
+            for (int i = -1; i <= 1; ++i) {
+                for (int j = -1; j <= 1; ++j) {
+                    int linhaVizinha = ocupada.linha + i;
+                    int colunaVizinha = ocupada.coluna + j;
+
+                    if (posicaoValida({linhaVizinha, colunaVizinha}, matriz.size(), matriz[0].size())) {
+                        float peso = pesos[i + 1][j + 1];
+
+                        if (i == 0 && j == 0) {
+                            soma += incremento * peso;  // centro usa o incremento
+                        } else {
+                            soma += matriz[linhaVizinha][colunaVizinha] * peso; // vizinhos usam valor atual
+                        }
+                    }
+                }
+            }
+
+            cellCentral = std::min(maxValor, soma);
+        } else {
+            cellCentral = std::max(minValor, cellCentral - decremento);
+        }
+    }
+}// Método de atualização das células da matriz para ocupação
+
+
+void* mappingThreadFunction(void* arg) {
+    while (true) {
+        MatrixPosition matPosRobo = findCell(roboPosicao.x * scaleFactor - offset[0], 
+                                              roboPosicao.y * scaleFactor - offset[1], 
+                                              grid.inicio, grid.passo);
+        
         int linhas = matrizMundo.size();
         int colunas = matrizMundo[0].size();
 
         if (posicaoValida(matPosRobo, linhas, colunas) && !sonares.empty()) {
+
             CellCenter centroCelRobo = centroDaCelula(matPosRobo, grid.inicio, grid.passo);
             Robot robotInfo = {matPosRobo, roboPosicao, centroCelRobo, 0.0f};
 
-            for (int idx : sensorIndices) {
-                float sensorAngle = sensorAngles[idx] * M_PI / 180.0f;
-                robotInfo.s = sonares[idx] * scaleFactor;
-                atualizaMatriz(matrizMundo, robotInfo, sensorAngle); // Bayes
+            // Bayes
+            if(false){
+                for (int idx : sensorIndices) {
+                    float sensorAngle = sensorAngles[idx] * M_PI / 180.0f;
+                    robotInfo.s = sonares[idx] * scaleFactor;
+                    atualizaMatrizBayes(matrizMundo, robotInfo, sensorAngle); // Bayes
+                }
+            }else{
+            // HIMM
+                for (int idx : sensorIndices) {
+                    robotInfo.s = sonares[idx] * scaleFactor;
+                    float sensorAngle = sensorAngles[idx] * M_PI / 180.0f;
+                    atualizaMatrizHIMM(matrizMundo, robotInfo, sensorAngle);
+                }
             }
         }
 
         // Pequena pausa para não sobrecarregar a CPU
-        usleep(100000); // 100ms
+        usleep(10000); // 10ms
     }
 
     return NULL;

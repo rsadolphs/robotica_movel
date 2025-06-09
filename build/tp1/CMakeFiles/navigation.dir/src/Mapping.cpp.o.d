@@ -191,4 +191,5 @@ CMakeFiles/navigation.dir/src/Mapping.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
- /usr/include/linux/close_range.h
+ /usr/include/linux/close_range.h /usr/include/c++/13/sstream \
+ /usr/include/c++/13/bits/sstream.tcc

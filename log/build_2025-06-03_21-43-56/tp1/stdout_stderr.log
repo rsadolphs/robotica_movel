@@ -1,0 +1,31 @@
+[ 14%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Mapping.cpp.o[0m
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K atualizaMatrizHIMM[m[K(std::vector<std::vector<int> >&, const Robot&, float, float, float, float, float, float)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:228:65:[m[K [01;31m[Kerror: [m[Kcannot bind non-const lvalue reference of type ‘[01m[Kfloat&[m[K’ to a value of type ‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<int>, int>::value_type[m[K’ {aka ‘[01m[Kint[m[K’}
+  228 |         float& cell = matriz[caminho[i].linha][caminho[i].coluna[01;31m[K][m[K;
+      |                                                                 [01;31m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:235:59:[m[K [01;31m[Kerror: [m[Kcannot bind non-const lvalue reference of type ‘[01m[Kfloat&[m[K’ to a value of type ‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<int>, int>::value_type[m[K’ {aka ‘[01m[Kint[m[K’}
+  235 |         float& cell = matriz[ocupada.linha][ocupada.coluna[01;31m[K][m[K;
+      |                                                           [01;31m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mappingThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:270:35:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KatualizaMatrizHIMM(std::vector<std::vector<float> >&, Robot&, float&)[m[K’
+  270 |                 [01;31m[KatualizaMatrizHIMM(matrizMundo, robotInfo, sensorAngle)[m[K;
+      |                 [01;31m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:198:6:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid[01;32m[K atualizaMatrizHIMM[m[K(std::vector<std::vector<int> >&, const Robot&, float, float, float, float, float, float)[m[K’
+  198 | void [01;36m[KatualizaMatrizHIMM[m[K(
+      |      [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:199:36:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<std::vector<float> >[m[K’ to ‘[01m[Kstd::vector<std::vector<int> >&[m[K’
+  199 |     [01;36m[Kstd::vector<std::vector<int>>& matriz[m[K,
+      |     [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+In file included from [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:1[m[K:
+[01m[K/home/richard/ros2_ws/src/tp1/include/Mapping.hpp:57:6:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid[01;32m[K atualizaMatrizHIMM[m[K(std::vector<std::vector<int> >&, const Robot&, float, float, int, int, int, int)[m[K’
+   57 | void [01;36m[KatualizaMatrizHIMM[m[K(
+      |      [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/include/Mapping.hpp:58:36:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<std::vector<float> >[m[K’ to ‘[01m[Kstd::vector<std::vector<int> >&[m[K’
+   58 |     [01;36m[Kstd::vector<std::vector<int>>& matriz[m[K,
+      |     [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:241:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  241 | void* mappingThreadFunction([01;35m[Kvoid* arg[m[K) {
+      |                             [01;35m[K~~~~~~^~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:146: CMakeFiles/navigation.dir/src/Mapping.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2
