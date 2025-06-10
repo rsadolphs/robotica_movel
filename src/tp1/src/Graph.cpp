@@ -27,18 +27,22 @@ extern std::vector<std::vector<int>> matrizPath;
 
 
 void desenhaGrade(float inicio, float fim, float passo) {
-    glColor3f(0.85f, 0.85f, 0.85f); // cinza claro
-    glLineWidth(1.0f);
+    glColor3f(0.85f, 0.0f, 0.0f);
+    glLineWidth(0.5f);
     glBegin(GL_LINES);
 
+    int numLinhas = static_cast<int>((fim - inicio) / passo) + 1;
+
     // Linhas verticais
-    for (float x = inicio; x <= fim; x += passo) {
+    for (int i = 0; i < numLinhas; ++i) {
+        float x = inicio + i * passo;
         glVertex2f(x, inicio);
         glVertex2f(x, fim);
     }
 
     // Linhas horizontais
-    for (float y = inicio; y <= fim; y += passo) {
+    for (int i = 0; i < numLinhas; ++i) {
+        float y = inicio + i * passo;
         glVertex2f(inicio, y);
         glVertex2f(fim, y);
     }
@@ -89,6 +93,10 @@ void* graphicsThreadFunction(void* arg) {
     }
 
     glfwMakeContextCurrent(window);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(grid.inicio, grid.fim, grid.inicio, grid.fim, -1.0, 1.0); // define projeção ortográfica
+    glMatrixMode(GL_MODELVIEW);
     glClearColor(1, 1, 1, 1); // fundo branco
 
     while (!glfwWindowShouldClose(window)) {
@@ -102,7 +110,7 @@ void* graphicsThreadFunction(void* arg) {
         // Renderização
         glClear(GL_COLOR_BUFFER_BIT);
 
-        desenhaGrade(grid.inicio, grid.fim, grid.passo);
+        //desenhaGrade(grid.inicio, grid.fim, grid.passo);
         pintaCelulas(matrizMundo, grid.inicio, grid.passo);
 
         // Desenha caminho
