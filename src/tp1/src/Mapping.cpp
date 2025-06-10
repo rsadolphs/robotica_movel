@@ -1,4 +1,5 @@
 #include "Mapping.hpp"
+#include "rclcpp/rclcpp.hpp"
 #include <GLFW/glfw3.h>
 #include <vector>
 #include <cmath>
@@ -21,7 +22,7 @@ float scaleFactor = 0.03f;
 std::vector<Position> caminho;
 
 // Cria Grade e Matrizes
-GridInfo grid = {-1.0f, 1.0f, 0.004f};
+GridInfo grid = {-1.0f, 1.0f, 0.005f};
 int size = (grid.fim - grid.inicio) / grid.passo;  
 // Bayes
 // std::vector<std::vector<float>> matrizMundo(size, std::vector<float>(size, 0.5f));
@@ -309,7 +310,7 @@ void atualizaMatrizHIMM(
 
 
 void* mappingThreadFunction(void* arg) {
-    while (true) {
+    while (rclcpp::ok()) {
         MatrixPosition matPosRobo = findCell(roboPosicao.x * scaleFactor - offset[0], 
                                               roboPosicao.y * scaleFactor - offset[1], 
                                               grid.inicio, grid.passo);
