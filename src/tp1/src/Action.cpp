@@ -2,6 +2,7 @@
 #include "Utils.h"
 #include "graphics.hpp"
 #include "Mapping.hpp"
+#include "PotentialField.hpp"
 
 #include <vector>
 #include <iostream>
@@ -11,16 +12,18 @@
 #include <array>
 
 extern std::vector<std::vector<float>> matrizMundo;  // mapping.cpp
+extern std::vector<std::vector<float>> campoPotencial;  // PotentialField.cpp
 
 Position roboPosicao = {0.0f, 0.0f, 0.0f}; 
 MovingDirection side;
+extern float scaleFactor;
 
 int firstMinDistPos = 0;
 bool firstInfo = false;
 std::vector<Position> positionArray;
 std::vector<float> sonares;
 
-const std::vector<double> angles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
+extern std::vector<double> sensorAngles;
 
 std::vector<std::vector<int>> senseWalls(const std::vector<float>& sonars) { 
 
@@ -30,7 +33,7 @@ std::vector<std::vector<int>> senseWalls(const std::vector<float>& sonars) {
     for (int i = 0; i < sonars.size(); ++i) {
 
         float reading = sonars[i] * 10.0;
-        float angleRad = angles[i] * M_PI / 180.0;
+        float angleRad = sensorAngles[i] * M_PI / 180.0;
 
         int dx = static_cast<int>(std::round(reading * std::cos(angleRad)));
         int dy = static_cast<int>(std::round(reading * std::sin(angleRad)));
@@ -227,7 +230,7 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
         firstInfo = true;
     }
 
-    if (side = LEFT){
+    if (side == LEFT){
         // Parede mais proxima a frente pela esquerda
         if (minPos>0 && minPos<5){
             linVel=0.0; angVel=-0.2; // gira H

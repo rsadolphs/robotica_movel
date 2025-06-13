@@ -10,10 +10,10 @@
 
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
+extern float scaleFactor;
 extern std::vector<float> sonares;
-const std::vector<float> offset = {0.0, 0.0};
-const float scaleFactor = 0.03f;
-const std::vector<double> sensorAngles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
+extern std::vector<float> offset;
+extern std::vector<double> sensorAngles;
 
 
 // Histórico de posições
@@ -25,6 +25,7 @@ extern int size;
 extern std::vector<std::vector<float>> matrizMundo;
 extern std::vector<std::vector<int>> matrizPath;
 extern std::vector<std::vector<bool>> knownRegion;
+extern std::vector<std::vector<float>> campoPotencial;
 
 
 void desenhaGrade(float inicio, float fim, float passo) {
@@ -169,14 +170,47 @@ void desenhaKnownRegion(GLFWwindow* windowKnown) {
     glfwSwapBuffers(windowKnown);
 }
 
+void desenhaCampoPotencial(GLFWwindow* window) {
+    glfwMakeContextCurrent(window);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+    glOrtho(grid.inicio, grid.fim, grid.inicio, grid.fim, -1.0, 1.0); // Projeção 2D
+
+    for (size_t y = 0; y < campoPotencial.size(); ++y) {
+        for (size_t x = 0; x < campoPotencial[y].size(); ++x) {
+            float valor = std::clamp(campoPotencial[y][x], 0.0f, 1.0f);
+
+            // Interpolação: azul → roxo → vermelho
+            float r = valor;
+            float g = valor * 0.3f;
+            float b = 1.0f - valor;
+
+            float cx = grid.inicio + x * grid.passo;
+            float cy = grid.inicio + y * grid.passo;
+
+            glColor3f(r, g, b);
+            glBegin(GL_QUADS);
+                glVertex2f(cx, cy);
+                glVertex2f(cx + grid.passo, cy);
+                glVertex2f(cx + grid.passo, cy + grid.passo);
+                glVertex2f(cx, cy + grid.passo);
+            glEnd();
+        }
+    }
+
+    glfwSwapBuffers(window);
+}
+
 void* graphicsThreadFunction(void* arg) {
     if (!glfwInit()) return NULL;
 
     int width = 600, height = 600;
 
-    GLFWwindow* window = glfwCreateWindow(width, height, "Mapping 1.0", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(width, height, "Mapping", NULL, NULL);
     GLFWwindow* windowKnown = glfwCreateWindow(200, 200, "Known Region", NULL, NULL);
-    if (!window || !windowKnown) {
+    GLFWwindow* windowCampo = glfwCreateWindow(300, 300, "Campo Potencial", NULL, NULL);
+
+    if (!window || !windowKnown || !windowCampo) {
         glfwTerminate();
         return NULL;
     }
@@ -188,7 +222,7 @@ void* graphicsThreadFunction(void* arg) {
     glMatrixMode(GL_MODELVIEW);
     glClearColor(1, 1, 1, 1);
 
-    while (!glfwWindowShouldClose(window) && !glfwWindowShouldClose(windowKnown)) {
+    while (!glfwWindowShouldClose(window) && !glfwWindowShouldClose(windowKnown) && !glfwWindowShouldClose(windowCampo)) {
         Position posRobo = {
             roboPosicao.x * scaleFactor - offset[0], 
             roboPosicao.y * scaleFactor - offset[1],
@@ -196,7 +230,7 @@ void* graphicsThreadFunction(void* arg) {
         };
         caminho.push_back(posRobo);
 
-        // Primeira janela
+        // Janela de criação de mapa
         glfwMakeContextCurrent(window);
         glClear(GL_COLOR_BUFFER_BIT);
         pintaCelulas(matrizMundo, grid.inicio, grid.passo);
@@ -206,8 +240,11 @@ void* graphicsThreadFunction(void* arg) {
         desenhaDirecao(posRobo);
         glfwSwapBuffers(window);
 
-        // Segunda janela
+        // Janela de região explorada
         desenhaKnownRegion(windowKnown);
+
+        // Janela do campo potencial
+        desenhaCampoPotencial(windowCampo);
 
         glfwPollEvents();
     }

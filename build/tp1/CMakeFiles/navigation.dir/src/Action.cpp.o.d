@@ -180,4 +180,5 @@ CMakeFiles/navigation.dir/src/Action.cpp.o: \
  /usr/include/c++/13/bits/istream.tcc \
  /home/richard/ros2_ws/src/tp1/include/graphics.hpp \
  /home/richard/ros2_ws/src/tp1/include/Mapping.hpp \
+ /home/richard/ros2_ws/src/tp1/include/PotentialField.hpp \
  /usr/include/c++/13/array /usr/include/c++/13/compare
