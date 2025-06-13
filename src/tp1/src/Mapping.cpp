@@ -12,6 +12,7 @@
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
 extern std::vector<float> sonares;
+extern std::vector<std::vector<bool>> knownRegion;
 const std::vector<double> sensorAngles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
 const std::vector<int> sensorIndices = {0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14};
 //std::vector<float> offset = {0.8, 0.7};
@@ -269,6 +270,7 @@ void atualizaMatrizHIMM(
     for (size_t i = 0; i + 1 < caminho.size(); ++i) { // exceto a última
         float& cell = matriz[caminho[i].linha][caminho[i].coluna];
         cell = std::max(minValor, cell - decremento);
+        knownRegion[caminho[i].linha][caminho[i].coluna] = true;
     }
 
     // Marca a última célula (possível obstáculo) como ocupada
@@ -305,6 +307,8 @@ void atualizaMatrizHIMM(
         } else {
             cellCentral = std::max(minValor, cellCentral - decremento);
         }
+
+        knownRegion[ocupada.linha][ocupada.coluna] = true;
     }
 }// Método de atualização das células da matriz para ocupação
 

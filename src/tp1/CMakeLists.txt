@@ -20,7 +20,7 @@ find_package(geometry_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 
-add_executable(navigation src/main.cpp src/Action.cpp src/Perception.cpp src/Utils.cpp src/Graph.cpp src/Mapping.cpp)
+add_executable(navigation src/main.cpp src/Action.cpp src/Perception.cpp src/Utils.cpp src/Graph.cpp src/Mapping.cpp src/PotentialField.cpp)
 target_include_directories(navigation PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
