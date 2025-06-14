@@ -21,7 +21,7 @@ public:
     void avoidObstacles(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose);
     void keepAsFarthestAsPossibleFromWalls(std::vector<float> lasers, std::vector<float> sonars);
     void followTheWalls(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose);
-    void testMode(std::vector<float> lasers, std::vector<float> sonars);
+    void testMode(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose);
 
     MotionControl handlePressedKey(char key);
 
@@ -32,6 +32,17 @@ public:
 private:
     float linVel;
     float angVel;
+};
+
+struct PID {
+    float kp, ki, kd;
+    float erroAcumulado = 0.0f;
+    float erroAnterior = 0.0f;
+};
+
+struct Controle {
+    float linVel;  // Velocidade linear
+    float angVel;  // Velocidade angular
 };
 
 #endif // ACTION_H

@@ -13,6 +13,7 @@
 
 extern std::vector<std::vector<float>> matrizMundo;  // mapping.cpp
 extern std::vector<std::vector<float>> campoPotencial;  // PotentialField.cpp
+extern GridInfo grid;
 
 Position roboPosicao = {0.0f, 0.0f, 0.0f}; 
 MovingDirection side;
@@ -105,6 +106,69 @@ std::pair<int, float> findMinPosition(const std::vector<float>& vec) {
 
     return {minPosition, minValue};  // Retorna a posição e o valor do menor elemento
 }
+
+float yawGradiente(
+    const std::vector<std::vector<float>>& campoPotencial,
+    float posX, float posY
+) {
+    // Verifica se estamos em uma posição válida (não na borda)
+    int largura = campoPotencial[0].size();
+    int altura  = campoPotencial.size();
+    
+    MatrixPosition matPos = findCell(posX, posY, grid.inicio, grid.passo);
+
+    int x = matPos.coluna;
+    int y = matPos.linha;
+
+    if (x <= 0 || x >= largura - 1 || y <= 0 || y >= altura - 1) {
+        // Fora da área onde dá pra calcular o gradiente central
+        std::cout << "FORA DA AREA DE MAPEAMENTO" << std::endl;
+        std::cout << "SIZE: " << largura << "," << altura << std::endl;
+        std::cout << "POS: " << x << "," << y << std::endl;
+        return 0.0f;
+    }
+
+    // Gradiente com diferenças centrais
+    float dx = campoPotencial[y][x + 1] - campoPotencial[y][x - 1];
+    float dy = campoPotencial[y + 1][x] - campoPotencial[y - 1][x];
+
+    // Direção do declive (gradiente descendente)
+    float yaw = std::atan2(-dy, -dx); // negativo pois queremos a direção da descida
+
+    return yaw; // em radianos
+}
+
+Controle controleRobo(
+    float yawAtual,
+    float yawAlvo,
+    PID& pid,
+    float dt = 0.05f,       // tempo entre atualizações (ex: 20 Hz)
+    float tolerancia = 0.05f // erro aceitável em radianos (0.1 = ~5.7 graus)
+) {
+    Controle ctrl;
+
+    // Calcula erro angular (normaliza para intervalo [-PI, PI])
+    float erro = yawAlvo - yawAtual;
+    while (erro > M_PI) erro -= 2 * M_PI;
+    while (erro < -M_PI) erro += 2 * M_PI;
+
+    // PID (pode ser simplificado só com P se quiser)
+    pid.erroAcumulado += erro * dt;
+    float derivada = (erro - pid.erroAnterior) / dt;
+    pid.erroAnterior = erro;
+
+    ctrl.angVel = pid.kp * erro + pid.ki * pid.erroAcumulado + pid.kd * derivada;
+
+    // Se o robô já está bem alinhado, move para frente
+    if (std::abs(erro) < tolerancia) {
+        ctrl.linVel = 0.5f;  // velocidade linear positiva (ajustável)
+    } else {
+        ctrl.linVel = 0.1f;  // parado enquanto gira
+    }
+
+    return ctrl;
+}
+
 
 Action::Action()
 {
@@ -268,8 +332,22 @@ void Action::followTheWalls(std::vector<float> lasers, std::vector<float> sonars
     }
 }
 
-void Action::testMode(std::vector<float> lasers, std::vector<float> sonars)
+void Action::testMode(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
 {
+    roboPosicao = {pose[0], pose[1], pose[2]};
+    sonares = sonars;
+    positionArray.push_back(roboPosicao);
+
+    PID pid = { 0.1f, 0.2f, 0.02f }; // parâmetros do PID
+
+    float x = pose[0] * scaleFactor;
+    float y = pose[1] * scaleFactor;
+    float yawAtual = pose[2];
+    float yawIdeal = yawGradiente(campoPotencial, x, y);
+
+    Controle ctrl = controleRobo(yawAtual, yawIdeal, pid);
+    linVel = ctrl.linVel;
+    angVel = ctrl.angVel;
 }
 
 void Action::manualRobotMotion(MovingDirection direction, std::vector<float> sonars, std::vector<float> pose)

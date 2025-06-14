@@ -70,7 +70,7 @@ void* potentialFieldThreadFunction(void* arg) {
 
     while (rclcpp::ok()) {
         atualizaCampoPotencial();
-        convergeCampo(0.01f);
+        convergeCampo(0.2f);
         
         usleep(100000); // 100ms
     }

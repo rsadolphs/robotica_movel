@@ -67,7 +67,7 @@ class NavigationNode : public rclcpp::Node
         action_.followTheWalls(lasers, sonars, pose);
       }else if (mc.mode == TESTMODE)
       {
-        action_.testMode(lasers, sonars);
+        action_.testMode(lasers, sonars, pose);
       }
 
       action_.correctVelocitiesIfInvalid();
