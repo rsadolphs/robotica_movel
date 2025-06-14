@@ -306,6 +306,30 @@ src/Perception.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Perception.cpp.s
 .PHONY : src/Perception.cpp.s
 
+src/PotentialField.o: src/PotentialField.cpp.o
+.PHONY : src/PotentialField.o
+
+# target to build an object file
+src/PotentialField.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/PotentialField.cpp.o
+.PHONY : src/PotentialField.cpp.o
+
+src/PotentialField.i: src/PotentialField.cpp.i
+.PHONY : src/PotentialField.i
+
+# target to preprocess a source file
+src/PotentialField.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/PotentialField.cpp.i
+.PHONY : src/PotentialField.cpp.i
+
+src/PotentialField.s: src/PotentialField.cpp.s
+.PHONY : src/PotentialField.s
+
+# target to generate assembly for a file
+src/PotentialField.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/PotentialField.cpp.s
+.PHONY : src/PotentialField.cpp.s
+
 src/Utils.o: src/Utils.cpp.o
 .PHONY : src/Utils.o
 
@@ -382,6 +406,9 @@ help:
 	@echo "... src/Perception.o"
 	@echo "... src/Perception.i"
 	@echo "... src/Perception.s"
+	@echo "... src/PotentialField.o"
+	@echo "... src/PotentialField.i"
+	@echo "... src/PotentialField.s"
 	@echo "... src/Utils.o"
 	@echo "... src/Utils.i"
 	@echo "... src/Utils.s"

@@ -10,10 +10,10 @@
 
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
+extern float scaleFactor;
 extern std::vector<float> sonares;
-const std::vector<float> offset = {0.0, 0.0};
-const float scaleFactor = 0.03f;
-const std::vector<double> sensorAngles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
+extern std::vector<float> offset;
+extern std::vector<double> sensorAngles;
 
 
 // Histórico de posições
@@ -24,6 +24,8 @@ extern GridInfo grid;
 extern int size;  
 extern std::vector<std::vector<float>> matrizMundo;
 extern std::vector<std::vector<int>> matrizPath;
+extern std::vector<std::vector<bool>> knownRegion;
+extern std::vector<std::vector<float>> campoPotencial;
 
 
 void desenhaGrade(float inicio, float fim, float passo) {
@@ -78,16 +80,137 @@ void pintaCelulas(const std::vector<std::vector<float>>& matriz, float inicio, f
     }
 }
 
-void* graphicsThreadFunction(void* arg) {
-    if (!glfwInit()) {
-        return NULL;
+void desenhaCaminho(const std::vector<Position>& caminho) {
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glBegin(GL_LINE_STRIP);
+    for (const auto& pos : caminho) {
+        glVertex2f(pos.x, pos.y);
+    }
+    glEnd();
+}
+
+void desenhaSensores(const Position& posRobo) {
+    if (sonares.empty()) return;
+
+    glLineWidth(1.0f);
+    for (int i = 0; i <= 15; i++) {
+        float sensorLength = std::min(sonares[i], 2.0f) * scaleFactor;
+        float xFinal = posRobo.x + cos(posRobo.theta - sensorAngles[i] * M_PI / 180) * sensorLength;
+        float yFinal = posRobo.y + sin(posRobo.theta - sensorAngles[i] * M_PI / 180) * sensorLength;
+
+        glBegin(GL_LINES);
+        if (i == 0 || i == 7 || i == 8 || i == 15)
+            glColor3f(0.9f, 0.1f, 0.9f);
+        else
+            glColor3f(0.9f, 0.7f, 0.1f);
+
+        glVertex2f(posRobo.x, posRobo.y);
+        glVertex2f(xFinal, yFinal);
+        glEnd();
+    }
+}
+
+void desenhaRobo(const Position& posRobo) {
+    glColor3f(0.0f, 0.0f, 0.8f);
+    float tamanho = 0.01f;
+    int numSegmentos = 30;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(posRobo.x, posRobo.y);
+    for (int i = 0; i <= numSegmentos; i++) {
+        float angulo = 2.0f * M_PI * i / numSegmentos;
+        float x = posRobo.x + cos(angulo) * tamanho;
+        float y = posRobo.y + sin(angulo) * tamanho;
+        glVertex2f(x, y);
+    }
+    glEnd();
+}
+
+void desenhaDirecao(const Position& posRobo) {
+    float comprimentoLinha = 0.05f;
+    float xFinal = posRobo.x + cos(posRobo.theta) * comprimentoLinha;
+    float yFinal = posRobo.y + sin(posRobo.theta) * comprimentoLinha;
+
+    glColor3f(0.1f, 0.6f, 0.2f);
+    glLineWidth(1.0f);
+    glBegin(GL_LINES);
+    glVertex2f(posRobo.x, posRobo.y);
+    glVertex2f(xFinal, yFinal);
+    glEnd();
+}
+
+void desenhaKnownRegion(GLFWwindow* windowKnown) {
+    glfwMakeContextCurrent(windowKnown);
+    glViewport(0, 0, 200, 200);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(grid.inicio, grid.fim, grid.inicio, grid.fim, -1.0, 1.0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    for (size_t i = 0; i < knownRegion.size(); ++i) {
+        for (size_t j = 0; j < knownRegion[i].size(); ++j) {
+            if (knownRegion[i][j]) {
+                float x = grid.inicio + j * grid.passo;
+                float y = grid.inicio + i * grid.passo;
+
+                glColor3f(0.0f, 0.0f, 0.0f);
+                glBegin(GL_QUADS);
+                glVertex2f(x, y);
+                glVertex2f(x + grid.passo, y);
+                glVertex2f(x + grid.passo, y + grid.passo);
+                glVertex2f(x, y + grid.passo);
+                glEnd();
+            }
+        }
     }
 
-    int width = 600;
-    int height = 600;
+    glfwSwapBuffers(windowKnown);
+}
 
-    GLFWwindow* window = glfwCreateWindow(width, height, "Mapping 1.0", NULL, NULL);
-    if (!window) {
+void desenhaCampoPotencial(GLFWwindow* window) {
+    glfwMakeContextCurrent(window);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+    glOrtho(grid.inicio, grid.fim, grid.inicio, grid.fim, -1.0, 1.0); // Projeção 2D
+
+    for (size_t y = 0; y < campoPotencial.size(); ++y) {
+        for (size_t x = 0; x < campoPotencial[y].size(); ++x) {
+            float valor = std::clamp(campoPotencial[y][x], 0.0f, 1.0f);
+
+            // Interpolação: azul → roxo → vermelho
+            float r = valor;
+            float g = valor * 0.3f;
+            float b = 1.0f - valor;
+
+            float cx = grid.inicio + x * grid.passo;
+            float cy = grid.inicio + y * grid.passo;
+
+            glColor3f(r, g, b);
+            glBegin(GL_QUADS);
+                glVertex2f(cx, cy);
+                glVertex2f(cx + grid.passo, cy);
+                glVertex2f(cx + grid.passo, cy + grid.passo);
+                glVertex2f(cx, cy + grid.passo);
+            glEnd();
+        }
+    }
+
+    glfwSwapBuffers(window);
+}
+
+void* graphicsThreadFunction(void* arg) {
+    if (!glfwInit()) return NULL;
+
+    int width = 600, height = 600;
+
+    GLFWwindow* window = glfwCreateWindow(width, height, "Mapping", NULL, NULL);
+    GLFWwindow* windowKnown = glfwCreateWindow(200, 200, "Known Region", NULL, NULL);
+    GLFWwindow* windowCampo = glfwCreateWindow(300, 300, "Campo Potencial", NULL, NULL);
+
+    if (!window || !windowKnown || !windowCampo) {
         glfwTerminate();
         return NULL;
     }
@@ -95,84 +218,39 @@ void* graphicsThreadFunction(void* arg) {
     glfwMakeContextCurrent(window);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(grid.inicio, grid.fim, grid.inicio, grid.fim, -1.0, 1.0); // define projeção ortográfica
+    glOrtho(grid.inicio, grid.fim, grid.inicio, grid.fim, -1.0, 1.0);
     glMatrixMode(GL_MODELVIEW);
-    glClearColor(1, 1, 1, 1); // fundo branco
+    glClearColor(1, 1, 1, 1);
 
-    while (!glfwWindowShouldClose(window)) {
-        // Atualiza o caminho do robo para desenho
-        Position posRobo = {roboPosicao.x * scaleFactor - offset[0], 
-                             roboPosicao.y * scaleFactor - offset[1],
-                             roboPosicao.theta
+    while (!glfwWindowShouldClose(window) && !glfwWindowShouldClose(windowKnown) && !glfwWindowShouldClose(windowCampo)) {
+        Position posRobo = {
+            roboPosicao.x * scaleFactor - offset[0], 
+            roboPosicao.y * scaleFactor - offset[1],
+            roboPosicao.theta
         };
         caminho.push_back(posRobo);
 
-        // Renderização
+        // Janela de criação de mapa
+        glfwMakeContextCurrent(window);
         glClear(GL_COLOR_BUFFER_BIT);
-
-        //desenhaGrade(grid.inicio, grid.fim, grid.passo);
         pintaCelulas(matrizMundo, grid.inicio, grid.passo);
-
-        // Desenha caminho
-        glColor3f(1.0f, 0.0f, 0.0f);
-        glBegin(GL_LINE_STRIP);
-        for (auto& pos : caminho) {
-            glVertex2f(pos.x, pos.y);
-        }
-        glEnd();
-
-        // Desenha sensores
-        if (!sonares.empty()) {
-            glLineWidth(1.0f);
-            for (int i = 0; i <= 15; i++) {
-                float sensorLength = std::min(sonares[i], 2.0f) * scaleFactor;
-                float xFinal = posRobo.x + cos(posRobo.theta - sensorAngles[i] * M_PI / 180) * sensorLength;
-                float yFinal = posRobo.y + sin(posRobo.theta - sensorAngles[i] * M_PI / 180) * sensorLength;
-
-                glBegin(GL_LINES);
-                if (i == 0 || i == 7 || i == 8 || i == 15)
-                    glColor3f(0.9f, 0.1f, 0.9f);
-                else
-                    glColor3f(0.9f, 0.7f, 0.1f);
-
-                glVertex2f(posRobo.x, posRobo.y);
-                glVertex2f(xFinal, yFinal);
-                glEnd();
-            }
-        }
-
-        // Desenha o robo (círculo)
-        glColor3f(0.0f, 0.0f, 0.8f);
-        float tamanho = 0.01f;
-        int numSegmentos = 30;
-
-        glBegin(GL_TRIANGLE_FAN);
-            glVertex2f(posRobo.x, posRobo.y);
-            for (int i = 0; i <= numSegmentos; i++) {
-                float angulo = 2.0f * M_PI * i / numSegmentos;
-                float x = posRobo.x + cos(angulo) * tamanho;
-                float y = posRobo.y + sin(angulo) * tamanho;
-                glVertex2f(x, y);
-            }
-        glEnd();
-
-        // Linha de direção
-        float comprimentoLinha = 0.05f;
-        float xFinal = posRobo.x + cos(posRobo.theta) * comprimentoLinha;
-        float yFinal = posRobo.y + sin(posRobo.theta) * comprimentoLinha;
-
-        glColor3f(0.1f, 0.6f, 0.2f);
-        glLineWidth(1.0f);
-        glBegin(GL_LINES);
-            glVertex2f(posRobo.x, posRobo.y);
-            glVertex2f(xFinal, yFinal);
-        glEnd();
-
+        desenhaCaminho(caminho);
+        desenhaSensores(posRobo);
+        desenhaRobo(posRobo);
+        desenhaDirecao(posRobo);
         glfwSwapBuffers(window);
+
+        // Janela de região explorada
+        desenhaKnownRegion(windowKnown);
+
+        // Janela do campo potencial
+        desenhaCampoPotencial(windowCampo);
+
         glfwPollEvents();
     }
 
     glfwDestroyWindow(window);
+    glfwDestroyWindow(windowKnown);
     glfwTerminate();
     return NULL;
 }

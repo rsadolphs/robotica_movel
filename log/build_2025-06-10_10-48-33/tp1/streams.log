@@ -1,0 +1,39 @@
+[0.020s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
+[0.195s] [ 25%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/PotentialField.cpp.o[0m
+[0.198s] [ 25%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/main.cpp.o[0m
+[5.352s] [01m[K/home/richard/ros2_ws/src/tp1/src/PotentialField.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K potentialFieldThreadFunction[m[K(void*)[m[K’:
+[5.352s] [01m[K/home/richard/ros2_ws/src/tp1/src/PotentialField.cpp:10:1:[m[K [01;35m[Kwarning: [m[Kno return statement in function returning non-void [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type-Wreturn-type]8;;[m[K]
+[5.352s]    10 | [01;35m[K}[m[K
+[5.352s]       | [01;35m[K^[m[K
+[5.352s] [01m[K/home/richard/ros2_ws/src/tp1/src/PotentialField.cpp:6:42:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[5.352s]     6 | void* potentialFieldThreadFunction([01;35m[Kvoid* arg[m[K) {
+[5.352s]       |                                    [01;35m[K~~~~~~^~~[m[K
+[5.869s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K keyboardThreadFunction[m[K(void*)[m[K’:
+[5.869s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:92:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[5.870s]    92 | void *keyboardThreadFunction([01;35m[Kvoid *arg[m[K)
+[5.870s]       |                              [01;35m[K~~~~~~^~~[m[K
+[5.873s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mainThreadFunction[m[K(void*)[m[K’:
+[5.874s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:106:32:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[5.874s]   106 | void *mainThreadFunction([01;35m[Kvoid *arg[m[K)
+[5.877s]       |                          [01;35m[K~~~~~~^~~[m[K
+[5.877s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[5.877s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:133:49:[m[K [01;31m[Kerror: [m[Kinvalid conversion from ‘[01m[Kvoid* (*)()[m[K’ to ‘[01m[Kvoid* (*)(void*)[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+[5.877s]   133 |   pthread_create(&(potentialFieldThread), NULL, [01;31m[KpotentialFieldThreadFunction[m[K, NULL);
+[5.877s]       |                                                 [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.877s]       |                                                 [01;31m[K|[m[K
+[5.877s]       |                                                 [01;31m[Kvoid* (*)()[m[K
+[5.878s] In file included from [01m[K/usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h:35[m[K,
+[5.879s]                  from [01m[K/usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h:148[m[K,
+[5.880s]                  from [01m[K/usr/include/c++/13/ext/atomicity.h:35[m[K,
+[5.880s]                  from [01m[K/usr/include/c++/13/bits/ios_base.h:39[m[K,
+[5.880s]                  from [01m[K/usr/include/c++/13/ios:44[m[K,
+[5.880s]                  from [01m[K/usr/include/c++/13/ostream:40[m[K,
+[5.880s]                  from [01m[K/usr/include/c++/13/iostream:41[m[K,
+[5.880s]                  from [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:1[m[K:
+[5.880s] [01m[K/usr/include/pthread.h:204:36:[m[K [01;36m[Knote: [m[K  initializing argument 3 of ‘[01m[Kint[01;32m[K pthread_create[m[K(pthread_t*, const pthread_attr_t*, void* (*)(void*), void*)[m[K’
+[5.880s]   204 |                            [01;36m[Kvoid *(*__start_routine) (void *)[m[K,
+[5.880s]       |                            [01;36m[K~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[10.166s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:76: CMakeFiles/navigation.dir/src/main.cpp.o] Erro 1
+[10.167s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[10.167s] gmake: *** [Makefile:146: all] Erro 2
+[10.169s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j2 -l2
