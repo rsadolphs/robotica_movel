@@ -161,9 +161,9 @@ Controle controleRobo(
 
     // Se o robô já está bem alinhado, move para frente
     if (std::abs(erro) < tolerancia) {
-        ctrl.linVel = 0.5f;  // velocidade linear positiva (ajustável)
+        ctrl.linVel = 0.8f;  // velocidade linear positiva (ajustável)
     } else {
-        ctrl.linVel = 0.1f;  // parado enquanto gira
+        ctrl.linVel = 0.3f;  // parado enquanto gira
     }
 
     return ctrl;
@@ -338,7 +338,7 @@ void Action::testMode(std::vector<float> lasers, std::vector<float> sonars, std:
     sonares = sonars;
     positionArray.push_back(roboPosicao);
 
-    PID pid = { 0.1f, 0.2f, 0.02f }; // parâmetros do PID
+    PID pid = { 0.05f, 0.0f, 0.02f }; // parâmetros do PID
 
     float x = pose[0] * scaleFactor;
     float y = pose[1] * scaleFactor;
