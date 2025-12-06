@@ -12,6 +12,7 @@ extern GridInfo grid;
 
 std::vector<std::vector<float>> campoPotencial;
 std::vector<std::vector<bool>> knownRegion;
+float yawGradienteConv = 0.0f;
 
 void initMatrixes() {
     size_t linhas = matrizMundo.size();
@@ -36,7 +37,6 @@ void atualizaCampoPotencial() {
     }
 }
 
-
 void convergeCampo(float epsilon) {
     if (campoPotencial.empty()) return;
 
@@ -47,25 +47,18 @@ void convergeCampo(float epsilon) {
     float posX = roboPosicao.x * scaleFactor + offset[0];
     float posY = roboPosicao.y * scaleFactor + offset[1];
     MatrixPosition matPos = findCell(posX, posY, grid.inicio, grid.passo);
-    int x0 = matPos.coluna;
-    int y0 = matPos.linha;
-
-    // Define limites da janela de 20 células
-    int raio = 20;
-    int xIni = std::max(1, x0 - raio);
-    int xFim = std::min((int)colunas - 2, x0 + raio);
-    int yIni = std::max(1, y0 - raio);
-    int yFim = std::min((int)linhas - 2, y0 + raio);
-
+    
     std::vector<std::vector<float>> novoCampo = campoPotencial;
     float erro = std::numeric_limits<float>::max();
 
-    while (erro > epsilon) {
+    int cont = 0;
+    //while (erro > epsilon) {
+    while (cont < 80) {
         erro = 0.0f;
-
-        for (int y = yIni; y <= yFim; ++y) {
-            for (int x = xIni; x <= xFim; ++x) {
-                if (campoPotencial[y][x] != 1.0f) {
+        cont++;
+        for (int y = 0; y <= linhas - 1; ++y) {
+            for (int x = 0; x <= colunas - 1; ++x) {
+                if (campoPotencial[y][x] != 1.0f && knownRegion[y][x]) {
                     float valorNovo = 0.25f * (
                         campoPotencial[y - 1][x] +
                         campoPotencial[y + 1][x] +
@@ -81,6 +74,46 @@ void convergeCampo(float epsilon) {
 
         campoPotencial = novoCampo;
     }
+    
+}
+
+void resetCampoPotencial() {
+    for (auto& linha : campoPotencial) {
+        std::fill(linha.begin(), linha.end(), 0.0f);
+    }
+}
+
+float calculaYawGradiente(
+    const std::vector<std::vector<float>>& campoPotencial,
+    float posX, float posY
+) {
+
+    // Verifica se estamos em uma posição válida (não na borda)
+    int largura = campoPotencial[0].size();
+    int altura  = campoPotencial.size();
+    
+    MatrixPosition matPos = findCell(posX, posY, grid.inicio, grid.passo);
+
+    int x = matPos.coluna;
+    int y = matPos.linha;
+
+    if (x <= 0 || x >= largura - 1 || y <= 0 || y >= altura - 1) {
+        // Fora da área onde dá pra calcular o gradiente central
+        std::cout << "FORA DA AREA DE MAPEAMENTO" << std::endl;
+        std::cout << "SIZE: " << largura << "," << altura << std::endl;
+        std::cout << "POS: " << x << "," << y << std::endl;
+        return 0.0f;
+    }
+
+
+    // Gradiente com diferenças centrais
+    float dx = campoPotencial[y][x + 1] - campoPotencial[y][x - 1];
+    float dy = campoPotencial[y + 1][x] - campoPotencial[y - 1][x];
+
+    // Direção do declive (gradiente descendente)
+    float yaw = std::atan2(-dy, -dx); // negativo pois queremos a direção da descida
+
+    return yaw; // em radianos
 }
 
 void* potentialFieldThreadFunction(void* arg) {
@@ -88,10 +121,14 @@ void* potentialFieldThreadFunction(void* arg) {
     initMatrixes();
 
     while (rclcpp::ok()) {
+        resetCampoPotencial();
         atualizaCampoPotencial();
-        convergeCampo(0.2f);
-        
-        usleep(200000); // 200ms
+        convergeCampo(0.01f);
+        float x = roboPosicao.x * scaleFactor;
+        float y = roboPosicao.y * scaleFactor;
+        yawGradienteConv = calculaYawGradiente(campoPotencial, x, y);
+
+        usleep(100000); // 200ms
     }
 
     return NULL;

@@ -1,0 +1,12 @@
+[0.018s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4
+[0.114s] [ 12%] [32m[1mLinking CXX executable navigation[0m
+[0.794s] /usr/bin/ld: CMakeFiles/navigation.dir/src/Graph.cpp.o: aviso: relocalização contra "pontosLivres" em secção só de leitura ".text"
+[0.892s] /usr/bin/ld: CMakeFiles/navigation.dir/src/Graph.cpp.o: na função "criaConjuntos(std::vector<std::vector<float, std::allocator<float> >, std::allocator<std::vector<float, std::allocator<float> > > > const&, float, float)":
+[0.892s] Graph.cpp:(.text+0xfbe): undefined reference to `pontosParede'
+[0.893s] /usr/bin/ld: Graph.cpp:(.text+0xfee): undefined reference to `pontosLivres'
+[0.935s] /usr/bin/ld: aviso: a criar DT_TEXTREL num PIE.
+[0.950s] collect2: error: ld returned 1 exit status
+[0.954s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:322: navigation] Erro 1
+[0.954s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[0.954s] gmake: *** [Makefile:146: all] Erro 2
+[0.958s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4

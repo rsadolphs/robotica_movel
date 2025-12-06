@@ -1,0 +1,110 @@
+[0.020s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4
+[0.283s] [ 12%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o[0m
+[0.284s] [ 37%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Perception.cpp.o[0m
+[0.284s] [ 25%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/main.cpp.o[0m
+[0.293s] [ 50%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Utils.cpp.o[0m
+[2.341s] [ 62%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Graph.cpp.o[0m
+[2.428s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kstd::vector<std::vector<int> >[01;32m[K senseWalls[m[K(const std::vector<float>&)[m[K’:
+[2.428s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:35:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.457s]    35 |     for (int i = 0; [01;35m[Ki < sonars.size()[m[K; ++i) {
+[2.457s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~[m[K
+[2.467s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:57:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.467s]    57 |     for (int i = 0; [01;35m[Ki < capturedPoints.size()[m[K; ++i) {
+[2.467s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.467s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:62:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.467s]    62 |         if ([01;35m[Ki + 2 == capturedPoints.size()[m[K){
+[2.467s]       |             [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.468s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:66:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.468s]    66 |             if ([01;35m[Ki + 1 == capturedPoints.size()[m[K){
+[2.468s]       |                 [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.581s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KavoidObstacles[m[K(std::vector<float>, std::vector<float>, std::vector<float>)[m[K’:
+[2.582s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:180:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.582s]   180 | void Action::avoidObstacles([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars, std::vector<float> pose)
+[2.582s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[2.582s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KkeepAsFarthestAsPossibleFromWalls[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[2.582s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:204:67:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.582s]   204 | void Action::keepAsFarthestAsPossibleFromWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+[2.582s]       |                                                [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[2.582s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[KPosition[01;32m[K detectarParede[m[K(const std::vector<float>&, float, bool)[m[K’:
+[2.582s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:263:45:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[2.582s]   263 |     Position pontoParede = {paredeX, paredeY[01;35m[K}[m[K;
+[2.582s]       |                                             [01;35m[K^[m[K
+[2.583s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kbool[01;32m[K estaTrancado[m[K(const std::vector<Position>&, int)[m[K’:
+[2.583s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:268:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<Position>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.583s]   268 |     if ([01;35m[Kposicoes.size() < ultimos[m[K) return false;
+[2.583s]       |         [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[2.583s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KfollowTheWalls[m[K(std::vector<float>, std::vector<float>, std::vector<float>)[m[K’:
+[2.583s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:279:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.583s]   279 | void Action::followTheWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars, std::vector<float> pose)
+[2.583s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[2.583s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KtestMode[m[K(std::vector<float>, std::vector<float>, std::vector<float>)[m[K’:
+[2.583s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:347:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KyawIdeal[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[2.583s]   347 |     float [01;35m[KyawIdeal[m[K = yawGradiente(campoPotencial, x, y);
+[2.583s]       |           [01;35m[K^~~~~~~~[m[K
+[2.583s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:336:42:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.583s]   336 | void Action::testMode([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars, std::vector<float> pose)
+[2.584s]       |                       [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[4.669s] [ 75%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/PotentialField.cpp.o[0m
+[4.913s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K graphicsThreadFunction[m[K(void*)[m[K’:
+[4.913s] [01m[K/home/richard/ros2_ws/src/tp1/src/Graph.cpp:204:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[4.913s]   204 | void* graphicsThreadFunction([01;35m[Kvoid* arg[m[K) {
+[4.913s]       |                              [01;35m[K~~~~~~^~~[m[K
+[13.816s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K keyboardThreadFunction[m[K(void*)[m[K’:
+[13.816s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:93:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[13.816s]    93 | void *keyboardThreadFunction([01;35m[Kvoid *arg[m[K)
+[13.816s]       |                              [01;35m[K~~~~~~^~~[m[K
+[13.839s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mainThreadFunction[m[K(void*)[m[K’:
+[13.839s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:107:32:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[13.839s]   107 | void *mainThreadFunction([01;35m[Kvoid *arg[m[K)
+[13.839s]       |                          [01;35m[K~~~~~~^~~[m[K
+[14.701s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:[m[K In member function ‘[01m[Kstd::vector<float, std::allocator<float> > Perception::[01;32m[KgetLatestSonarRanges[m[K()[m[K’:
+[14.701s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:156:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Knumbytes[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[14.701s]   156 |     int [01;35m[Knumbytes[m[K = sonarROS.data.size();
+[14.701s]       |         [01;35m[K^~~~~~~~[m[K
+[14.701s] [01m[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:157:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Knumfields[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[14.701s]   157 |     int [01;35m[Knumfields[m[K = sonarROS.fields.size();
+[14.701s]       |         [01;35m[K^~~~~~~~~[m[K
+[17.647s] [01m[K/home/richard/ros2_ws/src/tp1/src/PotentialField.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K convergeCampo[m[K(float)[m[K’:
+[17.652s] [01m[K/home/richard/ros2_ws/src/tp1/src/PotentialField.cpp:99:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[17.652s]    99 |         for (int y = 0; [01;35m[Ky <= linhas - 1[m[K; ++y) {
+[17.652s]       |                         [01;35m[K~~^~~~~~~~~~~~~[m[K
+[17.653s] [01m[K/home/richard/ros2_ws/src/tp1/src/PotentialField.cpp:100:31:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[17.653s]   100 |             for (int x = 0; [01;35m[Kx <= colunas - 1[m[K; ++x) {
+[17.653s]       |                             [01;35m[K~~^~~~~~~~~~~~~~[m[K
+[17.653s] [01m[K/home/richard/ros2_ws/src/tp1/src/PotentialField.cpp:50:20:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[KmatPos[m[K’ set but not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable-Wunused-but-set-variable]8;;[m[K]
+[17.653s]    50 |     MatrixPosition [01;35m[KmatPos[m[K = findCell(posX, posY, grid.inicio, grid.passo);
+[17.653s]       |                    [01;35m[K^~~~~~[m[K
+[17.653s] [01m[K/home/richard/ros2_ws/src/tp1/src/PotentialField.cpp:41:26:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kepsilon[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[17.653s]    41 | void convergeCampo([01;35m[Kfloat epsilon[m[K) {
+[17.653s]       |                    [01;35m[K~~~~~~^~~~~~~[m[K
+[17.663s] [01m[K/home/richard/ros2_ws/src/tp1/src/PotentialField.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K potentialFieldThreadFunction[m[K(void*)[m[K’:
+[17.663s] [01m[K/home/richard/ros2_ws/src/tp1/src/PotentialField.cpp:165:42:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[17.663s]   165 | void* potentialFieldThreadFunction([01;35m[Kvoid* arg[m[K) {
+[17.663s]       |                                    [01;35m[K~~~~~~^~~[m[K
+[44.435s] [ 87%] [32m[1mLinking CXX executable navigation[0m
+[45.452s] [100%] Built target navigation
+[45.475s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4
+[45.477s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1
+[45.489s] -- Install configuration: ""
+[45.491s] -- Installing: /home/richard/ros2_ws/install/tp1/lib/tp1/navigation
+[45.500s] -- Set non-toolchain portion of runtime path of "/home/richard/ros2_ws/install/tp1/lib/tp1/navigation" to ""
+[45.501s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch
+[45.501s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch/p3dx-rosaria.launch.py
+[45.501s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config
+[45.501s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config/p3dx.rviz
+[45.501s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/package_run_dependencies/tp1
+[45.503s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/parent_prefix_path/tp1
+[45.503s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.sh
+[45.503s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.dsv
+[45.503s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.sh
+[45.503s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.dsv
+[45.503s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.bash
+[45.503s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.sh
+[45.504s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.zsh
+[45.504s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.dsv
+[45.504s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/package.dsv
+[45.504s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/packages/tp1
+[45.504s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config.cmake
+[45.504s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config-version.cmake
+[45.504s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/package.xml
+[45.509s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1

@@ -18,6 +18,7 @@ extern GridInfo grid;
 Position roboPosicao = {0.0f, 0.0f, 0.0f}; 
 MovingDirection side;
 extern float scaleFactor;
+extern float yawGradienteConv;
 
 int firstMinDistPos = 0;
 bool firstInfo = false;
@@ -338,14 +339,16 @@ void Action::testMode(std::vector<float> lasers, std::vector<float> sonars, std:
     sonares = sonars;
     positionArray.push_back(roboPosicao);
 
-    PID pid = { 0.02f, 0.0f, 0.01f }; // parâmetros do PID
+    //PID pid = { 0.08f, 0.0f, 0.02f }; // parâmetros do PID
+    PID pid = { 0.5f, 0.0f, 0.00f }; // parâmetros do PID
 
     float x = pose[0] * scaleFactor;
     float y = pose[1] * scaleFactor;
     float yawAtual = pose[2];
     float yawIdeal = yawGradiente(campoPotencial, x, y);
 
-    Controle ctrl = controleRobo(yawAtual, yawIdeal, pid);
+    // Controle ctrl = controleRobo(yawAtual, yawIdeal, pid);
+    Controle ctrl = controleRobo(yawAtual, yawGradienteConv, pid);
     linVel = ctrl.linVel;
     angVel = ctrl.angVel;
 }

@@ -27,6 +27,14 @@ extern std::vector<std::vector<int>> matrizPath;
 extern std::vector<std::vector<bool>> knownRegion;
 extern std::vector<std::vector<float>> campoPotencial;
 
+struct Ponto {
+    int x;                   // coluna
+    int y;                   // linha
+    bool isFree     = false; 
+    bool isFrontier = false;
+};
+extern std::vector<Ponto> listaPontos;
+
 
 void desenhaGrade(float inicio, float fim, float passo) {
     glColor3f(0.85f, 0.0f, 0.0f);
@@ -52,6 +60,7 @@ void desenhaGrade(float inicio, float fim, float passo) {
     glEnd();
 }
 
+/*
 void pintaCelulas(const std::vector<std::vector<float>>& matriz, float inicio, float passo) {
     int linhas = matriz.size();
     int colunas = matriz[0].size();
@@ -79,6 +88,65 @@ void pintaCelulas(const std::vector<std::vector<float>>& matriz, float inicio, f
         }
     }
 }
+*/
+
+void pintaCelulas(const std::vector<std::vector<float>>& matriz, float inicio, float passo) {
+    if (matriz.empty()) return;
+    int linhas  = matriz.size();
+    int colunas = matriz[0].size();
+    if (colunas == 0) return;
+
+    // 1) Primeiro pinta TODAS as células de CINZA (inicialização)
+    for (int i = 0; i < linhas; ++i) {
+        for (int j = 0; j < colunas; ++j) {
+            float x = inicio + j * passo;
+            float y = inicio + i * passo;
+
+            glColor3f(0.5f, 0.5f, 0.5f); // cinza
+
+            glBegin(GL_QUADS);
+                glVertex2f(x, y);
+                glVertex2f(x + passo, y);
+                glVertex2f(x + passo, y + passo);
+                glVertex2f(x, y + passo);
+            glEnd();
+        }
+    }
+
+    // 2) Agora pinta apenas os pontos presentes em listaPontos
+    for (const Ponto& p : listaPontos) {
+
+        int i = p.y;  // linha
+        int j = p.x;  // coluna
+
+        // segurança para evitar segmentation fault
+        if (i < 0 || i >= linhas)  continue;
+        if (j < 0 || j >= colunas) continue;
+
+        float x = inicio + j * passo;
+        float y = inicio + i * passo;
+
+        // ---- Seleção de cor conforme pedido ----
+        if (!p.isFree) {
+            glColor3f(0.0f, 0.0f, 0.0f);       // preto
+        }
+        else if (p.isFrontier) {
+            glColor3f(0.0f, 1.0f, 0.0f);       // verde
+        }
+        else { // isFree == true e não é frontier
+            glColor3f(1.0f, 1.0f, 1.0f);       // branco
+        }
+
+        glBegin(GL_QUADS);
+            glVertex2f(x, y);
+            glVertex2f(x + passo, y);
+            glVertex2f(x + passo, y + passo);
+            glVertex2f(x, y + passo);
+        glEnd();
+    }
+}
+
+
 
 void desenhaCaminho(const std::vector<Position>& caminho) {
     glColor3f(1.0f, 0.0f, 0.0f);
@@ -207,10 +275,11 @@ void* graphicsThreadFunction(void* arg) {
     int width = 600, height = 600;
 
     GLFWwindow* window = glfwCreateWindow(width, height, "Mapping", NULL, NULL);
-    GLFWwindow* windowKnown = glfwCreateWindow(200, 200, "Known Region", NULL, NULL);
-    GLFWwindow* windowCampo = glfwCreateWindow(300, 300, "Campo Potencial", NULL, NULL);
+    //GLFWwindow* windowKnown = glfwCreateWindow(200, 200, "Known Region", NULL, NULL);
+    //GLFWwindow* windowCampo = glfwCreateWindow(300, 300, "Campo Potencial", NULL, NULL);
 
-    if (!window || !windowKnown || !windowCampo) {
+    //if (!window || !windowKnown || !windowCampo) {
+    if (!window) {
         glfwTerminate();
         return NULL;
     }
@@ -222,7 +291,8 @@ void* graphicsThreadFunction(void* arg) {
     glMatrixMode(GL_MODELVIEW);
     glClearColor(1, 1, 1, 1);
 
-    while (!glfwWindowShouldClose(window) && !glfwWindowShouldClose(windowKnown) && !glfwWindowShouldClose(windowCampo)) {
+    //while (!glfwWindowShouldClose(window) && !glfwWindowShouldClose(windowKnown) && !glfwWindowShouldClose(windowCampo)) {
+    while (!glfwWindowShouldClose(window)) {
         Position posRobo = {
             roboPosicao.x * scaleFactor - offset[0], 
             roboPosicao.y * scaleFactor - offset[1],
@@ -241,16 +311,16 @@ void* graphicsThreadFunction(void* arg) {
         glfwSwapBuffers(window);
 
         // Janela de região explorada
-        desenhaKnownRegion(windowKnown);
+        //desenhaKnownRegion(windowKnown);
 
         // Janela do campo potencial
-        desenhaCampoPotencial(windowCampo);
+        //desenhaCampoPotencial(windowCampo);
 
         glfwPollEvents();
     }
 
     glfwDestroyWindow(window);
-    glfwDestroyWindow(windowKnown);
+    //glfwDestroyWindow(windowKnown);
     glfwTerminate();
     return NULL;
 }

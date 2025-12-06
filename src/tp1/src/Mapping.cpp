@@ -17,10 +17,10 @@ extern std::vector<float> sonares;
 extern std::vector<std::vector<bool>> knownRegion;
 
 std::vector<double> sensorAngles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
-std::vector<int> sensorIndices = {0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14};
+std::vector<int> sensorIndices = {0, 1, 2, 3, 4, 5, 6, 7};//, 9, 10, 11, 12, 13, 14};
 //std::vector<float> offset = {0.8, 0.7};
 std::vector<float> offset = {0.0, 0.0};
-float scaleFactor = 0.03f;
+float scaleFactor = 0.025f;
 
 // Histórico de posições
 std::vector<Position> caminho;
@@ -33,6 +33,23 @@ int size = (grid.fim - grid.inicio) / grid.passo;
 // HIMM
 std::vector<std::vector<float>> matrizMundo(size, std::vector<float>(size, 7.5f));
 std::vector<std::vector<int>> matrizPath(size, std::vector<int>(size, 0));
+
+// Estrutura para lista de pontos
+struct Ponto {
+    int x;                   // coluna
+    int y;                   // linha
+    bool isFree     = false; // 
+    bool isFrontier = false;
+};
+
+struct PairHash {
+    size_t operator()(const std::pair<int,int>& p) const {
+        // slim 64-bit mix
+        return (static_cast<size_t>(p.first) << 32) ^ static_cast<size_t>(p.second);
+    }
+};
+
+std::vector<Ponto> listaPontos;
 
 
 float round2(float valor) {
@@ -315,6 +332,82 @@ void atualizaMatrizHIMM(
     }
 }// Método de atualização das células da matriz para ocupação
 
+bool classificar(float valor) {
+    if (valor <= 10.0f)
+        return true;     // livre
+    else
+        return false;     // parede
+}
+
+void detectarFronteiras(std::vector<Ponto>& pontos)
+{
+    // Criar tabela rápida apenas para verificar existência de pontos conhecidos
+    std::unordered_set<std::pair<int,int>, PairHash> tabela;
+    tabela.reserve(pontos.size() * 2);
+    for (const auto& p : pontos) tabela.insert({p.x, p.y});
+
+    // 8 vizinhos (8-conectividade)
+    const int dx[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
+    const int dy[8] = {-1,-1,-1,  0, 0,  1, 1, 1};
+
+    for (auto& p : pontos) {
+        if (!p.isFree) { p.isFrontier = false; continue; }
+
+        bool frontier = false;
+        for (int k = 0; k < 8; ++k) {
+            int nx = p.x + dx[k];
+            int ny = p.y + dy[k];
+
+            // Fora dos limites -> considere fronteira
+            if (ny < 0 || nx < 0 ||
+                ny >= static_cast<int>(knownRegion.size()) ||
+                nx >= static_cast<int>(knownRegion[0].size()))
+            {
+                frontier = true;
+                break;
+            }
+
+            // Se o vizinho ainda não foi visto (knownRegion == false) -> fronteira
+            if (!knownRegion[ny][nx]) {
+                frontier = true;
+                break;
+            }
+        }
+        p.isFrontier = frontier;
+    }
+}
+
+
+std::vector<Ponto> gerarPontos(const std::vector<std::vector<float>>& matrizMundo) {
+    std::vector<Ponto> pontos;
+    if (matrizMundo.empty()) return pontos;
+
+    size_t linhas = matrizMundo.size();
+    size_t colunas = matrizMundo[0].size();
+    pontos.reserve(linhas * colunas);
+
+    for (size_t y = 0; y < linhas; ++y) {
+        for (size_t x = 0; x < colunas; ++x) {
+            // Só adiciona se for conhecido (visível)
+            if (y >= knownRegion.size() || x >= knownRegion[y].size()) continue;
+            if (!knownRegion[y][x]) continue; // pular desconhecidos
+
+            float valorOriginal = matrizMundo[y][x];
+
+            Ponto p;
+            p.x = static_cast<int>(x);
+            p.y = static_cast<int>(y);
+            p.isFree = classificar(valorOriginal);  // mapeia para livre/parede
+            p.isFrontier = false;
+
+            pontos.push_back(p);
+        }
+    }
+
+    return pontos;
+}
+
+
 
 void* mappingThreadFunction(void* arg) {
     while (rclcpp::ok()) {
@@ -346,6 +439,9 @@ void* mappingThreadFunction(void* arg) {
                 }
             }
         }
+
+        listaPontos = gerarPontos(matrizMundo);
+        detectarFronteiras(listaPontos);
 
         // Pequena pausa para não sobrecarregar a CPU
         usleep(10000); // 10ms
