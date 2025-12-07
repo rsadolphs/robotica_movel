@@ -27,12 +27,6 @@ extern std::vector<std::vector<int>> matrizPath;
 extern std::vector<std::vector<bool>> knownRegion;
 extern std::vector<std::vector<float>> campoPotencial;
 
-struct Ponto {
-    int x;                   // coluna
-    int y;                   // linha
-    bool isFree     = false; 
-    bool isFrontier = false;
-};
 extern std::vector<Ponto> listaPontos;
 
 

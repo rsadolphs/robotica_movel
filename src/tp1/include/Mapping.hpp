@@ -76,5 +76,19 @@ CellCenter centroDaCelula(const MatrixPosition& pos, float inicio, float passo);
 
 CellRelativeInfo calculaDistanciaEAngulo(const CellCenter& centroRobo,const CellCenter& centroPonto,float yawRobo);
 
+struct Ponto {
+    int x;                   // coluna
+    int y;                   // linha
+    int cluster;
+    bool isFree     = false; 
+    bool isFrontier = false;
+};
+
+struct PairHash {
+    size_t operator()(const std::pair<int,int>& p) const {
+        // slim 64-bit mix
+        return (static_cast<size_t>(p.first) << 32) ^ static_cast<size_t>(p.second);
+    }
+};
 
 #endif // MAPPING_HPP

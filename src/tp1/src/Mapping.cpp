@@ -36,20 +36,6 @@ std::vector<std::vector<float>> matrizMundo(size, std::vector<float>(size, 7.5f)
 std::vector<std::vector<int>> matrizPath(size, std::vector<int>(size, 0));
 
 // Estrutura para lista de pontos
-struct Ponto {
-    int x;                   // coluna
-    int y;                   // linha
-    bool isFree     = false; // 
-    bool isFrontier = false;
-};
-
-struct PairHash {
-    size_t operator()(const std::pair<int,int>& p) const {
-        // slim 64-bit mix
-        return (static_cast<size_t>(p.first) << 32) ^ static_cast<size_t>(p.second);
-    }
-};
-
 std::vector<Ponto> listaPontos;
 
 
@@ -397,6 +383,7 @@ std::vector<Ponto> gerarPontos(const std::vector<std::vector<float>>& matrizMund
             Ponto p;
             p.x = static_cast<int>(x);
             p.y = static_cast<int>(y);
+            p.cluster = 0;
             p.isFree = classificar(valorOriginal);  // mapeia para livre/parede
             p.isFrontier = false;
 
@@ -406,6 +393,100 @@ std::vector<Ponto> gerarPontos(const std::vector<std::vector<float>>& matrizMund
 
     return pontos;
 }
+
+static float distancia(const Ponto& a, const Ponto& b) {
+    float dx = a.x - b.x;
+    float dy = a.y - b.y;
+    return std::sqrt(dx*dx + dy*dy);
+}
+
+static std::vector<int> regionQuery(const std::vector<Ponto>& pontos, int idx, float eps) {
+    std::vector<int> vizinhos;
+    for (int i = 0; i < (int)pontos.size(); i++) {
+        if (distancia(pontos[idx], pontos[i]) <= eps)
+            vizinhos.push_back(i);
+    }
+    return vizinhos;
+}
+
+void expandCluster(
+    std::vector<Ponto>& pontos,
+    int idx,
+    int clusterId,
+    float eps,
+    int minPts
+) {
+    std::vector<int> seeds = regionQuery(pontos, idx, eps);
+
+    pontos[idx].cluster = clusterId;
+
+    size_t i = 0;
+    while (i < seeds.size()) {
+        int p = seeds[i];
+
+        if (pontos[p].cluster == -1)   // noise vira membro
+            pontos[p].cluster = clusterId;
+
+        if (pontos[p].cluster == 0) {  // não visitado
+            pontos[p].cluster = clusterId;
+
+            std::vector<int> result = regionQuery(pontos, p, eps);
+
+            if (result.size() >= (size_t)minPts) {
+                seeds.insert(seeds.end(), result.begin(), result.end());
+            }
+        }
+        i++;
+    }
+}
+
+void rodarDBSCAN(std::vector<Ponto>& pontos, float eps, int minPts) {
+    int clusterId = 1;
+
+    for (auto& p : pontos)
+        p.cluster = 0; // 0 = não visitado /  -1 = noise
+
+    for (int i = 0; i < (int)pontos.size(); i++) {
+        if (pontos[i].cluster != 0)
+            continue;
+
+        auto vizinhos = regionQuery(pontos, i, eps);
+
+        if ((int)vizinhos.size() < minPts) {
+            pontos[i].cluster = -1; // noise
+        } else {
+            expandCluster(pontos, i, clusterId, eps, minPts);
+            clusterId++;
+        }
+    }
+}
+
+std::vector<std::pair<float,float>> calcularCentroides(const std::vector<Ponto>& pontos)
+{
+    std::unordered_map<int, std::pair<long long,long long>> soma;
+    std::unordered_map<int, int> cont;
+
+    for (const auto& p : pontos) {
+        if (p.cluster > 0) {
+            soma[p.cluster].first  += p.x;
+            soma[p.cluster].second += p.y;
+            cont[p.cluster]++;
+        }
+    }
+
+    std::vector<std::pair<float,float>> centroides;
+    centroides.reserve(soma.size());
+
+    for (auto& kv : soma) {
+        int id = kv.first;
+        float cx = (float)soma[id].first  / cont[id];
+        float cy = (float)soma[id].second / cont[id];
+        centroides.emplace_back(cx, cy);
+    }
+
+    return centroides;
+}
+
 
 
 void* mappingThreadFunction(void* arg) {
@@ -434,6 +515,20 @@ void* mappingThreadFunction(void* arg) {
         listaPontos = gerarPontos(matrizMundo);
         detectarFronteiras(listaPontos);
 
+        std::vector<Ponto> fronteiras;
+        for (auto& p : listaPontos)
+            if (p.isFrontier)
+                fronteiras.push_back(p);
+
+        rodarDBSCAN(fronteiras, 3.0f, 5); // eps, minPts
+
+        auto centroides = calcularCentroides(fronteiras);
+
+        std::cout << "Centroides encontrados: " << centroides.size() << "\n";
+
+        for (auto& c : centroides) {
+            std::cout << "Cluster centroid: (" << c.first << ", " << c.second << ")\n";
+        }
 
         // Pequena pausa para não sobrecarregar a CPU
         usleep(10000); // 10ms
