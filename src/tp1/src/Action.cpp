@@ -24,6 +24,7 @@ int firstMinDistPos = 0;
 bool firstInfo = false;
 std::vector<Position> positionArray;
 std::vector<float> sonares;
+std::vector<float> laseres;
 
 extern std::vector<double> sensorAngles;
 
@@ -182,6 +183,7 @@ void Action::avoidObstacles(std::vector<float> lasers, std::vector<float> sonars
 
     roboPosicao = {pose[0], pose[1], pose[2]};
     sonares = sonars;
+    laseres = lasers;
     positionArray.push_back(roboPosicao);
 
     auto [minPos, minDist] = findMinPosition(sonars);  // retorna o sensor com menor distancia e o valor.
@@ -353,10 +355,11 @@ void Action::testMode(std::vector<float> lasers, std::vector<float> sonars, std:
     angVel = ctrl.angVel;
 }
 
-void Action::manualRobotMotion(MovingDirection direction, std::vector<float> sonars, std::vector<float> pose)
+void Action::manualRobotMotion(MovingDirection direction, std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
 {
     roboPosicao = {pose[0], pose[1], pose[2]};
     sonares = sonars;
+    laseres = lasers;
     positionArray.push_back(roboPosicao);
 
     if(direction == FRONT){

@@ -14,6 +14,7 @@
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
 extern std::vector<float> sonares;
+extern std::vector<float> laseres;
 extern std::vector<std::vector<bool>> knownRegion;
 
 std::vector<double> sensorAngles = {-90, -50, -30, -10, 10, 30, 50, 90, 90, 130, 150, 170, -170, -150, -130, -90};
@@ -377,7 +378,6 @@ void detectarFronteiras(std::vector<Ponto>& pontos)
     }
 }
 
-
 std::vector<Ponto> gerarPontos(const std::vector<std::vector<float>>& matrizMundo) {
     std::vector<Ponto> pontos;
     if (matrizMundo.empty()) return pontos;
@@ -408,7 +408,6 @@ std::vector<Ponto> gerarPontos(const std::vector<std::vector<float>>& matrizMund
 }
 
 
-
 void* mappingThreadFunction(void* arg) {
     while (rclcpp::ok()) {
         MatrixPosition matPosRobo = findCell(roboPosicao.x * scaleFactor - offset[0], 
@@ -418,30 +417,23 @@ void* mappingThreadFunction(void* arg) {
         int linhas = matrizMundo.size();
         int colunas = matrizMundo[0].size();
 
-        if (posicaoValida(matPosRobo, linhas, colunas) && !sonares.empty()) {
+        if (posicaoValida(matPosRobo, linhas, colunas) && !laseres.empty()) {
 
             CellCenter centroCelRobo = centroDaCelula(matPosRobo, grid.inicio, grid.passo);
             Robot robotInfo = {matPosRobo, roboPosicao, centroCelRobo, 0.0f};
 
-            // Bayes
-            if(false){
-                for (int idx : sensorIndices) {
-                    float sensorAngle = sensorAngles[idx] * M_PI / 180.0f;
-                    robotInfo.s = sonares[idx] * scaleFactor;
-                    atualizaMatrizBayes(matrizMundo, robotInfo, sensorAngle); // Bayes
-                }
-            }else{
-            // HIMM
-                for (int idx : sensorIndices) {
-                    robotInfo.s = sonares[idx] * scaleFactor;
-                    float sensorAngle = sensorAngles[idx] * M_PI / 180.0f;
-                    atualizaMatrizHIMM(matrizMundo, robotInfo, sensorAngle);
-                }
+            
+            for (int idx = 0; idx <= 30; idx++) {
+                robotInfo.s = laseres[6*idx] * scaleFactor;
+                float sensorAngle = (6*idx - 90) * M_PI / 180.0f;
+                atualizaMatrizHIMM(matrizMundo, robotInfo, sensorAngle);
             }
+            
         }
 
         listaPontos = gerarPontos(matrizMundo);
         detectarFronteiras(listaPontos);
+
 
         // Pequena pausa para não sobrecarregar a CPU
         usleep(10000); // 10ms

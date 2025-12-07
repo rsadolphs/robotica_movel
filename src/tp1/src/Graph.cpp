@@ -305,7 +305,7 @@ void* graphicsThreadFunction(void* arg) {
         glClear(GL_COLOR_BUFFER_BIT);
         pintaCelulas(matrizMundo, grid.inicio, grid.passo);
         desenhaCaminho(caminho);
-        desenhaSensores(posRobo);
+        //desenhaSensores(posRobo);
         desenhaRobo(posRobo);
         desenhaDirecao(posRobo);
         glfwSwapBuffers(window);
