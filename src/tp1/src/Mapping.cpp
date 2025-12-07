@@ -37,6 +37,7 @@ std::vector<std::vector<int>> matrizPath(size, std::vector<int>(size, 0));
 
 // Estrutura para lista de pontos
 std::vector<Ponto> listaPontos;
+std::vector<Centroide> listaCentroides;
 
 
 float round2(float valor) {
@@ -461,33 +462,70 @@ void rodarDBSCAN(std::vector<Ponto>& pontos, float eps, int minPts) {
     }
 }
 
-std::vector<std::pair<float,float>> calcularCentroides(const std::vector<Ponto>& pontos)
-{
-    std::unordered_map<int, std::pair<long long,long long>> soma;
-    std::unordered_map<int, int> cont;
+std::vector<Centroide> calcularCentroides(const std::vector<Ponto>& listaPontos) {
+    std::map<int, std::vector<Ponto>> clusters;
 
-    for (const auto& p : pontos) {
-        if (p.cluster > 0) {
-            soma[p.cluster].first  += p.x;
-            soma[p.cluster].second += p.y;
-            cont[p.cluster]++;
+    // Agrupa pontos por clusterId
+    for (const auto& p : listaPontos) {
+        if (p.cluster >= 0) {   // clusters válidos
+            clusters[p.cluster].push_back(p);
         }
     }
 
-    std::vector<std::pair<float,float>> centroides;
-    centroides.reserve(soma.size());
+    std::vector<Centroide> centroides;
 
-    for (auto& kv : soma) {
+    // Calcula centroide de cada cluster
+    for (auto& kv : clusters) {
         int id = kv.first;
-        float cx = (float)soma[id].first  / cont[id];
-        float cy = (float)soma[id].second / cont[id];
-        centroides.emplace_back(cx, cy);
+        auto& pts = kv.second;
+
+        long somaX = 0, somaY = 0;
+        for (auto& p : pts) {
+            somaX += p.x;
+            somaY += p.y;
+        }
+
+        Centroide c;
+        c.clusterId  = id;
+        c.numPontos  = pts.size();
+        c.x          = somaX / pts.size();
+        c.y          = somaY / pts.size();
+        c.distVizinho = -1;   // será calculado depois
+
+        centroides.push_back(c);
     }
 
     return centroides;
 }
 
+void calcularDistanciasVizinho(std::vector<Centroide>& centroides) {
+    if (centroides.size() <= 1) {
+        return;
+    }
 
+    for (auto& c : centroides) {
+        float minDist = std::numeric_limits<float>::max();
+
+        for (const auto& outros : centroides) {
+            if (c.clusterId == outros.clusterId)
+                continue;
+
+            float dx = c.x - outros.x;
+            float dy = c.y - outros.y;
+            float dist = std::sqrt(dx*dx + dy*dy);
+
+            if (dist < minDist) {
+                minDist = dist;
+            }
+        }
+
+        c.distVizinho = minDist;
+    }
+}
+
+bool podePassar(int x, int y) {
+    return (knownRegion[y][x] == false);
+}
 
 void* mappingThreadFunction(void* arg) {
     while (rclcpp::ok()) {
@@ -522,12 +560,13 @@ void* mappingThreadFunction(void* arg) {
 
         rodarDBSCAN(fronteiras, 3.0f, 5); // eps, minPts
 
-        auto centroides = calcularCentroides(fronteiras);
+        listaCentroides = calcularCentroides(fronteiras);
+        calcularDistanciasVizinho(listaCentroides);
 
-        std::cout << "Centroides encontrados: " << centroides.size() << "\n";
+        std::cout << "Centroides encontrados: " << listaCentroides.size() << "\n";
 
-        for (auto& c : centroides) {
-            std::cout << "Cluster centroid: (" << c.first << ", " << c.second << ")\n";
+        for (auto& c : listaCentroides) {
+            std::cout << "Cluster: " << c.clusterId << " (" << c.x << ", " << c.y << ") " << " Size: " << c.numPontos << " NN: " << c.distVizinho << "\n";
         }
 
         // Pequena pausa para não sobrecarregar a CPU

@@ -91,4 +91,12 @@ struct PairHash {
     }
 };
 
+struct Centroide {
+    int clusterId;          // Número do cluster (mesmo ID usado em listaPontos)
+    int x;                  // Coordenada X do centroide
+    int y;                  // Coordenada Y do centroide
+    int numPontos;          // Quantidade de pontos no cluster
+    float distVizinho;      // Distância até o centroide mais próximo
+};
+
 #endif // MAPPING_HPP
