@@ -1,0 +1,21 @@
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K calcularDistanciasVizinho[m[K(std::vector<Centroide>&, const std::vector<std::vector<bool, std::allocator<bool> > >&)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:583:22:[m[K [01;31m[Kerror: [m[K‘[01m[KINT_MAX[m[K’ was not declared in this scope
+  583 |         int melhor = [01;31m[KINT_MAX[m[K;
+      |                      [01;31m[K^~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:10:1:[m[K [01;36m[Knote: [m[K‘[01m[KINT_MAX[m[K’ is defined in header ‘[01m[K<climits>[m[K’; did you forget to ‘[01m[K#include <climits>[m[K’?
+    9 | #include <fstream>
+  +++ |+[32m[K#include <climits>[m[K
+   10 | #include <unistd.h>
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mappingThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:635:34:[m[K [01;31m[Kerror: [m[Ktoo few arguments to function ‘[01m[Kvoid[01;32m[K calcularDistanciasVizinho[m[K(std::vector<Centroide>&, const std::vector<std::vector<bool, std::allocator<bool> > >&)[m[K’
+  635 |         [01;31m[KcalcularDistanciasVizinho(listaCentroides)[m[K;
+      |         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:578:6:[m[K [01;36m[Knote: [m[Kdeclared here
+  578 | void [01;36m[KcalcularDistanciasVizinho[m[K(
+      |      [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:601:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  601 | void* mappingThreadFunction([01;35m[Kvoid* arg[m[K) {
+      |                             [01;35m[K~~~~~~^~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:146: CMakeFiles/navigation.dir/src/Mapping.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

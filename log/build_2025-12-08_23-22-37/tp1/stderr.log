@@ -1,0 +1,39 @@
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:575:8:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct Cell[m[K’
+  575 | struct [01;31m[KCell[m[K {
+      |        [01;31m[K^~~~[m[K
+In file included from [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:1[m[K:
+[01m[K/home/richard/ros2_ws/src/tp1/include/Mapping.hpp:102:8:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct Cell[m[K’
+  102 | struct [01;36m[KCell[m[K {
+      |        [01;36m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:584:33:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstd::vector<std::pair<int, int> > caminhoRobo[m[K’
+  584 | std::vector<std::pair<int,int>> [01;31m[KcaminhoRobo[m[K;
+      |                                 [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:45:33:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::vector<std::pair<int, int> > caminhoRobo[m[K’ previously declared here
+   45 | std::vector<std::pair<int,int>> [01;36m[KcaminhoRobo[m[K;
+      |                                 [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:585:33:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstd::vector<std::pair<int, int> > caminhoClusterAB[m[K’
+  585 | std::vector<std::pair<int,int>> [01;31m[KcaminhoClusterAB[m[K;
+      |                                 [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:46:33:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::vector<std::pair<int, int> > caminhoClusterAB[m[K’ previously declared here
+   46 | std::vector<std::pair<int,int>> [01;36m[KcaminhoClusterAB[m[K;
+      |                                 [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:586:33:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstd::vector<std::pair<int, int> > caminhoCompleto[m[K’
+  586 | std::vector<std::pair<int,int>> [01;31m[KcaminhoCompleto[m[K;
+      |                                 [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:47:33:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::vector<std::pair<int, int> > caminhoCompleto[m[K’ previously declared here
+   47 | std::vector<std::pair<int,int>> [01;36m[KcaminhoCompleto[m[K;
+      |                                 [01;36m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kstd::pair<int, int>[01;32m[K escolherClusterPar[m[K(const std::vector<std::vector<Cell> >&, int, int, const std::vector<Centroide>&)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:700:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double, std::allocator<double> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  700 |     for (int i = 0; [01;35m[Ki < dist.size()[m[K; i++) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:715:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Centroide>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  715 |     for (int i = 0; [01;35m[Ki < centroides.size()[m[K; i++) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mappingThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:772:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  772 | void* mappingThreadFunction([01;35m[Kvoid* arg[m[K) {
+      |                             [01;35m[K~~~~~~^~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:146: CMakeFiles/navigation.dir/src/Mapping.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

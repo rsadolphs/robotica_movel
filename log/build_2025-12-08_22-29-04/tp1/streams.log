@@ -1,0 +1,22 @@
+[0.018s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4
+[0.148s] [ 12%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Mapping.cpp.o[0m
+[3.082s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mappingThreadFunction[m[K(void*)[m[K’:
+[3.083s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:659:27:[m[K [01;31m[Kerror: [m[Kinvalid initialization of reference of type ‘[01m[Kconst std::vector<std::vector<int> >&[m[K’ from expression of type ‘[01m[Kstd::vector<std::vector<float> >[m[K’
+[3.083s]   659 |         processarMatrizes([01;31m[KmatrizMundo[m[K, knownRegion, occGrid);
+[3.083s]       |                           [01;31m[K^~~~~~~~~~~[m[K
+[3.083s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:327:42:[m[K [01;36m[Knote: [m[Kin passing argument 1 of ‘[01m[Kvoid[01;32m[K processarMatrizes[m[K(const std::vector<std::vector<int> >&, const std::vector<std::vector<int> >&, std::vector<std::vector<int> >&)[m[K’
+[3.083s]   327 |     [01;36m[Kconst std::vector<std::vector<int>>& matA[m[K,
+[3.083s]       |     [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[3.084s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:680:79:[m[K [01;31m[Kerror: [m[Kinvalid initialization of reference of type ‘[01m[Kconst std::vector<std::vector<Cell> >&[m[K’ from expression of type ‘[01m[Kstd::vector<std::vector<float> >[m[K’
+[3.085s]   680 |         std::vector<double> distancias = calcularDistanciasRoboParaCentroides([01;31m[KoccGrid[m[K, matPosRobo.coluna, matPosRobo.linha, listaCentroides);
+[3.085s]       |                                                                               [01;31m[K^~~~~~~[m[K
+[3.085s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:619:43:[m[K [01;36m[Knote: [m[Kin passing argument 1 of ‘[01m[Kstd::vector<double, std::allocator<double> >[01;32m[K calcularDistanciasRoboParaCentroides[m[K(const std::vector<std::vector<Cell> >&, int, int, const std::vector<Centroide>&)[m[K’
+[3.085s]   619 |     [01;36m[Kconst std::vector<std::vector<Cell>>& grid[m[K,
+[3.085s]       |     [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[3.086s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:636:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[3.086s]   636 | void* mappingThreadFunction([01;35m[Kvoid* arg[m[K) {
+[3.086s]       |                             [01;35m[K~~~~~~^~~[m[K
+[4.042s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:146: CMakeFiles/navigation.dir/src/Mapping.cpp.o] Erro 1
+[4.043s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[4.043s] gmake: *** [Makefile:146: all] Erro 2
+[4.046s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4

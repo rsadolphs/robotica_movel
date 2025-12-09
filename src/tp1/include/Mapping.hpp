@@ -99,4 +99,16 @@ struct Centroide {
     float distVizinho;      // Distância até o centroide mais próximo
 };
 
+struct Cell {
+    bool isUnknown = false;
+    bool isFree    = false;
+    bool isOcc     = false;
+};
+
+struct PathResult {
+    double custo;
+    std::vector<std::pair<int,int>> caminho; // (y,x) do início ao fim
+};
+
+
 #endif // MAPPING_HPP

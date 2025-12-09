@@ -28,6 +28,7 @@ extern std::vector<std::vector<bool>> knownRegion;
 extern std::vector<std::vector<float>> campoPotencial;
 
 extern std::vector<Ponto> listaPontos;
+extern std::vector<std::pair<int,int>> caminhoCompleto;
 
 
 void desenhaGrade(float inicio, float fim, float passo) {
@@ -263,6 +264,30 @@ void desenhaCampoPotencial(GLFWwindow* window) {
     glfwSwapBuffers(window);
 }
 
+void desenhaCaminhoRobo(const std::vector<std::pair<int,int>>& caminhoRobo,
+                        float inicio, float passo)
+{
+    if (caminhoRobo.empty()) return;
+
+    glColor3f(1.0f, 0.5f, 0.0f); // Laranja
+
+    for (const auto& cel : caminhoRobo) {
+        int i = cel.first;   // y (linha)
+        int j = cel.second;  // x (coluna)
+
+        float x = inicio + j * passo;
+        float y = inicio + i * passo;
+
+        glBegin(GL_QUADS);
+            glVertex2f(x, y);
+            glVertex2f(x + passo, y);
+            glVertex2f(x + passo, y + passo);
+            glVertex2f(x, y + passo);
+        glEnd();
+    }
+}
+
+
 void* graphicsThreadFunction(void* arg) {
     if (!glfwInit()) return NULL;
 
@@ -298,6 +323,9 @@ void* graphicsThreadFunction(void* arg) {
         glfwMakeContextCurrent(window);
         glClear(GL_COLOR_BUFFER_BIT);
         pintaCelulas(matrizMundo, grid.inicio, grid.passo);
+        if (!caminhoCompleto.empty()){
+            desenhaCaminhoRobo(caminhoCompleto, grid.inicio, grid.passo);
+        }
         desenhaCaminho(caminho);
         //desenhaSensores(posRobo);
         desenhaRobo(posRobo);

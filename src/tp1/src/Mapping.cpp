@@ -9,6 +9,8 @@
 #include <fstream>
 #include <unistd.h>
 #include <sstream>
+#include <queue>
+#include <climits>
 
 
 // Variável global ou extern para compartilhar posição do robô
@@ -34,10 +36,15 @@ int size = (grid.fim - grid.inicio) / grid.passo;
 // HIMM
 std::vector<std::vector<float>> matrizMundo(size, std::vector<float>(size, 7.5f));
 std::vector<std::vector<int>> matrizPath(size, std::vector<int>(size, 0));
+std::vector<std::vector<Cell>> occGrid(size, std::vector<Cell>(size, Cell{true, false, false}));
+
 
 // Estrutura para lista de pontos
 std::vector<Ponto> listaPontos;
 std::vector<Centroide> listaCentroides;
+std::vector<std::pair<int,int>> caminhoRobo;
+std::vector<std::pair<int,int>> caminhoClusterAB;
+std::vector<std::pair<int,int>> caminhoCompleto;
 
 
 float round2(float valor) {
@@ -320,6 +327,41 @@ void atualizaMatrizHIMM(
     }
 }// Método de atualização das células da matriz para ocupação
 
+void montarOccGrid(
+    const std::vector<std::vector<float>>& matA,
+    const std::vector<std::vector<bool>>& matB,
+    std::vector<std::vector<Cell>>& matC
+) {
+    int linhas = matA.size();
+    int colunas = matA[0].size();
+
+    matC.assign(linhas, std::vector<Cell>(colunas));
+
+    for (int y = 0; y < linhas; y++) {
+        for (int x = 0; x < colunas; x++) {
+
+            // Se matB é false, célula é Unknown
+            if (!matB[y][x]) {
+                matC[y][x].isUnknown = true;
+                continue;
+            }
+
+            float v = matA[y][x];
+
+            if (v >= 0 && v <= 7) {
+                matC[y][x].isFree = true;
+            }
+            else if (v >= 8 && v <= 15) {
+                matC[y][x].isOcc = true;
+            }
+            else {
+                // Caso inesperado → unknown
+                matC[y][x].isUnknown = true;
+            }
+        }
+    }
+}
+
 bool classificar(float valor) {
     if (valor <= 10.0f)
         return true;     // livre
@@ -498,6 +540,7 @@ std::vector<Centroide> calcularCentroides(const std::vector<Ponto>& listaPontos)
     return centroides;
 }
 
+
 void calcularDistanciasVizinho(std::vector<Centroide>& centroides) {
     if (centroides.size() <= 1) {
         return;
@@ -523,9 +566,193 @@ void calcularDistanciasVizinho(std::vector<Centroide>& centroides) {
     }
 }
 
-bool podePassar(int x, int y) {
-    return (knownRegion[y][x] == false);
+
+// djikstra
+
+
+//-----------------------------------------
+// DIJKSTRA BASE
+//-----------------------------------------
+double dijkstraBase(
+    const std::vector<std::vector<Cell>>& grid,
+    int sx, int sy,
+    int gx, int gy,
+    std::vector<std::pair<int,int>>& outPath)
+{
+    const int H = grid.size();
+    if (H == 0) return -1;
+    const int W = grid[0].size();
+    if (W == 0) return -1;
+
+    auto inside = [&](int y, int x){
+        return x >= 0 && x < W && y >= 0 && y < H;
+    };
+
+    const double INF = 1e18;
+
+    std::vector<std::vector<double>> dist(H, std::vector<double>(W, INF));
+    std::vector<std::vector<std::pair<int,int>>> parent(
+        H, std::vector<std::pair<int,int>>(W, {-1, -1})
+    );
+
+    using Node = std::tuple<double,int,int>;
+    std::priority_queue<Node, std::vector<Node>, std::greater<Node>> pq;
+
+    dist[sy][sx] = 0.0;
+    pq.push({0.0, sy, sx});
+
+    const int dx[8] = {1,-1,0,0, 1,1,-1,-1};
+    const int dy[8] = {0,0,1,-1, 1,-1,1,-1};
+
+    while (!pq.empty()) {
+        auto [d, y, x] = pq.top();
+        pq.pop();
+
+        if (d > dist[y][x]) continue;
+
+        if (x == gx && y == gy) {
+            outPath.clear();
+
+            int cy = gy, cx = gx;
+            while (!(cy == sy && cx == sx)) {
+                outPath.push_back({cy, cx});
+                auto [py, px] = parent[cy][cx];
+                if (py == -1) break;
+                cy = py; cx = px;
+            }
+            outPath.push_back({sy, sx});
+            std::reverse(outPath.begin(), outPath.end());
+            return d;
+        }
+
+        for (int k = 0; k < 8; k++) {
+            int nx = x + dx[k];
+            int ny = y + dy[k];
+
+            if (!inside(ny, nx)) continue;
+
+            if (grid[ny][nx].isOcc) continue;
+
+            double mc = (k < 4 ? 1.0 : sqrt(2.0));
+            double w  = (grid[ny][nx].isUnknown ? 1.0 : 10.0);
+
+            double nd = d + mc * w;
+            if (nd < dist[ny][nx]) {
+                dist[ny][nx] = nd;
+                parent[ny][nx] = {y, x};
+                pq.push({nd, ny, nx});
+            }
+        }
+    }
+
+    return -1; // sem caminho
 }
+
+//-----------------------------------------
+// DISTÂNCIA DO ROBO A OS CENTROIDES
+//-----------------------------------------
+std::vector<double> calcularDistanciasRoboParaCentroides(
+    const std::vector<std::vector<Cell>>& grid,
+    int rx, int ry,
+    const std::vector<Centroide>& centroides)
+{
+    std::vector<double> v;
+    v.reserve(centroides.size());
+
+    for (auto& c : centroides) {
+        std::vector<std::pair<int,int>> tmp;
+        double d = dijkstraBase(grid, rx, ry, c.x, c.y, tmp);
+        v.push_back(d);
+    }
+    return v;
+}
+
+//-----------------------------------------
+// ESCOLHER CLUSTER A E B
+//-----------------------------------------
+std::pair<int,int> escolherClusterPar(
+    const std::vector<std::vector<Cell>>& grid,
+    int rx, int ry,
+    const std::vector<Centroide>& centroides)
+{
+    if (centroides.size() < 2) return {-1,-1};
+
+    auto dist = calcularDistanciasRoboParaCentroides(grid, rx, ry, centroides);
+
+    int idxA = -1;
+    double best = 1e18;
+
+    for (int i = 0; i < dist.size(); i++) {
+        if (dist[i] > 0 && dist[i] < best) {
+            best = dist[i];
+            idxA = i;
+        }
+    }
+
+    if (idxA < 0) return {-1,-1};
+
+    int Ax = centroides[idxA].x;
+    int Ay = centroides[idxA].y;
+
+    int idxB = -1;
+    best = 1e18;
+
+    for (int i = 0; i < centroides.size(); i++) {
+        if (i == idxA) continue;
+
+        std::vector<std::pair<int,int>> tmp;
+        double d = dijkstraBase(grid, Ax, Ay, centroides[i].x, centroides[i].y, tmp);
+
+        if (d > 0 && d < best) {
+            best = d;
+            idxB = i;
+        }
+    }
+
+    return {idxA, idxB};
+}
+
+//-----------------------------------------
+// GERAR CAMINHO ROBO → A  E  A → B
+//-----------------------------------------
+bool gerarCaminhoRoboAEB(
+    const std::vector<std::vector<Cell>>& grid,
+    int rx, int ry,
+    const std::vector<Centroide>& centroides)
+{
+    caminhoRobo.clear();
+    caminhoClusterAB.clear();
+    caminhoCompleto.clear();
+
+    auto [iA, iB] = escolherClusterPar(grid, rx, ry, centroides);
+    if (iA < 0 || iB < 0) return false;
+
+    int Ax = centroides[iA].x;
+    int Ay = centroides[iA].y;
+    int Bx = centroides[iB].x;
+    int By = centroides[iB].y;
+
+    // robo → A
+    if (dijkstraBase(grid, rx, ry, Ax, Ay, caminhoRobo) < 0)
+        return false;
+
+    // A → B
+    if (dijkstraBase(grid, Ax, Ay, Bx, By, caminhoClusterAB) < 0)
+        return false;
+
+    // caminho completo
+    caminhoCompleto = caminhoRobo;
+    caminhoCompleto.insert(
+        caminhoCompleto.end(),
+        caminhoClusterAB.begin()+1,  // evita duplicar A
+        caminhoClusterAB.end()
+    );
+
+    return true;
+}
+
+
+//
 
 void* mappingThreadFunction(void* arg) {
     while (rclcpp::ok()) {
@@ -550,6 +777,8 @@ void* mappingThreadFunction(void* arg) {
             
         }
 
+        montarOccGrid(matrizMundo, knownRegion, occGrid);
+
         listaPontos = gerarPontos(matrizMundo);
         detectarFronteiras(listaPontos);
 
@@ -567,6 +796,36 @@ void* mappingThreadFunction(void* arg) {
 
         for (auto& c : listaCentroides) {
             std::cout << "Cluster: " << c.clusterId << " (" << c.x << ", " << c.y << ") " << " Size: " << c.numPontos << " NN: " << c.distVizinho << "\n";
+        }
+
+        std::vector<double> distancias = calcularDistanciasRoboParaCentroides(occGrid, matPosRobo.coluna, matPosRobo.linha, listaCentroides);
+        for (size_t i = 0; i < distancias.size(); i++) {
+            std::cout << "Cluster " << listaCentroides[i].clusterId
+                    << " | Distancia = " << distancias[i] << std::endl;
+        }   
+
+        //gerarCaminhoRoboAEB(occGrid, matPosRobo.coluna, matPosRobo.linha, listaCentroides);
+
+        //if(!caminhoRobo.empty() & !caminhoClusterAB.empty()){
+        if(
+            gerarCaminhoRoboAEB(occGrid, matPosRobo.coluna, matPosRobo.linha, listaCentroides) &
+            !caminhoRobo.empty() & 
+            !caminhoClusterAB.empty()
+        ){
+
+            caminhoCompleto.clear();
+            caminhoCompleto.reserve(caminhoRobo.size() + caminhoClusterAB.size());
+
+            // 1) Copiar caminho do Robô até A
+            for (const auto& p : caminhoRobo) {
+                caminhoCompleto.push_back(p);
+            }
+
+            // 2) Copiar caminho de A até B (sem repetir o ponto A)
+            for (size_t i = 1; i < caminhoClusterAB.size(); i++) {
+                caminhoCompleto.push_back(caminhoClusterAB[i]);
+            }
+
         }
 
         // Pequena pausa para não sobrecarregar a CPU
