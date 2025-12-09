@@ -1,0 +1,24 @@
+[0.014s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4
+[0.166s] [ 11%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Pathing.cpp.o[0m
+[2.951s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:[m[K In function ‘[01m[Kdouble[01;32m[K dijkstraBase[m[K(const std::vector<std::vector<Cell> >&, int, int, int, int, std::vector<std::pair<int, int> >&)[m[K’:
+[2.951s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:327:20:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kdouble w[m[K’
+[2.951s]   327 |             double [01;31m[Kw[m[K  = (grid[ny][nx].isUnknown ? 1.0 : 10.0);
+[2.951s]       |                    [01;31m[K^[m[K
+[2.951s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:313:20:[m[K [01;36m[Knote: [m[K‘[01m[Kdouble w[m[K’ previously declared here
+[2.951s]   313 |             double [01;36m[Kw[m[K = COST_FREE;
+[2.952s]       |                    [01;36m[K^[m[K
+[2.954s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:[m[K In function ‘[01m[Kstd::pair<int, int>[01;32m[K escolherClusterPar[m[K(const std::vector<std::vector<Cell> >&, int, int, const std::vector<Centroide>&)[m[K’:
+[2.954s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:375:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double, std::allocator<double> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.954s]   375 |     for (int i = 0; [01;35m[Ki < dist.size()[m[K; i++) {
+[2.954s]       |                     [01;35m[K~~^~~~~~~~~~~~~[m[K
+[2.955s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:390:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Centroide>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.955s]   390 |     for (int i = 0; [01;35m[Ki < centroides.size()[m[K; i++) {
+[2.955s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~[m[K
+[2.960s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K pathingThreadFunction[m[K(void*)[m[K’:
+[2.960s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:446:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.960s]   446 | void* pathingThreadFunction([01;35m[Kvoid* arg[m[K) {
+[2.960s]       |                             [01;35m[K~~~~~~^~~[m[K
+[3.859s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:174: CMakeFiles/navigation.dir/src/Pathing.cpp.o] Erro 1
+[3.859s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[3.860s] gmake: *** [Makefile:146: all] Erro 2
+[3.862s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4

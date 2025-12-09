@@ -1,6 +1,7 @@
 // graphics.cpp
 #include "graphics.hpp"
 #include "Mapping.hpp"
+#include "Pathing.hpp"
 #include <GLFW/glfw3.h>
 #include <vector>
 #include <cmath>

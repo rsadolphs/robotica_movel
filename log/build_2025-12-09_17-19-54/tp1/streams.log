@@ -1,0 +1,52 @@
+[0.033s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4
+[0.248s] [ 11%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Pathing.cpp.o[0m
+[0.251s] [ 22%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Mapping.cpp.o[0m
+[3.762s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:[m[K In function ‘[01m[Kdouble[01;32m[K custoCelulaComInflacao[m[K(const std::vector<std::vector<Cell> >&, int, int, double, double, double, double, int)[m[K’:
+[3.763s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:275:40:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<Cell> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.763s]   275 |             if (ny < 0 || nx < 0 || [01;35m[Kny >= grid.size()[m[K || nx >= grid[0].size())
+[3.763s]       |                                     [01;35m[K~~~^~~~~~~~~~~~~~[m[K
+[3.763s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:275:61:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Cell>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.763s]   275 |             if (ny < 0 || nx < 0 || ny >= grid.size() || [01;35m[Knx >= grid[0].size()[m[K)
+[3.763s]       |                                                          [01;35m[K~~~^~~~~~~~~~~~~~~~~[m[K
+[3.805s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:[m[K In function ‘[01m[Kstd::pair<int, int>[01;32m[K escolherClusterPar[m[K(const std::vector<std::vector<Cell> >&, int, int, const std::vector<Centroide>&)[m[K’:
+[3.807s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:409:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double, std::allocator<double> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.807s]   409 |     for (int i = 0; [01;35m[Ki < dist.size()[m[K; i++) {
+[3.808s]       |                     [01;35m[K~~^~~~~~~~~~~~~[m[K
+[3.813s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:424:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Centroide>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.813s]   424 |     for (int i = 0; [01;35m[Ki < centroides.size()[m[K; i++) {
+[3.813s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~[m[K
+[3.817s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K pathingThreadFunction[m[K(void*)[m[K’:
+[3.817s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:480:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[3.818s]   480 | void* pathingThreadFunction([01;35m[Kvoid* arg[m[K) {
+[3.818s]       |                             [01;35m[K~~~~~~^~~[m[K
+[4.367s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mappingThreadFunction[m[K(void*)[m[K’:
+[4.367s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:358:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[4.367s]   358 | void* mappingThreadFunction([01;35m[Kvoid* arg[m[K) {
+[4.368s]       |                             [01;35m[K~~~~~~^~~[m[K
+[5.690s] [ 33%] [32m[1mLinking CXX executable navigation[0m
+[6.413s] [100%] Built target navigation
+[6.429s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4
+[6.430s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1
+[6.438s] -- Install configuration: ""
+[6.438s] -- Installing: /home/richard/ros2_ws/install/tp1/lib/tp1/navigation
+[6.450s] -- Set non-toolchain portion of runtime path of "/home/richard/ros2_ws/install/tp1/lib/tp1/navigation" to ""
+[6.450s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch
+[6.450s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch/p3dx-rosaria.launch.py
+[6.450s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config
+[6.450s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config/p3dx.rviz
+[6.450s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/package_run_dependencies/tp1
+[6.451s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/parent_prefix_path/tp1
+[6.451s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.sh
+[6.451s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.dsv
+[6.451s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.sh
+[6.451s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.dsv
+[6.453s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.bash
+[6.453s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.sh
+[6.453s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.zsh
+[6.453s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.dsv
+[6.453s] -- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/package.dsv
+[6.453s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/packages/tp1
+[6.453s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config.cmake
+[6.453s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config-version.cmake
+[6.454s] -- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/package.xml
+[6.455s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/richard/ros2_ws/build/tp1

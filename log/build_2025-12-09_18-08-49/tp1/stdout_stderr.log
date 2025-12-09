@@ -1,0 +1,171 @@
+[ 11%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o[0m
+[ 22%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/main.cpp.o[0m
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kstd::vector<std::vector<int> >[01;32m[K senseWalls[m[K(const std::vector<float>&)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:37:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   37 |     for (int i = 0; [01;35m[Ki < sonars.size()[m[K; ++i) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:59:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   59 |     for (int i = 0; [01;35m[Ki < capturedPoints.size()[m[K; ++i) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:64:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   64 |         if ([01;35m[Ki + 2 == capturedPoints.size()[m[K){
+      |             [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:68:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::tuple<int, int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   68 |             if ([01;35m[Ki + 1 == capturedPoints.size()[m[K){
+      |                 [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KkeepAsFarthestAsPossibleFromWalls[m[K(std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:207:67:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  207 | void Action::keepAsFarthestAsPossibleFromWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars)
+      |                                                [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[KPosition[01;32m[K detectarParede[m[K(const std::vector<float>&, float, bool)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:266:45:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KPosition::theta[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+  266 |     Position pontoParede = {paredeX, paredeY[01;35m[K}[m[K;
+      |                                             [01;35m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kbool[01;32m[K estaTrancado[m[K(const std::vector<Position>&, int)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:271:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<Position>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  271 |     if ([01;35m[Kposicoes.size() < ultimos[m[K) return false;
+      |         [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KfollowTheWalls[m[K(std::vector<float>, std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:282:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  282 | void Action::followTheWalls([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars, std::vector<float> pose)
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KtestMode[m[K(std::vector<float>, std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:351:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KyawIdeal[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  351 |     float [01;35m[KyawIdeal[m[K = yawGradiente(campoPotencial, x, y);
+      |           [01;35m[K^~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:339:42:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  339 | void Action::testMode([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars, std::vector<float> pose)
+      |                       [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K At global scope:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:359:38:[m[K [01;31m[Kerror: [m[K‘[01m[KPonto[m[K’ was not declared in this scope
+  359 | float yawParaPonto(const std::vector<[01;31m[KPonto[m[K>& caminho, float xAtual, float yAtual)
+      |                                      [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:359:43:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  359 | float yawParaPonto(const std::vector<Ponto[01;31m[K>[m[K& caminho, float xAtual, float yAtual)
+      |                                           [01;31m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:359:43:[m[K [01;31m[Kerror: [m[Ktemplate argument 2 is invalid
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kfloat[01;32m[K yawParaPonto[m[K(const int&, float, float)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:361:17:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kempty[m[K’ in ‘[01m[Kcaminho[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+  361 |     if (caminho.[01;31m[Kempty[m[K())
+      |                 [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:367:11:[m[K [01;31m[Kerror: [m[K‘[01m[KPonto[m[K’ does not name a type
+  367 |     const [01;31m[KPonto[m[K& alvo = caminho.front();
+      |           [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:369:16:[m[K [01;31m[Kerror: [m[K‘[01m[Kalvo[m[K’ was not declared in this scope
+  369 |     float dx = [01;31m[Kalvo[m[K.x - xAtual;
+      |                [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K At global scope:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:375:38:[m[K [01;31m[Kerror: [m[K‘[01m[KPonto[m[K’ was not declared in this scope
+  375 | float yawParaPonto(const std::vector<[01;31m[KPonto[m[K>& caminho,
+      |                                      [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:375:43:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  375 | float yawParaPonto(const std::vector<Ponto[01;31m[K>[m[K& caminho,
+      |                                           [01;31m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:375:43:[m[K [01;31m[Kerror: [m[Ktemplate argument 2 is invalid
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In function ‘[01m[Kfloat[01;32m[K yawParaPonto[m[K(const int&, float, float, float, float, float)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:379:17:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kempty[m[K’ in ‘[01m[Kcaminho[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+  379 |     if (caminho.[01;31m[Kempty[m[K())
+      |                 [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:382:11:[m[K [01;31m[Kerror: [m[K‘[01m[KPonto[m[K’ does not name a type
+  382 |     const [01;31m[KPonto[m[K& alvo = caminho.front();
+      |           [01;31m[K^~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:385:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kalvo[m[K’ was not declared in this scope; did you mean ‘[01m[KalvoX[m[K’?
+  385 |     float alvoX = [01;31m[Kalvo[m[K.x * passo + offsetX;
+      |                   [01;31m[K^~~~[m[K
+      |                   [32m[KalvoX[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KrichRobotic[m[K(std::vector<float>, std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:408:45:[m[K [01;31m[Kerror: [m[K‘[01m[Koffset[m[K’ was not declared in this scope; did you mean ‘[01m[Koff_t[m[K’?
+  408 |                                 grid.passo, [01;31m[Koffset[m[K[0], offset[1]);
+      |                                             [01;31m[K^~~~~~[m[K
+      |                                             [32m[Koff_t[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:410:34:[m[K [01;31m[Kerror: [m[K‘[01m[KyawAtual[m[K’ was not declared in this scope
+  410 |     Controle ctrl = controleRobo([01;31m[KyawAtual[m[K, yawIdeal, pid);
+      |                                  [01;31m[K^~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:395:45:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klasers[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  395 | void Action::richRobotic([01;35m[Kstd::vector<float> lasers[m[K, std::vector<float> sonars, std::vector<float> pose)
+      |                          [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[KMotionControl Action::[01;32m[KhandlePressedKey[m[K(char)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:500:17:[m[K [01;31m[Kerror: [m[K‘[01m[KRICHMODE[m[K’ was not declared in this scope
+  500 |         mc.mode=[01;31m[KRICHMODE[m[K;
+      |                 [01;31m[K^~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:90: CMakeFiles/navigation.dir/src/Action.cpp.o] Erro 1
+gmake[2]: ** Esperando que outros processos terminem.
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:73:8:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kelse[m[K’
+   73 |       }[01;31m[Kelse[m[K if (mc.mode == RICHMODE)
+      |        [01;31m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:78:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kaction_[m[K’ does not name a type; did you mean ‘[01m[KAction[m[K’?
+   78 |       [01;31m[Kaction_[m[K.correctVelocitiesIfInvalid();
+      |       [01;31m[K^~~~~~~[m[K
+      |       [32m[KAction[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:82:7:[m[K [01;31m[Kerror: [m[K‘[01m[KtwistROS[m[K’ does not name a type
+   82 |       [01;31m[KtwistROS[m[K.linear.x = action_.getLinearVelocity();
+      |       [01;31m[K^~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:83:7:[m[K [01;31m[Kerror: [m[K‘[01m[KtwistROS[m[K’ does not name a type
+   83 |       [01;31m[KtwistROS[m[K.angular.z = action_.getAngularVelocity();
+      |       [01;31m[K^~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:84:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_twist[m[K’ does not name a type
+   84 |       [01;31m[Kpub_twist[m[K->publish(twistROS);
+      |       [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:85:12:[m[K [01;31m[Kerror: [m[K‘[01m[Kcout[m[K’ in namespace ‘[01m[Kstd[m[K’ does not name a type
+   85 |       std::[01;31m[Kcout[m[K << "Published linVel " << twistROS.linear.x << " angVel " << twistROS.angular.z << std::endl;
+      |            [01;31m[K^~~~[m[K
+In file included from [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:1[m[K:
+[01m[K/usr/include/c++/13/iostream:63:18:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::cout[m[K’ declared here
+   63 |   extern ostream [01;36m[Kcout[m[K;          ///< Linked to standard output
+      |                  [01;36m[K^~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In constructor ‘[01m[KNavigationNode::[01;32m[KNavigationNode[m[K(Action&, Perception&)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:25:36:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KNavigationNode[m[K’ does not have any field named ‘[01m[Kaction_[m[K’
+   25 |         : Node("navigation_p3dx"), [01;31m[Kaction_[m[K(action), perception_(perception)
+      |                                    [01;31m[K^~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:25:53:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KNavigationNode[m[K’ does not have any field named ‘[01m[Kperception_[m[K’
+   25 |         : Node("navigation_p3dx"), action_(action), [01;31m[Kperception_[m[K(perception)
+      |                                                     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:27:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_twist[m[K’ was not declared in this scope
+   27 |       [01;31m[Kpub_twist[m[K = this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel", 1);
+      |       [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:28:7:[m[K [01;31m[Kerror: [m[K‘[01m[Ksub_laserscan[m[K’ was not declared in this scope
+   28 |       [01;31m[Ksub_laserscan[m[K = this->create_subscription<sensor_msgs::msg::LaserScan>("/laser_scan", 100,
+      |       [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:30:7:[m[K [01;31m[Kerror: [m[K‘[01m[Ksub_sonar[m[K’ was not declared in this scope
+   30 |       [01;31m[Ksub_sonar[m[K = this->create_subscription<sensor_msgs::msg::PointCloud2>("/sonar", 100,
+      |       [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:32:7:[m[K [01;31m[Kerror: [m[K‘[01m[Ksub_pose[m[K’ was not declared in this scope
+   32 |       [01;31m[Ksub_pose[m[K = this->create_subscription<nav_msgs::msg::Odometry>("/pose", 100,
+      |       [01;31m[K^~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:34:7:[m[K [01;31m[Kerror: [m[K‘[01m[Ktimer_[m[K’ was not declared in this scope; did you mean ‘[01m[Ktimer_t[m[K’?
+   34 |       [01;31m[Ktimer_[m[K = this->create_wall_timer(100ms, std::bind(&NavigationNode::timer_callback, this));
+      |       [01;31m[K^~~~~~[m[K
+      |       [32m[Ktimer_t[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In member function ‘[01m[Kvoid NavigationNode::[01;32m[Ktimer_callback[m[K()[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:41:35:[m[K [01;31m[Kerror: [m[K‘[01m[Kperception_[m[K’ was not declared in this scope; did you mean ‘[01m[KPerception[m[K’?
+   41 |       std::vector<float> lasers = [01;31m[Kperception_[m[K.getLatestLaserRanges();
+      |                                   [01;31m[K^~~~~~~~~~~[m[K
+      |                                   [32m[KPerception[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:50:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kaction_[m[K’ was not declared in this scope; did you mean ‘[01m[KAction[m[K’?
+   50 |       MotionControl mc = [01;31m[Kaction_[m[K.handlePressedKey(ch);
+      |                          [01;31m[K^~~~~~~[m[K
+      |                          [32m[KAction[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K At global scope:
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:88:34:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[Ktimer_[m[K’
+   88 |     rclcpp::TimerBase::SharedPtr [01;31m[Ktimer_[m[K;
+      |                                  [01;31m[K^~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:94:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kaction_[m[K’ declared as reference but not initialized
+   94 |     Action &[01;31m[Kaction_[m[K;
+      |             [01;31m[K^~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:95:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kperception_[m[K’ declared as reference but not initialized
+   95 |     Perception &[01;31m[Kperception_[m[K;
+      |                 [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:96:1:[m[K [01;31m[Kerror: [m[Kexpected declaration before ‘[01m[K}[m[K’ token
+   96 | [01;31m[K}[m[K;
+      | [01;31m[K^[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K keyboardThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:98:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   98 | void *keyboardThreadFunction([01;35m[Kvoid *arg[m[K)
+      |                              [01;35m[K~~~~~~^~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mainThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:112:32:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  112 | void *mainThreadFunction([01;35m[Kvoid *arg[m[K)
+      |                          [01;35m[K~~~~~~^~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:76: CMakeFiles/navigation.dir/src/main.cpp.o] Erro 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+gmake: *** [Makefile:146: all] Erro 2

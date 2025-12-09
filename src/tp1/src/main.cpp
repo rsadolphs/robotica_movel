@@ -12,6 +12,7 @@
 #include "graphics.hpp"
 #include "Mapping.hpp"
 #include "PotentialField.hpp"
+#include "Pathing.hpp"
 
 using std::placeholders::_1;
 using namespace std::chrono_literals;
@@ -68,6 +69,9 @@ class NavigationNode : public rclcpp::Node
       }else if (mc.mode == TESTMODE)
       {
         action_.testMode(lasers, sonars, pose);
+      }else if (mc.mode == RICHMODE)
+      {
+        action_.richRobotic(lasers, sonars, pose);
       }
 
       action_.correctVelocitiesIfInvalid();
@@ -118,6 +122,7 @@ void *mainThreadFunction(void *arg)
 void* graphicsThreadFunction();
 void* mappingThreadFunction();
 void* potentialFieldThreadFunction();
+void* pathingThreadFunction();
 
 int main(int argc, char **argv)
 {
@@ -125,13 +130,14 @@ int main(int argc, char **argv)
 
   rclcpp::init(argc, argv);
 
-  pthread_t mainThread, keyboardThread, graphicsThread, mappingThread, potentialFieldThread;
+  pthread_t mainThread, keyboardThread, graphicsThread, mappingThread, potentialFieldThread, pathingThread;
 
   pthread_create(&(mainThread), NULL, mainThreadFunction, NULL);
   pthread_create(&(keyboardThread), NULL, keyboardThreadFunction, NULL);
   pthread_create(&(graphicsThread), NULL, graphicsThreadFunction, NULL);
   pthread_create(&(mappingThread), NULL, mappingThreadFunction, NULL);
   pthread_create(&(potentialFieldThread), NULL, potentialFieldThreadFunction, NULL);
+  pthread_create(&(pathingThread), NULL, pathingThreadFunction, NULL);
 
 
   pthread_join(mainThread, 0);
@@ -139,6 +145,7 @@ int main(int argc, char **argv)
   pthread_join(graphicsThread, 0);
   pthread_join(mappingThread, 0);
   pthread_join(potentialFieldThread, 0);
+  pthread_join(pathingThread, 0);
 
   rclcpp::shutdown();
 

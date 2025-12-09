@@ -728,4 +728,5 @@ CMakeFiles/navigation.dir/src/main.cpp.o: \
  /home/richard/ros2_ws/src/tp1/include/Utils.h \
  /home/richard/ros2_ws/src/tp1/include/graphics.hpp \
  /home/richard/ros2_ws/src/tp1/include/Mapping.hpp \
- /home/richard/ros2_ws/src/tp1/include/PotentialField.hpp
+ /home/richard/ros2_ws/src/tp1/include/PotentialField.hpp \
+ /home/richard/ros2_ws/src/tp1/include/Pathing.hpp

@@ -3,6 +3,7 @@
 #include "graphics.hpp"
 #include "Mapping.hpp"
 #include "PotentialField.hpp"
+#include "Pathing.hpp"
 
 #include <vector>
 #include <iostream>
@@ -27,6 +28,8 @@ std::vector<float> sonares;
 std::vector<float> laseres;
 
 extern std::vector<double> sensorAngles;
+extern std::vector<std::pair<int,int>> caminhoCompleto;
+extern std::vector<float> offset;
 
 std::vector<std::vector<int>> senseWalls(const std::vector<float>& sonars) { 
 
@@ -355,6 +358,24 @@ void Action::testMode(std::vector<float> lasers, std::vector<float> sonars, std:
     angVel = ctrl.angVel;
 }
 
+//
+
+void Action::richRobotic(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
+{    // PRESS 6
+
+    roboPosicao = {pose[0], pose[1], pose[2]};
+    positionArray.push_back(roboPosicao);
+    laseres = lasers;
+
+    PID pid = { 0.5f, 0.0f, 0.00f }; // parâmetros do PID
+
+    float x = pose[0];
+    float y = pose[1];
+    float yawAtual = pose[2];
+
+
+}
+
 void Action::manualRobotMotion(MovingDirection direction, std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
 {
     roboPosicao = {pose[0], pose[1], pose[2]};
@@ -437,6 +458,9 @@ MotionControl Action::handlePressedKey(char key)
         mc.direction=AUTO;
     }else if(key=='5'){
         mc.mode=TESTMODE;
+        mc.direction=AUTO;
+    }else if(key=='6'){
+        mc.mode=RICHMODE;
         mc.direction=AUTO;
     }else if(key=='w' or key=='W'){
         mc.mode=MANUAL;

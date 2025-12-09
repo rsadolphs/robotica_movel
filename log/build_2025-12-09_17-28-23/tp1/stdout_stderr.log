@@ -1,0 +1,48 @@
+[ 11%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Mapping.cpp.o[0m
+[ 22%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Pathing.cpp.o[0m
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mappingThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:358:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  358 | void* mappingThreadFunction([01;35m[Kvoid* arg[m[K) {
+      |                             [01;35m[K~~~~~~^~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:[m[K In function ‘[01m[Kdouble[01;32m[K custoCelulaComInflacao[m[K(const std::vector<std::vector<Cell> >&, int, int, double, double, double, double, int)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:275:40:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<Cell> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  275 |             if (ny < 0 || nx < 0 || [01;35m[Kny >= grid.size()[m[K || nx >= grid[0].size())
+      |                                     [01;35m[K~~~^~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:275:61:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Cell>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  275 |             if (ny < 0 || nx < 0 || ny >= grid.size() || [01;35m[Knx >= grid[0].size()[m[K)
+      |                                                          [01;35m[K~~~^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:[m[K In function ‘[01m[Kstd::pair<int, int>[01;32m[K escolherClusterPar[m[K(const std::vector<std::vector<Cell> >&, int, int, const std::vector<Centroide>&)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:409:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double, std::allocator<double> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  409 |     for (int i = 0; [01;35m[Ki < dist.size()[m[K; i++) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:424:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Centroide>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  424 |     for (int i = 0; [01;35m[Ki < centroides.size()[m[K; i++) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K pathingThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:480:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  480 | void* pathingThreadFunction([01;35m[Kvoid* arg[m[K) {
+      |                             [01;35m[K~~~~~~^~~[m[K
+[ 33%] [32m[1mLinking CXX executable navigation[0m
+[100%] Built target navigation
+-- Install configuration: ""
+-- Installing: /home/richard/ros2_ws/install/tp1/lib/tp1/navigation
+-- Set non-toolchain portion of runtime path of "/home/richard/ros2_ws/install/tp1/lib/tp1/navigation" to ""
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/launch/p3dx-rosaria.launch.py
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/config/p3dx.rviz
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/package_run_dependencies/tp1
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/parent_prefix_path/tp1
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.sh
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.sh
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/environment/path.dsv
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.bash
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.sh
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.zsh
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/local_setup.dsv
+-- Installing: /home/richard/ros2_ws/install/tp1/share/tp1/package.dsv
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/ament_index/resource_index/packages/tp1
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config.cmake
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/cmake/tp1Config-version.cmake
+-- Up-to-date: /home/richard/ros2_ws/install/tp1/share/tp1/package.xml

@@ -282,6 +282,30 @@ src/Mapping.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Mapping.cpp.s
 .PHONY : src/Mapping.cpp.s
 
+src/Pathing.o: src/Pathing.cpp.o
+.PHONY : src/Pathing.o
+
+# target to build an object file
+src/Pathing.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Pathing.cpp.o
+.PHONY : src/Pathing.cpp.o
+
+src/Pathing.i: src/Pathing.cpp.i
+.PHONY : src/Pathing.i
+
+# target to preprocess a source file
+src/Pathing.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Pathing.cpp.i
+.PHONY : src/Pathing.cpp.i
+
+src/Pathing.s: src/Pathing.cpp.s
+.PHONY : src/Pathing.s
+
+# target to generate assembly for a file
+src/Pathing.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Pathing.cpp.s
+.PHONY : src/Pathing.cpp.s
+
 src/Perception.o: src/Perception.cpp.o
 .PHONY : src/Perception.o
 
@@ -403,6 +427,9 @@ help:
 	@echo "... src/Mapping.o"
 	@echo "... src/Mapping.i"
 	@echo "... src/Mapping.s"
+	@echo "... src/Pathing.o"
+	@echo "... src/Pathing.i"
+	@echo "... src/Pathing.s"
 	@echo "... src/Perception.o"
 	@echo "... src/Perception.i"
 	@echo "... src/Perception.s"

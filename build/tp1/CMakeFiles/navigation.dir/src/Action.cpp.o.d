@@ -181,4 +181,5 @@ CMakeFiles/navigation.dir/src/Action.cpp.o: \
  /home/richard/ros2_ws/src/tp1/include/graphics.hpp \
  /home/richard/ros2_ws/src/tp1/include/Mapping.hpp \
  /home/richard/ros2_ws/src/tp1/include/PotentialField.hpp \
+ /home/richard/ros2_ws/src/tp1/include/Pathing.hpp \
  /usr/include/c++/13/array /usr/include/c++/13/compare

@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/navigation.dir/src/Graph.cpp.o.d"
   "CMakeFiles/navigation.dir/src/Mapping.cpp.o"
   "CMakeFiles/navigation.dir/src/Mapping.cpp.o.d"
+  "CMakeFiles/navigation.dir/src/Pathing.cpp.o"
+  "CMakeFiles/navigation.dir/src/Pathing.cpp.o.d"
   "CMakeFiles/navigation.dir/src/Perception.cpp.o"
   "CMakeFiles/navigation.dir/src/Perception.cpp.o.d"
   "CMakeFiles/navigation.dir/src/PotentialField.cpp.o"
