@@ -35,11 +35,7 @@ std::vector<std::pair<int,int>> caminhoRobo;
 std::vector<std::pair<int,int>> caminhoClusterAB;
 std::vector<std::pair<int,int>> caminhoCompleto;
 
-// Custos configuráveis
-const double COST_FREE      = 20.0;
-const double COST_UNKNOWN   = 1.0;
-const double COST_INFLATED  = 1e9; 
-const double COST_OCCUPIED  = 1e9;   
+double yawAstar = 0.0;
 
 
 bool classificar(float valor) {
@@ -220,7 +216,6 @@ std::vector<Centroide> calcularCentroides(const std::vector<Ponto>& listaPontos)
     return centroides;
 }
 
-
 void calcularDistanciasVizinho(std::vector<Centroide>& centroides) {
     if (centroides.size() <= 1) {
         return;
@@ -246,24 +241,15 @@ void calcularDistanciasVizinho(std::vector<Centroide>& centroides) {
     }
 }
 
-
 inline double custoCelulaComInflacao(
     const std::vector<std::vector<Cell>>& grid,
     int y, int x,
-    double COST_FREE,
-    double COST_UNKNOWN,
-    double COST_OCCUPIED,
-    double COST_INFLATED,
+    double cost_free,
+    double cost_unk,
+    double cont_infl,
+    double cost_occ,
     int inflationRadius = 1)
 {
-    // Se a célula já é ocupada → custo máximo
-    if (grid[y][x].isOcc)
-        return COST_OCCUPIED;
-
-    // Se a célula é unknown → custo intermediário
-    if (grid[y][x].isUnknown)
-        return COST_UNKNOWN;
-
     // Verificar vizinhos dentro do raio
     for (int dy = -inflationRadius; dy <= inflationRadius; dy++) {
         for (int dx = -inflationRadius; dx <= inflationRadius; dx++) {
@@ -277,228 +263,58 @@ inline double custoCelulaComInflacao(
 
             if (grid[ny][nx].isOcc) {
                 // Inflar custo da célula atual, pois tem obstáculo ao lado
-                return COST_INFLATED;
+                return cont_infl;
             }
         }
     }
 
-    // Caso normal → célula livre sem obstáculo perto
-    return COST_FREE;
-}
-
-
-
-//-----------------------------------------
-// DIJKSTRA BASE
-//-----------------------------------------
-double dijkstraBase(
-    const std::vector<std::vector<Cell>>& grid,
-    int sx, int sy,
-    int gx, int gy,
-    std::vector<std::pair<int,int>>& outPath)
-{
-    const int H = grid.size();
-    if (H == 0) return -1;
-    const int W = grid[0].size();
-    if (W == 0) return -1;
-
-    auto inside = [&](int y, int x){
-        return x >= 0 && x < W && y >= 0 && y < H;
-    };
-
-    const double INF = 1e18;
-
-    std::vector<std::vector<double>> dist(H, std::vector<double>(W, INF));
-    std::vector<std::vector<std::pair<int,int>>> parent(
-        H, std::vector<std::pair<int,int>>(W, {-1, -1})
-    );
-
-    using Node = std::tuple<double,int,int>;
-    std::priority_queue<Node, std::vector<Node>, std::greater<Node>> pq;
-
-    dist[sy][sx] = 0.0;
-    pq.push({0.0, sy, sx});
-
-    const int dx[8] = {1,-1,0,0, 1,1,-1,-1};
-    const int dy[8] = {0,0,1,-1, 1,-1,1,-1};
-
-    while (!pq.empty()) {
-        auto [d, y, x] = pq.top();
-        pq.pop();
-
-        if (d > dist[y][x]) continue;
-
-        if (x == gx && y == gy) {
-            outPath.clear();
-
-            int cy = gy, cx = gx;
-            while (!(cy == sy && cx == sx)) {
-                outPath.push_back({cy, cx});
-                auto [py, px] = parent[cy][cx];
-                if (py == -1) break;
-                cy = py; cx = px;
-            }
-            outPath.push_back({sy, sx});
-            std::reverse(outPath.begin(), outPath.end());
-            return d;
-        }
-
-        for (int k = 0; k < 8; k++) {
-            int nx = x + dx[k];
-            int ny = y + dy[k];
-
-            if (!inside(ny, nx)) continue;
-
-            double mc = (k < 4 ? 1.0 : sqrt(2.0));
-            double w = custoCelulaComInflacao(
-                        grid,
-                        ny, nx,
-                        COST_FREE,
-                        COST_UNKNOWN,
-                        COST_OCCUPIED,
-                        COST_INFLATED,   // novo custo inflado
-                        3                // raio da inflação (1 = vizinhos imediatos)
-                    );
-
-            double nd = d + mc * w;
-            if (nd < dist[ny][nx]) {
-                dist[ny][nx] = nd;
-                parent[ny][nx] = {y, x};
-                pq.push({nd, ny, nx});
-            }
-        }
+    if (grid[y][x].isOcc){
+        return cost_occ;
     }
-
-    return -1; // sem caminho
-}
-
-//-----------------------------------------
-// DISTÂNCIA DO ROBO A OS CENTROIDES
-//-----------------------------------------
-std::vector<double> calcularDistanciasRoboParaCentroides(
-    const std::vector<std::vector<Cell>>& grid,
-    int rx, int ry,
-    const std::vector<Centroide>& centroides)
-{
-    std::vector<double> v;
-    v.reserve(centroides.size());
-
-    for (auto& c : centroides) {
-        std::vector<std::pair<int,int>> tmp;
-        double d = dijkstraBase(grid, rx, ry, c.x, c.y, tmp);
-        v.push_back(d);
+    else if (grid[y][x].isUnknown){
+        return cost_unk;
     }
-    return v;
-}
-
-//-----------------------------------------
-// ESCOLHER CLUSTER A E B
-//-----------------------------------------
-std::pair<int,int> escolherClusterPar(
-    const std::vector<std::vector<Cell>>& grid,
-    int rx, int ry,
-    const std::vector<Centroide>& centroides)
-{
-    if (centroides.size() < 2) return {-1,-1};
-
-    auto dist = calcularDistanciasRoboParaCentroides(grid, rx, ry, centroides);
-
-    int idxA = -1;
-    double best = 1e18;
-
-    for (int i = 0; i < dist.size(); i++) {
-        if (dist[i] > 0 && dist[i] < best) {
-            best = dist[i];
-            idxA = i;
-        }
+    else{
+        return cost_free;
     }
-
-    if (idxA < 0) return {-1,-1};
-
-    int Ax = centroides[idxA].x;
-    int Ay = centroides[idxA].y;
-
-    int idxB = -1;
-    best = 1e18;
-
-    for (int i = 0; i < centroides.size(); i++) {
-        if (i == idxA) continue;
-
-        std::vector<std::pair<int,int>> tmp;
-        double d = dijkstraBase(grid, Ax, Ay, centroides[i].x, centroides[i].y, tmp);
-
-        if (d > 0 && d < best) {
-            best = d;
-            idxB = i;
-        }
-    }
-
-    return {idxA, idxB};
 }
 
 //-----------------------------------------
-// GERAR CAMINHO ROBO → A  E  A → B
+// Heurísticas e A*
 //-----------------------------------------
-bool gerarCaminhoRoboAEB(
-    const std::vector<std::vector<Cell>>& grid,
-    int rx, int ry,
-    const std::vector<Centroide>& centroides)
-{
-    caminhoRobo.clear();
-    caminhoClusterAB.clear();
-    caminhoCompleto.clear();
-
-    auto [iA, iB] = escolherClusterPar(grid, rx, ry, centroides);
-    if (iA < 0 || iB < 0) return false;
-
-    int Ax = centroides[iA].x;
-    int Ay = centroides[iA].y;
-    int Bx = centroides[iB].x;
-    int By = centroides[iB].y;
-
-    // robo → A
-    if (dijkstraBase(grid, rx, ry, Ax, Ay, caminhoRobo) < 0)
-        return false;
-
-    // A → B
-    if (dijkstraBase(grid, Ax, Ay, Bx, By, caminhoClusterAB) < 0)
-        return false;
-
-    // caminho completo
-    caminhoCompleto = caminhoRobo;
-    caminhoCompleto.insert(
-        caminhoCompleto.end(),
-        caminhoClusterAB.begin()+1,  // evita duplicar A
-        caminhoClusterAB.end()
-    );
-
-    return true;
-}
-
-//
-
-
 inline double heurOctile(int x, int y, int gx, int gy) {
     double dx = std::abs(x - gx);
     double dy = std::abs(y - gy);
     return (dx + dy) + (std::sqrt(2.0) - 2.0) * std::min(dx, dy);
 }
+
 double aStarBase(
     const std::vector<std::vector<Cell>>& grid,
     int sx, int sy,
     int gx, int gy,
-    std::vector<std::pair<int,int>>& outPath)
-{
+    std::vector<std::pair<int,int>>& outPath,
+    bool globalMode = false
+){
     const int H = grid.size();
     if (H == 0) return -1;
     const int W = grid[0].size();
     if (W == 0) return -1;
 
+    double cost_free = 1.0;
+    double cost_unk = 50.0;
+    double cont_infl = 1e4; 
+    double cost_occ = 1e6;
+
+    if(globalMode){
+        cost_free  = 50.0;
+        cost_unk   = 1.0;
+    }
+
     auto inside = [&](int y, int x){
         return x >= 0 && x < W && y >= 0 && y < H;
     };
 
-    const double INF = 1e18;
+    const double INF = 1e9;
 
     std::vector<std::vector<double>> g(H, std::vector<double>(W, INF));
     std::vector<std::vector<std::pair<int,int>>> parent(
@@ -549,11 +365,11 @@ double aStarBase(
             double w = custoCelulaComInflacao(
                 grid,
                 ny, nx,
-                COST_FREE,
-                COST_UNKNOWN,   // unknown MUITO barato → explora desconhecido
-                COST_OCCUPIED,
-                COST_INFLATED,
-                3
+                cost_free,
+                cost_unk, 
+                cost_occ,
+                cont_infl,
+                2
             );
 
             double ng = gc + stepCost * w;
@@ -573,21 +389,41 @@ double aStarBase(
 
     return -1;
 }
+
 std::vector<double> distRoboParaCentroidesAstar(
     const std::vector<std::vector<Cell>>& grid,
     int rx, int ry,
-    const std::vector<Centroide>& cs)
-{
+    const std::vector<Centroide>& cs,
+    bool globalMode = false
+){
     std::vector<double> v;
     v.reserve(cs.size());
 
     for (auto& c : cs) {
         std::vector<std::pair<int,int>> tmp;
-        double d = aStarBase(grid, rx, ry, c.x, c.y, tmp);
+        double d = aStarBase(grid, rx, ry, c.x, c.y, tmp, globalMode);
         v.push_back(d);
     }
     return v;
 }
+
+double cost3Points(
+    const std::vector<std::vector<Cell>>& grid,
+    int rx, int ry,
+    const std::vector<Centroide>& cs,
+    int i, int j
+) {
+    std::vector<std::pair<int,int>> p1, p2;
+
+    double d1 = aStarBase(grid, rx, ry, cs[i].x, cs[i].y, p1, false);
+    if (d1 <= 0) return 1e18;
+
+    double d2 = aStarBase(grid, cs[i].x, cs[i].y, cs[j].x, cs[j].y, p2, true);
+    if (d2 <= 0) return 1e18;
+
+    return d1 + d2;
+}
+
 std::pair<int,int> escolherABeBAstar(
     const std::vector<std::vector<Cell>>& grid,
     int rx, int ry,
@@ -595,39 +431,51 @@ std::pair<int,int> escolherABeBAstar(
 {
     if (cs.size() < 2) return {-1,-1};
 
-    auto dR = distRoboParaCentroidesAstar(grid, rx, ry, cs);
+    // Histerese
+    static int lastA = -1;
+    static int lastB = -1;
+    static double lastCost = 1e18;
 
-    int idxA = -1;
-    double best = 1e18;
+    double bestCost = 1e18;
+    int bestI = -1;
+    int bestJ = -1;
 
+    // Busca par ótimo
     for (int i = 0; i < (int)cs.size(); i++) {
-        if (dR[i] > 0 && dR[i] < best) {
-            best = dR[i];
-            idxA = i;
-        }
-    }
-    if (idxA < 0) return {-1,-1};
+        for (int j = 0; j < (int)cs.size(); j++) {
+            if (i == j) continue;
 
-    int Ax = cs[idxA].x;
-    int Ay = cs[idxA].y;
-
-    int idxB = -1;
-    best = 1e18;
-
-    for (int i = 0; i < (int)cs.size(); i++) {
-        if (i == idxA) continue;
-
-        std::vector<std::pair<int,int>> tmp;
-        double d = aStarBase(grid, Ax, Ay, cs[i].x, cs[i].y, tmp);
-
-        if (d > 0 && d < best) {
-            best = d;
-            idxB = i;
+            double cost = cost3Points(grid, rx, ry, cs, i, j);
+            if (cost < bestCost) {
+                bestCost = cost;
+                bestI = i;
+                bestJ = j;
+            }
         }
     }
 
-    return {idxA, idxB};
+    // Se nunca escolheu um par, aceita o primeiro sem histerese
+    if (lastA == -1 || lastB == -1) {
+        lastA = bestI;
+        lastB = bestJ;
+        lastCost = bestCost;
+        return {bestI, bestJ};
+    }
+
+    // Histerese: só troca se a melhoria for significativa
+    const double threshold = 0.90;  // 10% melhor
+    if (bestCost < lastCost * threshold) {
+        // Melhorou bastante -> aceitar troca
+        lastA = bestI;
+        lastB = bestJ;
+        lastCost = bestCost;
+        return {bestI, bestJ};
+    }
+
+    // Caso contrário, mantemos o par anterior
+    return {lastA, lastB};
 }
+
 bool gerarCaminhoAstarCompleto(
     const std::vector<std::vector<Cell>>& grid,
     int rx, int ry,
@@ -659,14 +507,66 @@ bool gerarCaminhoAstarCompleto(
     return true;
 }
 
+double calcularYawParaCaminho(
+    const std::vector<std::pair<int,int>>& caminhoCompleto,
+    const MatrixPosition& matPosRobo)
+{
+    if (caminhoCompleto.empty()) return 0.0;
+
+    // --- 1. Coletar até 5 pontos do caminho ---
+    int N = std::min(5, (int)caminhoCompleto.size());
+
+    // Usar média para regressão
+    double sumX = 0, sumY = 0;
+    for (int i = 0; i < N; i++) {
+        sumX += caminhoCompleto[i].second; // coluna -> x
+        sumY += caminhoCompleto[i].first;  // linha  -> y
+    }
+
+    double meanX = sumX / N;
+    double meanY = sumY / N;
+
+    // --- 2. Calcular coeficiente da regressão linear ---
+    double num = 0, den = 0;
+    for (int i = 0; i < N; i++) {
+        double x = caminhoCompleto[i].second;
+        double y = caminhoCompleto[i].first;
+
+        num += (x - meanX) * (y - meanY);
+        den += (x - meanX) * (x - meanX);
+    }
+
+    if (den == 0) {
+        // Caso degenerado (todos x iguais)
+        // direção vertical
+        double dy = meanY - matPosRobo.linha;
+        return (dy >= 0) ? (M_PI/2) : (-M_PI/2);
+    }
+
+    double slope = num / den;  // inclinação da reta
+
+    // --- 3. Vetor direção da reta ---
+
+    // Tomamos um ponto um pouco à frente na reta
+    double x2 = meanX + 1.0;         
+    double y2 = meanY + slope * (x2 - meanX);
+
+    // Vetor direção relativo ao robô
+    double dx = x2 - matPosRobo.coluna;
+    double dy = y2 - matPosRobo.linha;
+
+    // --- 4. Calcular yaw desejado ---
+    double yaw = std::atan2(dy, dx); // radianos
+
+    return yaw;
+}
+
 
 void* pathingThreadFunction(void* arg) {
 
     while (rclcpp::ok()) {
-        std::cout << "Iniciou \n";
 
         if (!matrizMundo.empty() && !occGrid.empty()){
-            std::cout << "Entrou \n";
 
             MatrixPosition matPosRobo = findCell(
                                             roboPosicao.x * scaleFactor - offset[0], 
@@ -677,70 +577,40 @@ void* pathingThreadFunction(void* arg) {
             
             int linhas = matrizMundo.size();
             int colunas = matrizMundo[0].size();
-            int chk = 0;
             
             if (posicaoValida(matPosRobo, linhas, colunas)){
-                std::cout << "Checkpoint " << ++chk << "\n";
                         
                 listaPontos = gerarPontos(matrizMundo);
-                std::cout << "Checkpoint " << ++chk << "\n";
 
                 if (!listaPontos.empty()){
-                    std::cout << "Checkpoint " << ++chk << "\n";
 
                     detectarFronteiras(listaPontos);
-                    std::cout << "Checkpoint " << ++chk << "\n";
                     std::vector<Ponto> fronteiras;
                     for (auto& p : listaPontos)
                         if (p.isFrontier)
                             fronteiras.push_back(p);
 
                     rodarDBSCAN(fronteiras, 5.0f, 10); 
-                    std::cout << "Checkpoint " << ++chk << "\n";
 
                     listaCentroides = calcularCentroides(fronteiras);
-                    std::cout << "Checkpoint " << ++chk << "\n";
 
                     calcularDistanciasVizinho(listaCentroides);
-                    std::cout << "Checkpoint " << ++chk << "\n";
 
                     std::cout << "Centroides encontrados: " << listaCentroides.size() << "\n";
 
                     for (auto& c : listaCentroides) {
                         std::cout << "Cluster: " << c.clusterId << " (" << c.x << ", " << c.y << ") " << " Size: " << c.numPontos << " NN: " << c.distVizinho << "\n";
                     }
-                    std::cout << "Checkpoint " << ++chk << "\n";
-
+                    /*
                     std::vector<double> distancias = calcularDistanciasRoboParaCentroides(occGrid, matPosRobo.coluna, matPosRobo.linha, listaCentroides);
                     for (size_t i = 0; i < distancias.size(); i++) {
                         std::cout << "Cluster " << listaCentroides[i].clusterId
                                 << " | Distancia = " << distancias[i] << std::endl;
                     }   
-                    std::cout << "Checkpoint " << ++chk << "\n";
-
+                    */
                     gerarCaminhoAstarCompleto(occGrid, matPosRobo.coluna, matPosRobo.linha, listaCentroides, caminhoCompleto);
-                    /*
-                    if(
-                        //gerarCaminhoRoboAEB(occGrid, matPosRobo.coluna, matPosRobo.linha, listaCentroides) &&
-                        !caminhoRobo.empty() && 
-                        !caminhoClusterAB.empty()
-                    ){
-                        std::cout << "Checkpoint " << ++chk << "\n";
 
-                        caminhoCompleto.clear();
-                        caminhoCompleto.reserve(caminhoRobo.size() + caminhoClusterAB.size());
-
-                        // 1) Copiar caminho do Robô até A
-                        for (const auto& p : caminhoRobo) {
-                            caminhoCompleto.push_back(p);
-                        }
-
-                        // 2) Copiar caminho de A até B (sem repetir o ponto A)
-                        for (size_t i = 1; i < caminhoClusterAB.size(); i++) {
-                            caminhoCompleto.push_back(caminhoClusterAB[i]);
-                        }
-
-                    }*/
+                    yawAstar = calcularYawParaCaminho(caminhoCompleto, matPosRobo);
                 }
             }
         }

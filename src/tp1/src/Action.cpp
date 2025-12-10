@@ -30,6 +30,7 @@ std::vector<float> laseres;
 extern std::vector<double> sensorAngles;
 extern std::vector<std::pair<int,int>> caminhoCompleto;
 extern std::vector<float> offset;
+extern double yawAstar;
 
 std::vector<std::vector<int>> senseWalls(const std::vector<float>& sonars) { 
 
@@ -358,22 +359,24 @@ void Action::testMode(std::vector<float> lasers, std::vector<float> sonars, std:
     angVel = ctrl.angVel;
 }
 
-//
-
 void Action::richRobotic(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
 {    // PRESS 6
-
+    std::cout << "RICHMODE" << std::endl;
     roboPosicao = {pose[0], pose[1], pose[2]};
     positionArray.push_back(roboPosicao);
     laseres = lasers;
 
-    PID pid = { 0.5f, 0.0f, 0.00f }; // parâmetros do PID
+    PID pid = { 2.0f, 0.0f, 0.0f };
 
     float x = pose[0];
     float y = pose[1];
     float yawAtual = pose[2];
 
+    Controle ctrl = controleRobo(yawAtual, yawAstar, pid);
+    linVel = ctrl.linVel;
+    angVel = ctrl.angVel;
 
+    std::cout << "yawAtual: " << yawAtual << "  yawAstar: " << yawAstar << std::endl;
 }
 
 void Action::manualRobotMotion(MovingDirection direction, std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
