@@ -12,7 +12,11 @@
 #include <sstream>
 #include <queue>
 #include <climits>
+#include <mutex>
+#include <atomic>
 
+std::mutex caminhoMutex;
+std::atomic<int> caminhoVersion{0};
 
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
@@ -36,6 +40,17 @@ std::vector<std::pair<int,int>> caminhoClusterAB;
 std::vector<std::pair<int,int>> caminhoCompleto;
 
 double yawAstar = 0.0;
+
+const int COST_DIFF = 20;
+const int INFL_RADIUS = 3;
+const double HISTERESE = 0.85;
+
+double cost_free = 1.0;
+double cost_unk = 1.0;
+double cost_occ = 1e5;
+
+int nClusters = -1;  // Inicia com -1
+bool startedClustering = false;
 
 
 bool classificar(float valor) {
@@ -241,16 +256,20 @@ void calcularDistanciasVizinho(std::vector<Centroide>& centroides) {
     }
 }
 
-inline double custoCelulaComInflacao(
+inline double custoCelulaComInflacaoGradual(
     const std::vector<std::vector<Cell>>& grid,
     int y, int x,
     double cost_free,
     double cost_unk,
-    double cont_infl,
     double cost_occ,
-    int inflationRadius = 1)
+    int inflationRadius = 3)
 {
-    // Verificar vizinhos dentro do raio
+    double penalidade = 0.0;
+
+    if (grid[y][x].isOcc){
+        return cost_occ;  // obstáculo direto permanece muito alto
+    }
+
     for (int dy = -inflationRadius; dy <= inflationRadius; dy++) {
         for (int dx = -inflationRadius; dx <= inflationRadius; dx++) {
             if (dx == 0 && dy == 0) continue;
@@ -262,20 +281,19 @@ inline double custoCelulaComInflacao(
                 continue;
 
             if (grid[ny][nx].isOcc) {
-                // Inflar custo da célula atual, pois tem obstáculo ao lado
-                return cont_infl;
+                int dist = std::max(std::abs(dx), std::abs(dy));
+                if (dist == 1) penalidade += 3.0 * COST_DIFF;
+                else if (dist == 2) penalidade += 2.0 * COST_DIFF;
+                else if (dist == 3) penalidade += 1.0 * COST_DIFF;
             }
         }
     }
 
-    if (grid[y][x].isOcc){
-        return cost_occ;
-    }
-    else if (grid[y][x].isUnknown){
-        return cost_unk;
+    if (grid[y][x].isUnknown){
+        return cost_unk + penalidade;
     }
     else{
-        return cost_free;
+        return cost_free + penalidade;
     }
 }
 
@@ -290,191 +308,236 @@ inline double heurOctile(int x, int y, int gx, int gy) {
 
 double aStarBase(
     const std::vector<std::vector<Cell>>& grid,
-    int sx, int sy,
-    int gx, int gy,
+    int sx, int sy,          // start x,y
+    int gx, int gy,          // goal x,y
     std::vector<std::pair<int,int>>& outPath,
-    bool globalMode = false
+    bool globalMode
 ){
+    // --------------------------------------
+    // Validação da grade
+    // --------------------------------------
     const int H = grid.size();
     if (H == 0) return -1;
+
     const int W = grid[0].size();
     if (W == 0) return -1;
 
-    double cost_free = 1.0;
-    double cost_unk = 50.0;
-    double cont_infl = 1e4; 
-    double cost_occ = 1e6;
-
-    if(globalMode){
-        cost_free  = 50.0;
-        cost_unk   = 1.0;
+    // --------------------------------------
+    // Parâmetros de custo (global/local)
+    // --------------------------------------
+    if (globalMode) {
+        cost_free = COST_DIFF;   // custo de célula livre
+        cost_unk  = 1.0;         // custo de célula desconhecida
     }
-
-    auto inside = [&](int y, int x){
-        return x >= 0 && x < W && y >= 0 && y < H;
-    };
+    else {
+        cost_free = 1.0;
+        cost_unk  = COST_DIFF * 100;
+    }
+    // cost_occ é global
 
     const double INF = 1e9;
 
+    // --------------------------------------
+    // Função auxiliar: dentro do mapa
+    // --------------------------------------
+    auto inside = [&](int y, int x){
+        return (x >= 0 && x < W && y >= 0 && y < H);
+    };
+
+    // --------------------------------------
+    // Buffers do A*
+    // --------------------------------------
     std::vector<std::vector<double>> g(H, std::vector<double>(W, INF));
     std::vector<std::vector<std::pair<int,int>>> parent(
         H, std::vector<std::pair<int,int>>(W, {-1, -1})
     );
 
     using Node = std::tuple<double,double,int,int>; 
-    // (f, g, y, x)
+    // Node = (f, g, y, x)
+
     std::priority_queue<Node, std::vector<Node>, std::greater<Node>> pq;
 
+    // --------------------------------------
+    // Inicialização
+    // --------------------------------------
     g[sy][sx] = 0.0;
-    double h0 = heurOctile(sx, sy, gx, gy);
-    pq.push({h0, 0.0, sy, sx});
+    pq.push({ heurOctile(sx, sy, gx, gy), 0.0, sy, sx });
 
-    const int dx[8] = {1,-1,0,0, 1,1,-1,-1};
-    const int dy[8] = {0,0,1,-1, 1,-1,1,-1};
+    // Movimentos 8-conectados
+    const int dx[8] = { 1,-1,0,0,  1,1,-1,-1 };
+    const int dy[8] = { 0,0,1,-1,  1,-1, 1,-1 };
 
+    // --------------------------------------
+    // Loop principal do A*
+    // --------------------------------------
     while (!pq.empty()) {
+
         auto [f, gc, y, x] = pq.top();
         pq.pop();
 
+        // Se este nó já não é ótimo, ignore
         if (gc > g[y][x]) continue;
 
+        // --------------------------------------
+        // Encontrou o objetivo → reconstrói caminho
+        // --------------------------------------
         if (x == gx && y == gy) {
             outPath.clear();
 
             int cy = gy, cx = gx;
             while (!(cy == sy && cx == sx)) {
-                outPath.push_back({cy, cx});
+                outPath.emplace_back(cy, cx);
                 auto [py, px] = parent[cy][cx];
-                cy = py; 
+                cy = py;
                 cx = px;
             }
-            outPath.push_back({sy, sx});
+            outPath.emplace_back(sy, sx);
             std::reverse(outPath.begin(), outPath.end());
 
             return g[gy][gx];
         }
 
+        // --------------------------------------
+        // Explora vizinhos
+        // --------------------------------------
         for (int k = 0; k < 8; k++) {
+
             int nx = x + dx[k];
             int ny = y + dy[k];
 
             if (!inside(ny, nx)) continue;
 
+            // Custo base do movimento
             double stepCost = (k < 4 ? 1.0 : std::sqrt(2.0));
 
-            double w = custoCelulaComInflacao(
+            // Custo da célula com inflação
+            double w = custoCelulaComInflacaoGradual(
                 grid,
                 ny, nx,
                 cost_free,
-                cost_unk, 
+                cost_unk,
                 cost_occ,
-                cont_infl,
-                2
+                INFL_RADIUS
             );
 
             double ng = gc + stepCost * w;
 
+            // Se encontramos um caminho melhor para esta célula
             if (ng < g[ny][nx]) {
                 g[ny][nx] = ng;
-
                 parent[ny][nx] = {y, x};
 
-                double h = heurOctile(nx, ny, gx, gy);
-                double nf = ng + h;
-
+                double nf = ng + heurOctile(nx, ny, gx, gy);
                 pq.push({nf, ng, ny, nx});
             }
         }
     }
 
+    // Objetivo não encontrado
     return -1;
 }
 
-std::vector<double> distRoboParaCentroidesAstar(
-    const std::vector<std::vector<Cell>>& grid,
-    int rx, int ry,
-    const std::vector<Centroide>& cs,
-    bool globalMode = false
-){
-    std::vector<double> v;
-    v.reserve(cs.size());
 
-    for (auto& c : cs) {
-        std::vector<std::pair<int,int>> tmp;
-        double d = aStarBase(grid, rx, ry, c.x, c.y, tmp, globalMode);
-        v.push_back(d);
-    }
-    return v;
+//=====================================================================================
+double pathCost(const std::vector<std::pair<int,int>>& p) {
+    return (double)p.size();
 }
 
-double cost3Points(
-    const std::vector<std::vector<Cell>>& grid,
-    int rx, int ry,
-    const std::vector<Centroide>& cs,
-    int i, int j
-) {
-    std::vector<std::pair<int,int>> p1, p2;
-
-    double d1 = aStarBase(grid, rx, ry, cs[i].x, cs[i].y, p1, false);
-    if (d1 <= 0) return 1e18;
-
-    double d2 = aStarBase(grid, cs[i].x, cs[i].y, cs[j].x, cs[j].y, p2, true);
-    if (d2 <= 0) return 1e18;
-
-    return d1 + d2;
-}
-
-std::pair<int,int> escolherABeBAstar(
+std::vector<CaminhoInfo> calcularCustoRA(
     const std::vector<std::vector<Cell>>& grid,
     int rx, int ry,
     const std::vector<Centroide>& cs)
 {
-    if (cs.size() < 2) return {-1,-1};
+    std::vector<CaminhoInfo> custoRA(cs.size());
 
-    // Histerese
-    static int lastA = -1;
-    static int lastB = -1;
-    static double lastCost = 1e18;
-
-    double bestCost = 1e18;
-    int bestI = -1;
-    int bestJ = -1;
-
-    // Busca par ótimo
     for (int i = 0; i < (int)cs.size(); i++) {
-        for (int j = 0; j < (int)cs.size(); j++) {
+
+        int ax = cs[i].x;   // centroide X
+        int ay = cs[i].y;   // centroide Y
+
+        std::vector<std::pair<int,int>> path;
+        double d = aStarBase(grid, rx, ry, ax, ay, path, /*globalMode=*/false);
+
+        if (d >= 0 && !path.empty()) {
+            custoRA[i].custo  = d;
+            custoRA[i].path   = std::move(path);  
+            custoRA[i].valido = true;
+        }
+    }
+    return custoRA;
+}
+
+std::vector<std::vector<CaminhoInfo>> calcularCustoAB(
+    const std::vector<std::vector<Cell>>& grid,
+    const std::vector<Centroide>& cs)
+{
+    int n = cs.size();
+    std::vector<std::vector<CaminhoInfo>> custoAB(
+        n, std::vector<CaminhoInfo>(n));
+
+    for (int i = 0; i < n; i++) {
+
+        int ax = cs[i].x;
+        int ay = cs[i].y;
+
+        for (int j = 0; j < n; j++) {
             if (i == j) continue;
 
-            double cost = cost3Points(grid, rx, ry, cs, i, j);
-            if (cost < bestCost) {
-                bestCost = cost;
-                bestI = i;
-                bestJ = j;
+            int bx = cs[j].x;
+            int by = cs[j].y;
+
+            std::vector<std::pair<int,int>> path;
+            double d = aStarBase(grid, ax, ay, bx, by, path, /*globalMode=*/false);
+
+            if (d >= 0 && !path.empty()) {
+                custoAB[i][j].custo  = d;
+                custoAB[i][j].path   = std::move(path);
+                custoAB[i][j].valido = true;
+            }
+        }
+    }
+    return custoAB;
+}
+
+
+// Escolhe A e B
+std::pair<int,int> escolherAB(
+    const std::vector<std::vector<Cell>>& grid,
+    int rx, int ry,
+    const std::vector<Centroide>& cs)
+{
+    int n = cs.size();
+    if (n < 2) return {-1, -1};
+
+    // 1) custo R->A
+    auto custoRA = calcularCustoRA(grid, rx, ry, cs);
+
+    // 2) custo A->B
+    auto custoAB = calcularCustoAB(grid, cs);
+
+    // 3) busca melhor combinação
+    double bestCost = 1e18;
+    int bestA = -1, bestB = -1;
+
+    for (int i = 0; i < n; i++) {
+        if (!custoRA[i].valido) continue;
+
+        for (int j = 0; j < n; j++) {
+            if (i == j) continue;
+            if (!custoAB[i][j].valido) continue;
+
+            double total = custoRA[i].custo + custoAB[i][j].custo;
+            if (total < bestCost) {
+                bestCost = total;
+                bestA = i;
+                bestB = j;
             }
         }
     }
 
-    // Se nunca escolheu um par, aceita o primeiro sem histerese
-    if (lastA == -1 || lastB == -1) {
-        lastA = bestI;
-        lastB = bestJ;
-        lastCost = bestCost;
-        return {bestI, bestJ};
-    }
-
-    // Histerese: só troca se a melhoria for significativa
-    const double threshold = 0.90;  // 10% melhor
-    if (bestCost < lastCost * threshold) {
-        // Melhorou bastante -> aceitar troca
-        lastA = bestI;
-        lastB = bestJ;
-        lastCost = bestCost;
-        return {bestI, bestJ};
-    }
-
-    // Caso contrário, mantemos o par anterior
-    return {lastA, lastB};
+    return {bestA, bestB};
 }
+//=====================================================================================
 
 bool gerarCaminhoAstarCompleto(
     const std::vector<std::vector<Cell>>& grid,
@@ -484,7 +547,8 @@ bool gerarCaminhoAstarCompleto(
 {
     outFinal.clear();
 
-    auto [iA, iB] = escolherABeBAstar(grid, rx, ry, cs);
+    //auto [iA, iB] = escolherABeBAstar(grid, rx, ry, cs);
+    auto [iA, iB] = escolherAB(grid, rx, ry, cs);
     if (iA < 0 || iB < 0) return false;
 
     int Ax = cs[iA].x;
@@ -495,10 +559,10 @@ bool gerarCaminhoAstarCompleto(
     std::vector<std::pair<int,int>> pathR;
     std::vector<std::pair<int,int>> pathAB;
 
-    if (aStarBase(grid, rx, ry, Ax, Ay, pathR) < 0)
+    if (aStarBase(grid, rx, ry, Ax, Ay, pathR, false) < 0)
         return false;
 
-    if (aStarBase(grid, Ax, Ay, Bx, By, pathAB) < 0)
+    if (aStarBase(grid, Ax, Ay, Bx, By, pathAB, true) < 0)
         return false;
 
     outFinal = pathR;
@@ -561,61 +625,128 @@ double calcularYawParaCaminho(
     return yaw;
 }
 
+static MatrixPosition lastPos = {-1, -1};
 
 void* pathingThreadFunction(void* arg) {
 
     while (rclcpp::ok()) {
 
-        if (!matrizMundo.empty() && !occGrid.empty()){
+        if (!matrizMundo.empty() && !occGrid.empty()) {
 
             MatrixPosition matPosRobo = findCell(
-                                            roboPosicao.x * scaleFactor - offset[0], 
-                                            roboPosicao.y * scaleFactor - offset[1],        
-                                            grid.inicio, 
-                                            grid.passo
-                                        );
-            
+                roboPosicao.x * scaleFactor - offset[0],
+                roboPosicao.y * scaleFactor - offset[1],
+                grid.inicio,
+                grid.passo
+            );
+
             int linhas = matrizMundo.size();
             int colunas = matrizMundo[0].size();
-            
-            if (posicaoValida(matPosRobo, linhas, colunas)){
-                        
+
+            if (posicaoValida(matPosRobo, linhas, colunas)) {
+
                 listaPontos = gerarPontos(matrizMundo);
-
-                if (!listaPontos.empty()){
-
-                    detectarFronteiras(listaPontos);
-                    std::vector<Ponto> fronteiras;
-                    for (auto& p : listaPontos)
-                        if (p.isFrontier)
-                            fronteiras.push_back(p);
-
-                    rodarDBSCAN(fronteiras, 5.0f, 10); 
-
-                    listaCentroides = calcularCentroides(fronteiras);
-
-                    calcularDistanciasVizinho(listaCentroides);
-
-                    std::cout << "Centroides encontrados: " << listaCentroides.size() << "\n";
-
-                    for (auto& c : listaCentroides) {
-                        std::cout << "Cluster: " << c.clusterId << " (" << c.x << ", " << c.y << ") " << " Size: " << c.numPontos << " NN: " << c.distVizinho << "\n";
-                    }
-                    /*
-                    std::vector<double> distancias = calcularDistanciasRoboParaCentroides(occGrid, matPosRobo.coluna, matPosRobo.linha, listaCentroides);
-                    for (size_t i = 0; i < distancias.size(); i++) {
-                        std::cout << "Cluster " << listaCentroides[i].clusterId
-                                << " | Distancia = " << distancias[i] << std::endl;
-                    }   
-                    */
-                    gerarCaminhoAstarCompleto(occGrid, matPosRobo.coluna, matPosRobo.linha, listaCentroides, caminhoCompleto);
-
-                    yawAstar = calcularYawParaCaminho(caminhoCompleto, matPosRobo);
+                if (listaPontos.empty()) {
+                    usleep(100000);
+                    continue;
                 }
+
+                // --- Detectar fronteiras e clusters ---
+                detectarFronteiras(listaPontos);
+
+                std::vector<Ponto> fronteiras;
+                for (auto& p : listaPontos)
+                    if (p.isFrontier)
+                        fronteiras.push_back(p);
+
+                rodarDBSCAN(fronteiras, 5.0f, 10);
+                listaCentroides = calcularCentroides(fronteiras);
+
+                if (listaCentroides.empty()) {
+                    usleep(100000);
+                    continue;
+                }
+
+                calcularDistanciasVizinho(listaCentroides);
+                nClusters = listaCentroides.size();
+
+                // -----------------------------------------------------
+                //  🔥 SÓ GERA CAMINHO A* SE O ROBÔ MUDOU DE CÉLULA !!!
+                // -----------------------------------------------------
+                if (matPosRobo.linha != lastPos.linha ||
+                    matPosRobo.coluna != lastPos.coluna)
+                {
+                    // gera em vetor local como você já faz
+                    std::vector<std::pair<int,int>> novoCaminho;
+                    bool ok = gerarCaminhoAstarCompleto(
+                        occGrid,
+                        matPosRobo.coluna,
+                        matPosRobo.linha,
+                        listaCentroides,
+                        novoCaminho
+                    );
+
+                    // debug básico sobre o que veio
+                    std::cout << "[PATHING] gerarCaminho returned ok=" << ok 
+                            << " novo.size=" << novoCaminho.size() << std::endl;
+
+                    if (ok && !novoCaminho.empty()) {
+
+                        // 1) remover pontos consecutivos idênticos (ruídos)
+                        std::vector<std::pair<int,int>> compact;
+                        compact.reserve(novoCaminho.size());
+                        for (size_t i = 0; i < novoCaminho.size(); ++i) {
+                            if (i == 0 || novoCaminho[i] != novoCaminho[i-1])
+                                compact.push_back(novoCaminho[i]);
+                        }
+                        novoCaminho.swap(compact);
+
+                        // 2) remover prefixo duplicado simples
+                        // Se o caminho contém A||A (prefixo A repetido duas vezes), mantém só a última ocorrência
+                        auto N = novoCaminho.size();
+                        for (size_t len = 1; len*2 <= N; ++len) {
+                            bool prefixEqualsSuffix = true;
+                            for (size_t k = 0; k < len; ++k) {
+                                if (novoCaminho[k] != novoCaminho[k+len]) {
+                                    prefixEqualsSuffix = false;
+                                    break;
+                                }
+                            }
+                            if (prefixEqualsSuffix) {
+                                // mantém apenas segunda metade
+                                std::vector<std::pair<int,int>> reduced(novoCaminho.begin()+len, novoCaminho.end());
+                                novoCaminho.swap(reduced);
+                                break;
+                            }
+                        }
+
+                        // Debug dos extremos
+                        if (!novoCaminho.empty()) {
+                            auto p0 = novoCaminho.front();
+                            auto pN = novoCaminho.back();
+                            std::cout << "[PATHING] novoCaminho first=(" << p0.first << "," << p0.second 
+                                    << ") last=(" << pN.first << "," << pN.second << ") size=" << novoCaminho.size() << std::endl;
+                        }
+
+                        // 3) mover para o global ATOMICAMENTE e incrementar versão
+                        {
+                            std::lock_guard<std::mutex> lk(caminhoMutex);
+                            caminhoCompleto = std::move(novoCaminho);
+                            caminhoVersion.fetch_add(1, std::memory_order_relaxed);
+                        }
+                    }
+
+                }
+
+
+                // --- Cálculo de yaw (não gera caminho) ---
+                yawAstar = calcularYawParaCaminho(caminhoCompleto, matPosRobo);
+
+                startedClustering = true;
             }
         }
-        // Pequena pausa para não sobrecarregar a CPU
-        usleep(1000000); // 1000ms
+
+        usleep(100000); // 100ms
     }
 
     return NULL;

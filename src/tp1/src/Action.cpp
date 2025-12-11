@@ -12,7 +12,7 @@
 #include <tuple>
 #include <array>
 
-extern std::vector<std::vector<float>> matrizMundo;  // mapping.cpp
+extern std::vector<std::vector<float>> matrizMundo;     // mapping.cpp
 extern std::vector<std::vector<float>> campoPotencial;  // PotentialField.cpp
 extern GridInfo grid;
 
@@ -31,6 +31,7 @@ extern std::vector<double> sensorAngles;
 extern std::vector<std::pair<int,int>> caminhoCompleto;
 extern std::vector<float> offset;
 extern double yawAstar;
+extern int nClusters;
 
 std::vector<std::vector<int>> senseWalls(const std::vector<float>& sonars) { 
 
@@ -375,6 +376,22 @@ void Action::richRobotic(std::vector<float> lasers, std::vector<float> sonars, s
     Controle ctrl = controleRobo(yawAtual, yawAstar, pid);
     linVel = ctrl.linVel;
     angVel = ctrl.angVel;
+
+    std::cout << "Clusters: " << nClusters << std::endl;
+
+    if(nClusters == -1)      // Iniciar o Movimento
+        linVel = 1.0f;
+    else if(nClusters == 0){ // Encerrar Exploração
+        std::cout << "Exploration finished." << std::endl;
+        linVel = 0.0f;
+        angVel = 0.0f;
+    }
+
+    auto [minPos, minDist] = findMinPosition(sonars);
+    if (minPos>=0 && minPos <=7 && minDist <= 0.5){
+        std::cout << "Evitando colisao. Objeto a " << minDist << std::endl;
+        linVel= 0.0;  
+    }
 
     std::cout << "yawAtual: " << yawAtual << "  yawAstar: " << yawAstar << std::endl;
 }

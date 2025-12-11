@@ -8,6 +8,11 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <mutex>
+#include <atomic>
+
+extern std::atomic<int> caminhoVersion;
+extern std::mutex caminhoMutex;
 
 // Variável global ou extern para compartilhar posição do robô
 extern Position roboPosicao;
@@ -30,6 +35,7 @@ extern std::vector<std::vector<float>> campoPotencial;
 
 extern std::vector<Ponto> listaPontos;
 extern std::vector<std::pair<int,int>> caminhoCompleto;
+extern std::vector<Centroide> listaCentroides;
 
 
 void desenhaGrade(float inicio, float fim, float passo) {
@@ -143,15 +149,16 @@ void pintaCelulas(const std::vector<std::vector<float>>& matriz, float inicio, f
 }
 
 
-
 void desenhaCaminho(const std::vector<Position>& caminho) {
-    glColor3f(1.0f, 0.0f, 0.0f);
+
+    glColor3f(0.0f, 0.7f, 0.7f);
     glBegin(GL_LINE_STRIP);
     for (const auto& pos : caminho) {
         glVertex2f(pos.x, pos.y);
     }
     glEnd();
 }
+
 
 void desenhaSensores(const Position& posRobo) {
     if (sonares.empty()) return;
@@ -288,6 +295,27 @@ void desenhaCaminhoRobo(const std::vector<std::pair<int,int>>& caminhoRobo,
     }
 }
 
+void desenhaCentroides(std::vector<Centroide> centroides, float inicio, float passo) {
+    glColor3f(1.0f, 0.0f, 1.0f);
+    float tamanho = 0.01f;
+    int numSegmentos = 30;
+
+    for (const auto& centroide : centroides) {
+        
+        float cx = inicio + centroide.x * passo;
+        float cy = inicio + centroide.y * passo;
+
+        glBegin(GL_TRIANGLE_FAN);
+        glVertex2f(cx, cy);
+        for (int i = 0; i <= numSegmentos; i++) {
+            float angulo = 2.0f * M_PI * i / numSegmentos;
+            float vx = cx + cos(angulo) * tamanho;
+            float vy = cy + sin(angulo) * tamanho;
+            glVertex2f(vx, vy);
+        }
+        glEnd();
+    }
+}
 
 void* graphicsThreadFunction(void* arg) {
     if (!glfwInit()) return NULL;
@@ -324,13 +352,40 @@ void* graphicsThreadFunction(void* arg) {
         glfwMakeContextCurrent(window);
         glClear(GL_COLOR_BUFFER_BIT);
         pintaCelulas(matrizMundo, grid.inicio, grid.passo);
-        if (!caminhoCompleto.empty()){
-            desenhaCaminhoRobo(caminhoCompleto, grid.inicio, grid.passo);
+
+        // Caminho A*
+        std::vector<std::pair<int,int>> caminhoParaDesenho;
+        {
+            std::lock_guard<std::mutex> lk(caminhoMutex);
+            caminhoParaDesenho = caminhoCompleto; // cópia rápida
         }
-        desenhaCaminho(caminho);
+
+        if (!caminhoParaDesenho.empty()){
+            desenhaCaminhoRobo(caminhoParaDesenho, grid.inicio, grid.passo);
+        }
+        // Fim caminho A*
+
+        if (!caminho.empty()){
+            desenhaCaminho(caminho);
+        }
+        if (!listaCentroides.empty()){
+            desenhaCentroides(listaCentroides, grid.inicio, grid.passo);
+        }
+    
         //desenhaSensores(posRobo);
         desenhaRobo(posRobo);
         desenhaDirecao(posRobo);
+
+
+        glColor3f(1.0f, 0.0f, 1.0f);
+
+        glBegin(GL_QUADS);
+            glVertex2f(200, 200);
+            glVertex2f(200 + grid.passo, 200);
+            glVertex2f(200 + grid.passo, 200 + grid.passo);
+            glVertex2f(200, 200 + grid.passo);
+        glEnd();
+
         glfwSwapBuffers(window);
 
         // Janela de região explorada

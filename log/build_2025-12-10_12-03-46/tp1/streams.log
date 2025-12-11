@@ -1,0 +1,30 @@
+[0.015s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4
+[0.241s] [ 11%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Pathing.cpp.o[0m
+[3.062s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:[m[K In function ‘[01m[Kdouble[01;32m[K custoCelulaComInflacao[m[K(const std::vector<std::vector<Cell> >&, int, int, double, double, double, double, int)[m[K’:
+[3.062s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:265:40:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::vector<Cell> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.062s]   265 |             if (ny < 0 || nx < 0 || [01;35m[Kny >= grid.size()[m[K || nx >= grid[0].size())
+[3.062s]       |                                     [01;35m[K~~~^~~~~~~~~~~~~~[m[K
+[3.064s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:265:61:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Cell>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.064s]   265 |             if (ny < 0 || nx < 0 || ny >= grid.size() || [01;35m[Knx >= grid[0].size()[m[K)
+[3.064s]       |                                                          [01;35m[K~~~^~~~~~~~~~~~~~~~~[m[K
+[3.089s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:[m[K In function ‘[01m[Kbool[01;32m[K gerarCaminhoAstarCompleto[m[K(const std::vector<std::vector<Cell> >&, int, int, const std::vector<Centroide>&, std::vector<std::pair<int, int> >&)[m[K’:
+[3.090s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:500:18:[m[K [01;31m[Kerror: [m[Ktoo few arguments to function ‘[01m[Kdouble[01;32m[K aStarBase[m[K(const std::vector<std::vector<Cell> >&, int, int, int, int, std::vector<std::pair<int, int> >&, bool)[m[K’
+[3.090s]   500 |     if ([01;31m[KaStarBase(grid, rx, ry, Ax, Ay, pathR)[m[K < 0)
+[3.090s]       |         [01;31m[K~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.090s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:295:8:[m[K [01;36m[Knote: [m[Kdeclared here
+[3.090s]   295 | double [01;36m[KaStarBase[m[K(
+[3.090s]       |        [01;36m[K^~~~~~~~~[m[K
+[3.090s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:503:18:[m[K [01;31m[Kerror: [m[Ktoo few arguments to function ‘[01m[Kdouble[01;32m[K aStarBase[m[K(const std::vector<std::vector<Cell> >&, int, int, int, int, std::vector<std::pair<int, int> >&, bool)[m[K’
+[3.090s]   503 |     if ([01;31m[KaStarBase(grid, Ax, Ay, Bx, By, pathAB)[m[K < 0)
+[3.090s]       |         [01;31m[K~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.090s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:295:8:[m[K [01;36m[Knote: [m[Kdeclared here
+[3.090s]   295 | double [01;36m[KaStarBase[m[K(
+[3.090s]       |        [01;36m[K^~~~~~~~~[m[K
+[3.093s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K pathingThreadFunction[m[K(void*)[m[K’:
+[3.093s] [01m[K/home/richard/ros2_ws/src/tp1/src/Pathing.cpp:567:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[3.093s]   567 | void* pathingThreadFunction([01;35m[Kvoid* arg[m[K) {
+[3.093s]       |                             [01;35m[K~~~~~~^~~[m[K
+[3.948s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:174: CMakeFiles/navigation.dir/src/Pathing.cpp.o] Erro 1
+[3.949s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[3.949s] gmake: *** [Makefile:146: all] Erro 2
+[3.953s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4

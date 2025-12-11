@@ -42,5 +42,11 @@ struct PathResult {
     std::vector<std::pair<int,int>> caminho; // (y,x) do início ao fim
 };
 
+struct CaminhoInfo {
+    double custo;
+    std::vector<std::pair<int,int>> path;
+    bool valido = false;
+};
+
 
 #endif // PATHING_HPP
