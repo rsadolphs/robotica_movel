@@ -234,30 +234,6 @@ src/Action.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Action.cpp.s
 .PHONY : src/Action.cpp.s
 
-src/Graph.o: src/Graph.cpp.o
-.PHONY : src/Graph.o
-
-# target to build an object file
-src/Graph.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Graph.cpp.o
-.PHONY : src/Graph.cpp.o
-
-src/Graph.i: src/Graph.cpp.i
-.PHONY : src/Graph.i
-
-# target to preprocess a source file
-src/Graph.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Graph.cpp.i
-.PHONY : src/Graph.cpp.i
-
-src/Graph.s: src/Graph.cpp.s
-.PHONY : src/Graph.s
-
-# target to generate assembly for a file
-src/Graph.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Graph.cpp.s
-.PHONY : src/Graph.cpp.s
-
 src/Mapping.o: src/Mapping.cpp.o
 .PHONY : src/Mapping.o
 
@@ -282,30 +258,6 @@ src/Mapping.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Mapping.cpp.s
 .PHONY : src/Mapping.cpp.s
 
-src/Pathing.o: src/Pathing.cpp.o
-.PHONY : src/Pathing.o
-
-# target to build an object file
-src/Pathing.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Pathing.cpp.o
-.PHONY : src/Pathing.cpp.o
-
-src/Pathing.i: src/Pathing.cpp.i
-.PHONY : src/Pathing.i
-
-# target to preprocess a source file
-src/Pathing.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Pathing.cpp.i
-.PHONY : src/Pathing.cpp.i
-
-src/Pathing.s: src/Pathing.cpp.s
-.PHONY : src/Pathing.s
-
-# target to generate assembly for a file
-src/Pathing.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Pathing.cpp.s
-.PHONY : src/Pathing.cpp.s
-
 src/Perception.o: src/Perception.cpp.o
 .PHONY : src/Perception.o
 
@@ -329,30 +281,6 @@ src/Perception.s: src/Perception.cpp.s
 src/Perception.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Perception.cpp.s
 .PHONY : src/Perception.cpp.s
-
-src/PotentialField.o: src/PotentialField.cpp.o
-.PHONY : src/PotentialField.o
-
-# target to build an object file
-src/PotentialField.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/PotentialField.cpp.o
-.PHONY : src/PotentialField.cpp.o
-
-src/PotentialField.i: src/PotentialField.cpp.i
-.PHONY : src/PotentialField.i
-
-# target to preprocess a source file
-src/PotentialField.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/PotentialField.cpp.i
-.PHONY : src/PotentialField.cpp.i
-
-src/PotentialField.s: src/PotentialField.cpp.s
-.PHONY : src/PotentialField.s
-
-# target to generate assembly for a file
-src/PotentialField.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/PotentialField.cpp.s
-.PHONY : src/PotentialField.cpp.s
 
 src/Utils.o: src/Utils.cpp.o
 .PHONY : src/Utils.o
@@ -421,21 +349,12 @@ help:
 	@echo "... src/Action.o"
 	@echo "... src/Action.i"
 	@echo "... src/Action.s"
-	@echo "... src/Graph.o"
-	@echo "... src/Graph.i"
-	@echo "... src/Graph.s"
 	@echo "... src/Mapping.o"
 	@echo "... src/Mapping.i"
 	@echo "... src/Mapping.s"
-	@echo "... src/Pathing.o"
-	@echo "... src/Pathing.i"
-	@echo "... src/Pathing.s"
 	@echo "... src/Perception.o"
 	@echo "... src/Perception.i"
 	@echo "... src/Perception.s"
-	@echo "... src/PotentialField.o"
-	@echo "... src/PotentialField.i"
-	@echo "... src/PotentialField.s"
 	@echo "... src/Utils.o"
 	@echo "... src/Utils.i"
 	@echo "... src/Utils.s"

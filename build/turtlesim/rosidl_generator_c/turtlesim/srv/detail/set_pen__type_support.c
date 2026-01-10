@@ -4,9 +4,9 @@
 
 #include <string.h>
 
+#include "turtlesim/srv/detail/set_pen__functions.h"
 #include "rosidl_typesupport_interface/macros.h"
 #include "turtlesim/srv/detail/set_pen__type_support.h"
-#include "turtlesim/srv/detail/set_pen__functions.h"
 #include "turtlesim/srv/detail/set_pen__struct.h"
 
 #ifdef __cplusplus

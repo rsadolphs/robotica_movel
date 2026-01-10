@@ -1,0 +1,1221 @@
+[0.000000] (-) TimerEvent: {}
+[0.000522] (phi_aria) JobQueued: {'identifier': 'phi_aria', 'dependencies': OrderedDict()}
+[0.000561] (tp1) JobQueued: {'identifier': 'tp1', 'dependencies': OrderedDict()}
+[0.000594] (turtlesim) JobQueued: {'identifier': 'turtlesim', 'dependencies': OrderedDict()}
+[0.001237] (phi_aria) JobStarted: {'identifier': 'phi_aria'}
+[0.008432] (tp1) JobStarted: {'identifier': 'tp1'}
+[0.013921] (turtlesim) JobStarted: {'identifier': 'turtlesim'}
+[0.019117] (phi_aria) JobProgress: {'identifier': 'phi_aria', 'progress': 'cmake'}
+[0.019900] (phi_aria) Command: {'cmd': ['/usr/bin/cmake', '/home/richard/ros2_ws/src/phi_aria', '-DCMAKE_INSTALL_PREFIX=/home/richard/ros2_ws/install/phi_aria'], 'cwd': '/home/richard/ros2_ws/build/phi_aria', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'richard', 'XDG_SESSION_TYPE': 'wayland', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib::/usr/local/Aria/lib:/usr/local/Aria/lib', 'HOME': '/home/richard', 'OLDPWD': '/home/richard', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2234', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/richard/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'richard', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'richard', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/richard-VirtualBox:@/tmp/.ICE-unix/2198,unix/richard-VirtualBox:/tmp/.ICE-unix/2198', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/a549118f_771a_4d4d_9c43_23cf04201502', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'pt_BR.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.Z10FJ3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.153', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/richard/ros2_ws/build/phi_aria', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.023937] (tp1) JobProgress: {'identifier': 'tp1', 'progress': 'cmake'}
+[0.024604] (tp1) Command: {'cmd': ['/usr/bin/cmake', '/home/richard/ros2_ws/src/tp1', '-DCMAKE_INSTALL_PREFIX=/home/richard/ros2_ws/install/tp1'], 'cwd': '/home/richard/ros2_ws/build/tp1', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'richard', 'XDG_SESSION_TYPE': 'wayland', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib::/usr/local/Aria/lib:/usr/local/Aria/lib', 'HOME': '/home/richard', 'OLDPWD': '/home/richard', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2234', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/richard/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'richard', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'richard', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/richard-VirtualBox:@/tmp/.ICE-unix/2198,unix/richard-VirtualBox:/tmp/.ICE-unix/2198', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/a549118f_771a_4d4d_9c43_23cf04201502', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'pt_BR.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.Z10FJ3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.153', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/richard/ros2_ws/build/tp1', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.032667] (turtlesim) JobProgress: {'identifier': 'turtlesim', 'progress': 'cmake'}
+[0.033265] (turtlesim) Command: {'cmd': ['/usr/bin/cmake', '/home/richard/ros2_ws/src/ros_tutorials/turtlesim', '-DCMAKE_INSTALL_PREFIX=/home/richard/ros2_ws/install/turtlesim'], 'cwd': '/home/richard/ros2_ws/build/turtlesim', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'richard', 'XDG_SESSION_TYPE': 'wayland', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib::/usr/local/Aria/lib:/usr/local/Aria/lib', 'HOME': '/home/richard', 'OLDPWD': '/home/richard', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2234', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/richard/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'richard', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'richard', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/richard-VirtualBox:@/tmp/.ICE-unix/2198,unix/richard-VirtualBox:/tmp/.ICE-unix/2198', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/a549118f_771a_4d4d_9c43_23cf04201502', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'pt_BR.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.Z10FJ3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.153', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/richard/ros2_ws/build/turtlesim', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.049855] (phi_aria) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.050129] (tp1) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.059787] (turtlesim) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.101294] (-) TimerEvent: {}
+[0.194429] (tp1) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[0.195937] (phi_aria) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[0.201852] (-) TimerEvent: {}
+[0.218936] (turtlesim) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[0.302106] (-) TimerEvent: {}
+[0.328712] (phi_aria) StdoutLine: {'line': b'-- Found rclcpp: 28.1.9 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[0.337318] (tp1) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /usr/share/cmake-3.28/Modules/FindOpenGL.cmake:381 (message):\n'}
+[0.337523] (tp1) StderrLine: {'line': b'  Policy CMP0072 is not set: FindOpenGL prefers GLVND by default when\n'}
+[0.337612] (tp1) StderrLine: {'line': b'  available.  Run "cmake --help-policy CMP0072" for policy details.  Use the\n'}
+[0.337701] (tp1) StderrLine: {'line': b'  cmake_policy command to set the policy and suppress this warning.\n'}
+[0.337830] (tp1) StderrLine: {'line': b'\n'}
+[0.337941] (tp1) StderrLine: {'line': b'  FindOpenGL found both a legacy GL library:\n'}
+[0.338018] (tp1) StderrLine: {'line': b'\n'}
+[0.338093] (tp1) StderrLine: {'line': b'    OPENGL_gl_LIBRARY: /usr/lib/x86_64-linux-gnu/libGL.so\n'}
+[0.338167] (tp1) StderrLine: {'line': b'\n'}
+[0.338239] (tp1) StderrLine: {'line': b'  and GLVND libraries for OpenGL and GLX:\n'}
+[0.338355] (tp1) StderrLine: {'line': b'\n'}
+[0.338429] (tp1) StderrLine: {'line': b'    OPENGL_opengl_LIBRARY: /usr/lib/x86_64-linux-gnu/libOpenGL.so\n'}
+[0.338502] (tp1) StderrLine: {'line': b'    OPENGL_glx_LIBRARY: /usr/lib/x86_64-linux-gnu/libGLX.so\n'}
+[0.338574] (tp1) StderrLine: {'line': b'\n'}
+[0.338648] (tp1) StderrLine: {'line': b'  OpenGL_GL_PREFERENCE has not been set to "GLVND" or "LEGACY", so for\n'}
+[0.338719] (tp1) StderrLine: {'line': b'  compatibility with CMake 3.10 and below the legacy GL library will be used.\n'}
+[0.338854] (tp1) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[0.338982] (tp1) StderrLine: {'line': b'  CMakeLists.txt:13 (find_package)\n'}
+[0.339057] (tp1) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[0.339130] (tp1) StderrLine: {'line': b'\x1b[0m\n'}
+[0.341883] (tp1) StdoutLine: {'line': b'-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so   \n'}
+[0.342014] (turtlesim) StdoutLine: {'line': b'-- Found ament_index_cpp: 1.8.1 (/opt/ros/jazzy/share/ament_index_cpp/cmake)\n'}
+[0.342140] (turtlesim) StdoutLine: {'line': b'-- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)\n'}
+[0.342329] (tp1) StdoutLine: {'line': b'-- Found rclcpp: 28.1.9 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[0.371997] (phi_aria) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.376838] (tp1) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.381887] (turtlesim) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.387612] (phi_aria) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.391702] (tp1) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.397041] (turtlesim) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.402740] (-) TimerEvent: {}
+[0.407336] (phi_aria) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.413941] (tp1) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.418356] (turtlesim) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.430687] (phi_aria) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.438908] (turtlesim) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.439611] (tp1) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.502921] (-) TimerEvent: {}
+[0.531209] (phi_aria) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[0.535541] (phi_aria) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.2 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.539277] (tp1) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[0.539826] (turtlesim) StdoutLine: {'line': b'-- Found rcl_interfaces: 2.0.2 (/opt/ros/jazzy/share/rcl_interfaces/cmake)\n'}
+[0.542179] (tp1) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.2 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.585109] (turtlesim) StdoutLine: {'line': b'-- Found rclcpp: 28.1.9 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[0.603328] (-) TimerEvent: {}
+[0.615520] (turtlesim) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[0.619134] (turtlesim) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.2 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.640471] (phi_aria) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[0.642283] (tp1) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[0.660012] (tp1) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[0.664270] (phi_aria) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[0.689156] (tp1) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.692704] (phi_aria) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.704046] (-) TimerEvent: {}
+[0.731443] (turtlesim) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[0.757672] (turtlesim) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[0.784606] (turtlesim) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.788769] (tp1) StdoutLine: {'line': b'-- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)\n'}
+[0.796585] (phi_aria) StdoutLine: {'line': b'-- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)\n'}
+[0.804229] (-) TimerEvent: {}
+[0.863444] (tp1) StdoutLine: {'line': b'-- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)\n'}
+[0.870907] (turtlesim) StdoutLine: {'line': b'-- Found rclcpp_action: 28.1.9 (/opt/ros/jazzy/share/rclcpp_action/cmake)\n'}
+[0.883226] (phi_aria) StdoutLine: {'line': b'-- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)\n'}
+[0.898501] (tp1) StdoutLine: {'line': b'-- Found tf2: 0.36.10 (/opt/ros/jazzy/share/tf2/cmake)\n'}
+[0.904069] (tp1) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.36.10 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)\n'}
+[0.904557] (-) TimerEvent: {}
+[0.916773] (phi_aria) StdoutLine: {'line': b'-- Found tf2_ros: 0.36.10 (/opt/ros/jazzy/share/tf2_ros/cmake)\n'}
+[0.920323] (tp1) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)\n'}
+[0.921733] (tp1) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[0.921950] (tp1) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[0.932944] (turtlesim) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)\n'}
+[0.957912] (turtlesim) StdoutLine: {'line': b'-- Found rosidl_adapter: 4.6.5 (/opt/ros/jazzy/share/rosidl_adapter/cmake)\n'}
+[0.967404] (turtlesim) StdoutLine: {'line': b'-- Found std_srvs: 5.3.6 (/opt/ros/jazzy/share/std_srvs/cmake)\n'}
+[1.004703] (-) TimerEvent: {}
+[1.072931] (tp1) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.2 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[1.083869] (phi_aria) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.36.10 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)\n'}
+[1.097756] (phi_aria) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)\n'}
+[1.099246] (phi_aria) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[1.100044] (phi_aria) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[1.105855] (-) TimerEvent: {}
+[1.116997] (phi_aria) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.2 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[1.203515] (tp1) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.204129] (tp1) StdoutLine: {'line': b'-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/richard/ros2_ws/src/tp1/include>\n'}
+[1.204252] (tp1) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.205048] (tp1) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.205217] (tp1) StdoutLine: {'line': b"-- Configured 'flake8' exclude dirs and/or files: \n"}
+[1.205346] (tp1) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.205884] (tp1) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[1.205994] (-) TimerEvent: {}
+[1.208131] (tp1) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.208333] (tp1) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.209513] (tp1) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.213093] (tp1) StdoutLine: {'line': b'-- Configuring done (1.2s)\n'}
+[1.229616] (tp1) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[1.234509] (tp1) StdoutLine: {'line': b'-- Build files have been written to: /home/richard/ros2_ws/build/tp1\n'}
+[1.240946] (phi_aria) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.241127] (phi_aria) StdoutLine: {'line': b'-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/richard/ros2_ws/src/phi_aria/include>\n'}
+[1.241209] (phi_aria) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.241889] (phi_aria) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.244609] (phi_aria) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.244753] (phi_aria) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.244937] (phi_aria) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.248548] (phi_aria) StdoutLine: {'line': b'-- Configuring done (1.2s)\n'}
+[1.249680] (tp1) CommandEnded: {'returncode': 0}
+[1.250058] (tp1) JobProgress: {'identifier': 'tp1', 'progress': 'build'}
+[1.250938] (tp1) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/richard/ros2_ws/build/tp1', '--', '-j4', '-l4'], 'cwd': '/home/richard/ros2_ws/build/tp1', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'richard', 'XDG_SESSION_TYPE': 'wayland', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib::/usr/local/Aria/lib:/usr/local/Aria/lib', 'HOME': '/home/richard', 'OLDPWD': '/home/richard', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2234', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/richard/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'richard', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'richard', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/richard-VirtualBox:@/tmp/.ICE-unix/2198,unix/richard-VirtualBox:/tmp/.ICE-unix/2198', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/a549118f_771a_4d4d_9c43_23cf04201502', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'pt_BR.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.Z10FJ3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.153', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/richard/ros2_ws/build/tp1', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[1.264890] (phi_aria) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[1.268718] (phi_aria) StdoutLine: {'line': b'-- Build files have been written to: /home/richard/ros2_ws/build/phi_aria\n'}
+[1.280007] (phi_aria) CommandEnded: {'returncode': 0}
+[1.280307] (phi_aria) JobProgress: {'identifier': 'phi_aria', 'progress': 'build'}
+[1.280328] (phi_aria) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/richard/ros2_ws/build/phi_aria', '--', '-j4', '-l4'], 'cwd': '/home/richard/ros2_ws/build/phi_aria', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'richard', 'XDG_SESSION_TYPE': 'wayland', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib::/usr/local/Aria/lib:/usr/local/Aria/lib', 'HOME': '/home/richard', 'OLDPWD': '/home/richard', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2234', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/richard/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'richard', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'richard', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/richard-VirtualBox:@/tmp/.ICE-unix/2198,unix/richard-VirtualBox:/tmp/.ICE-unix/2198', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/a549118f_771a_4d4d_9c43_23cf04201502', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'pt_BR.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.Z10FJ3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.153', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/richard/ros2_ws/build/phi_aria', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[1.306137] (-) TimerEvent: {}
+[1.309101] (tp1) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding CXX object CMakeFiles/navigation.dir/src/main.cpp.o\x1b[0m\n'}
+[1.309992] (tp1) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/navigation.dir/src/Perception.cpp.o\x1b[0m\n'}
+[1.311967] (tp1) StdoutLine: {'line': b'[ 60%] \x1b[32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o\x1b[0m\n'}
+[1.324457] (tp1) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding CXX object CMakeFiles/navigation.dir/src/Utils.cpp.o\x1b[0m\n'}
+[1.378325] (phi_aria) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/phi_p3dx.dir/src/phi_p3dx.cpp.o\x1b[0m\n'}
+[1.380597] (phi_aria) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/phi_p3dx.dir/src/Pose.cpp.o\x1b[0m\n'}
+[1.383563] (phi_aria) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/phi_p3dx.dir/src/PhiROS2Aria.cpp.o\x1b[0m\n'}
+[1.406256] (-) TimerEvent: {}
+[1.509870] (-) TimerEvent: {}
+[1.611780] (-) TimerEvent: {}
+[1.712268] (-) TimerEvent: {}
+[1.814888] (-) TimerEvent: {}
+[1.915197] (-) TimerEvent: {}
+[2.017860] (-) TimerEvent: {}
+[2.118189] (-) TimerEvent: {}
+[2.218535] (-) TimerEvent: {}
+[2.319142] (-) TimerEvent: {}
+[2.414481] (turtlesim) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)\n'}
+[2.419876] (-) TimerEvent: {}
+[2.440286] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid Action::\x1b[01;32m\x1b[KexploreEnvironment\x1b[m\x1b[K(std::vector<float>, std::vector<float>, std::vector<float>)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.442636] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:11:52:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Klasers\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.442856] (tp1) StderrLine: {'line': b'   11 | void Action::exploreEnvironment(\x1b[01;35m\x1b[Kstd::vector<float> lasers\x1b[m\x1b[K, std::vector<float> sonars, std::vector<float> pose)\n'}
+[2.443029] (tp1) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[2.443154] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:11:79:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ksonars\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.443330] (tp1) StderrLine: {'line': b'   11 | void Action::exploreEnvironment(std::vector<float> lasers, \x1b[01;35m\x1b[Kstd::vector<float> sonars\x1b[m\x1b[K, std::vector<float> pose)\n'}
+[2.443463] (tp1) StderrLine: {'line': b'      |                                                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[2.443574] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:11:106:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kpose\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.443690] (tp1) StderrLine: {'line': b'   11 | void Action::exploreEnvironment(std::vector<float> lasers, std::vector<float> sonars, \x1b[01;35m\x1b[Kstd::vector<float> pose\x1b[m\x1b[K)\n'}
+[2.443767] (tp1) StderrLine: {'line': b'      |                                                                                       \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[2.520871] (-) TimerEvent: {}
+[2.621292] (-) TimerEvent: {}
+[2.721778] (-) TimerEvent: {}
+[2.825910] (-) TimerEvent: {}
+[2.926223] (-) TimerEvent: {}
+[3.026658] (-) TimerEvent: {}
+[3.127035] (-) TimerEvent: {}
+[3.227618] (-) TimerEvent: {}
+[3.327966] (-) TimerEvent: {}
+[3.428495] (-) TimerEvent: {}
+[3.530086] (-) TimerEvent: {}
+[3.631893] (-) TimerEvent: {}
+[3.734955] (-) TimerEvent: {}
+[3.835257] (-) TimerEvent: {}
+[3.935665] (-) TimerEvent: {}
+[4.037542] (-) TimerEvent: {}
+[4.137920] (-) TimerEvent: {}
+[4.158576] (turtlesim) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[4.238097] (-) TimerEvent: {}
+[4.338515] (-) TimerEvent: {}
+[4.438881] (-) TimerEvent: {}
+[4.539221] (-) TimerEvent: {}
+[4.642225] (-) TimerEvent: {}
+[4.742564] (-) TimerEvent: {}
+[4.843064] (-) TimerEvent: {}
+[4.944863] (-) TimerEvent: {}
+[5.045305] (-) TimerEvent: {}
+[5.080897] (turtlesim) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[5.087517] (turtlesim) StdoutLine: {'line': b'-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)\n'}
+[5.145526] (-) TimerEvent: {}
+[5.246122] (-) TimerEvent: {}
+[5.346444] (-) TimerEvent: {}
+[5.446885] (-) TimerEvent: {}
+[5.481909] (turtlesim) StdoutLine: {'line': b'-- Found PythonExtra: /usr/bin/python3  \n'}
+[5.547012] (-) TimerEvent: {}
+[5.647347] (-) TimerEvent: {}
+[5.747712] (-) TimerEvent: {}
+[5.848112] (-) TimerEvent: {}
+[5.948448] (-) TimerEvent: {}
+[6.049225] (-) TimerEvent: {}
+[6.153211] (-) TimerEvent: {}
+[6.253619] (-) TimerEvent: {}
+[6.309737] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<float, std::allocator<float> > Perception::\x1b[01;32m\x1b[KgetLatestSonarRanges\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.309988] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:153:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Knumbytes\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.310073] (tp1) StderrLine: {'line': b'  153 |     int \x1b[01;35m\x1b[Knumbytes\x1b[m\x1b[K = sonarROS.data.size();\n'}
+[6.310145] (tp1) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[6.310219] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/Perception.cpp:154:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Knumfields\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.310294] (tp1) StderrLine: {'line': b'  154 |     int \x1b[01;35m\x1b[Knumfields\x1b[m\x1b[K = sonarROS.fields.size();\n'}
+[6.310363] (tp1) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[6.353747] (-) TimerEvent: {}
+[6.398869] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/main.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid NavigationNode::\x1b[01;32m\x1b[Ktimer_callback\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.400970] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/main.cpp:56:33:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KAction::exploreEnvironment(std::vector<float>&, std::vector<float>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.401146] (tp1) StderrLine: {'line': b'   56 | \x1b[01;31m\x1b[K_.exploreEnvironment(lasers, sonars)\x1b[m\x1b[K;\n'}
+[6.403990] (tp1) StderrLine: {'line': b'      | \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.404123] (tp1) StderrLine: {'line': b'\n'}
+[6.404208] (tp1) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/main.cpp:9\x1b[m\x1b[K:\n'}
+[6.404302] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/include/Action.h:21:10:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kvoid Action::\x1b[01;32m\x1b[KexploreEnvironment\x1b[m\x1b[K(std::vector<float>, std::vector<float>, std::vector<float>)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.404382] (tp1) StderrLine: {'line': b'   21 |     void \x1b[01;36m\x1b[KexploreEnvironment\x1b[m\x1b[K(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose);\n'}
+[6.404458] (tp1) StderrLine: {'line': b'      |          \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.404531] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/include/Action.h:21:10:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 3 arguments, 2 provided\n'}
+[6.405927] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/main.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid*\x1b[01;32m\x1b[K keyboardThreadFunction\x1b[m\x1b[K(void*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.406112] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/main.cpp:79:36:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Karg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.406200] (tp1) StderrLine: {'line': b'   79 | yboardThreadFunction(\x1b[01;35m\x1b[Kvoid *arg\x1b[m\x1b[K)\n'}
+[6.406280] (tp1) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K~~~~~~^~~\x1b[m\x1b[K\n'}
+[6.406356] (tp1) StderrLine: {'line': b'\n'}
+[6.407232] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/main.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid*\x1b[01;32m\x1b[K mainThreadFunction\x1b[m\x1b[K(void*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.407373] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/tp1/src/main.cpp:93:32:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Karg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.407477] (tp1) StderrLine: {'line': b'   93 |  *mainThreadFunction(\x1b[01;35m\x1b[Kvoid *arg\x1b[m\x1b[K)\n'}
+[6.407598] (tp1) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K~~~~~~^~~\x1b[m\x1b[K\n'}
+[6.407674] (tp1) StderrLine: {'line': b'\n'}
+[6.453905] (-) TimerEvent: {}
+[6.555909] (-) TimerEvent: {}
+[6.655493] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:47\x1b[m\x1b[K,\n'}
+[6.655907] (-) TimerEvent: {}
+[6.656050] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:15\x1b[m\x1b[K,\n'}
+[6.656170] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:1\x1b[m\x1b[K:\n'}
+[6.656259] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArRobot.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArRobot::\x1b[01;32m\x1b[KsetDoNotSwitchBaud\x1b[m\x1b[K(bool)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.656343] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArRobot.h:1075:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KdoNotSwitchBaud\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.656441] (phi_aria) StderrLine: {'line': b' 1075 |   AREXPORT void setDoNotSwitchBaud(\x1b[01;35m\x1b[Kbool doNotSwitchBaud\x1b[m\x1b[K)\n'}
+[6.656547] (phi_aria) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~~~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.724858] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArActionColorFollow.h:33\x1b[m\x1b[K,\n'}
+[6.725070] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/ArActionGroups.h:30\x1b[m\x1b[K,\n'}
+[6.725153] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:57\x1b[m\x1b[K:\n'}
+[6.725229] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[Kzoom\x1b[m\x1b[K(int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.725303] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:118:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KzoomValue\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.725380] (phi_aria) StderrLine: {'line': b'  118 |   AREXPORT virtual bool zoom(\x1b[01;35m\x1b[Kint zoomValue\x1b[m\x1b[K) { return false; }\n'}
+[6.725451] (phi_aria) StderrLine: {'line': b'      |                              \x1b[01;35m\x1b[K~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[6.728822] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KzoomRel\x1b[m\x1b[K(int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.729037] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:120:37:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KzoomValue\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.729126] (phi_aria) StderrLine: {'line': b'  120 |   AREXPORT virtual bool zoomRel(\x1b[01;35m\x1b[Kint zoomValue\x1b[m\x1b[K) { return false; }\n'}
+[6.729201] (phi_aria) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[6.729272] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KsetGain\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.729345] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:166:40:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kgain\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.729417] (phi_aria) StderrLine: {'line': b'  166 |   AREXPORT virtual bool setGain(\x1b[01;35m\x1b[Kdouble gain\x1b[m\x1b[K) const { return false; }\n'}
+[6.729486] (phi_aria) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[6.729556] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual double ArPTZ::\x1b[01;32m\x1b[KgetGain\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.729626] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:168:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kgain\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.729696] (phi_aria) StderrLine: {'line': b'  168 |   AREXPORT virtual double getGain(\x1b[01;35m\x1b[Kdouble gain\x1b[m\x1b[K) const { return 0; }\n'}
+[6.729766] (phi_aria) StderrLine: {'line': b'      |                                   \x1b[01;35m\x1b[K~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[6.729928] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KsetFocus\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.730003] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:174:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfocus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.730075] (phi_aria) StderrLine: {'line': b'  174 |   AREXPORT virtual bool setFocus(\x1b[01;35m\x1b[Kdouble focus\x1b[m\x1b[K) const { return false; }\n'}
+[6.730144] (phi_aria) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[6.730213] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual double ArPTZ::\x1b[01;32m\x1b[KgetFocus\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.730307] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:176:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfocus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.730392] (phi_aria) StderrLine: {'line': b'  176 |   AREXPORT virtual double getFocus(\x1b[01;35m\x1b[Kdouble focus\x1b[m\x1b[K) const { return 0; }\n'}
+[6.730462] (phi_aria) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[6.730537] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KpacketHandler\x1b[m\x1b[K(ArBasePacket*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.730607] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:215:53:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kpacket\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.730679] (phi_aria) StderrLine: {'line': b'  215 |   AREXPORT virtual bool packetHandler(\x1b[01;35m\x1b[KArBasePacket *packet\x1b[m\x1b[K) { return false; }\n'}
+[6.730842] (phi_aria) StderrLine: {'line': b'      |                                       \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[6.746863] (turtlesim) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed \n'}
+[6.757910] (-) TimerEvent: {}
+[6.759761] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:72\x1b[m\x1b[K:\n'}
+[6.760055] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionTriangleDriveTo::Data::\x1b[01;32m\x1b[KsetLinesAndVertex\x1b[m\x1b[K(std::map<int, ArLineFinderSegment*>*, ArPose)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.760152] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:191:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.760233] (phi_aria) StderrLine: {'line': b'  191 |       myVertex = \x1b[01;35m\x1b[Kvertex\x1b[m\x1b[K;\n'}
+[6.760307] (phi_aria) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[6.760388] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArDeviceConnection.h:30\x1b[m\x1b[K,\n'}
+[6.760466] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/ArSerialConnection.h:30\x1b[m\x1b[K,\n'}
+[6.760552] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:30\x1b[m\x1b[K:\n'}
+[6.760644] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.761605] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[6.762388] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[6.762741] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionTriangleDriveTo::Data::\x1b[01;32m\x1b[KsetFinal\x1b[m\x1b[K(ArPose)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.762937] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:194:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.763032] (phi_aria) StderrLine: {'line': b'  194 |     void setFinal(ArPose final) { myFinalSet = true; myFinal = \x1b[01;35m\x1b[Kfinal\x1b[m\x1b[K; }\n'}
+[6.763112] (phi_aria) StderrLine: {'line': b'      |                                                                \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[6.763191] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.771113] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[6.771231] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[6.771315] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionTriangleDriveTo::Data::\x1b[01;32m\x1b[KsetApproach\x1b[m\x1b[K(ArPose)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.771399] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:196:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.771484] (phi_aria) StderrLine: {'line': b'  196 |     { myApproachSet = true; myApproach = \x1b[01;35m\x1b[Kapproach\x1b[m\x1b[K; }\n'}
+[6.771561] (phi_aria) StderrLine: {'line': b'      |                                          \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[6.771642] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.771721] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[6.771938] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[6.796911] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArDeviceConnection.h:31\x1b[m\x1b[K:\n'}
+[6.797214] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:\x1b[m\x1b[K At global scope:\n'}
+[6.797392] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:196:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArBasePacket::\x1b[01;32m\x1b[KduplicatePacket\x1b[m\x1b[K(ArBasePacket*)\x1b[m\x1b[K\xe2\x80\x99 was hidden [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverloaded-virtual=\x07-Woverloaded-virtual=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.797558] (phi_aria) StderrLine: {'line': b'  196 |   AREXPORT virtual void \x1b[01;35m\x1b[KduplicatePacket\x1b[m\x1b[K(ArBasePacket *packet);\n'}
+[6.797718] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.798391] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArLMS2xx.h:30\x1b[m\x1b[K,\n'}
+[6.798681] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/ArSick.h:33\x1b[m\x1b[K,\n'}
+[6.798946] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:87\x1b[m\x1b[K:\n'}
+[6.799077] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArLMS2xxPacket.h:78:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  by \xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArLMS2xxPacket::\x1b[01;32m\x1b[KduplicatePacket\x1b[m\x1b[K(ArLMS2xxPacket*)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.799195] (phi_aria) StderrLine: {'line': b'   78 |   AREXPORT virtual void \x1b[01;36m\x1b[KduplicatePacket\x1b[m\x1b[K(ArLMS2xxPacket *packet);\n'}
+[6.799326] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.861871] (-) TimerEvent: {}
+[6.875891] (turtlesim) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.2 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[6.876719] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArSick.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArSick::\x1b[01;32m\x1b[KsetMinRange\x1b[m\x1b[K(unsigned int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.876974] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArSick.h:206:33:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KminRange\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.877069] (phi_aria) StderrLine: {'line': b'  206 |   void setMinRange(\x1b[01;35m\x1b[Kunsigned int minRange\x1b[m\x1b[K) { }\n'}
+[6.877161] (phi_aria) StderrLine: {'line': b'      |                    \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[6.885876] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:\x1b[m\x1b[K At global scope:\n'}
+[6.886107] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:109:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArBasePacket::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2)\x1b[m\x1b[K\xe2\x80\x99 was hidden [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverloaded-virtual=\x07-Woverloaded-virtual=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.886200] (phi_aria) StderrLine: {'line': b'  109 |   AREXPORT virtual void \x1b[01;35m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2 val);\n'}
+[6.886361] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.886454] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:91\x1b[m\x1b[K:\n'}
+[6.886529] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArDPPTU.h:84:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  by \xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArDPPTUPacket::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.886606] (phi_aria) StderrLine: {'line': b'   84 |   AREXPORT virtual void \x1b[01;36m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(int val);\n'}
+[6.886679] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.890913] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:109:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArBasePacket::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2)\x1b[m\x1b[K\xe2\x80\x99 was hidden [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverloaded-virtual=\x07-Woverloaded-virtual=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.891394] (phi_aria) StderrLine: {'line': b'  109 |   AREXPORT virtual void \x1b[01;35m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2 val);\n'}
+[6.891502] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.891578] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:92\x1b[m\x1b[K:\n'}
+[6.891653] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArVCC4.h:149:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  by \xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArVCC4Packet::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte4)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.891760] (phi_aria) StderrLine: {'line': b'  149 |   AREXPORT virtual void \x1b[01;36m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte4 val);\n'}
+[6.891914] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.921978] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:47\x1b[m\x1b[K,\n'}
+[6.922275] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:15\x1b[m\x1b[K,\n'}
+[6.922369] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/phi_p3dx.cpp:1\x1b[m\x1b[K:\n'}
+[6.922448] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArRobot.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArRobot::\x1b[01;32m\x1b[KsetDoNotSwitchBaud\x1b[m\x1b[K(bool)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.922537] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArRobot.h:1075:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KdoNotSwitchBaud\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.922650] (phi_aria) StderrLine: {'line': b' 1075 | oNotSwitchBaud(\x1b[01;35m\x1b[Kbool doNotSwitchBaud\x1b[m\x1b[K)\n'}
+[6.922724] (phi_aria) StderrLine: {'line': b'      |                \x1b[01;35m\x1b[K~~~~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.922867] (phi_aria) StderrLine: {'line': b'\n'}
+[6.926822] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArMapInterface.h:82\x1b[m\x1b[K,\n'}
+[6.927013] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:98\x1b[m\x1b[K:\n'}
+[6.927142] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapObject.h:299:15:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.927231] (phi_aria) StderrLine: {'line': b'  299 |   public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapObject *,\n'}
+[6.927302] (phi_aria) StderrLine: {'line': b'      |               \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.927370] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/13/bits/unique_ptr.h:37\x1b[m\x1b[K,\n'}
+[6.927437] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/13/memory:78\x1b[m\x1b[K,\n'}
+[6.927503] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:169\x1b[m\x1b[K,\n'}
+[6.927570] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:4\x1b[m\x1b[K:\n'}
+[6.927637] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[6.927704] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[6.927772] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.929145] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArMapInterface.h:83\x1b[m\x1b[K:\n'}
+[6.929337] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapUtils.h:370:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.929441] (phi_aria) StderrLine: {'line': b'  370 | struct ArMapFileLineCompare : public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapFileLine &, const ArMapFileLine &, bool>\n'}
+[6.929519] (phi_aria) StderrLine: {'line': b'      |                                           \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.929593] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[6.929669] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[6.929742] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.933996] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapUtils.h:453:48:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.934193] (phi_aria) StderrLine: {'line': b'  453 | struct ArMapFileLineGroupCompare : public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapFileLineGroup &,\n'}
+[6.934284] (phi_aria) StderrLine: {'line': b'      |                                                \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.935314] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[6.935416] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[6.935495] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.936745] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapUtils.h:471:31:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.937303] (phi_aria) StderrLine: {'line': b'  471 |                   public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapFileLineGroup &,\n'}
+[6.937467] (phi_aria) StderrLine: {'line': b'      |                               \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.937614] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[6.937871] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[6.938040] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.945863] (turtlesim) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[6.951868] (turtlesim) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[6.955835] (turtlesim) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/richard/ros2_ws/src/ros_tutorials/turtlesim/include\n'}
+[6.956105] (turtlesim) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[6.962189] (turtlesim) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[6.962374] (-) TimerEvent: {}
+[6.962496] (turtlesim) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[6.970044] (turtlesim) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[6.970456] (turtlesim) StdoutLine: {'line': b"-- Configured 'flake8' exclude dirs and/or files: \n"}
+[6.970623] (turtlesim) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[6.970745] (turtlesim) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[6.977531] (turtlesim) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[6.977845] (turtlesim) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[6.983861] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArActionColorFollow.h:33\x1b[m\x1b[K,\n'}
+[6.984042] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/ArActionGroups.h:30\x1b[m\x1b[K,\n'}
+[6.984121] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:57\x1b[m\x1b[K:\n'}
+[6.984191] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[Kzoom\x1b[m\x1b[K(int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.984260] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:118:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KzoomValue\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.984350] (phi_aria) StderrLine: {'line': b'  118 | rtual bool zoom(\x1b[01;35m\x1b[Kint zoomValue\x1b[m\x1b[K) { return false; }\n'}
+[6.984422] (phi_aria) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[6.984495] (phi_aria) StderrLine: {'line': b'\n'}
+[6.984567] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KzoomRel\x1b[m\x1b[K(int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.984640] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:120:37:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KzoomValue\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.984746] (phi_aria) StderrLine: {'line': b'  120 | al bool zoomRel(\x1b[01;35m\x1b[Kint zoomValue\x1b[m\x1b[K) { return false; }\n'}
+[6.984919] (phi_aria) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[6.985009] (phi_aria) StderrLine: {'line': b'\n'}
+[6.985081] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KsetGain\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.985160] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:166:40:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kgain\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.985235] (phi_aria) StderrLine: {'line': b'  166 | bool setGain(\x1b[01;35m\x1b[Kdouble gain\x1b[m\x1b[K) const { return false; }\n'}
+[6.985309] (phi_aria) StderrLine: {'line': b'      |              \x1b[01;35m\x1b[K~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[6.985383] (phi_aria) StderrLine: {'line': b'\n'}
+[6.985457] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual double ArPTZ::\x1b[01;32m\x1b[KgetGain\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.985533] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:168:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kgain\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.985655] (phi_aria) StderrLine: {'line': b'  168 | uble getGain(\x1b[01;35m\x1b[Kdouble gain\x1b[m\x1b[K) const { return 0; }\n'}
+[6.985736] (phi_aria) StderrLine: {'line': b'      |              \x1b[01;35m\x1b[K~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[6.985898] (phi_aria) StderrLine: {'line': b'\n'}
+[6.985979] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KsetFocus\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.986050] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:174:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfocus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.986122] (phi_aria) StderrLine: {'line': b'  174 | ool setFocus(\x1b[01;35m\x1b[Kdouble focus\x1b[m\x1b[K) const { return false; }\n'}
+[6.986192] (turtlesim) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[6.986279] (phi_aria) StderrLine: {'line': b'      |              \x1b[01;35m\x1b[K~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[6.986352] (phi_aria) StderrLine: {'line': b'\n'}
+[6.986422] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual double ArPTZ::\x1b[01;32m\x1b[KgetFocus\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.986493] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:176:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfocus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.986565] (phi_aria) StderrLine: {'line': b'  176 | ble getFocus(\x1b[01;35m\x1b[Kdouble focus\x1b[m\x1b[K) const { return 0; }\n'}
+[6.986649] (phi_aria) StderrLine: {'line': b'      |              \x1b[01;35m\x1b[K~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[6.986728] (phi_aria) StderrLine: {'line': b'\n'}
+[6.989897] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KpacketHandler\x1b[m\x1b[K(ArBasePacket*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.990052] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:215:53:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kpacket\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[6.990147] (phi_aria) StderrLine: {'line': b'  215 | ndler(\x1b[01;35m\x1b[KArBasePacket *packet\x1b[m\x1b[K) { return false; }\n'}
+[6.990224] (phi_aria) StderrLine: {'line': b'      |       \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[6.990295] (phi_aria) StderrLine: {'line': b'\n'}
+[6.990935] (turtlesim) StdoutLine: {'line': b'-- Configuring done (6.9s)\n'}
+[7.004449] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:72\x1b[m\x1b[K:\n'}
+[7.005098] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionTriangleDriveTo::Data::\x1b[01;32m\x1b[KsetLinesAndVertex\x1b[m\x1b[K(std::map<int, ArLineFinderSegment*>*, ArPose)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.005386] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:191:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.005672] (phi_aria) StderrLine: {'line': b'  191 |       myVertex = \x1b[01;35m\x1b[Kvertex\x1b[m\x1b[K;\n'}
+[7.005883] (phi_aria) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[7.005966] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArDeviceConnection.h:30\x1b[m\x1b[K,\n'}
+[7.006046] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/ArSerialConnection.h:30\x1b[m\x1b[K,\n'}
+[7.006125] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:30\x1b[m\x1b[K:\n'}
+[7.006202] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.006278] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[7.006351] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[7.006425] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionTriangleDriveTo::Data::\x1b[01;32m\x1b[KsetFinal\x1b[m\x1b[K(ArPose)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.006502] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:194:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.006594] (phi_aria) StderrLine: {'line': b'  194 | lSet = true; myFinal = \x1b[01;35m\x1b[Kfinal\x1b[m\x1b[K; }\n'}
+[7.006670] (phi_aria) StderrLine: {'line': b'      |                        \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[7.006745] (phi_aria) StderrLine: {'line': b'\n'}
+[7.006892] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.006973] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[7.007052] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[7.007128] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionTriangleDriveTo::Data::\x1b[01;32m\x1b[KsetApproach\x1b[m\x1b[K(ArPose)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.010838] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:196:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.011029] (phi_aria) StderrLine: {'line': b'  196 |  true; myApproach = \x1b[01;35m\x1b[Kapproach\x1b[m\x1b[K; }\n'}
+[7.011210] (phi_aria) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[7.011285] (phi_aria) StderrLine: {'line': b'\n'}
+[7.011352] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.011423] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[7.011488] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[7.044961] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:116\x1b[m\x1b[K:\n'}
+[7.045142] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionMovementParameters.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionMovementParameters::\x1b[01;32m\x1b[KenableOnceFromSector\x1b[m\x1b[K(ArMapObject*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.045222] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionMovementParameters.h:53:51:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KmapObject\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.045306] (phi_aria) StderrLine: {'line': b'   53 |   AREXPORT void enableOnceFromSector(\x1b[01;35m\x1b[KArMapObject *mapObject\x1b[m\x1b[K)\n'}
+[7.045377] (phi_aria) StderrLine: {'line': b'      |                                      \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[7.060869] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArDeviceConnection.h:31\x1b[m\x1b[K:\n'}
+[7.061052] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:\x1b[m\x1b[K At global scope:\n'}
+[7.061134] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:196:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArBasePacket::\x1b[01;32m\x1b[KduplicatePacket\x1b[m\x1b[K(ArBasePacket*)\x1b[m\x1b[K\xe2\x80\x99 was hidden [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverloaded-virtual=\x07-Woverloaded-virtual=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.061225] (phi_aria) StderrLine: {'line': b'  196 | EXPORT virtual void \x1b[01;35m\x1b[KduplicatePacket\x1b[m\x1b[K(ArBasePacket *packet);\n'}
+[7.061297] (phi_aria) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.061393] (phi_aria) StderrLine: {'line': b'\n'}
+[7.061463] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArLMS2xx.h:30\x1b[m\x1b[K,\n'}
+[7.061557] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/ArSick.h:33\x1b[m\x1b[K,\n'}
+[7.061663] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:87\x1b[m\x1b[K:\n'}
+[7.061745] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArLMS2xxPacket.h:78:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  by \xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArLMS2xxPacket::\x1b[01;32m\x1b[KduplicatePacket\x1b[m\x1b[K(ArLMS2xxPacket*)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.061906] (phi_aria) StderrLine: {'line': b'   78 | EXPORT virtual void \x1b[01;36m\x1b[KduplicatePacket\x1b[m\x1b[K(ArLMS2xxPacket *packet);\n'}
+[7.061981] (phi_aria) StderrLine: {'line': b'      |                     \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.062051] (phi_aria) StderrLine: {'line': b'\n'}
+[7.062841] (-) TimerEvent: {}
+[7.090551] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:128\x1b[m\x1b[K:\n'}
+[7.090737] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArLaserFilter.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void* ArLaserFilter::\x1b[01;32m\x1b[KrunThread\x1b[m\x1b[K(void*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.090903] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArLaserFilter.h:71:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Karg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.091001] (phi_aria) StderrLine: {'line': b'   71 |   AREXPORT virtual void *runThread(\x1b[01;35m\x1b[Kvoid *arg\x1b[m\x1b[K) { return NULL; }\n'}
+[7.091072] (phi_aria) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~~~~~^~~\x1b[m\x1b[K\n'}
+[7.156881] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KPhiROS2Aria::\x1b[01;32m\x1b[KPhiROS2Aria\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.157083] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:67:10:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KPhiROS2Aria::publish_sonar\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.157179] (phi_aria) StderrLine: {'line': b'   67 |     bool \x1b[01;35m\x1b[Kpublish_sonar\x1b[m\x1b[K;\n'}
+[7.157289] (phi_aria) StderrLine: {'line': b'      |          \x1b[01;35m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.157365] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:63:10:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kbool PhiROS2Aria::publish_aria_lasers\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.157458] (phi_aria) StderrLine: {'line': b'   63 |     bool \x1b[01;35m\x1b[Kpublish_aria_lasers\x1b[m\x1b[K;\n'}
+[7.157576] (phi_aria) StderrLine: {'line': b'      |          \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.157651] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:5:1:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.157723] (phi_aria) StderrLine: {'line': b'    5 | \x1b[01;35m\x1b[KPhiROS2Aria\x1b[m\x1b[K::PhiROS2Aria() : Node("phi_aria_p3dx"),\n'}
+[7.157862] (phi_aria) StderrLine: {'line': b'      | \x1b[01;35m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.157942] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:63:10:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KPhiROS2Aria::publish_aria_lasers\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.158017] (phi_aria) StderrLine: {'line': b'   63 |     bool \x1b[01;35m\x1b[Kpublish_aria_lasers\x1b[m\x1b[K;\n'}
+[7.158090] (phi_aria) StderrLine: {'line': b'      |          \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.158176] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:50:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[KArFunctorC<PhiROS2Aria> PhiROS2Aria::myPublishCB\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.158265] (phi_aria) StderrLine: {'line': b'   50 |     ArFunctorC<PhiROS2Aria> \x1b[01;35m\x1b[KmyPublishCB\x1b[m\x1b[K;\n'}
+[7.158340] (phi_aria) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.158411] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:5:1:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.158486] (phi_aria) StderrLine: {'line': b'    5 | \x1b[01;35m\x1b[KPhiROS2Aria\x1b[m\x1b[K::PhiROS2Aria() : Node("phi_aria_p3dx"),\n'}
+[7.158559] (phi_aria) StderrLine: {'line': b'      | \x1b[01;35m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.162976] (-) TimerEvent: {}
+[7.187503] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid PhiROS2Aria::\x1b[01;32m\x1b[Kpublish\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.187826] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:249:22:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::__cxx11::list<ArSensorReading*>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.187941] (phi_aria) StderrLine: {'line': b'  249 |         for(int i=0;\x1b[01;35m\x1b[Ki<readings->size()/2\x1b[m\x1b[K;i++)\n'}
+[7.188017] (phi_aria) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.188101] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:251:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.188183] (phi_aria) StderrLine: {'line': b'  251 |         poseTaken = (*it)->getPoseTaken(\x1b[01;35m\x1b[K)\x1b[m\x1b[K;\n'}
+[7.188253] (phi_aria) StderrLine: {'line': b'      |                                         \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[7.188322] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.188392] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[7.188460] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[7.202862] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:\x1b[m\x1b[K In static member function \xe2\x80\x98\x1b[01m\x1b[Kstatic bool PhiROS2Aria::\x1b[01;32m\x1b[KsimStatPacketHandler\x1b[m\x1b[K(ArRobotPacket*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.203069] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:575:14:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Ka\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.203164] (phi_aria) StderrLine: {'line': b'  575 |         char \x1b[01;35m\x1b[Ka\x1b[m\x1b[K = packet->bufToByte(); // unused byte\n'}
+[7.203239] (phi_aria) StderrLine: {'line': b'      |              \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[7.203314] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:576:14:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kb\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.203391] (phi_aria) StderrLine: {'line': b'  576 |         char \x1b[01;35m\x1b[Kb\x1b[m\x1b[K = packet->bufToByte(); // unused byte\n'}
+[7.203476] (phi_aria) StderrLine: {'line': b'      |              \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[7.203556] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:580:13:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Ksimint\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.203639] (phi_aria) StderrLine: {'line': b'  580 |         int \x1b[01;35m\x1b[Ksimint\x1b[m\x1b[K = packet->bufToUByte2();\n'}
+[7.203713] (phi_aria) StderrLine: {'line': b'      |             \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[7.203784] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:581:13:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Krealint\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.203949] (phi_aria) StderrLine: {'line': b'  581 |         int \x1b[01;35m\x1b[Krealint\x1b[m\x1b[K = packet->bufToUByte2();\n'}
+[7.204025] (phi_aria) StderrLine: {'line': b'      |             \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[7.204098] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:582:13:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Klastint\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.204183] (phi_aria) StderrLine: {'line': b'  582 |         int \x1b[01;35m\x1b[Klastint\x1b[m\x1b[K = packet->bufToUByte2();\n'}
+[7.204255] (phi_aria) StderrLine: {'line': b'      |             \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[7.204326] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:587:13:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[KrealZ\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.204404] (phi_aria) StderrLine: {'line': b'  587 |         int \x1b[01;35m\x1b[KrealZ\x1b[m\x1b[K = packet->bufToByte4();\n'}
+[7.204508] (phi_aria) StderrLine: {'line': b'      |             \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[7.204622] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:620:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kuser\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.204714] (phi_aria) StderrLine: {'line': b'  620 |         unsigned char \x1b[01;35m\x1b[Kuser\x1b[m\x1b[K = packet->bufToUByte(); // unused byte\n'}
+[7.204852] (phi_aria) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[7.204945] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:622:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kloaded\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.205021] (phi_aria) StderrLine: {'line': b'  622 |         unsigned char \x1b[01;35m\x1b[Kloaded\x1b[m\x1b[K = packet->bufToUByte(); // unused byte\n'}
+[7.205105] (phi_aria) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[7.213995] (turtlesim) StdoutLine: {'line': b'-- Generating done (0.2s)\n'}
+[7.227983] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArSick.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArSick::\x1b[01;32m\x1b[KsetMinRange\x1b[m\x1b[K(unsigned int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.230866] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArSick.h:206:33:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KminRange\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.231066] (phi_aria) StderrLine: {'line': b'  206 | nRange(\x1b[01;35m\x1b[Kunsigned int minRange\x1b[m\x1b[K) { }\n'}
+[7.231180] (phi_aria) StderrLine: {'line': b'      |        \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[7.231267] (phi_aria) StderrLine: {'line': b'\n'}
+[7.246500] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:\x1b[m\x1b[K At global scope:\n'}
+[7.246748] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:109:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArBasePacket::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2)\x1b[m\x1b[K\xe2\x80\x99 was hidden [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverloaded-virtual=\x07-Woverloaded-virtual=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.246973] (phi_aria) StderrLine: {'line': b'  109 | EXPORT virtual void \x1b[01;35m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2 val);\n'}
+[7.247186] (phi_aria) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.247297] (phi_aria) StderrLine: {'line': b'\n'}
+[7.247375] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:91\x1b[m\x1b[K:\n'}
+[7.247450] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArDPPTU.h:84:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  by \xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArDPPTUPacket::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.247527] (phi_aria) StderrLine: {'line': b'   84 | EXPORT virtual void \x1b[01;36m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(int val);\n'}
+[7.247599] (phi_aria) StderrLine: {'line': b'      |                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.247672] (phi_aria) StderrLine: {'line': b'\n'}
+[7.250937] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:109:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArBasePacket::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2)\x1b[m\x1b[K\xe2\x80\x99 was hidden [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverloaded-virtual=\x07-Woverloaded-virtual=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.251263] (phi_aria) StderrLine: {'line': b'  109 | EXPORT virtual void \x1b[01;35m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2 val);\n'}
+[7.251366] (phi_aria) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.251452] (phi_aria) StderrLine: {'line': b'\n'}
+[7.251536] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:92\x1b[m\x1b[K:\n'}
+[7.252675] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArVCC4.h:149:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  by \xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArVCC4Packet::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte4)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.252904] (phi_aria) StderrLine: {'line': b'  149 | EXPORT virtual void \x1b[01;36m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte4 val);\n'}
+[7.252995] (phi_aria) StderrLine: {'line': b'      |                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.253072] (phi_aria) StderrLine: {'line': b'\n'}
+[7.263108] (-) TimerEvent: {}
+[7.269234] (turtlesim) StdoutLine: {'line': b'-- Build files have been written to: /home/richard/ros2_ws/build/turtlesim\n'}
+[7.300472] (turtlesim) CommandEnded: {'returncode': 0}
+[7.302844] (turtlesim) JobProgress: {'identifier': 'turtlesim', 'progress': 'build'}
+[7.302958] (turtlesim) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/richard/ros2_ws/build/turtlesim', '--', '-j4', '-l4'], 'cwd': '/home/richard/ros2_ws/build/turtlesim', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'richard', 'XDG_SESSION_TYPE': 'wayland', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib::/usr/local/Aria/lib:/usr/local/Aria/lib', 'HOME': '/home/richard', 'OLDPWD': '/home/richard', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2234', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/richard/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'richard', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'richard', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/richard-VirtualBox:@/tmp/.ICE-unix/2198,unix/richard-VirtualBox:/tmp/.ICE-unix/2198', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/a549118f_771a_4d4d_9c43_23cf04201502', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'pt_BR.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.Z10FJ3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.153', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/richard/ros2_ws/build/turtlesim', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[7.327958] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArMapInterface.h:82\x1b[m\x1b[K,\n'}
+[7.328163] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:98\x1b[m\x1b[K:\n'}
+[7.328254] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapObject.h:299:15:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.328376] (phi_aria) StderrLine: {'line': b'  299 |   public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapObject *,\n'}
+[7.328469] (phi_aria) StderrLine: {'line': b'      |               \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.328545] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/13/bits/unique_ptr.h:37\x1b[m\x1b[K,\n'}
+[7.328618] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/13/memory:78\x1b[m\x1b[K,\n'}
+[7.328695] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:169\x1b[m\x1b[K,\n'}
+[7.328767] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/richard/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:4\x1b[m\x1b[K:\n'}
+[7.328935] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[7.329018] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[7.329091] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.341892] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArMapInterface.h:83\x1b[m\x1b[K:\n'}
+[7.342125] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapUtils.h:370:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.342216] (phi_aria) StderrLine: {'line': b'  370 | mpare : public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapFileLine &, const ArMapFileLine &, bool>\n'}
+[7.342294] (phi_aria) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.342367] (phi_aria) StderrLine: {'line': b'\n'}
+[7.342441] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[7.342537] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[7.342611] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.354987] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapUtils.h:453:48:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.355204] (phi_aria) StderrLine: {'line': b'  453 | mpare : public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapFileLineGroup &,\n'}
+[7.355301] (phi_aria) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.355385] (phi_aria) StderrLine: {'line': b'\n'}
+[7.355465] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[7.355551] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[7.355632] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.355724] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapUtils.h:471:31:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.355908] (phi_aria) StderrLine: {'line': b'  471 |         public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapFileLineGroup &,\n'}
+[7.356021] (phi_aria) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.356108] (phi_aria) StderrLine: {'line': b'\n'}
+[7.356186] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[7.356265] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[7.356378] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.363267] (-) TimerEvent: {}
+[7.466056] (-) TimerEvent: {}
+[7.493895] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:116\x1b[m\x1b[K:\n'}
+[7.494134] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionMovementParameters.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionMovementParameters::\x1b[01;32m\x1b[KenableOnceFromSector\x1b[m\x1b[K(ArMapObject*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.494256] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionMovementParameters.h:53:51:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KmapObject\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.494348] (phi_aria) StderrLine: {'line': b'   53 | mSector(\x1b[01;35m\x1b[KArMapObject *mapObject\x1b[m\x1b[K)\n'}
+[7.494435] (phi_aria) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[7.494516] (phi_aria) StderrLine: {'line': b'\n'}
+[7.502007] (turtlesim) StdoutLine: {'line': b'[  0%] \x1b[34m\x1b[1mGenerating type hashes for ROS interfaces\x1b[0m\n'}
+[7.530886] (turtlesim) StdoutLine: {'line': b'[  0%] Built target ament_cmake_python_copy_turtlesim\n'}
+[7.566237] (-) TimerEvent: {}
+[7.617936] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:128\x1b[m\x1b[K:\n'}
+[7.618179] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArLaserFilter.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void* ArLaserFilter::\x1b[01;32m\x1b[KrunThread\x1b[m\x1b[K(void*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.618268] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArLaserFilter.h:71:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Karg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.618353] (phi_aria) StderrLine: {'line': b'   71 | id *runThread(\x1b[01;35m\x1b[Kvoid *arg\x1b[m\x1b[K) { return NULL; }\n'}
+[7.618457] (phi_aria) StderrLine: {'line': b'      |               \x1b[01;35m\x1b[K~~~~~~^~~\x1b[m\x1b[K\n'}
+[7.618541] (phi_aria) StderrLine: {'line': b'\n'}
+[7.668937] (-) TimerEvent: {}
+[7.769323] (-) TimerEvent: {}
+[7.871841] (-) TimerEvent: {}
+[7.944993] (turtlesim) StdoutLine: {'line': b'running egg_info\n'}
+[7.946050] (turtlesim) StdoutLine: {'line': b'creating turtlesim.egg-info\n'}
+[7.971964] (-) TimerEvent: {}
+[7.974622] (turtlesim) StdoutLine: {'line': b'writing turtlesim.egg-info/PKG-INFO\n'}
+[7.975602] (turtlesim) StdoutLine: {'line': b'writing dependency_links to turtlesim.egg-info/dependency_links.txt\n'}
+[7.976549] (turtlesim) StdoutLine: {'line': b'writing top-level names to turtlesim.egg-info/top_level.txt\n'}
+[7.981867] (turtlesim) StdoutLine: {'line': b"writing manifest file 'turtlesim.egg-info/SOURCES.txt'\n"}
+[8.072138] (-) TimerEvent: {}
+[8.169439] (turtlesim) StdoutLine: {'line': b"reading manifest file 'turtlesim.egg-info/SOURCES.txt'\n"}
+[8.171212] (turtlesim) StdoutLine: {'line': b"writing manifest file 'turtlesim.egg-info/SOURCES.txt'\n"}
+[8.172474] (-) TimerEvent: {}
+[8.243483] (turtlesim) StdoutLine: {'line': b'[  0%] Built target ament_cmake_python_build_turtlesim_egg\n'}
+[8.272550] (-) TimerEvent: {}
+[8.372924] (-) TimerEvent: {}
+[8.414948] (turtlesim) StdoutLine: {'line': b'[  0%] Built target turtlesim__rosidl_generator_type_description\n'}
+[8.433990] (turtlesim) StdoutLine: {'line': b'[  1%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[8.471890] (turtlesim) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[8.474622] (-) TimerEvent: {}
+[8.575834] (-) TimerEvent: {}
+[8.677653] (-) TimerEvent: {}
+[8.778023] (-) TimerEvent: {}
+[8.879160] (-) TimerEvent: {}
+[8.979511] (-) TimerEvent: {}
+[9.084880] (-) TimerEvent: {}
+[9.185210] (-) TimerEvent: {}
+[9.290887] (-) TimerEvent: {}
+[9.391249] (-) TimerEvent: {}
+[9.491686] (-) TimerEvent: {}
+[9.597902] (-) TimerEvent: {}
+[9.698333] (-) TimerEvent: {}
+[9.798624] (-) TimerEvent: {}
+[9.899385] (-) TimerEvent: {}
+[9.999726] (-) TimerEvent: {}
+[10.100198] (-) TimerEvent: {}
+[10.200615] (-) TimerEvent: {}
+[10.301086] (-) TimerEvent: {}
+[10.402869] (-) TimerEvent: {}
+[10.503203] (-) TimerEvent: {}
+[10.514488] (turtlesim) StdoutLine: {'line': b'[  2%] Built target turtlesim__cpp\n'}
+[10.607972] (-) TimerEvent: {}
+[10.711859] (-) TimerEvent: {}
+[10.812916] (-) TimerEvent: {}
+[10.865750] (turtlesim) StdoutLine: {'line': b'[  3%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/action/detail/rotate_absolute__functions.c.o\x1b[0m\n'}
+[10.875123] (turtlesim) StdoutLine: {'line': b'[  4%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/action/detail/rotate_absolute__description.c.o\x1b[0m\n'}
+[10.877806] (turtlesim) StdoutLine: {'line': b'[  5%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/action/detail/rotate_absolute__type_support.c.o\x1b[0m\n'}
+[10.884036] (turtlesim) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/msg/detail/color__description.c.o\x1b[0m\n'}
+[10.915082] (-) TimerEvent: {}
+[11.015417] (-) TimerEvent: {}
+[11.032740] (turtlesim) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/msg/detail/color__functions.c.o\x1b[0m\n'}
+[11.034345] (turtlesim) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/msg/detail/color__type_support.c.o\x1b[0m\n'}
+[11.077715] (turtlesim) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/msg/detail/pose__description.c.o\x1b[0m\n'}
+[11.110116] (turtlesim) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/msg/detail/pose__functions.c.o\x1b[0m\n'}
+[11.115660] (-) TimerEvent: {}
+[11.126084] (turtlesim) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/msg/detail/pose__type_support.c.o\x1b[0m\n'}
+[11.171598] (turtlesim) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/kill__description.c.o\x1b[0m\n'}
+[11.216305] (-) TimerEvent: {}
+[11.217902] (turtlesim) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/kill__functions.c.o\x1b[0m\n'}
+[11.237067] (turtlesim) StdoutLine: {'line': b'[ 13%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/kill__type_support.c.o\x1b[0m\n'}
+[11.238452] (turtlesim) StdoutLine: {'line': b'[ 13%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/set_pen__description.c.o\x1b[0m\n'}
+[11.278088] (turtlesim) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/set_pen__functions.c.o\x1b[0m\n'}
+[11.316448] (-) TimerEvent: {}
+[11.334967] (turtlesim) StdoutLine: {'line': b'[ 15%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/spawn__description.c.o\x1b[0m\n'}
+[11.339175] (turtlesim) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/set_pen__type_support.c.o\x1b[0m\n'}
+[11.376328] (turtlesim) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/spawn__functions.c.o\x1b[0m\n'}
+[11.416592] (-) TimerEvent: {}
+[11.417607] (turtlesim) StdoutLine: {'line': b'[ 18%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/spawn__type_support.c.o\x1b[0m\n'}
+[11.453984] (turtlesim) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/teleport_absolute__description.c.o\x1b[0m\n'}
+[11.455214] (turtlesim) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/teleport_absolute__functions.c.o\x1b[0m\n'}
+[11.488937] (turtlesim) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/teleport_absolute__type_support.c.o\x1b[0m\n'}
+[11.516732] (-) TimerEvent: {}
+[11.526112] (turtlesim) StdoutLine: {'line': b'[ 21%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/teleport_relative__description.c.o\x1b[0m\n'}
+[11.534656] (turtlesim) StdoutLine: {'line': b'[ 22%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/teleport_relative__functions.c.o\x1b[0m\n'}
+[11.562933] (turtlesim) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_c.dir/rosidl_generator_c/turtlesim/srv/detail/teleport_relative__type_support.c.o\x1b[0m\n'}
+[11.616867] (-) TimerEvent: {}
+[11.639116] (turtlesim) StdoutLine: {'line': b'[ 24%] \x1b[32m\x1b[1mLinking C shared library libturtlesim__rosidl_generator_c.so\x1b[0m\n'}
+[11.694933] (turtlesim) StdoutLine: {'line': b'[ 24%] Built target turtlesim__rosidl_generator_c\n'}
+[11.707993] (turtlesim) StdoutLine: {'line': b'[ 25%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[11.710807] (turtlesim) StdoutLine: {'line': b'[ 26%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[11.716986] (-) TimerEvent: {}
+[11.723003] (turtlesim) StdoutLine: {'line': b'[ 28%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[11.723947] (turtlesim) StdoutLine: {'line': b'[ 28%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[11.817856] (-) TimerEvent: {}
+[11.918275] (-) TimerEvent: {}
+[12.019588] (-) TimerEvent: {}
+[12.121848] (-) TimerEvent: {}
+[12.222199] (-) TimerEvent: {}
+[12.324375] (-) TimerEvent: {}
+[12.425182] (-) TimerEvent: {}
+[12.525618] (-) TimerEvent: {}
+[12.626872] (-) TimerEvent: {}
+[12.727407] (-) TimerEvent: {}
+[12.830899] (-) TimerEvent: {}
+[12.934881] (-) TimerEvent: {}
+[13.036798] (-) TimerEvent: {}
+[13.137791] (-) TimerEvent: {}
+[13.239042] (-) TimerEvent: {}
+[13.339490] (-) TimerEvent: {}
+[13.415778] (turtlesim) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/turtlesim/action/rotate_absolute__type_support.cpp.o\x1b[0m\n'}
+[13.439620] (-) TimerEvent: {}
+[13.539984] (-) TimerEvent: {}
+[13.640414] (-) TimerEvent: {}
+[13.743126] (-) TimerEvent: {}
+[13.843491] (-) TimerEvent: {}
+[13.943871] (-) TimerEvent: {}
+[14.011716] (turtlesim) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/turtlesim/action/detail/rotate_absolute__type_support.c.o\x1b[0m\n'}
+[14.045105] (-) TimerEvent: {}
+[14.061488] (tp1) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/navigation.dir/build.make:76: CMakeFiles/navigation.dir/src/main.cpp.o] Erro 1\n'}
+[14.062203] (tp1) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2\n'}
+[14.062403] (tp1) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Erro 2\n'}
+[14.069339] (tp1) CommandEnded: {'returncode': 2}
+[14.096167] (tp1) JobEnded: {'identifier': 'tp1', 'rc': 2}
+[14.145260] (-) TimerEvent: {}
+[14.203944] (turtlesim) StdoutLine: {'line': b'[ 31%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/turtlesim/msg/detail/color__type_support.c.o\x1b[0m\n'}
+[14.245417] (-) TimerEvent: {}
+[14.250339] (turtlesim) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/turtlesim/action/detail/dds_fastrtps/rotate_absolute__type_support.cpp.o\x1b[0m\n'}
+[14.299849] (turtlesim) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/turtlesim/msg/detail/pose__type_support.c.o\x1b[0m\n'}
+[14.345577] (-) TimerEvent: {}
+[14.388944] (turtlesim) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/turtlesim/srv/detail/kill__type_support.c.o\x1b[0m\n'}
+[14.445718] (-) TimerEvent: {}
+[14.462654] (turtlesim) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/turtlesim/srv/detail/set_pen__type_support.c.o\x1b[0m\n'}
+[14.496380] (turtlesim) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/turtlesim/action/detail/rotate_absolute__type_support_c.cpp.o\x1b[0m\n'}
+[14.545902] (-) TimerEvent: {}
+[14.556147] (turtlesim) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/turtlesim/srv/detail/spawn__type_support.c.o\x1b[0m\n'}
+[14.646039] (-) TimerEvent: {}
+[14.669123] (turtlesim) StdoutLine: {'line': b'[ 36%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/turtlesim/srv/detail/teleport_absolute__type_support.c.o\x1b[0m\n'}
+[14.747428] (-) TimerEvent: {}
+[14.804444] (turtlesim) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/turtlesim/srv/detail/teleport_relative__type_support.c.o\x1b[0m\n'}
+[14.848882] (-) TimerEvent: {}
+[14.890211] (turtlesim) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/turtlesim/msg/color__type_support.cpp.o\x1b[0m\n'}
+[14.919036] (turtlesim) StdoutLine: {'line': b'[ 39%] \x1b[32m\x1b[1mLinking C shared library libturtlesim__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[14.949014] (-) TimerEvent: {}
+[14.975909] (turtlesim) StdoutLine: {'line': b'[ 39%] Built target turtlesim__rosidl_typesupport_introspection_c\n'}
+[14.997789] (turtlesim) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/turtlesim/msg/pose__type_support.cpp.o\x1b[0m\n'}
+[15.049201] (-) TimerEvent: {}
+[15.149628] (-) TimerEvent: {}
+[15.252033] (-) TimerEvent: {}
+[15.352605] (-) TimerEvent: {}
+[15.429005] (turtlesim) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/turtlesim/srv/kill__type_support.cpp.o\x1b[0m\n'}
+[15.452813] (-) TimerEvent: {}
+[15.555859] (-) TimerEvent: {}
+[15.588953] (turtlesim) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/turtlesim/srv/set_pen__type_support.cpp.o\x1b[0m\n'}
+[15.655931] (-) TimerEvent: {}
+[15.681971] (turtlesim) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/turtlesim/msg/detail/color__type_support_c.cpp.o\x1b[0m\n'}
+[15.757652] (-) TimerEvent: {}
+[15.856455] (turtlesim) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/turtlesim/msg/detail/dds_fastrtps/color__type_support.cpp.o\x1b[0m\n'}
+[15.858179] (-) TimerEvent: {}
+[15.958511] (-) TimerEvent: {}
+[16.058917] (-) TimerEvent: {}
+[16.161435] (-) TimerEvent: {}
+[16.240124] (turtlesim) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/turtlesim/msg/detail/pose__type_support_c.cpp.o\x1b[0m\n'}
+[16.261707] (-) TimerEvent: {}
+[16.362030] (turtlesim) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/turtlesim/srv/spawn__type_support.cpp.o\x1b[0m\n'}
+[16.362304] (-) TimerEvent: {}
+[16.464984] (-) TimerEvent: {}
+[16.545983] (turtlesim) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/turtlesim/srv/detail/kill__type_support_c.cpp.o\x1b[0m\n'}
+[16.565124] (-) TimerEvent: {}
+[16.670053] (-) TimerEvent: {}
+[16.734745] (turtlesim) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/turtlesim/msg/detail/dds_fastrtps/pose__type_support.cpp.o\x1b[0m\n'}
+[16.770198] (-) TimerEvent: {}
+[16.872828] (-) TimerEvent: {}
+[16.973304] (-) TimerEvent: {}
+[17.074974] (-) TimerEvent: {}
+[17.180154] (-) TimerEvent: {}
+[17.283527] (-) TimerEvent: {}
+[17.388976] (-) TimerEvent: {}
+[17.477096] (turtlesim) StdoutLine: {'line': b'[ 48%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/turtlesim/srv/teleport_absolute__type_support.cpp.o\x1b[0m\n'}
+[17.489803] (-) TimerEvent: {}
+[17.591519] (-) TimerEvent: {}
+[17.636953] (turtlesim) StdoutLine: {'line': b'[ 49%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/turtlesim/srv/teleport_relative__type_support.cpp.o\x1b[0m\n'}
+[17.691713] (-) TimerEvent: {}
+[17.794191] (-) TimerEvent: {}
+[17.896367] (-) TimerEvent: {}
+[17.932533] (turtlesim) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/turtlesim/srv/detail/set_pen__type_support_c.cpp.o\x1b[0m\n'}
+[17.998070] (-) TimerEvent: {}
+[18.088492] (turtlesim) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/turtlesim/srv/detail/dds_fastrtps/kill__type_support.cpp.o\x1b[0m\n'}
+[18.098203] (-) TimerEvent: {}
+[18.198587] (-) TimerEvent: {}
+[18.300205] (-) TimerEvent: {}
+[18.300590] (turtlesim) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/turtlesim/srv/detail/dds_fastrtps/set_pen__type_support.cpp.o\x1b[0m\n'}
+[18.400413] (-) TimerEvent: {}
+[18.501127] (-) TimerEvent: {}
+[18.557968] (turtlesim) StdoutLine: {'line': b'[ 52%] \x1b[32m\x1b[1mLinking CXX shared library libturtlesim__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[18.601268] (-) TimerEvent: {}
+[18.704097] (-) TimerEvent: {}
+[18.804456] (-) TimerEvent: {}
+[18.816956] (turtlesim) StdoutLine: {'line': b'[ 52%] Built target turtlesim__rosidl_typesupport_cpp\n'}
+[18.842319] (turtlesim) StdoutLine: {'line': b'[ 53%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[18.904622] (-) TimerEvent: {}
+[18.993199] (turtlesim) StdoutLine: {'line': b'[ 54%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/turtlesim/srv/detail/spawn__type_support_c.cpp.o\x1b[0m\n'}
+[19.004776] (-) TimerEvent: {}
+[19.105149] (-) TimerEvent: {}
+[19.206488] (-) TimerEvent: {}
+[19.307444] (-) TimerEvent: {}
+[19.324067] (turtlesim) StdoutLine: {'line': b'[ 55%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/turtlesim/srv/detail/dds_fastrtps/spawn__type_support.cpp.o\x1b[0m\n'}
+[19.407887] (-) TimerEvent: {}
+[19.464586] (turtlesim) StdoutLine: {'line': b'[ 56%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/turtlesim/srv/detail/dds_fastrtps/teleport_absolute__type_support.cpp.o\x1b[0m\n'}
+[19.508128] (-) TimerEvent: {}
+[19.610860] (-) TimerEvent: {}
+[19.711299] (-) TimerEvent: {}
+[19.813886] (-) TimerEvent: {}
+[19.814177] (turtlesim) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/turtlesim/srv/detail/teleport_absolute__type_support_c.cpp.o\x1b[0m\n'}
+[19.911932] (-) TimerEvent: {}
+[20.015251] (-) TimerEvent: {}
+[20.025529] (turtlesim) StdoutLine: {'line': b'[ 58%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_c.dir/rosidl_typesupport_c/turtlesim/action/rotate_absolute__type_support.cpp.o\x1b[0m\n'}
+[20.115400] (-) TimerEvent: {}
+[20.210872] (turtlesim) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_c.dir/rosidl_typesupport_c/turtlesim/msg/color__type_support.cpp.o\x1b[0m\n'}
+[20.215535] (-) TimerEvent: {}
+[20.291462] (turtlesim) StdoutLine: {'line': b'[ 60%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_c.dir/rosidl_typesupport_c/turtlesim/msg/pose__type_support.cpp.o\x1b[0m\n'}
+[20.315667] (-) TimerEvent: {}
+[20.321000] (turtlesim) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_c.dir/rosidl_typesupport_c/turtlesim/srv/kill__type_support.cpp.o\x1b[0m\n'}
+[20.356954] (turtlesim) StdoutLine: {'line': b'[ 62%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_c.dir/rosidl_typesupport_c/turtlesim/srv/set_pen__type_support.cpp.o\x1b[0m\n'}
+[20.381324] (turtlesim) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/turtlesim/srv/detail/dds_fastrtps/teleport_relative__type_support.cpp.o\x1b[0m\n'}
+[20.415814] (-) TimerEvent: {}
+[20.434994] (turtlesim) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_c.dir/rosidl_typesupport_c/turtlesim/srv/spawn__type_support.cpp.o\x1b[0m\n'}
+[20.444125] (turtlesim) StdoutLine: {'line': b'[ 64%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_c.dir/rosidl_typesupport_c/turtlesim/srv/teleport_absolute__type_support.cpp.o\x1b[0m\n'}
+[20.511002] (turtlesim) StdoutLine: {'line': b'[ 65%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_c.dir/rosidl_typesupport_c/turtlesim/srv/teleport_relative__type_support.cpp.o\x1b[0m\n'}
+[20.515938] (-) TimerEvent: {}
+[20.524954] (turtlesim) StdoutLine: {'line': b'[ 65%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[20.616220] (-) TimerEvent: {}
+[20.633009] (turtlesim) StdoutLine: {'line': b'[ 66%] \x1b[32m\x1b[1mLinking CXX shared library libturtlesim__rosidl_typesupport_c.so\x1b[0m\n'}
+[20.698888] (turtlesim) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/turtlesim/srv/detail/teleport_relative__type_support_c.cpp.o\x1b[0m\n'}
+[20.716355] (-) TimerEvent: {}
+[20.747715] (turtlesim) StdoutLine: {'line': b'[ 66%] Built target turtlesim__rosidl_typesupport_c\n'}
+[20.773016] (turtlesim) StdoutLine: {'line': b'[ 67%] \x1b[34m\x1b[1mGenerating include/turtlesim/moc_turtle_frame.cpp\x1b[0m\n'}
+[20.816532] (-) TimerEvent: {}
+[20.916878] (-) TimerEvent: {}
+[20.995842] (turtlesim) StdoutLine: {'line': b'[ 68%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim_node.dir/src/turtlesim.cpp.o\x1b[0m\n'}
+[21.016998] (-) TimerEvent: {}
+[21.117336] (-) TimerEvent: {}
+[21.217859] (-) TimerEvent: {}
+[21.224760] (turtlesim) StdoutLine: {'line': b'[ 69%] \x1b[32m\x1b[1mLinking CXX shared library libturtlesim__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[21.317983] (-) TimerEvent: {}
+[21.418334] (-) TimerEvent: {}
+[21.449814] (turtlesim) StdoutLine: {'line': b'[ 69%] Built target turtlesim__rosidl_typesupport_fastrtps_cpp\n'}
+[21.463959] (turtlesim) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library libturtlesim__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[21.492760] (turtlesim) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/turtle_teleop_key.dir/tutorials/teleop_turtle_key.cpp.o\x1b[0m\n'}
+[21.518937] (-) TimerEvent: {}
+[21.575225] (turtlesim) StdoutLine: {'line': b'[ 71%] Built target turtlesim__rosidl_typesupport_fastrtps_c\n'}
+[21.612875] (turtlesim) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/draw_square.dir/tutorials/draw_square.cpp.o\x1b[0m\n'}
+[21.619062] (-) TimerEvent: {}
+[21.719398] (-) TimerEvent: {}
+[21.808942] (turtlesim) StdoutLine: {'line': b'[ 72%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/turtlesim/action/detail/rotate_absolute__type_support.cpp.o\x1b[0m\n'}
+[21.820057] (-) TimerEvent: {}
+[21.920472] (-) TimerEvent: {}
+[22.020860] (-) TimerEvent: {}
+[22.123059] (-) TimerEvent: {}
+[22.223572] (-) TimerEvent: {}
+[22.323890] (-) TimerEvent: {}
+[22.424755] (-) TimerEvent: {}
+[22.529885] (-) TimerEvent: {}
+[22.630249] (-) TimerEvent: {}
+[22.730679] (-) TimerEvent: {}
+[22.831099] (-) TimerEvent: {}
+[22.931462] (-) TimerEvent: {}
+[23.020971] (turtlesim) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/turtlesim/msg/detail/color__type_support.cpp.o\x1b[0m\n'}
+[23.031597] (-) TimerEvent: {}
+[23.135074] (-) TimerEvent: {}
+[23.235430] (-) TimerEvent: {}
+[23.335776] (-) TimerEvent: {}
+[23.436183] (-) TimerEvent: {}
+[23.536598] (-) TimerEvent: {}
+[23.551191] (turtlesim) StdoutLine: {'line': b'[ 74%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/turtlesim/msg/detail/pose__type_support.cpp.o\x1b[0m\n'}
+[23.640859] (-) TimerEvent: {}
+[23.741205] (-) TimerEvent: {}
+[23.841636] (-) TimerEvent: {}
+[23.942118] (-) TimerEvent: {}
+[24.042459] (-) TimerEvent: {}
+[24.128924] (turtlesim) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/turtlesim/srv/detail/kill__type_support.cpp.o\x1b[0m\n'}
+[24.142664] (-) TimerEvent: {}
+[24.246230] (-) TimerEvent: {}
+[24.346581] (-) TimerEvent: {}
+[24.446876] (-) TimerEvent: {}
+[24.474157] (phi_aria) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable phi_p3dx\x1b[0m\n'}
+[24.547073] (-) TimerEvent: {}
+[24.648341] (-) TimerEvent: {}
+[24.748711] (-) TimerEvent: {}
+[24.851913] (-) TimerEvent: {}
+[24.931462] (turtlesim) StdoutLine: {'line': b'[ 76%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/turtlesim/srv/detail/set_pen__type_support.cpp.o\x1b[0m\n'}
+[24.952061] (-) TimerEvent: {}
+[25.055072] (-) TimerEvent: {}
+[25.155436] (-) TimerEvent: {}
+[25.255889] (-) TimerEvent: {}
+[25.356373] (-) TimerEvent: {}
+[25.460050] (-) TimerEvent: {}
+[25.562869] (-) TimerEvent: {}
+[25.648445] (turtlesim) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/turtlesim/srv/detail/spawn__type_support.cpp.o\x1b[0m\n'}
+[25.662996] (-) TimerEvent: {}
+[25.768870] (-) TimerEvent: {}
+[25.871193] (-) TimerEvent: {}
+[25.971613] (-) TimerEvent: {}
+[26.072117] (-) TimerEvent: {}
+[26.175281] (-) TimerEvent: {}
+[26.275901] (-) TimerEvent: {}
+[26.302979] (turtlesim) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/turtlesim/srv/detail/teleport_absolute__type_support.cpp.o\x1b[0m\n'}
+[26.376049] (-) TimerEvent: {}
+[26.476596] (-) TimerEvent: {}
+[26.577061] (-) TimerEvent: {}
+[26.650193] (phi_aria) StdoutLine: {'line': b'[100%] Built target phi_p3dx\n'}
+[26.677211] (-) TimerEvent: {}
+[26.684714] (phi_aria) JobEnded: {'identifier': 'phi_aria', 'rc': 'SIGINT'}
+[26.777350] (-) TimerEvent: {}
+[26.879099] (-) TimerEvent: {}
+[26.979552] (-) TimerEvent: {}
+[27.034232] (turtlesim) StdoutLine: {'line': b'[ 78%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/turtlesim/srv/detail/teleport_relative__type_support.cpp.o\x1b[0m\n'}
+[27.079725] (-) TimerEvent: {}
+[27.180077] (-) TimerEvent: {}
+[27.280451] (-) TimerEvent: {}
+[27.380842] (-) TimerEvent: {}
+[27.481183] (-) TimerEvent: {}
+[27.571186] (turtlesim) StdoutLine: {'line': b'[ 79%] \x1b[32m\x1b[1mLinking CXX shared library libturtlesim__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[27.581318] (-) TimerEvent: {}
+[27.681650] (-) TimerEvent: {}
+[27.687328] (turtlesim) StdoutLine: {'line': b'[ 79%] Built target turtlesim__rosidl_typesupport_introspection_cpp\n'}
+[27.720950] (turtlesim) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding CXX object CMakeFiles/mimic.dir/tutorials/mimic.cpp.o\x1b[0m\n'}
+[27.781781] (-) TimerEvent: {}
+[27.882139] (-) TimerEvent: {}
+[27.982517] (-) TimerEvent: {}
+[28.084301] (-) TimerEvent: {}
+[28.186083] (-) TimerEvent: {}
+[28.288008] (-) TimerEvent: {}
+[28.388484] (-) TimerEvent: {}
+[28.489878] (-) TimerEvent: {}
+[28.590344] (-) TimerEvent: {}
+[28.697698] (-) TimerEvent: {}
+[28.798089] (-) TimerEvent: {}
+[28.898567] (-) TimerEvent: {}
+[28.963733] (turtlesim) StdoutLine: {'line': b'[ 81%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim_node.dir/src/turtle.cpp.o\x1b[0m\n'}
+[28.998732] (-) TimerEvent: {}
+[29.099222] (-) TimerEvent: {}
+[29.202168] (-) TimerEvent: {}
+[29.302517] (-) TimerEvent: {}
+[29.402883] (-) TimerEvent: {}
+[29.505093] (-) TimerEvent: {}
+[29.607264] (-) TimerEvent: {}
+[29.707770] (-) TimerEvent: {}
+[29.810057] (-) TimerEvent: {}
+[29.911701] (-) TimerEvent: {}
+[30.012254] (-) TimerEvent: {}
+[30.117101] (-) TimerEvent: {}
+[30.217466] (-) TimerEvent: {}
+[30.317868] (-) TimerEvent: {}
+[30.420032] (-) TimerEvent: {}
+[30.520403] (-) TimerEvent: {}
+[30.558524] (turtlesim) StdoutLine: {'line': b'[ 82%] \x1b[32m\x1b[1mLinking CXX executable turtle_teleop_key\x1b[0m\n'}
+[30.620569] (-) TimerEvent: {}
+[30.725568] (-) TimerEvent: {}
+[30.826148] (-) TimerEvent: {}
+[30.893668] (turtlesim) StdoutLine: {'line': b'[ 82%] Built target turtle_teleop_key\n'}
+[30.905603] (turtlesim) StdoutLine: {'line': b'[ 83%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim_node.dir/src/turtle_frame.cpp.o\x1b[0m\n'}
+[30.926283] (-) TimerEvent: {}
+[31.028184] (-) TimerEvent: {}
+[31.128556] (-) TimerEvent: {}
+[31.229061] (-) TimerEvent: {}
+[31.332090] (-) TimerEvent: {}
+[31.432518] (-) TimerEvent: {}
+[31.532921] (-) TimerEvent: {}
+[31.633289] (-) TimerEvent: {}
+[31.733729] (-) TimerEvent: {}
+[31.834160] (-) TimerEvent: {}
+[31.934533] (-) TimerEvent: {}
+[32.034998] (-) TimerEvent: {}
+[32.137031] (-) TimerEvent: {}
+[32.238789] (-) TimerEvent: {}
+[32.339148] (-) TimerEvent: {}
+[32.439474] (-) TimerEvent: {}
+[32.539831] (-) TimerEvent: {}
+[32.641044] (-) TimerEvent: {}
+[32.742900] (-) TimerEvent: {}
+[32.843380] (-) TimerEvent: {}
+[32.947675] (-) TimerEvent: {}
+[33.049556] (-) TimerEvent: {}
+[33.150010] (-) TimerEvent: {}
+[33.250461] (-) TimerEvent: {}
+[33.352353] (-) TimerEvent: {}
+[33.454400] (-) TimerEvent: {}
+[33.556593] (-) TimerEvent: {}
+[33.657106] (-) TimerEvent: {}
+[33.759182] (-) TimerEvent: {}
+[33.859659] (-) TimerEvent: {}
+[33.960172] (-) TimerEvent: {}
+[34.061353] (-) TimerEvent: {}
+[34.164516] (-) TimerEvent: {}
+[34.264950] (-) TimerEvent: {}
+[34.367525] (-) TimerEvent: {}
+[34.467947] (-) TimerEvent: {}
+[34.575507] (-) TimerEvent: {}
+[34.683182] (-) TimerEvent: {}
+[34.788883] (-) TimerEvent: {}
+[34.895569] (-) TimerEvent: {}
+[34.995995] (-) TimerEvent: {}
+[35.096313] (-) TimerEvent: {}
+[35.142993] (turtlesim) StdoutLine: {'line': b'[ 84%] \x1b[32m\x1b[1mLinking CXX executable draw_square\x1b[0m\n'}
+[35.204577] (-) TimerEvent: {}
+[35.304881] (-) TimerEvent: {}
+[35.405277] (-) TimerEvent: {}
+[35.505667] (-) TimerEvent: {}
+[35.606047] (-) TimerEvent: {}
+[35.709142] (-) TimerEvent: {}
+[35.809511] (-) TimerEvent: {}
+[35.835130] (turtlesim) StdoutLine: {'line': b'[ 84%] Built target draw_square\n'}
+[35.859930] (turtlesim) StdoutLine: {'line': b'[ 84%] Built target turtlesim\n'}
+[35.870476] (turtlesim) StdoutLine: {'line': b'[ 84%] \x1b[32mBuilding CXX object CMakeFiles/turtlesim_node.dir/include/turtlesim/moc_turtle_frame.cpp.o\x1b[0m\n'}
+[35.909678] (-) TimerEvent: {}
+[36.011207] (-) TimerEvent: {}
+[36.111619] (-) TimerEvent: {}
+[36.212171] (-) TimerEvent: {}
+[36.315212] (-) TimerEvent: {}
+[36.415562] (-) TimerEvent: {}
+[36.515869] (-) TimerEvent: {}
+[36.616352] (-) TimerEvent: {}
+[36.716807] (-) TimerEvent: {}
+[36.817289] (-) TimerEvent: {}
+[36.919259] (-) TimerEvent: {}
+[37.019729] (-) TimerEvent: {}
+[37.120239] (-) TimerEvent: {}
+[37.223055] (-) TimerEvent: {}
+[37.323440] (-) TimerEvent: {}
+[37.423870] (-) TimerEvent: {}
+[37.524335] (-) TimerEvent: {}
+[37.624901] (-) TimerEvent: {}
+[37.727175] (-) TimerEvent: {}
+[37.827853] (-) TimerEvent: {}
+[37.929150] (-) TimerEvent: {}
+[38.034163] (-) TimerEvent: {}
+[38.137172] (-) TimerEvent: {}
+[38.237891] (-) TimerEvent: {}
+[38.341481] (-) TimerEvent: {}
+[38.445855] (-) TimerEvent: {}
+[38.546838] (-) TimerEvent: {}
+[38.648839] (-) TimerEvent: {}
+[38.757661] (-) TimerEvent: {}
+[38.858056] (-) TimerEvent: {}
+[38.959870] (-) TimerEvent: {}
+[39.060804] (-) TimerEvent: {}
+[39.164353] (-) TimerEvent: {}
+[39.266903] (-) TimerEvent: {}
+[39.370405] (-) TimerEvent: {}
+[39.473282] (-) TimerEvent: {}
+[39.573806] (-) TimerEvent: {}
+[39.674464] (-) TimerEvent: {}
+[39.776059] (-) TimerEvent: {}
+[39.877870] (-) TimerEvent: {}
+[39.973936] (turtlesim) StdoutLine: {'line': b'[ 85%] \x1b[32m\x1b[1mLinking CXX executable mimic\x1b[0m\n'}
+[39.977990] (-) TimerEvent: {}
+[40.078356] (-) TimerEvent: {}
+[40.181291] (-) TimerEvent: {}
+[40.281668] (-) TimerEvent: {}
+[40.382077] (-) TimerEvent: {}
+[40.482587] (-) TimerEvent: {}
+[40.582469] (turtlesim) StdoutLine: {'line': b'[ 85%] Built target mimic\n'}
+[40.582671] (-) TimerEvent: {}
+[40.615543] (turtlesim) StdoutLine: {'line': b'[ 85%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[40.682851] (-) TimerEvent: {}
+[40.784132] (-) TimerEvent: {}
+[40.884651] (-) TimerEvent: {}
+[40.985199] (-) TimerEvent: {}
+[41.088685] (-) TimerEvent: {}
+[41.189921] (-) TimerEvent: {}
+[41.292908] (-) TimerEvent: {}
+[41.393259] (-) TimerEvent: {}
+[41.493662] (-) TimerEvent: {}
+[41.594136] (-) TimerEvent: {}
+[41.695699] (-) TimerEvent: {}
+[41.799242] (-) TimerEvent: {}
+[41.900377] (-) TimerEvent: {}
+[42.000839] (-) TimerEvent: {}
+[42.101304] (-) TimerEvent: {}
+[42.201900] (-) TimerEvent: {}
+[42.304038] (-) TimerEvent: {}
+[42.404558] (-) TimerEvent: {}
+[42.504890] (-) TimerEvent: {}
+[42.605499] (-) TimerEvent: {}
+[42.707798] (-) TimerEvent: {}
+[42.808329] (-) TimerEvent: {}
+[42.909574] (-) TimerEvent: {}
+[43.011175] (-) TimerEvent: {}
+[43.111620] (-) TimerEvent: {}
+[43.211968] (-) TimerEvent: {}
+[43.315193] (-) TimerEvent: {}
+[43.415616] (-) TimerEvent: {}
+[43.516060] (-) TimerEvent: {}
+[43.522860] (turtlesim) StdoutLine: {'line': b'[ 85%] Built target turtlesim__py\n'}
+[43.550021] (turtlesim) StdoutLine: {'line': b'[ 86%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_py.dir/rosidl_generator_py/turtlesim/action/_rotate_absolute_s.c.o\x1b[0m\n'}
+[43.616157] (-) TimerEvent: {}
+[43.717320] (-) TimerEvent: {}
+[43.819963] (-) TimerEvent: {}
+[43.877457] (turtlesim) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_py.dir/rosidl_generator_py/turtlesim/msg/_color_s.c.o\x1b[0m\n'}
+[43.920097] (-) TimerEvent: {}
+[43.927943] (turtlesim) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_py.dir/rosidl_generator_py/turtlesim/msg/_pose_s.c.o\x1b[0m\n'}
+[44.020288] (-) TimerEvent: {}
+[44.107949] (turtlesim) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_py.dir/rosidl_generator_py/turtlesim/srv/_kill_s.c.o\x1b[0m\n'}
+[44.120519] (-) TimerEvent: {}
+[44.221840] (turtlesim) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_py.dir/rosidl_generator_py/turtlesim/srv/_set_pen_s.c.o\x1b[0m\n'}
+[44.222047] (-) TimerEvent: {}
+[44.322341] (-) TimerEvent: {}
+[44.337677] (turtlesim) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_py.dir/rosidl_generator_py/turtlesim/srv/_spawn_s.c.o\x1b[0m\n'}
+[44.409020] (turtlesim) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_py.dir/rosidl_generator_py/turtlesim/srv/_teleport_absolute_s.c.o\x1b[0m\n'}
+[44.422463] (-) TimerEvent: {}
+[44.522996] (-) TimerEvent: {}
+[44.623473] (-) TimerEvent: {}
+[44.666672] (turtlesim) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding C object CMakeFiles/turtlesim__rosidl_generator_py.dir/rosidl_generator_py/turtlesim/srv/_teleport_relative_s.c.o\x1b[0m\n'}
+[44.724461] (-) TimerEvent: {}
+[44.826890] (-) TimerEvent: {}
+[44.927318] (-) TimerEvent: {}
+[45.027813] (-) TimerEvent: {}
+[45.082954] (turtlesim) StdoutLine: {'line': b'[ 93%] \x1b[32m\x1b[1mLinking C shared library libturtlesim__rosidl_generator_py.so\x1b[0m\n'}
+[45.127925] (-) TimerEvent: {}
+[45.214170] (turtlesim) StdoutLine: {'line': b'[ 93%] Built target turtlesim__rosidl_generator_py\n'}
+[45.228084] (-) TimerEvent: {}
+[45.248127] (turtlesim) StdoutLine: {'line': b'[ 94%] \x1b[32mBuilding C object CMakeFiles/turtlesim_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/turtlesim/_turtlesim_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[45.251648] (turtlesim) StdoutLine: {'line': b'[ 95%] \x1b[32mBuilding C object CMakeFiles/turtlesim_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/turtlesim/_turtlesim_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[45.328259] (-) TimerEvent: {}
+[45.431919] (-) TimerEvent: {}
+[45.541776] (-) TimerEvent: {}
+[45.643870] (-) TimerEvent: {}
+[45.725002] (turtlesim) StdoutLine: {'line': b'[ 96%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/turtlesim/turtlesim_s__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[45.744344] (-) TimerEvent: {}
+[45.835656] (turtlesim) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/turtlesim/turtlesim_s__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[45.844547] (-) TimerEvent: {}
+[45.890139] (turtlesim) StdoutLine: {'line': b'[ 97%] Built target turtlesim_s__rosidl_typesupport_introspection_c\n'}
+[45.944886] (-) TimerEvent: {}
+[46.022861] (turtlesim) StdoutLine: {'line': b'[ 98%] \x1b[32mBuilding C object CMakeFiles/turtlesim_s__rosidl_typesupport_c.dir/rosidl_generator_py/turtlesim/_turtlesim_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[46.045693] (-) TimerEvent: {}
+[46.086053] (turtlesim) StdoutLine: {'line': b'[ 98%] Built target turtlesim_s__rosidl_typesupport_fastrtps_c\n'}
+[46.146054] (-) TimerEvent: {}
+[46.247718] (-) TimerEvent: {}
+[46.349373] (-) TimerEvent: {}
+[46.459207] (-) TimerEvent: {}
+[46.559760] (-) TimerEvent: {}
+[46.660311] (-) TimerEvent: {}
+[46.760868] (-) TimerEvent: {}
+[46.842816] (turtlesim) StdoutLine: {'line': b'[ 99%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/turtlesim/turtlesim_s__rosidl_typesupport_c.so\x1b[0m\n'}
+[46.861159] (-) TimerEvent: {}
+[46.924009] (turtlesim) StdoutLine: {'line': b'[ 99%] Built target turtlesim_s__rosidl_typesupport_c\n'}
+[46.961324] (-) TimerEvent: {}
+[47.063124] (-) TimerEvent: {}
+[47.163604] (-) TimerEvent: {}
+[47.264040] (-) TimerEvent: {}
+[47.364426] (-) TimerEvent: {}
+[47.466158] (-) TimerEvent: {}
+[47.567772] (-) TimerEvent: {}
+[47.668364] (-) TimerEvent: {}
+[47.768746] (-) TimerEvent: {}
+[47.870462] (-) TimerEvent: {}
+[47.970880] (-) TimerEvent: {}
+[48.071322] (-) TimerEvent: {}
+[48.171929] (-) TimerEvent: {}
+[48.274446] (-) TimerEvent: {}
+[48.375880] (-) TimerEvent: {}
+[48.476897] (-) TimerEvent: {}
+[48.578673] (-) TimerEvent: {}
+[48.679295] (-) TimerEvent: {}
+[48.780191] (-) TimerEvent: {}
+[48.883102] (-) TimerEvent: {}
+[48.986885] (-) TimerEvent: {}
+[49.090565] (-) TimerEvent: {}
+[49.191948] (-) TimerEvent: {}
+[49.293354] (-) TimerEvent: {}
+[49.393954] (-) TimerEvent: {}
+[49.495973] (-) TimerEvent: {}
+[49.596757] (-) TimerEvent: {}
+[49.698068] (-) TimerEvent: {}
+[49.799681] (-) TimerEvent: {}
+[49.902289] (-) TimerEvent: {}
+[50.003008] (-) TimerEvent: {}
+[50.103424] (-) TimerEvent: {}
+[50.204215] (-) TimerEvent: {}
+[50.304960] (-) TimerEvent: {}
+[50.405705] (-) TimerEvent: {}
+[50.507498] (-) TimerEvent: {}
+[50.607893] (-) TimerEvent: {}
+[50.708571] (-) TimerEvent: {}
+[50.803661] (turtlesim) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable turtlesim_node\x1b[0m\n'}
+[50.809360] (-) TimerEvent: {}
+[50.911882] (-) TimerEvent: {}
+[51.012457] (-) TimerEvent: {}
+[51.114254] (-) TimerEvent: {}
+[51.214832] (-) TimerEvent: {}
+[51.315728] (-) TimerEvent: {}
+[51.416267] (-) TimerEvent: {}
+[51.516572] (-) TimerEvent: {}
+[51.621924] (-) TimerEvent: {}
+[51.724210] (-) TimerEvent: {}
+[51.824555] (-) TimerEvent: {}
+[51.925543] (-) TimerEvent: {}
+[52.026481] (-) TimerEvent: {}
+[52.126875] (-) TimerEvent: {}
+[52.228066] (-) TimerEvent: {}
+[52.328403] (-) TimerEvent: {}
+[52.429019] (-) TimerEvent: {}
+[52.529443] (-) TimerEvent: {}
+[52.630518] (-) TimerEvent: {}
+[52.731136] (-) TimerEvent: {}
+[52.832616] (-) TimerEvent: {}
+[52.933220] (-) TimerEvent: {}
+[53.033854] (-) TimerEvent: {}
+[53.134920] (-) TimerEvent: {}
+[53.235958] (-) TimerEvent: {}
+[53.336294] (-) TimerEvent: {}
+[53.439720] (-) TimerEvent: {}
+[53.540254] (-) TimerEvent: {}
+[53.641025] (-) TimerEvent: {}
+[53.677221] (turtlesim) StdoutLine: {'line': b'[100%] Built target turtlesim_node\n'}
+[53.692337] (turtlesim) JobEnded: {'identifier': 'turtlesim', 'rc': 'SIGINT'}
+[53.711769] (-) EventReactorShutdown: {}

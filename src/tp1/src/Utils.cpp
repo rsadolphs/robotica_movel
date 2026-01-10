@@ -51,4 +51,3 @@ char getCharWithoutWaitingENTER(void)
   return ch;
 }
 
-
