@@ -5,10 +5,8 @@
 
 void* mappingThreadFunction(void* arg);
 
-struct Cell {
-    int x;
-    int y;
-    CellProperties properties;
+struct Position{
+    float x, y, theta;
 };
 
 struct CellProperties{
@@ -16,5 +14,14 @@ struct CellProperties{
     bool isOccupied = false;
     bool isUnknown  = false;
 };
+
+struct Cell {
+    int x;
+    int y;
+    float himm = 7.5f; 
+    CellProperties properties;
+};
+
+
 
 #endif // MAPPING_HPP

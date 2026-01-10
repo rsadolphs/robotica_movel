@@ -17,8 +17,17 @@ class Action
 public:
     Action();
     
-    void manualRobotMotion(MovingDirection direction);
-    void exploreEnvironment(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose);
+    void manualRobotMotion(
+        MovingDirection direction, 
+        std::vector<float> lasers, 
+        std::vector<float> sonars, 
+        std::vector<float> pose
+    );
+    void exploreEnvironment(
+        std::vector<float> lasers, 
+        std::vector<float> sonars, 
+        std::vector<float> pose
+    );
 
     MotionControl handlePressedKey(char key);
 

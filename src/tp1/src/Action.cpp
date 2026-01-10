@@ -1,6 +1,15 @@
 #include "Action.h"
-
 #include "Utils.h"
+#include "Mapping.hpp"
+
+#include <vector>
+
+// Variables
+
+Position robotPosition = {0.0f, 0.0f, 0.0f};
+std::vector<float> lasers;
+
+// Methods
 
 Action::Action()
 {
@@ -8,14 +17,27 @@ Action::Action()
     angVel = 0.0;
 }
 
-void Action::exploreEnvironment(std::vector<float> lasers, std::vector<float> sonars, std::vector<float> pose)
-{
-
+void Action::exploreEnvironment(
+    std::vector<float> lasersData, 
+    std::vector<float> sonarsData, 
+    std::vector<float> poseData
+){
+    // Sensing: Get robot position and laser data from /pose and /lasers topics
+    robotPosition = {poseData[0], poseData[1], poseData[2]};
+    lasers = lasersData;
 
 }
 
-void Action::manualRobotMotion(MovingDirection direction)
-{
+void Action::manualRobotMotion(
+    MovingDirection direction,
+    std::vector<float> lasersData, 
+    std::vector<float> sonarsData, 
+    std::vector<float> poseData
+){
+    // Sensing: Get robot position and laser data from /pose and /lasers topics
+    robotPosition = {poseData[0], poseData[1], poseData[2]};
+    lasers = lasersData;
+
     if(direction == FRONT){
         linVel= 0.5; angVel= 0.0;
     }else if(direction == BACK){

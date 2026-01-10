@@ -1,0 +1,66 @@
+[0.015s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4
+[0.083s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.637s] [33mCMake Warning (dev) at /usr/share/cmake-3.28/Modules/FindOpenGL.cmake:381 (message):
+[0.637s]   Policy CMP0072 is not set: FindOpenGL prefers GLVND by default when
+[0.637s]   available.  Run "cmake --help-policy CMP0072" for policy details.  Use the
+[0.637s]   cmake_policy command to set the policy and suppress this warning.
+[0.637s] 
+[0.637s]   FindOpenGL found both a legacy GL library:
+[0.637s] 
+[0.637s]     OPENGL_gl_LIBRARY: /usr/lib/x86_64-linux-gnu/libGL.so
+[0.637s] 
+[0.637s]   and GLVND libraries for OpenGL and GLX:
+[0.638s] 
+[0.638s]     OPENGL_opengl_LIBRARY: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+[0.638s]     OPENGL_glx_LIBRARY: /usr/lib/x86_64-linux-gnu/libGLX.so
+[0.638s] 
+[0.638s]   OpenGL_GL_PREFERENCE has not been set to "GLVND" or "LEGACY", so for
+[0.638s]   compatibility with CMake 3.10 and below the legacy GL library will be used.
+[0.638s] Call Stack (most recent call first):
+[0.638s]   CMakeLists.txt:13 (find_package)
+[0.638s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.638s] [0m
+[0.650s] -- Found rclcpp: 28.1.9 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.704s] -- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.720s] -- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.744s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.770s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.902s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.907s] -- Found rmw_fastrtps_cpp: 8.4.2 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.011s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.117s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[1.203s] -- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)
+[1.247s] -- Found tf2: 0.36.10 (/opt/ros/jazzy/share/tf2/cmake)
+[1.254s] -- Found tf2_geometry_msgs: 0.36.10 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+[1.262s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[1.265s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[1.440s] -- Found ament_lint_auto: 0.17.2 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[1.571s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.572s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/richard/ros2_ws/src/tp1/include>
+[1.572s] -- Configured cppcheck exclude dirs and/or files: 
+[1.573s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.573s] -- Configured 'flake8' exclude dirs and/or files: 
+[1.574s] -- Added test 'lint_cmake' to check CMake code style
+[1.574s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.576s] -- Added test 'uncrustify' to check C / C++ code style
+[1.576s] -- Configured uncrustify additional arguments: 
+[1.576s] -- Added test 'xmllint' to check XML markup files
+[1.578s] -- Configuring done (1.5s)
+[1.597s] -- Generating done (0.0s)
+[1.602s] -- Build files have been written to: /home/richard/ros2_ws/build/tp1
+[1.669s] [ 14%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Rendering.cpp.o[0m
+[2.209s] [01m[K/home/richard/ros2_ws/src/tp1/src/Rendering.cpp:14:8:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct GridInfo[m[K’
+[2.210s]    14 | struct [01;31m[KGridInfo[m[K {
+[2.210s]       |        [01;31m[K^~~~~~~~[m[K
+[2.210s] In file included from [01m[K/home/richard/ros2_ws/src/tp1/src/Rendering.cpp:1[m[K:
+[2.210s] [01m[K/home/richard/ros2_ws/src/tp1/include/Rendering.hpp:9:8:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct GridInfo[m[K’
+[2.210s]     9 | struct [01;36m[KGridInfo[m[K {
+[2.210s]       |        [01;36m[K^~~~~~~~[m[K
+[2.215s] [01m[K/home/richard/ros2_ws/src/tp1/src/Rendering.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K renderingThreadFunction[m[K(void*)[m[K’:
+[2.215s] [01m[K/home/richard/ros2_ws/src/tp1/src/Rendering.cpp:67:37:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.215s]    67 | void* renderingThreadFunction([01;35m[Kvoid* arg[m[K) {
+[2.215s]       |                               [01;35m[K~~~~~~^~~[m[K
+[2.288s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:146: CMakeFiles/navigation.dir/src/Rendering.cpp.o] Erro 1
+[2.289s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[2.289s] gmake: *** [Makefile:146: all] Erro 2
+[2.291s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4

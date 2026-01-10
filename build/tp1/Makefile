@@ -282,6 +282,30 @@ src/Perception.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Perception.cpp.s
 .PHONY : src/Perception.cpp.s
 
+src/Rendering.o: src/Rendering.cpp.o
+.PHONY : src/Rendering.o
+
+# target to build an object file
+src/Rendering.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Rendering.cpp.o
+.PHONY : src/Rendering.cpp.o
+
+src/Rendering.i: src/Rendering.cpp.i
+.PHONY : src/Rendering.i
+
+# target to preprocess a source file
+src/Rendering.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Rendering.cpp.i
+.PHONY : src/Rendering.cpp.i
+
+src/Rendering.s: src/Rendering.cpp.s
+.PHONY : src/Rendering.s
+
+# target to generate assembly for a file
+src/Rendering.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Rendering.cpp.s
+.PHONY : src/Rendering.cpp.s
+
 src/Utils.o: src/Utils.cpp.o
 .PHONY : src/Utils.o
 
@@ -355,6 +379,9 @@ help:
 	@echo "... src/Perception.o"
 	@echo "... src/Perception.i"
 	@echo "... src/Perception.s"
+	@echo "... src/Rendering.o"
+	@echo "... src/Rendering.i"
+	@echo "... src/Rendering.s"
 	@echo "... src/Utils.o"
 	@echo "... src/Utils.i"
 	@echo "... src/Utils.s"
