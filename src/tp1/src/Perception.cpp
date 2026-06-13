@@ -4,9 +4,7 @@
 #include <cstring>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 
-Perception::Perception()
-{
-}
+Perception::Perception(){}
 
 void Perception::receiveLaser(const sensor_msgs::msg::LaserScan::ConstSharedPtr &value)
 {
@@ -150,7 +148,6 @@ std::vector<float> Perception::getLatestLaserRanges()
     return lasers;
 }
 
-
 std::vector<float> Perception::getLatestSonarRanges()
 {
     int numbytes = sonarROS.data.size();
@@ -173,7 +170,6 @@ std::vector<float> Perception::getLatestSonarRanges()
 
     return sonars;
 }
-
 
 std::vector<float>  Perception::getLatestPose(){
     float x = poseROS.pose.pose.position.x;

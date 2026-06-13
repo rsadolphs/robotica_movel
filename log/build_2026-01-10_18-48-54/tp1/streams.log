@@ -1,0 +1,41 @@
+[0.017s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4
+[0.127s] [ 14%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/main.cpp.o[0m
+[0.143s] [ 28%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o[0m
+[0.143s] [ 42%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Rendering.cpp.o[0m
+[0.150s] [ 57%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Mapping.cpp.o[0m
+[1.283s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KexploreEnvironment[m[K(std::vector<float>, std::vector<float>, std::vector<float>)[m[K’:
+[1.283s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:22:24:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KsonarsData[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[1.283s]    22 |     [01;35m[Kstd::vector<float> sonarsData[m[K,
+[1.283s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~~~~~[m[K
+[1.283s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KmanualRobotMotion[m[K(MovingDirection, std::vector<float>, std::vector<float>, std::vector<float>)[m[K’:
+[1.283s] [01m[K/home/richard/ros2_ws/src/tp1/src/Action.cpp:34:24:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KsonarsData[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[1.283s]    34 |     [01;35m[Kstd::vector<float> sonarsData[m[K,
+[1.283s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~~~~~[m[K
+[1.409s] [01m[K/home/richard/ros2_ws/src/tp1/src/Rendering.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K renderingThreadFunction[m[K(void*)[m[K’:
+[1.409s] [01m[K/home/richard/ros2_ws/src/tp1/src/Rendering.cpp:72:37:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[1.409s]    72 | void* renderingThreadFunction([01;35m[Kvoid* arg[m[K) {
+[1.409s]       |                               [01;35m[K~~~~~~^~~[m[K
+[3.539s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mappingThreadFunction[m[K(void*)[m[K’:
+[3.541s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:154:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[3.541s]   154 | void* mappingThreadFunction([01;35m[Kvoid* arg[m[K) {
+[3.541s]       |                             [01;35m[K~~~~~~^~~[m[K
+[3.856s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K keyboardThreadFunction[m[K(void*)[m[K’:
+[3.857s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:80:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[3.857s]    80 | void *keyboardThreadFunction([01;35m[Kvoid *arg[m[K)
+[3.857s]       |                              [01;35m[K~~~~~~^~~[m[K
+[3.860s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mainThreadFunction[m[K(void*)[m[K’:
+[3.860s] [01m[K/home/richard/ros2_ws/src/tp1/src/main.cpp:94:32:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[3.860s]    94 | void *mainThreadFunction([01;35m[Kvoid *arg[m[K)
+[3.860s]       |                          [01;35m[K~~~~~~^~~[m[K
+[16.245s] [ 71%] [32m[1mLinking CXX executable navigation[0m
+[16.745s] /usr/bin/ld: CMakeFiles/navigation.dir/src/Rendering.cpp.o: aviso: relocalização contra "visitedCellsMutex" em secção só de leitura ".text"
+[16.832s] /usr/bin/ld: CMakeFiles/navigation.dir/src/Rendering.cpp.o: na função "renderingThreadFunction(void*)":
+[16.833s] Rendering.cpp:(.text+0x3c9): undefined reference to `visitedCellsMutex'
+[16.833s] /usr/bin/ld: Rendering.cpp:(.text+0x3db): undefined reference to `visitedCells'
+[16.833s] /usr/bin/ld: Rendering.cpp:(.text+0x538): undefined reference to `visitedCells'
+[16.868s] /usr/bin/ld: aviso: a criar DT_TEXTREL num PIE.
+[16.884s] collect2: error: ld returned 1 exit status
+[16.887s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:306: navigation] Erro 1
+[16.888s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[16.888s] gmake: *** [Makefile:146: all] Erro 2
+[16.890s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4

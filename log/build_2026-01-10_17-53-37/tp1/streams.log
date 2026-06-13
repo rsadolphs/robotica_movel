@@ -1,0 +1,18 @@
+[0.017s] Invoking command in '/home/richard/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4
+[0.199s] [ 16%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Mapping.cpp.o[0m
+[2.834s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K addToVisited[m[K(Cell)[m[K’:
+[2.834s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:40:9:[m[K [01;31m[Kerror: [m[K‘[01m[KcheckIfVisited[m[K’ was not declared in this scope
+[2.835s]    40 |     if(![01;31m[KcheckIfVisited[m[K(currentCell)){
+[2.835s]       |         [01;31m[K^~~~~~~~~~~~~~[m[K
+[2.840s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:42:9:[m[K [01;31m[Kerror: [m[K‘[01m[KprintVisitedCells[m[K’ was not declared in this scope; did you mean ‘[01m[KvisitedCells[m[K’?
+[2.840s]    42 |         [01;31m[KprintVisitedCells[m[K(visitedCells);
+[2.840s]       |         [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[2.840s]       |         [32m[KvisitedCells[m[K
+[2.842s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mappingThreadFunction[m[K(void*)[m[K’:
+[2.842s] [01m[K/home/richard/ros2_ws/src/tp1/src/Mapping.cpp:55:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.842s]    55 | void* mappingThreadFunction([01;35m[Kvoid* arg[m[K) {
+[2.842s]       |                             [01;35m[K~~~~~~^~~[m[K
+[3.531s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:132: CMakeFiles/navigation.dir/src/Mapping.cpp.o] Erro 1
+[3.532s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Erro 2
+[3.532s] gmake: *** [Makefile:146: all] Erro 2
+[3.535s] Invoked command in '/home/richard/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/richard/ros2_ws/build/tp1 -- -j4 -l4
