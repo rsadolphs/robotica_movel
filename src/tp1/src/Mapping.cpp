@@ -5,6 +5,8 @@
 #include <cmath>
 #include <mutex>
 #include <unistd.h>
+#include <fstream>
+#include <string>
 
 // ==========================
 // External variables
@@ -14,13 +16,16 @@ extern Position robotPosition;     // x, y, theta (em metros / rad)
 extern std::vector<float> lasers;  // leituras do laser (ranges)
 
 // ==========================
-// Internal variables
+// Internal variables and configs
 // ==========================
 
 int cellSizeCentimeters = 10;
 
 std::vector<Cell> visitedCells;
 std::mutex visitedCellsMutex;
+
+static constexpr float POSE_EPS = 1e-3f;
+static std::vector<History> history;
 
 // ==========================
 // Supporting methods
@@ -49,6 +54,33 @@ void addToVisited(const Cell& cell) {
     if (!cellExists(cell)) {
         visitedCells.push_back(cell);
     }
+}
+
+static bool samePose(const Position& a, const Position& b) {
+    return std::abs(a.x - b.x) < POSE_EPS &&
+           std::abs(a.y - b.y) < POSE_EPS &&
+           std::abs(a.theta - b.theta) < POSE_EPS;
+}
+
+void saveHistoryToFile(const std::string& filename) {
+    std::ofstream file(filename);
+    if (!file.is_open()) return;
+
+    for (const auto& h : history) {
+        // pose
+        file << h.pose.x << " "
+             << h.pose.y << " "
+             << h.pose.theta;
+
+        // lasers
+        for (float r : h.laserReadings) {
+            file << " " << r;
+        }
+
+        file << "\n";
+    }
+
+    file.close();
 }
 
 // ==========================
@@ -153,6 +185,17 @@ void* mappingThreadFunction(void* arg) {
             currentCell.properties.isFree = true;
             addToVisited(currentCell);
         }
+
+            // SALVA HISTÓRICO
+            if (history.empty() ||
+                !samePose(history.back().pose, robotPosition)) {
+
+                history.push_back({robotPosition, lasers});
+
+                if (history.size() > 10000) {
+                    history.erase(history.begin());
+                }
+            }
 
         // atualiza mapa a partir do laser
         updateCellsFromLaser();

@@ -12,4 +12,10 @@ struct GridInfo {
     float passo;
 };
 
+struct Color {
+    float r;
+    float g;
+    float b;
+};
+
 #endif // RENDERING_HPP

@@ -47,9 +47,20 @@ GridInfo calculateGridSize(const std::vector<Cell>& visitedCells) {
 }
 
 
-void drawCell(int x, int y) {
+void drawCell(Cell cell) {
     float size = 1.0f;
+    int x = cell.x;
+    int y = cell.y;
+    Color color = {0.7f, 0.7f, 0.7f}; // unknown cell default
 
+    if(cell.properties.isFree){
+        color = {1.0f, 1.0f, 1.0f};
+    }
+    else if (cell.properties.isOccupied){
+        color = {0.0f, 0.0f, 0.0f};
+    }
+
+    glColor3f(color.r, color.g, color.b);
     glBegin(GL_QUADS);
         glVertex2f(x,     y);
         glVertex2f(x + size, y);
@@ -103,11 +114,13 @@ void* renderingThreadFunction(void* arg) {
             firstFrame = false;
         }
 
+        glClearColor(0.7f, 0.7f, 0.7f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
 
         // desenha grid
-        glColor3f(0.9f, 0.9f, 0.9f);
+        // glColor3f(0.9f, 0.9f, 0.9f); // cinza
+        glColor3f(0.0f, 1.0f, 1.0f);  // cyan
         glBegin(GL_LINES);
         for (float i = currentGrid.inicio; i <= currentGrid.fim; i += currentGrid.passo) {
             glVertex2f(i, currentGrid.inicio);
@@ -118,16 +131,16 @@ void* renderingThreadFunction(void* arg) {
         glEnd();
 
         // desenha células visitadas
-        glColor3f(0.2f, 0.2f, 0.8f);
         for (const auto& cell : visitedCells) {
-            drawCell(cell.x, cell.y);
+            drawCell(cell);
         }
         // ---------- FIM DA REGIÃO CRÍTICA ----------
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-
+    
+    saveHistoryToFile("mapping_history.txt");
     glfwDestroyWindow(window);
     glfwTerminate();
     return NULL;

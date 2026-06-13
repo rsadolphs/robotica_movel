@@ -2,6 +2,7 @@
 #define MAPPING_HPP
 
 #include <vector>
+#include <string>
 
 void* mappingThreadFunction(void* arg);
 
@@ -22,6 +23,11 @@ struct Cell {
     CellProperties properties;
 };
 
+struct History{
+    Position pose;
+    std::vector<float> laserReadings;
+};
 
+void saveHistoryToFile(const std::string& filename);
 
 #endif // MAPPING_HPP
