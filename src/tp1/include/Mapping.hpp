@@ -14,6 +14,7 @@ struct CellProperties{
     bool isFree     = false;
     bool isOccupied = false;
     bool isUnknown  = false;
+    bool isFrontier = false;
 };
 
 struct Cell {

@@ -77,6 +77,75 @@ static bool samePose(
 static constexpr float HIMM_MIN = 0.0f;
 static constexpr float HIMM_MAX = 15.0f;
 
+bool isFrontier(const CellKey& key)
+{
+    auto it = grid.find(key);
+
+    if (it == grid.end())
+        return false;
+
+    const Cell& cell = it->second;
+
+    if (!cell.properties.isFree)
+        return false;
+
+    for (int dx=-1; dx<=1; dx++)
+    {
+        for (int dy=-1; dy<=1; dy++)
+        {
+            if (dx == 0 && dy == 0)
+                continue;
+
+            CellKey n{
+                key.x + dx,
+                key.y + dy
+            };
+
+            if (grid.find(n) == grid.end())
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+void updateFrontierNeighborhood(
+    const CellKey& center)
+{
+    for (int dx = -1; dx <= 1; ++dx)
+    {
+        for (int dy = -1; dy <= 1; ++dy)
+        {
+            CellKey key{
+                center.x + dx,
+                center.y + dy
+            };
+
+            auto it = grid.find(key);
+
+            if (it == grid.end())
+                continue;
+
+            bool frontier =
+                isFrontier(key);
+
+            it->second.properties.isFrontier =
+                frontier;
+
+            if (frontier)
+            {
+                frontierSet.insert(key);
+            }
+            else
+            {
+                frontierSet.erase(key);
+            }
+        }
+    }
+}
+
 void increaseOccupancy(const Cell& c)
 {
     CellKey key{c.x, c.y};
@@ -96,6 +165,8 @@ void increaseOccupancy(const Cell& c)
 
     stored.properties.isFree =
         stored.himm <= 5.0f;
+
+    updateFrontierNeighborhood(key);
 }
 
 void increaseFree(const Cell& c)
@@ -117,7 +188,10 @@ void increaseFree(const Cell& c)
 
     stored.properties.isFree =
         stored.himm <= 5.0f;
+
+    updateFrontierNeighborhood(key);
 }
+     
 
 // ======================================================
 // BRESENHAM SEM ALOCAÇÃO
@@ -295,50 +369,29 @@ std::vector<Cell> getVisitedCells()
 // ======================================================
 // DETECÇÃO DE FRONTEIRAS
 // ======================================================
-std::vector<Cell> findFrontiers()
+std::vector<Cell> getFrontiers()
 {
-    std::vector<Cell> frontiers;
-
     std::lock_guard<std::mutex> lock(
         visitedCellsMutex);
 
-    frontiers.reserve(grid.size() / 10);
+    std::vector<Cell> result;
 
-    for (const auto& [key, cell] : grid)
+    result.reserve(frontierSet.size());
+
+    for (const auto& key : frontierSet)
     {
-        if (!cell.properties.isFree)
-            continue;
+        auto it = grid.find(key);
 
-        bool hasUnknownNeighbor = false;
-
-        for (int dx = -1; dx <= 1 && !hasUnknownNeighbor; ++dx)
+        if (it != grid.end())
         {
-            for (int dy = -1; dy <= 1; ++dy)
-            {
-                if (dx == 0 && dy == 0)
-                    continue;
-
-                CellKey neighbor{
-                    cell.x + dx,
-                    cell.y + dy
-                };
-
-                if (grid.find(neighbor) == grid.end())
-                {
-                    hasUnknownNeighbor = true;
-                    break;
-                }
-            }
-        }
-
-        if (hasUnknownNeighbor)
-        {
-            frontiers.push_back(cell);
+            result.push_back(
+                it->second);
         }
     }
 
-    return frontiers;
+    return result;
 }
+
 
 // ======================================================
 // THREAD

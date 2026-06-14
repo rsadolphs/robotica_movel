@@ -51,10 +51,16 @@ void drawCell(Cell cell) {
     int y = cell.y;
     Color color = {0.7f, 0.7f, 0.7f}; // unknown cell default
 
-    if(cell.properties.isFree){
+   if(cell.properties.isFrontier)
+    {
+        color = {1.0f, 0.0f, 0.0f};
+    }
+    else if(cell.properties.isFree)
+    {
         color = {1.0f, 1.0f, 1.0f};
     }
-    else if (cell.properties.isOccupied){
+    else if(cell.properties.isOccupied)
+    {
         color = {0.0f, 0.0f, 0.0f};
     }
 
