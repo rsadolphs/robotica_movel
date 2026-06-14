@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/navigation.dir/src/Action.cpp.o"
   "CMakeFiles/navigation.dir/src/Action.cpp.o.d"
+  "CMakeFiles/navigation.dir/src/Explorer.cpp.o"
+  "CMakeFiles/navigation.dir/src/Explorer.cpp.o.d"
   "CMakeFiles/navigation.dir/src/Mapping.cpp.o"
   "CMakeFiles/navigation.dir/src/Mapping.cpp.o.d"
   "CMakeFiles/navigation.dir/src/Perception.cpp.o"

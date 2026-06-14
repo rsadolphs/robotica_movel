@@ -104,6 +104,7 @@ void *mainThreadFunction(void *arg)
 
 void* mappingThreadFunction(void* arg); 
 void* renderingThreadFunction(void* arg);
+void* explorerThreadFunction(void* arg);
 
 int main(int argc, char **argv)
 {
@@ -111,17 +112,19 @@ int main(int argc, char **argv)
 
   rclcpp::init(argc, argv);
 
-  pthread_t mainThread, keyboardThread, mappingThread, renderingThread;
+  pthread_t mainThread, keyboardThread, mappingThread, renderingThread, explorerThread;
 
   pthread_create(&(mainThread), NULL, mainThreadFunction, NULL);
   pthread_create(&(keyboardThread), NULL, keyboardThreadFunction, NULL);
   pthread_create(&(mappingThread), NULL, mappingThreadFunction, NULL);
   pthread_create(&(renderingThread), NULL, renderingThreadFunction, NULL);
+  pthread_create(&(explorerThread), NULL, explorerThreadFunction, NULL);
 
   pthread_join(mainThread, 0);
   pthread_join(keyboardThread, 0);
   pthread_join(mappingThread, 0);
   pthread_join(renderingThread, 0);
+  pthread_join(explorerThread, 0);
 
   rclcpp::shutdown();
 

@@ -234,6 +234,30 @@ src/Action.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Action.cpp.s
 .PHONY : src/Action.cpp.s
 
+src/Explorer.o: src/Explorer.cpp.o
+.PHONY : src/Explorer.o
+
+# target to build an object file
+src/Explorer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Explorer.cpp.o
+.PHONY : src/Explorer.cpp.o
+
+src/Explorer.i: src/Explorer.cpp.i
+.PHONY : src/Explorer.i
+
+# target to preprocess a source file
+src/Explorer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Explorer.cpp.i
+.PHONY : src/Explorer.cpp.i
+
+src/Explorer.s: src/Explorer.cpp.s
+.PHONY : src/Explorer.s
+
+# target to generate assembly for a file
+src/Explorer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Explorer.cpp.s
+.PHONY : src/Explorer.cpp.s
+
 src/Mapping.o: src/Mapping.cpp.o
 .PHONY : src/Mapping.o
 
@@ -373,6 +397,9 @@ help:
 	@echo "... src/Action.o"
 	@echo "... src/Action.i"
 	@echo "... src/Action.s"
+	@echo "... src/Explorer.o"
+	@echo "... src/Explorer.i"
+	@echo "... src/Explorer.s"
 	@echo "... src/Mapping.o"
 	@echo "... src/Mapping.i"
 	@echo "... src/Mapping.s"
