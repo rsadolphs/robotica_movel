@@ -8,8 +8,6 @@
 #include <algorithm>
 #include <mutex>
 
-extern std::vector<Cell> visitedCells;
-extern std::mutex visitedCellsMutex;
 
 GridInfo calculateGridSize(const std::vector<Cell>& visitedCells) {
     GridInfo grid;
@@ -91,11 +89,9 @@ void* renderingThreadFunction(void* arg) {
 
     while (!glfwWindowShouldClose(window)) {
 
-        // ---------- REGIÃO CRÍTICA ----------
-        std::lock_guard<std::mutex> lock(visitedCellsMutex);
+       std::vector<Cell> cells = getVisitedCells();
 
-        // recalcula grid dinamicamente
-        GridInfo newGrid = calculateGridSize(visitedCells);
+        GridInfo newGrid = calculateGridSize(cells);
 
         // atualiza projeção apenas se necessário
         if (firstFrame ||
@@ -131,7 +127,8 @@ void* renderingThreadFunction(void* arg) {
         glEnd();
 
         // desenha células visitadas
-        for (const auto& cell : visitedCells) {
+        for (const auto& cell : cells)
+        {
             drawCell(cell);
         }
         // ---------- FIM DA REGIÃO CRÍTICA ----------

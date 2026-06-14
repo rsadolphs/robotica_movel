@@ -1,8 +1,8 @@
-# Install script for directory: /home/richard/ros2_ws/src/tp1
+# Install script for directory: /home/richa/ros2_ws/src/tp1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/richard/ros2_ws/install/tp1")
+  set(CMAKE_INSTALL_PREFIX "/home/richa/ros2_ws/install/tp1")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -49,7 +49,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/tp1/navigation"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/tp1" TYPE EXECUTABLE FILES "/home/richard/ros2_ws/build/tp1/navigation")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/tp1" TYPE EXECUTABLE FILES "/home/richa/ros2_ws/build/tp1/navigation")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/tp1/navigation" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/tp1/navigation")
     file(RPATH_CHANGE
@@ -63,22 +63,22 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  include("/home/richard/ros2_ws/build/tp1/CMakeFiles/navigation.dir/install-cxx-module-bmi-noconfig.cmake" OPTIONAL)
+  include("/home/richa/ros2_ws/build/tp1/CMakeFiles/navigation.dir/install-cxx-module-bmi-noconfig.cmake" OPTIONAL)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1" TYPE DIRECTORY FILES
-    "/home/richard/ros2_ws/src/tp1/launch"
-    "/home/richard/ros2_ws/src/tp1/config"
+    "/home/richa/ros2_ws/src/tp1/launch"
+    "/home/richa/ros2_ws/src/tp1/config"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/richard/ros2_ws/build/tp1/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/tp1")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/richa/ros2_ws/build/tp1/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/tp1")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/richard/ros2_ws/build/tp1/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/tp1")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/richa/ros2_ws/build/tp1/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/tp1")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -86,7 +86,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1/environment" TYPE FILE FILES "/home/richard/ros2_ws/build/tp1/ament_cmake_environment_hooks/ament_prefix_path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1/environment" TYPE FILE FILES "/home/richa/ros2_ws/build/tp1/ament_cmake_environment_hooks/ament_prefix_path.dsv")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -94,42 +94,42 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1/environment" TYPE FILE FILES "/home/richard/ros2_ws/build/tp1/ament_cmake_environment_hooks/path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1/environment" TYPE FILE FILES "/home/richa/ros2_ws/build/tp1/ament_cmake_environment_hooks/path.dsv")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1" TYPE FILE FILES "/home/richard/ros2_ws/build/tp1/ament_cmake_environment_hooks/local_setup.bash")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1" TYPE FILE FILES "/home/richa/ros2_ws/build/tp1/ament_cmake_environment_hooks/local_setup.bash")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1" TYPE FILE FILES "/home/richard/ros2_ws/build/tp1/ament_cmake_environment_hooks/local_setup.sh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1" TYPE FILE FILES "/home/richa/ros2_ws/build/tp1/ament_cmake_environment_hooks/local_setup.sh")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1" TYPE FILE FILES "/home/richard/ros2_ws/build/tp1/ament_cmake_environment_hooks/local_setup.zsh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1" TYPE FILE FILES "/home/richa/ros2_ws/build/tp1/ament_cmake_environment_hooks/local_setup.zsh")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1" TYPE FILE FILES "/home/richard/ros2_ws/build/tp1/ament_cmake_environment_hooks/local_setup.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1" TYPE FILE FILES "/home/richa/ros2_ws/build/tp1/ament_cmake_environment_hooks/local_setup.dsv")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1" TYPE FILE FILES "/home/richard/ros2_ws/build/tp1/ament_cmake_environment_hooks/package.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1" TYPE FILE FILES "/home/richa/ros2_ws/build/tp1/ament_cmake_environment_hooks/package.dsv")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/richard/ros2_ws/build/tp1/ament_cmake_index/share/ament_index/resource_index/packages/tp1")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/richa/ros2_ws/build/tp1/ament_cmake_index/share/ament_index/resource_index/packages/tp1")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1/cmake" TYPE FILE FILES
-    "/home/richard/ros2_ws/build/tp1/ament_cmake_core/tp1Config.cmake"
-    "/home/richard/ros2_ws/build/tp1/ament_cmake_core/tp1Config-version.cmake"
+    "/home/richa/ros2_ws/build/tp1/ament_cmake_core/tp1Config.cmake"
+    "/home/richa/ros2_ws/build/tp1/ament_cmake_core/tp1Config-version.cmake"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1" TYPE FILE FILES "/home/richard/ros2_ws/src/tp1/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tp1" TYPE FILE FILES "/home/richa/ros2_ws/src/tp1/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -140,5 +140,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/richard/ros2_ws/build/tp1/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/richa/ros2_ws/build/tp1/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/richard/ros2_ws/src/tp1
+CMAKE_SOURCE_DIR = /home/richa/ros2_ws/src/tp1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/richard/ros2_ws/build/tp1
+CMAKE_BINARY_DIR = /home/richa/ros2_ws/build/tp1
 
 # Utility rule file for tp1_uninstall.
 
@@ -67,7 +67,7 @@ include CMakeFiles/tp1_uninstall.dir/compiler_depend.make
 include CMakeFiles/tp1_uninstall.dir/progress.make
 
 CMakeFiles/tp1_uninstall:
-	/usr/bin/cmake -P /home/richard/ros2_ws/build/tp1/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
+	/usr/bin/cmake -P /home/richa/ros2_ws/build/tp1/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
 
 tp1_uninstall: CMakeFiles/tp1_uninstall
 tp1_uninstall: CMakeFiles/tp1_uninstall.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/tp1_uninstall.dir/clean:
 .PHONY : CMakeFiles/tp1_uninstall.dir/clean
 
 CMakeFiles/tp1_uninstall.dir/depend:
-	cd /home/richard/ros2_ws/build/tp1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/richard/ros2_ws/src/tp1 /home/richard/ros2_ws/src/tp1 /home/richard/ros2_ws/build/tp1 /home/richard/ros2_ws/build/tp1 /home/richard/ros2_ws/build/tp1/CMakeFiles/tp1_uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/richa/ros2_ws/build/tp1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/richa/ros2_ws/src/tp1 /home/richa/ros2_ws/src/tp1 /home/richa/ros2_ws/build/tp1 /home/richa/ros2_ws/build/tp1 /home/richa/ros2_ws/build/tp1/CMakeFiles/tp1_uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/tp1_uninstall.dir/depend
 

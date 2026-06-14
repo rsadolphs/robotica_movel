@@ -1,0 +1,67 @@
+[01m[K/home/richa/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KexploreEnvironment[m[K(std::vector<float>, std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richa/ros2_ws/src/tp1/src/Action.cpp:22:24:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KsonarsData[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   22 |     [01;35m[Kstd::vector<float> sonarsData[m[K,
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~~~~~[m[K
+[01m[K/home/richa/ros2_ws/src/tp1/src/Action.cpp:[m[K In member function ‘[01m[Kvoid Action::[01;32m[KmanualRobotMotion[m[K(MovingDirection, std::vector<float>, std::vector<float>, std::vector<float>)[m[K’:
+[01m[K/home/richa/ros2_ws/src/tp1/src/Action.cpp:34:24:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KsonarsData[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   34 |     [01;35m[Kstd::vector<float> sonarsData[m[K,
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~~^~~~~~~~~~[m[K
+[01m[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:13:16:[m[K [01;31m[Kerror: [m[K‘[01m[Kunordered_map[m[K’ in namespace ‘[01m[Kstd[m[K’ does not name a template type
+   13 |     const std::[01;31m[Kunordered_map[m[K<
+      |                [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:10:1:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::unordered_map[m[K’ is defined in header ‘[01m[K<unordered_map>[m[K’; did you forget to ‘[01m[K#include <unordered_map>[m[K’?
+    9 | #include <mutex>
+  +++ |+[32m[K#include <unordered_map>[m[K
+   10 | 
+[01m[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:13:29:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K...[m[K’ before ‘[01m[K<[m[K’ token
+   13 |     const std::unordered_map[01;31m[K<[m[K
+      |                             [01;31m[K^[m[K
+[01m[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:[m[K In function ‘[01m[KGridInfo[01;32m[K calculateGridSize[m[K(int)[m[K’:
+[01m[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:20:9:[m[K [01;31m[Kerror: [m[K‘[01m[KgridMap[m[K’ was not declared in this scope; did you mean ‘[01m[Kgrid[m[K’?
+   20 |     if ([01;31m[KgridMap[m[K.empty())
+      |         [01;31m[K^~~~~~~[m[K
+      |         [32m[Kgrid[m[K
+[01m[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:28:18:[m[K [01;31m[Kerror: [m[K‘[01m[KgridMap[m[K’ was not declared in this scope; did you mean ‘[01m[Kgrid[m[K’?
+   28 |     auto first = [01;31m[KgridMap[m[K.begin();
+      |                  [01;31m[K^~~~~~~[m[K
+      |                  [32m[Kgrid[m[K
+[01m[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K renderingThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:103:13:[m[K [01;31m[Kerror: [m[K‘[01m[KvisitedCellsMutex[m[K’ was not declared in this scope
+  103 |             [01;31m[KvisitedCellsMutex[m[K);
+      |             [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:106:31:[m[K [01;31m[Kerror: [m[K‘[01m[Kgrid[m[K’ was not declared in this scope
+  106 |             calculateGridSize([01;31m[Kgrid[m[K);
+      |                               [01;31m[K^~~~[m[K
+[01m[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:81:37:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   81 | void* renderingThreadFunction([01;35m[Kvoid* arg[m[K) {
+      |                               [01;35m[K~~~~~~^~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:146: CMakeFiles/navigation.dir/src/Rendering.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+[01m[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:26:8:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct CellKey[m[K’
+   26 | struct [01;31m[KCellKey[m[K {
+      |        [01;31m[K^~~~~~~[m[K
+In file included from [01m[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:1[m[K:
+[01m[K/home/richa/ros2_ws/src/tp1/include/Mapping.hpp:31:8:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct CellKey[m[K’
+   31 | struct [01;36m[KCellKey[m[K {
+      |        [01;36m[K^~~~~~~[m[K
+[01m[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:35:8:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct CellKeyHash[m[K’
+   35 | struct [01;31m[KCellKeyHash[m[K {
+      |        [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/richa/ros2_ws/src/tp1/include/Mapping.hpp:40:8:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct CellKeyHash[m[K’
+   40 | struct [01;36m[KCellKeyHash[m[K {
+      |        [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mappingThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:347:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  347 | void* mappingThreadFunction([01;35m[Kvoid* arg[m[K)
+      |                             [01;35m[K~~~~~~^~~[m[K
+[01m[K/home/richa/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K keyboardThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richa/ros2_ws/src/tp1/src/main.cpp:80:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   80 | void *keyboardThreadFunction([01;35m[Kvoid *arg[m[K)
+      |                              [01;35m[K~~~~~~^~~[m[K
+[01m[K/home/richa/ros2_ws/src/tp1/src/main.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mainThreadFunction[m[K(void*)[m[K’:
+[01m[K/home/richa/ros2_ws/src/tp1/src/main.cpp:94:32:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   94 | void *mainThreadFunction([01;35m[Kvoid *arg[m[K)
+      |                          [01;35m[K~~~~~~^~~[m[K
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:132: CMakeFiles/navigation.dir/src/Mapping.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

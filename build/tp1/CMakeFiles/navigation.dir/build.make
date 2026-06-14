@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/richard/ros2_ws/src/tp1
+CMAKE_SOURCE_DIR = /home/richa/ros2_ws/src/tp1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/richard/ros2_ws/build/tp1
+CMAKE_BINARY_DIR = /home/richa/ros2_ws/build/tp1
 
 # Include any dependencies generated for this target.
 include CMakeFiles/navigation.dir/depend.make
@@ -70,88 +70,88 @@ include CMakeFiles/navigation.dir/progress.make
 include CMakeFiles/navigation.dir/flags.make
 
 CMakeFiles/navigation.dir/src/main.cpp.o: CMakeFiles/navigation.dir/flags.make
-CMakeFiles/navigation.dir/src/main.cpp.o: /home/richard/ros2_ws/src/tp1/src/main.cpp
+CMakeFiles/navigation.dir/src/main.cpp.o: /home/richa/ros2_ws/src/tp1/src/main.cpp
 CMakeFiles/navigation.dir/src/main.cpp.o: CMakeFiles/navigation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/richard/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/navigation.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/navigation.dir/src/main.cpp.o -MF CMakeFiles/navigation.dir/src/main.cpp.o.d -o CMakeFiles/navigation.dir/src/main.cpp.o -c /home/richard/ros2_ws/src/tp1/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/richa/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/navigation.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/navigation.dir/src/main.cpp.o -MF CMakeFiles/navigation.dir/src/main.cpp.o.d -o CMakeFiles/navigation.dir/src/main.cpp.o -c /home/richa/ros2_ws/src/tp1/src/main.cpp
 
 CMakeFiles/navigation.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/navigation.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/richard/ros2_ws/src/tp1/src/main.cpp > CMakeFiles/navigation.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/richa/ros2_ws/src/tp1/src/main.cpp > CMakeFiles/navigation.dir/src/main.cpp.i
 
 CMakeFiles/navigation.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/navigation.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/richard/ros2_ws/src/tp1/src/main.cpp -o CMakeFiles/navigation.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/richa/ros2_ws/src/tp1/src/main.cpp -o CMakeFiles/navigation.dir/src/main.cpp.s
 
 CMakeFiles/navigation.dir/src/Action.cpp.o: CMakeFiles/navigation.dir/flags.make
-CMakeFiles/navigation.dir/src/Action.cpp.o: /home/richard/ros2_ws/src/tp1/src/Action.cpp
+CMakeFiles/navigation.dir/src/Action.cpp.o: /home/richa/ros2_ws/src/tp1/src/Action.cpp
 CMakeFiles/navigation.dir/src/Action.cpp.o: CMakeFiles/navigation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/richard/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/navigation.dir/src/Action.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/navigation.dir/src/Action.cpp.o -MF CMakeFiles/navigation.dir/src/Action.cpp.o.d -o CMakeFiles/navigation.dir/src/Action.cpp.o -c /home/richard/ros2_ws/src/tp1/src/Action.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/richa/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/navigation.dir/src/Action.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/navigation.dir/src/Action.cpp.o -MF CMakeFiles/navigation.dir/src/Action.cpp.o.d -o CMakeFiles/navigation.dir/src/Action.cpp.o -c /home/richa/ros2_ws/src/tp1/src/Action.cpp
 
 CMakeFiles/navigation.dir/src/Action.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/navigation.dir/src/Action.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/richard/ros2_ws/src/tp1/src/Action.cpp > CMakeFiles/navigation.dir/src/Action.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/richa/ros2_ws/src/tp1/src/Action.cpp > CMakeFiles/navigation.dir/src/Action.cpp.i
 
 CMakeFiles/navigation.dir/src/Action.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/navigation.dir/src/Action.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/richard/ros2_ws/src/tp1/src/Action.cpp -o CMakeFiles/navigation.dir/src/Action.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/richa/ros2_ws/src/tp1/src/Action.cpp -o CMakeFiles/navigation.dir/src/Action.cpp.s
 
 CMakeFiles/navigation.dir/src/Perception.cpp.o: CMakeFiles/navigation.dir/flags.make
-CMakeFiles/navigation.dir/src/Perception.cpp.o: /home/richard/ros2_ws/src/tp1/src/Perception.cpp
+CMakeFiles/navigation.dir/src/Perception.cpp.o: /home/richa/ros2_ws/src/tp1/src/Perception.cpp
 CMakeFiles/navigation.dir/src/Perception.cpp.o: CMakeFiles/navigation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/richard/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/navigation.dir/src/Perception.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/navigation.dir/src/Perception.cpp.o -MF CMakeFiles/navigation.dir/src/Perception.cpp.o.d -o CMakeFiles/navigation.dir/src/Perception.cpp.o -c /home/richard/ros2_ws/src/tp1/src/Perception.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/richa/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/navigation.dir/src/Perception.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/navigation.dir/src/Perception.cpp.o -MF CMakeFiles/navigation.dir/src/Perception.cpp.o.d -o CMakeFiles/navigation.dir/src/Perception.cpp.o -c /home/richa/ros2_ws/src/tp1/src/Perception.cpp
 
 CMakeFiles/navigation.dir/src/Perception.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/navigation.dir/src/Perception.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/richard/ros2_ws/src/tp1/src/Perception.cpp > CMakeFiles/navigation.dir/src/Perception.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/richa/ros2_ws/src/tp1/src/Perception.cpp > CMakeFiles/navigation.dir/src/Perception.cpp.i
 
 CMakeFiles/navigation.dir/src/Perception.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/navigation.dir/src/Perception.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/richard/ros2_ws/src/tp1/src/Perception.cpp -o CMakeFiles/navigation.dir/src/Perception.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/richa/ros2_ws/src/tp1/src/Perception.cpp -o CMakeFiles/navigation.dir/src/Perception.cpp.s
 
 CMakeFiles/navigation.dir/src/Utils.cpp.o: CMakeFiles/navigation.dir/flags.make
-CMakeFiles/navigation.dir/src/Utils.cpp.o: /home/richard/ros2_ws/src/tp1/src/Utils.cpp
+CMakeFiles/navigation.dir/src/Utils.cpp.o: /home/richa/ros2_ws/src/tp1/src/Utils.cpp
 CMakeFiles/navigation.dir/src/Utils.cpp.o: CMakeFiles/navigation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/richard/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/navigation.dir/src/Utils.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/navigation.dir/src/Utils.cpp.o -MF CMakeFiles/navigation.dir/src/Utils.cpp.o.d -o CMakeFiles/navigation.dir/src/Utils.cpp.o -c /home/richard/ros2_ws/src/tp1/src/Utils.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/richa/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/navigation.dir/src/Utils.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/navigation.dir/src/Utils.cpp.o -MF CMakeFiles/navigation.dir/src/Utils.cpp.o.d -o CMakeFiles/navigation.dir/src/Utils.cpp.o -c /home/richa/ros2_ws/src/tp1/src/Utils.cpp
 
 CMakeFiles/navigation.dir/src/Utils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/navigation.dir/src/Utils.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/richard/ros2_ws/src/tp1/src/Utils.cpp > CMakeFiles/navigation.dir/src/Utils.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/richa/ros2_ws/src/tp1/src/Utils.cpp > CMakeFiles/navigation.dir/src/Utils.cpp.i
 
 CMakeFiles/navigation.dir/src/Utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/navigation.dir/src/Utils.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/richard/ros2_ws/src/tp1/src/Utils.cpp -o CMakeFiles/navigation.dir/src/Utils.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/richa/ros2_ws/src/tp1/src/Utils.cpp -o CMakeFiles/navigation.dir/src/Utils.cpp.s
 
 CMakeFiles/navigation.dir/src/Mapping.cpp.o: CMakeFiles/navigation.dir/flags.make
-CMakeFiles/navigation.dir/src/Mapping.cpp.o: /home/richard/ros2_ws/src/tp1/src/Mapping.cpp
+CMakeFiles/navigation.dir/src/Mapping.cpp.o: /home/richa/ros2_ws/src/tp1/src/Mapping.cpp
 CMakeFiles/navigation.dir/src/Mapping.cpp.o: CMakeFiles/navigation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/richard/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/navigation.dir/src/Mapping.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/navigation.dir/src/Mapping.cpp.o -MF CMakeFiles/navigation.dir/src/Mapping.cpp.o.d -o CMakeFiles/navigation.dir/src/Mapping.cpp.o -c /home/richard/ros2_ws/src/tp1/src/Mapping.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/richa/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/navigation.dir/src/Mapping.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/navigation.dir/src/Mapping.cpp.o -MF CMakeFiles/navigation.dir/src/Mapping.cpp.o.d -o CMakeFiles/navigation.dir/src/Mapping.cpp.o -c /home/richa/ros2_ws/src/tp1/src/Mapping.cpp
 
 CMakeFiles/navigation.dir/src/Mapping.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/navigation.dir/src/Mapping.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/richard/ros2_ws/src/tp1/src/Mapping.cpp > CMakeFiles/navigation.dir/src/Mapping.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/richa/ros2_ws/src/tp1/src/Mapping.cpp > CMakeFiles/navigation.dir/src/Mapping.cpp.i
 
 CMakeFiles/navigation.dir/src/Mapping.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/navigation.dir/src/Mapping.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/richard/ros2_ws/src/tp1/src/Mapping.cpp -o CMakeFiles/navigation.dir/src/Mapping.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/richa/ros2_ws/src/tp1/src/Mapping.cpp -o CMakeFiles/navigation.dir/src/Mapping.cpp.s
 
 CMakeFiles/navigation.dir/src/Rendering.cpp.o: CMakeFiles/navigation.dir/flags.make
-CMakeFiles/navigation.dir/src/Rendering.cpp.o: /home/richard/ros2_ws/src/tp1/src/Rendering.cpp
+CMakeFiles/navigation.dir/src/Rendering.cpp.o: /home/richa/ros2_ws/src/tp1/src/Rendering.cpp
 CMakeFiles/navigation.dir/src/Rendering.cpp.o: CMakeFiles/navigation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/richard/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/navigation.dir/src/Rendering.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/navigation.dir/src/Rendering.cpp.o -MF CMakeFiles/navigation.dir/src/Rendering.cpp.o.d -o CMakeFiles/navigation.dir/src/Rendering.cpp.o -c /home/richard/ros2_ws/src/tp1/src/Rendering.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/richa/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/navigation.dir/src/Rendering.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/navigation.dir/src/Rendering.cpp.o -MF CMakeFiles/navigation.dir/src/Rendering.cpp.o.d -o CMakeFiles/navigation.dir/src/Rendering.cpp.o -c /home/richa/ros2_ws/src/tp1/src/Rendering.cpp
 
 CMakeFiles/navigation.dir/src/Rendering.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/navigation.dir/src/Rendering.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/richard/ros2_ws/src/tp1/src/Rendering.cpp > CMakeFiles/navigation.dir/src/Rendering.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/richa/ros2_ws/src/tp1/src/Rendering.cpp > CMakeFiles/navigation.dir/src/Rendering.cpp.i
 
 CMakeFiles/navigation.dir/src/Rendering.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/navigation.dir/src/Rendering.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/richard/ros2_ws/src/tp1/src/Rendering.cpp -o CMakeFiles/navigation.dir/src/Rendering.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/richa/ros2_ws/src/tp1/src/Rendering.cpp -o CMakeFiles/navigation.dir/src/Rendering.cpp.s
 
 # Object files for target navigation
 navigation_OBJECTS = \
@@ -284,7 +284,7 @@ navigation: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtp
 navigation: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
 navigation: /opt/ros/jazzy/lib/librmw.so
 navigation: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
-navigation: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+navigation: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 navigation: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
 navigation: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_cpp.so
 navigation: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_c.so
@@ -302,7 +302,7 @@ navigation: /opt/ros/jazzy/lib/libunique_identifier_msgs__rosidl_generator_c.so
 navigation: /opt/ros/jazzy/lib/librosidl_runtime_c.so
 navigation: /opt/ros/jazzy/lib/librcutils.so
 navigation: CMakeFiles/navigation.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/richard/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable navigation"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/richa/ros2_ws/build/tp1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable navigation"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/navigation.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -314,6 +314,6 @@ CMakeFiles/navigation.dir/clean:
 .PHONY : CMakeFiles/navigation.dir/clean
 
 CMakeFiles/navigation.dir/depend:
-	cd /home/richard/ros2_ws/build/tp1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/richard/ros2_ws/src/tp1 /home/richard/ros2_ws/src/tp1 /home/richard/ros2_ws/build/tp1 /home/richard/ros2_ws/build/tp1 /home/richard/ros2_ws/build/tp1/CMakeFiles/navigation.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/richa/ros2_ws/build/tp1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/richa/ros2_ws/src/tp1 /home/richa/ros2_ws/src/tp1 /home/richa/ros2_ws/build/tp1 /home/richa/ros2_ws/build/tp1 /home/richa/ros2_ws/build/tp1/CMakeFiles/navigation.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/navigation.dir/depend
 

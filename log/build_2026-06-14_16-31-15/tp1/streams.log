@@ -1,0 +1,17 @@
+[0.039s] Invoking command in '/home/richa/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/richa/ros2_ws/build/tp1 -- -j12 -l12
+[0.127s] [ 14%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Rendering.cpp.o[0m
+[0.649s] [01m[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K renderingThreadFunction[m[K(void*)[m[K’:
+[0.650s] [01m[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:73:37:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.650s]    73 | void* renderingThreadFunction([01;35m[Kvoid* arg[m[K) {
+[0.650s]       |                               [01;35m[K~~~~~~^~~[m[K
+[0.773s] [ 28%] [32m[1mLinking CXX executable navigation[0m
+[1.410s] /usr/bin/ld: CMakeFiles/navigation.dir/src/Rendering.cpp.o: warning: relocation against `visitedCells' in read-only section `.text'
+[1.490s] /usr/bin/ld: CMakeFiles/navigation.dir/src/Rendering.cpp.o: in function `renderingThreadFunction(void*)':
+[1.490s] Rendering.cpp:(.text+0x4dd): undefined reference to `visitedCells'
+[1.490s] /usr/bin/ld: Rendering.cpp:(.text+0x6bd): undefined reference to `visitedCells'
+[1.525s] /usr/bin/ld: warning: creating DT_TEXTREL in a PIE
+[1.538s] collect2: error: ld returned 1 exit status
+[1.540s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:306: navigation] Error 1
+[1.540s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Error 2
+[1.541s] gmake: *** [Makefile:146: all] Error 2
+[1.543s] Invoked command in '/home/richa/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/richa/ros2_ws/build/tp1 -- -j12 -l12

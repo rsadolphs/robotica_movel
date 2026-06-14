@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/richard/ros2_ws/src/phi_aria
+CMAKE_SOURCE_DIR = /home/richa/ros2_ws/src/phi_aria
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/richard/ros2_ws/build/phi_aria
+CMAKE_BINARY_DIR = /home/richa/ros2_ws/build/phi_aria
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/richard/ros2_ws/build/phi_aria/CMakeFiles /home/richard/ros2_ws/build/phi_aria//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/richa/ros2_ws/build/phi_aria/CMakeFiles /home/richa/ros2_ws/build/phi_aria//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/richard/ros2_ws/build/phi_aria/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/richa/ros2_ws/build/phi_aria/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

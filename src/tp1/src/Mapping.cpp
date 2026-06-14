@@ -1,97 +1,137 @@
 #include "Mapping.hpp"
 #include "rclcpp/rclcpp.hpp"
 
-#include <vector>
 #include <cmath>
 #include <mutex>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 #include <unistd.h>
 #include <fstream>
-#include <string>
 
-// ==========================
-// External variables
-// ==========================
+extern Position robotPosition;
+extern std::vector<float> lasers;
 
-extern Position robotPosition;     // x, y, theta (em metros / rad)
-extern std::vector<float> lasers;  // leituras do laser (ranges)
-
-// ==========================
-// Internal variables and configs
-// ==========================
+static constexpr float POSE_EPS = 1e-3f;
 
 int cellSizeCentimeters = 10;
 
-std::vector<Cell> visitedCells;
 std::mutex visitedCellsMutex;
-
-static constexpr float POSE_EPS = 1e-3f;
 static std::vector<History> history;
 
-// ==========================
-// Supporting methods
-// ==========================
+// ======================================================
+// HASH MAP PARA CÉLULAS
+// ======================================================
 
-Cell findCell(float x, float y) {
-    /*
-        Converts position (meters) to grid cell (integer coordinates)
-    */
-    Cell currentCell;
-    currentCell.x = static_cast<int>(x * 100.0f / cellSizeCentimeters);
-    currentCell.y = static_cast<int>(y * 100.0f / cellSizeCentimeters);
-    return currentCell;
-}
+struct CellKey {
+    int x;
+    int y;
 
-bool cellExists(const Cell& c) {
-    for (const auto& cell : visitedCells) {
-        if (cell.x == c.x && cell.y == c.y) {
-            return true;
-        }
+    bool operator==(const CellKey& other) const {
+        return x == other.x && y == other.y;
     }
-    return false;
-}
+};
 
-void addToVisited(const Cell& cell) {
-    if (!cellExists(cell)) {
-        visitedCells.push_back(cell);
+struct CellKeyHash {
+    std::size_t operator()(const CellKey& k) const {
+        return std::hash<int>()(k.x) ^
+              (std::hash<int>()(k.y) << 1);
     }
+};
+
+std::unordered_map<CellKey, Cell, CellKeyHash> grid;
+std::unordered_set<CellKey, CellKeyHash> frontierSet;
+
+// ======================================================
+// UTIL
+// ======================================================
+
+Cell findCell(float x, float y)
+{
+    Cell c;
+
+    c.x = static_cast<int>(
+        std::floor(x * 100.0f / cellSizeCentimeters)
+    );
+
+    c.y = static_cast<int>(
+        std::floor(y * 100.0f / cellSizeCentimeters)
+    );
+
+    return c;
 }
 
-static bool samePose(const Position& a, const Position& b) {
+static bool samePose(
+    const Position& a,
+    const Position& b)
+{
     return std::abs(a.x - b.x) < POSE_EPS &&
            std::abs(a.y - b.y) < POSE_EPS &&
            std::abs(a.theta - b.theta) < POSE_EPS;
 }
 
-void saveHistoryToFile(const std::string& filename) {
-    std::ofstream file(filename);
-    if (!file.is_open()) return;
+// ======================================================
+// HIMM
+// ======================================================
 
-    for (const auto& h : history) {
-        // pose
-        file << h.pose.x << " "
-             << h.pose.y << " "
-             << h.pose.theta;
+static constexpr float HIMM_MIN = 0.0f;
+static constexpr float HIMM_MAX = 15.0f;
 
-        // lasers
-        for (float r : h.laserReadings) {
-            file << " " << r;
-        }
+void increaseOccupancy(const Cell& c)
+{
+    CellKey key{c.x, c.y};
 
-        file << "\n";
-    }
+    auto& stored = grid[key];
 
-    file.close();
+    stored.x = c.x;
+    stored.y = c.y;
+
+    stored.himm = std::min(
+        HIMM_MAX,
+        stored.himm + 3.0f
+    );
+
+    stored.properties.isOccupied =
+        stored.himm >= 10.0f;
+
+    stored.properties.isFree =
+        stored.himm <= 5.0f;
 }
 
-// ==========================
-// Bresenham (Cell → Cell)
-// ==========================
+void increaseFree(const Cell& c)
+{
+    CellKey key{c.x, c.y};
 
-std::vector<Cell> bresenham(const Cell& start, const Cell& end) {
-    std::vector<Cell> cells;
+    auto& stored = grid[key];
 
+    stored.x = c.x;
+    stored.y = c.y;
+
+    stored.himm = std::max(
+        HIMM_MIN,
+        stored.himm - 1.0f
+    );
+
+    stored.properties.isOccupied =
+        stored.himm >= 10.0f;
+
+    stored.properties.isFree =
+        stored.himm <= 5.0f;
+}
+
+// ======================================================
+// BRESENHAM SEM ALOCAÇÃO
+// ======================================================
+
+template<typename Callback>
+void bresenham(
+    const Cell& start,
+    const Cell& end,
+    Callback callback)
+{
     int x0 = start.x;
     int y0 = start.y;
+
     int x1 = end.x;
     int y1 = end.y;
 
@@ -103,105 +143,245 @@ std::vector<Cell> bresenham(const Cell& start, const Cell& end) {
 
     int err = dx - dy;
 
-    while (true) {
-        cells.push_back({x0, y0, {}});
+    while (true)
+    {
+        bool last =
+            (x0 == x1 && y0 == y1);
 
-        if (x0 == x1 && y0 == y1) break;
+        callback(x0, y0, last);
+
+        if (last)
+            break;
 
         int e2 = 2 * err;
-        if (e2 > -dy) { err -= dy; x0 += sx; }
-        if (e2 <  dx) { err += dx; y0 += sy; }
-    }
 
-    return cells;
+        if (e2 > -dy)
+        {
+            err -= dy;
+            x0 += sx;
+        }
+
+        if (e2 < dx)
+        {
+            err += dx;
+            y0 += sy;
+        }
+    }
 }
 
-// ==========================
-// Laser-based mapping
-// ==========================
+// ======================================================
+// LASER
+// ======================================================
 
 void updateCellsFromLaser(
-    float maxRange = 2.0f   // metros
-) {
-    std::lock_guard<std::mutex> lock(visitedCellsMutex);
+    float maxRange = 2.0f)
+{
+    const float fov = M_PI;
 
-    const float fov = M_PI;  // 180 graus
-    const float angleStep = fov / static_cast<float>(lasers.size());
-    const float startAngle = -fov / 2.0f;
+    const float angleStep =
+        fov / static_cast<float>(lasers.size());
 
-    Cell robotCell = findCell(robotPosition.x, robotPosition.y);
+    const float startAngle =
+        -fov / 2.0f;
 
-    for (size_t i = 0; i < lasers.size(); ++i) {
+    Cell robotCell =
+        findCell(
+            robotPosition.x,
+            robotPosition.y);
 
+    std::lock_guard<std::mutex> lock(
+        visitedCellsMutex);
+
+    for (size_t i = 0; i < lasers.size(); ++i)
+    {
         float range = lasers[i];
-        bool noDetect = false;
 
-        if (range > maxRange) {
+        bool hitObstacle = true;
+
+        if (range > maxRange)
+        {
             range = maxRange;
-            noDetect = true;
+            hitObstacle = false;
         }
 
-        float angle = robotPosition.theta + startAngle
-            + (lasers.size() - 1 - i) * angleStep;
+        float angle =
+            robotPosition.theta +
+            startAngle +
+            (lasers.size() - 1 - i) *
+            angleStep;
 
+        float xEnd =
+            robotPosition.x +
+            std::cos(angle) * range;
 
-        float xEnd = robotPosition.x + std::cos(angle) * range;
-        float yEnd = robotPosition.y + std::sin(angle) * range;
+        float yEnd =
+            robotPosition.y +
+            std::sin(angle) * range;
 
-        Cell endCell = findCell(xEnd, yEnd);
+        Cell endCell =
+            findCell(xEnd, yEnd);
 
-        std::vector<Cell> ray = bresenham(robotCell, endCell);
+        bresenham(
+            robotCell,
+            endCell,
+            [&](int x,
+                int y,
+                bool last)
+        {
+            Cell c;
+            c.x = x;
+            c.y = y;
 
-        // células livres (todas menos a última)
-        for (size_t k = 0; k + 1 < ray.size(); ++k) {
-            Cell freeCell = ray[k];
-            freeCell.properties.isFree = true;
-            freeCell.properties.isOccupied = false;
-            addToVisited(freeCell);
-        }
-
-        // célula ocupada (se houve detecção)
-        if (!ray.empty() && !noDetect) {
-            Cell occCell = ray.back();
-            occCell.properties.isFree = false;
-            occCell.properties.isOccupied = true;
-            addToVisited(occCell);
-        }
+            if (last)
+            {
+                if (hitObstacle)
+                    increaseOccupancy(c);
+            }
+            else
+            {
+                increaseFree(c);
+            }
+        });
     }
 }
 
-// ==========================
-// Entrypoint
-// ==========================
+// ======================================================
+// HISTÓRICO
+// ======================================================
 
-void* mappingThreadFunction(void* arg) {
+void saveHistoryToFile(
+    const std::string& filename)
+{
+    std::ofstream file(filename);
 
-    while (rclcpp::ok()) {
+    if (!file.is_open())
+        return;
 
-        // adiciona célula atual do robô
+    for (const auto& h : history)
+    {
+        file
+            << h.pose.x << " "
+            << h.pose.y << " "
+            << h.pose.theta;
+
+        for (float r : h.laserReadings)
         {
-            std::lock_guard<std::mutex> lock(visitedCellsMutex);
-            Cell currentCell = findCell(robotPosition.x, robotPosition.y);
-            currentCell.properties.isFree = true;
-            addToVisited(currentCell);
+            file << " " << r;
         }
 
-            // SALVA HISTÓRICO
-            if (history.empty() ||
-                !samePose(history.back().pose, robotPosition)) {
+        file << "\n";
+    }
+}
 
-                history.push_back({robotPosition, lasers});
+// ======================================================
+// IDENTIFICAR CELULAS VISITADAS
+// ======================================================
 
-                if (history.size() > 10000) {
-                    history.erase(history.begin());
-                }
-            }
+std::vector<Cell> getVisitedCells()
+{
+    std::lock_guard<std::mutex> lock(visitedCellsMutex);
 
-        // atualiza mapa a partir do laser
-        updateCellsFromLaser();
+    std::vector<Cell> result;
+    result.reserve(grid.size());
 
-        usleep(10000); // 10 ms
+    for (const auto& [key, cell] : grid)
+    {
+        result.push_back(cell);
     }
 
-    return NULL;
+    return result;
+}
+
+// ======================================================
+// DETECÇÃO DE FRONTEIRAS
+// ======================================================
+std::vector<Cell> findFrontiers()
+{
+    std::vector<Cell> frontiers;
+
+    std::lock_guard<std::mutex> lock(
+        visitedCellsMutex);
+
+    frontiers.reserve(grid.size() / 10);
+
+    for (const auto& [key, cell] : grid)
+    {
+        if (!cell.properties.isFree)
+            continue;
+
+        bool hasUnknownNeighbor = false;
+
+        for (int dx = -1; dx <= 1 && !hasUnknownNeighbor; ++dx)
+        {
+            for (int dy = -1; dy <= 1; ++dy)
+            {
+                if (dx == 0 && dy == 0)
+                    continue;
+
+                CellKey neighbor{
+                    cell.x + dx,
+                    cell.y + dy
+                };
+
+                if (grid.find(neighbor) == grid.end())
+                {
+                    hasUnknownNeighbor = true;
+                    break;
+                }
+            }
+        }
+
+        if (hasUnknownNeighbor)
+        {
+            frontiers.push_back(cell);
+        }
+    }
+
+    return frontiers;
+}
+
+// ======================================================
+// THREAD
+// ======================================================
+
+void* mappingThreadFunction(void* arg)
+{
+    while (rclcpp::ok())
+    {
+        {
+            std::lock_guard<std::mutex> lock(
+                visitedCellsMutex);
+
+            Cell robotCell =
+                findCell(
+                    robotPosition.x,
+                    robotPosition.y);
+
+            increaseFree(robotCell);
+        }
+
+        if (history.empty() ||
+            !samePose(
+                history.back().pose,
+                robotPosition))
+        {
+            history.push_back(
+            {
+                robotPosition,
+                lasers
+            });
+
+            if (history.size() > 10000)
+            {
+                history.erase(
+                    history.begin());
+            }
+        }
+
+        updateCellsFromLaser();
+
+        usleep(50000); // 20Hz
+    }
+
+    return nullptr;
 }

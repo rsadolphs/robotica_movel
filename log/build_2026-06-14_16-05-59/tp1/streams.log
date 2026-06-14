@@ -1,0 +1,12 @@
+[0.019s] Invoking command in '/home/richa/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/richa/ros2_ws/build/tp1 -- -j12 -l12
+[0.105s] [ 14%] [32m[1mLinking CXX executable navigation[0m
+[0.836s] /usr/bin/ld: CMakeFiles/navigation.dir/src/Rendering.cpp.o: warning: relocation against `visitedCells' in read-only section `.text'
+[0.915s] /usr/bin/ld: CMakeFiles/navigation.dir/src/Rendering.cpp.o: in function `renderingThreadFunction(void*)':
+[0.915s] Rendering.cpp:(.text+0x4dd): undefined reference to `visitedCells'
+[0.915s] /usr/bin/ld: Rendering.cpp:(.text+0x6bd): undefined reference to `visitedCells'
+[0.950s] /usr/bin/ld: warning: creating DT_TEXTREL in a PIE
+[0.965s] collect2: error: ld returned 1 exit status
+[0.968s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:306: navigation] Error 1
+[0.968s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Error 2
+[0.968s] gmake: *** [Makefile:146: all] Error 2
+[0.971s] Invoked command in '/home/richa/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/richa/ros2_ws/build/tp1 -- -j12 -l12

@@ -1,0 +1,812 @@
+[0.000000] (-) TimerEvent: {}
+[0.000233] (phi_aria) JobQueued: {'identifier': 'phi_aria', 'dependencies': OrderedDict()}
+[0.000290] (tp1) JobQueued: {'identifier': 'tp1', 'dependencies': OrderedDict()}
+[0.000309] (phi_aria) JobStarted: {'identifier': 'phi_aria'}
+[0.007890] (tp1) JobStarted: {'identifier': 'tp1'}
+[0.013676] (phi_aria) JobProgress: {'identifier': 'phi_aria', 'progress': 'cmake'}
+[0.015669] (phi_aria) Command: {'cmd': ['/usr/bin/cmake', '/home/richa/ros2_ws/src/phi_aria', '-DCMAKE_INSTALL_PREFIX=/home/richa/ros2_ws/install/phi_aria'], 'cwd': '/home/richa/ros2_ws/build/phi_aria', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'richa', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'GIT_ASKPASS': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.2.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/Aria/lib', 'WT_PROFILE_ID': '{61c54bbd-c2c6-5271-96e7-009a87ff44bf}', 'HOME': '/home/richa', 'TERM_PROGRAM_VERSION': '1.121.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-ada0bc41-7454-4612-93b4-1f7a2bd6d543.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/richa/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'richa', 'NAME': 'Code', 'WSL_INTEROP': '/run/WSL/103250_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/bin/remote-cli:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NGX:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/MinGW/bin:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python312/python.exe:/mnt/c/Users/richa/OneDrive/Área de Trabalho/Code/API/.venv/Scripts/python.exe:/mnt/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python311/Scripts/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python311/:/mnt/c/Users/richa/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python312/python.exe:/mnt/c/Users/richa/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Graphviz/bin:/mnt/c/Users/richa/AppData/Local/nvm:/mnt/c/nvm4w/nodejs:/mnt/c/Users/richa/AppData/Roaming/npm:/snap/bin', 'WT_SESSION': '59314b17-4214-463e-8fcd-73ef445093ce', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-45f538cd7a.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/home/richa/ros2_ws/install/tp1:/home/richa/ros2_ws/install/phi_aria:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/richa/ros2_ws/build/phi_aria', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/richa/ros2_ws/install/tp1:/home/richa/ros2_ws/install/phi_aria:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'WSLENV': 'ELECTRON_RUN_AS_NODE/w:WT_SESSION:WT_PROFILE_ID:'}), 'shell': False}
+[0.020377] (tp1) JobProgress: {'identifier': 'tp1', 'progress': 'cmake'}
+[0.024445] (tp1) Command: {'cmd': ['/usr/bin/cmake', '/home/richa/ros2_ws/src/tp1', '-DCMAKE_INSTALL_PREFIX=/home/richa/ros2_ws/install/tp1'], 'cwd': '/home/richa/ros2_ws/build/tp1', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'richa', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'GIT_ASKPASS': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.2.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/Aria/lib', 'WT_PROFILE_ID': '{61c54bbd-c2c6-5271-96e7-009a87ff44bf}', 'HOME': '/home/richa', 'TERM_PROGRAM_VERSION': '1.121.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-ada0bc41-7454-4612-93b4-1f7a2bd6d543.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/richa/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'richa', 'NAME': 'Code', 'WSL_INTEROP': '/run/WSL/103250_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/bin/remote-cli:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NGX:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/MinGW/bin:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python312/python.exe:/mnt/c/Users/richa/OneDrive/Área de Trabalho/Code/API/.venv/Scripts/python.exe:/mnt/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python311/Scripts/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python311/:/mnt/c/Users/richa/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python312/python.exe:/mnt/c/Users/richa/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Graphviz/bin:/mnt/c/Users/richa/AppData/Local/nvm:/mnt/c/nvm4w/nodejs:/mnt/c/Users/richa/AppData/Roaming/npm:/snap/bin', 'WT_SESSION': '59314b17-4214-463e-8fcd-73ef445093ce', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-45f538cd7a.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/home/richa/ros2_ws/install/tp1:/home/richa/ros2_ws/install/phi_aria:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/richa/ros2_ws/build/tp1', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/richa/ros2_ws/install/tp1:/home/richa/ros2_ws/install/phi_aria:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'WSLENV': 'ELECTRON_RUN_AS_NODE/w:WT_SESSION:WT_PROFILE_ID:'}), 'shell': False}
+[0.101028] (-) TimerEvent: {}
+[0.201544] (-) TimerEvent: {}
+[0.301558] (phi_aria) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.301746] (-) TimerEvent: {}
+[0.301856] (tp1) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.403782] (-) TimerEvent: {}
+[0.504283] (-) TimerEvent: {}
+[0.607103] (-) TimerEvent: {}
+[0.707414] (-) TimerEvent: {}
+[0.807691] (-) TimerEvent: {}
+[0.908031] (-) TimerEvent: {}
+[0.929549] (phi_aria) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.929848] (tp1) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[1.008145] (-) TimerEvent: {}
+[1.108431] (-) TimerEvent: {}
+[1.208736] (-) TimerEvent: {}
+[1.309037] (-) TimerEvent: {}
+[1.389631] (phi_aria) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.389838] (tp1) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.409158] (-) TimerEvent: {}
+[1.509545] (-) TimerEvent: {}
+[1.609242] (phi_aria) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.609393] (tp1) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.609618] (-) TimerEvent: {}
+[1.618154] (tp1) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[1.618415] (phi_aria) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[1.618938] (tp1) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.619072] (phi_aria) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.619885] (tp1) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.620011] (phi_aria) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.691932] (tp1) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.692355] (phi_aria) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.709753] (-) TimerEvent: {}
+[1.810131] (-) TimerEvent: {}
+[1.910524] (-) TimerEvent: {}
+[1.910869] (phi_aria) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.911030] (tp1) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.920984] (tp1) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[1.921652] (tp1) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.921997] (phi_aria) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[1.922423] (tp1) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.922625] (phi_aria) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.922955] (phi_aria) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.962800] (tp1) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[1.962959] (phi_aria) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[2.010729] (-) TimerEvent: {}
+[2.111026] (-) TimerEvent: {}
+[2.130227] (tp1) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[2.130570] (phi_aria) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[2.211182] (-) TimerEvent: {}
+[2.304162] (phi_aria) StdoutLine: {'line': b'-- Found rclcpp: 28.1.18 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[2.311294] (-) TimerEvent: {}
+[2.411576] (-) TimerEvent: {}
+[2.511882] (-) TimerEvent: {}
+[2.530130] (phi_aria) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[2.553508] (phi_aria) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[2.584732] (phi_aria) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.612062] (-) TimerEvent: {}
+[2.616970] (phi_aria) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.712181] (-) TimerEvent: {}
+[2.746675] (phi_aria) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[2.752850] (phi_aria) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[2.812316] (-) TimerEvent: {}
+[2.870027] (phi_aria) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[2.912479] (-) TimerEvent: {}
+[3.007096] (phi_aria) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[3.012569] (-) TimerEvent: {}
+[3.082513] (tp1) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /usr/share/cmake-3.28/Modules/FindOpenGL.cmake:381 (message):\n'}
+[3.082814] (tp1) StderrLine: {'line': b'  Policy CMP0072 is not set: FindOpenGL prefers GLVND by default when\n'}
+[3.083011] (tp1) StderrLine: {'line': b'  available.  Run "cmake --help-policy CMP0072" for policy details.  Use the\n'}
+[3.083103] (tp1) StderrLine: {'line': b'  cmake_policy command to set the policy and suppress this warning.\n'}
+[3.083271] (tp1) StderrLine: {'line': b'\n'}
+[3.083373] (tp1) StderrLine: {'line': b'  FindOpenGL found both a legacy GL library:\n'}
+[3.083443] (tp1) StderrLine: {'line': b'\n'}
+[3.083499] (tp1) StderrLine: {'line': b'    OPENGL_gl_LIBRARY: /usr/lib/x86_64-linux-gnu/libGL.so\n'}
+[3.083591] (tp1) StderrLine: {'line': b'\n'}
+[3.083647] (tp1) StderrLine: {'line': b'  and GLVND libraries for OpenGL and GLX:\n'}
+[3.083832] (tp1) StderrLine: {'line': b'\n'}
+[3.084012] (tp1) StderrLine: {'line': b'    OPENGL_opengl_LIBRARY: /usr/lib/x86_64-linux-gnu/libOpenGL.so\n'}
+[3.084228] (tp1) StderrLine: {'line': b'    OPENGL_glx_LIBRARY: /usr/lib/x86_64-linux-gnu/libGLX.so\n'}
+[3.084450] (tp1) StderrLine: {'line': b'\n'}
+[3.084651] (tp1) StderrLine: {'line': b'  OpenGL_GL_PREFERENCE has not been set to "GLVND" or "LEGACY", so for\n'}
+[3.084941] (tp1) StderrLine: {'line': b'  compatibility with CMake 3.10 and below the legacy GL library will be used.\n'}
+[3.085214] (tp1) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[3.085456] (tp1) StderrLine: {'line': b'  CMakeLists.txt:13 (find_package)\n'}
+[3.085738] (tp1) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[3.085985] (tp1) StderrLine: {'line': b'\x1b[0m\n'}
+[3.086353] (tp1) StdoutLine: {'line': b'-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so   \n'}
+[3.092693] (tp1) StdoutLine: {'line': b'-- Found rclcpp: 28.1.18 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[3.110335] (phi_aria) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[3.112669] (-) TimerEvent: {}
+[3.178312] (tp1) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[3.195151] (tp1) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[3.212871] (-) TimerEvent: {}
+[3.214580] (tp1) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.244260] (tp1) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.315539] (-) TimerEvent: {}
+[3.364919] (phi_aria) StdoutLine: {'line': b'-- Found nav_msgs: 5.3.7 (/opt/ros/jazzy/share/nav_msgs/cmake)\n'}
+[3.379740] (tp1) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[3.383833] (tp1) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[3.418346] (-) TimerEvent: {}
+[3.473177] (phi_aria) StdoutLine: {'line': b'-- Found sensor_msgs: 5.3.7 (/opt/ros/jazzy/share/sensor_msgs/cmake)\n'}
+[3.489821] (tp1) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[3.514474] (phi_aria) StdoutLine: {'line': b'-- Found tf2_ros: 0.36.20 (/opt/ros/jazzy/share/tf2_ros/cmake)\n'}
+[3.518741] (-) TimerEvent: {}
+[3.622685] (-) TimerEvent: {}
+[3.682928] (tp1) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[3.726109] (-) TimerEvent: {}
+[3.733926] (phi_aria) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.36.20 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)\n'}
+[3.795381] (tp1) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[3.807085] (phi_aria) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)\n'}
+[3.808734] (phi_aria) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[3.808946] (phi_aria) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[3.827694] (-) TimerEvent: {}
+[3.928104] (-) TimerEvent: {}
+[4.012809] (tp1) StdoutLine: {'line': b'-- Found sensor_msgs: 5.3.7 (/opt/ros/jazzy/share/sensor_msgs/cmake)\n'}
+[4.029338] (-) TimerEvent: {}
+[4.082514] (tp1) StdoutLine: {'line': b'-- Found nav_msgs: 5.3.7 (/opt/ros/jazzy/share/nav_msgs/cmake)\n'}
+[4.124859] (tp1) StdoutLine: {'line': b'-- Found tf2: 0.36.20 (/opt/ros/jazzy/share/tf2/cmake)\n'}
+[4.129833] (-) TimerEvent: {}
+[4.132969] (tp1) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.36.20 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)\n'}
+[4.199910] (tp1) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)\n'}
+[4.201265] (tp1) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[4.201594] (tp1) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[4.231696] (-) TimerEvent: {}
+[4.332150] (-) TimerEvent: {}
+[4.393623] (tp1) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[4.432383] (-) TimerEvent: {}
+[4.532875] (-) TimerEvent: {}
+[4.589829] (tp1) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[4.590265] (tp1) StdoutLine: {'line': b'-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/richa/ros2_ws/src/tp1/include>\n'}
+[4.590408] (tp1) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[4.592221] (tp1) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[4.592495] (tp1) StdoutLine: {'line': b"-- Configured 'flake8' exclude dirs and/or files: \n"}
+[4.595740] (tp1) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[4.598458] (tp1) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[4.601935] (tp1) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[4.602220] (tp1) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[4.604034] (tp1) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[4.607865] (tp1) StdoutLine: {'line': b'-- Configuring done (4.6s)\n'}
+[4.633711] (-) TimerEvent: {}
+[4.634343] (tp1) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[4.641018] (tp1) StdoutLine: {'line': b'-- Build files have been written to: /home/richa/ros2_ws/build/tp1\n'}
+[4.655027] (tp1) CommandEnded: {'returncode': 0}
+[4.655773] (tp1) JobProgress: {'identifier': 'tp1', 'progress': 'build'}
+[4.656391] (tp1) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/richa/ros2_ws/build/tp1', '--', '-j12', '-l12'], 'cwd': '/home/richa/ros2_ws/build/tp1', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'richa', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'GIT_ASKPASS': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.2.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/Aria/lib', 'WT_PROFILE_ID': '{61c54bbd-c2c6-5271-96e7-009a87ff44bf}', 'HOME': '/home/richa', 'TERM_PROGRAM_VERSION': '1.121.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-ada0bc41-7454-4612-93b4-1f7a2bd6d543.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/richa/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'richa', 'NAME': 'Code', 'WSL_INTEROP': '/run/WSL/103250_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/bin/remote-cli:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NGX:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/MinGW/bin:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python312/python.exe:/mnt/c/Users/richa/OneDrive/Área de Trabalho/Code/API/.venv/Scripts/python.exe:/mnt/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python311/Scripts/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python311/:/mnt/c/Users/richa/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python312/python.exe:/mnt/c/Users/richa/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Graphviz/bin:/mnt/c/Users/richa/AppData/Local/nvm:/mnt/c/nvm4w/nodejs:/mnt/c/Users/richa/AppData/Roaming/npm:/snap/bin', 'WT_SESSION': '59314b17-4214-463e-8fcd-73ef445093ce', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-45f538cd7a.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/home/richa/ros2_ws/install/tp1:/home/richa/ros2_ws/install/phi_aria:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/richa/ros2_ws/build/tp1', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/richa/ros2_ws/install/tp1:/home/richa/ros2_ws/install/phi_aria:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'WSLENV': 'ELECTRON_RUN_AS_NODE/w:WT_SESSION:WT_PROFILE_ID:'}), 'shell': False}
+[4.729075] (tp1) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding CXX object CMakeFiles/navigation.dir/src/Action.cpp.o\x1b[0m\n'}
+[4.729447] (tp1) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/navigation.dir/src/main.cpp.o\x1b[0m\n'}
+[4.729927] (tp1) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/navigation.dir/src/Rendering.cpp.o\x1b[0m\n'}
+[4.730131] (tp1) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object CMakeFiles/navigation.dir/src/Perception.cpp.o\x1b[0m\n'}
+[4.730300] (tp1) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding CXX object CMakeFiles/navigation.dir/src/Utils.cpp.o\x1b[0m\n'}
+[4.730438] (tp1) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding CXX object CMakeFiles/navigation.dir/src/Mapping.cpp.o\x1b[0m\n'}
+[4.734108] (-) TimerEvent: {}
+[4.834905] (-) TimerEvent: {}
+[4.935471] (-) TimerEvent: {}
+[5.036081] (-) TimerEvent: {}
+[5.136773] (-) TimerEvent: {}
+[5.189129] (phi_aria) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[5.237092] (-) TimerEvent: {}
+[5.337623] (-) TimerEvent: {}
+[5.437235] (phi_aria) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[5.437913] (-) TimerEvent: {}
+[5.438350] (phi_aria) StdoutLine: {'line': b'-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/richa/ros2_ws/src/phi_aria/include>\n'}
+[5.438570] (phi_aria) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[5.440607] (phi_aria) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[5.447084] (phi_aria) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[5.447425] (phi_aria) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[5.449635] (phi_aria) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[5.453683] (phi_aria) StdoutLine: {'line': b'-- Configuring done (5.4s)\n'}
+[5.495447] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/Action.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid Action::\x1b[01;32m\x1b[KexploreEnvironment\x1b[m\x1b[K(std::vector<float>, std::vector<float>, std::vector<float>)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.496034] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/Action.cpp:22:24:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KsonarsData\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[5.496248] (tp1) StderrLine: {'line': b'   22 |     \x1b[01;35m\x1b[Kstd::vector<float> sonarsData\x1b[m\x1b[K,\n'}
+[5.496396] (tp1) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.496551] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/Action.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid Action::\x1b[01;32m\x1b[KmanualRobotMotion\x1b[m\x1b[K(MovingDirection, std::vector<float>, std::vector<float>, std::vector<float>)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.496713] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/Action.cpp:34:24:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KsonarsData\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[5.496841] (tp1) StderrLine: {'line': b'   34 |     \x1b[01;35m\x1b[Kstd::vector<float> sonarsData\x1b[m\x1b[K,\n'}
+[5.496980] (tp1) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.509786] (phi_aria) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[5.519955] (phi_aria) StdoutLine: {'line': b'-- Build files have been written to: /home/richa/ros2_ws/build/phi_aria\n'}
+[5.538316] (-) TimerEvent: {}
+[5.547112] (phi_aria) CommandEnded: {'returncode': 0}
+[5.548519] (phi_aria) JobProgress: {'identifier': 'phi_aria', 'progress': 'build'}
+[5.549742] (phi_aria) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/richa/ros2_ws/build/phi_aria', '--', '-j12', '-l12'], 'cwd': '/home/richa/ros2_ws/build/phi_aria', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'richa', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'GIT_ASKPASS': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.2.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/Aria/lib', 'WT_PROFILE_ID': '{61c54bbd-c2c6-5271-96e7-009a87ff44bf}', 'HOME': '/home/richa', 'TERM_PROGRAM_VERSION': '1.121.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-ada0bc41-7454-4612-93b4-1f7a2bd6d543.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/richa/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'richa', 'NAME': 'Code', 'WSL_INTEROP': '/run/WSL/103250_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/bin/remote-cli:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NGX:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/MinGW/bin:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python312/python.exe:/mnt/c/Users/richa/OneDrive/Área de Trabalho/Code/API/.venv/Scripts/python.exe:/mnt/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python311/Scripts/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python311/:/mnt/c/Users/richa/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python312/python.exe:/mnt/c/Users/richa/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Graphviz/bin:/mnt/c/Users/richa/AppData/Local/nvm:/mnt/c/nvm4w/nodejs:/mnt/c/Users/richa/AppData/Roaming/npm:/snap/bin', 'WT_SESSION': '59314b17-4214-463e-8fcd-73ef445093ce', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-45f538cd7a.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/home/richa/ros2_ws/install/tp1:/home/richa/ros2_ws/install/phi_aria:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/richa/ros2_ws/build/phi_aria', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/richa/ros2_ws/install/tp1:/home/richa/ros2_ws/install/phi_aria:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'WSLENV': 'ELECTRON_RUN_AS_NODE/w:WT_SESSION:WT_PROFILE_ID:'}), 'shell': False}
+[5.638804] (-) TimerEvent: {}
+[5.666973] (phi_aria) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/phi_p3dx.dir/src/phi_p3dx.cpp.o\x1b[0m\n'}
+[5.667521] (phi_aria) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/phi_p3dx.dir/src/Pose.cpp.o\x1b[0m\n'}
+[5.668318] (phi_aria) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/phi_p3dx.dir/src/PhiROS2Aria.cpp.o\x1b[0m\n'}
+[5.738998] (-) TimerEvent: {}
+[5.806024] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid*\x1b[01;32m\x1b[K renderingThreadFunction\x1b[m\x1b[K(void*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.806470] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/Rendering.cpp:73:37:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Karg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[5.806636] (tp1) StderrLine: {'line': b'   73 | void* renderingThreadFunction(\x1b[01;35m\x1b[Kvoid* arg\x1b[m\x1b[K) {\n'}
+[5.806784] (tp1) StderrLine: {'line': b'      |                               \x1b[01;35m\x1b[K~~~~~~^~~\x1b[m\x1b[K\n'}
+[5.839173] (-) TimerEvent: {}
+[5.939708] (-) TimerEvent: {}
+[6.040167] (-) TimerEvent: {}
+[6.140679] (-) TimerEvent: {}
+[6.241343] (-) TimerEvent: {}
+[6.341978] (-) TimerEvent: {}
+[6.442674] (-) TimerEvent: {}
+[6.544868] (-) TimerEvent: {}
+[6.652886] (-) TimerEvent: {}
+[6.761133] (-) TimerEvent: {}
+[6.869816] (-) TimerEvent: {}
+[6.977688] (-) TimerEvent: {}
+[7.086488] (-) TimerEvent: {}
+[7.187167] (-) TimerEvent: {}
+[7.287950] (-) TimerEvent: {}
+[7.388369] (-) TimerEvent: {}
+[7.488920] (-) TimerEvent: {}
+[7.589515] (-) TimerEvent: {}
+[7.690148] (-) TimerEvent: {}
+[7.790834] (-) TimerEvent: {}
+[7.899335] (-) TimerEvent: {}
+[7.999836] (-) TimerEvent: {}
+[8.103685] (-) TimerEvent: {}
+[8.207164] (-) TimerEvent: {}
+[8.308159] (-) TimerEvent: {}
+[8.416277] (-) TimerEvent: {}
+[8.516909] (-) TimerEvent: {}
+[8.625179] (-) TimerEvent: {}
+[8.704892] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Cell>\x1b[01;32m\x1b[K bresenham\x1b[m\x1b[K(const Cell&, const Cell&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.705280] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:107:24:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[KCell::properties\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers\x07-Wmissing-field-initializers\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[8.705501] (tp1) StderrLine: {'line': b'  107 |         \x1b[01;35m\x1b[Kcells.push_back({x0, y0, {}})\x1b[m\x1b[K;\n'}
+[8.705659] (tp1) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[8.708099] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid*\x1b[01;32m\x1b[K mappingThreadFunction\x1b[m\x1b[K(void*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.708364] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:177:35:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Karg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[8.708510] (tp1) StderrLine: {'line': b'  177 | void* mappingThreadFunction(\x1b[01;35m\x1b[Kvoid* arg\x1b[m\x1b[K) {\n'}
+[8.708624] (tp1) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~~~~~~^~~\x1b[m\x1b[K\n'}
+[8.725515] (-) TimerEvent: {}
+[8.826549] (-) TimerEvent: {}
+[8.927257] (-) TimerEvent: {}
+[9.027783] (-) TimerEvent: {}
+[9.047464] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/main.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid*\x1b[01;32m\x1b[K keyboardThreadFunction\x1b[m\x1b[K(void*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[9.047803] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/main.cpp:80:36:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Karg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[9.047996] (tp1) StderrLine: {'line': b'   80 | void *keyboardThreadFunction(\x1b[01;35m\x1b[Kvoid *arg\x1b[m\x1b[K)\n'}
+[9.048148] (tp1) StderrLine: {'line': b'      |                              \x1b[01;35m\x1b[K~~~~~~^~~\x1b[m\x1b[K\n'}
+[9.052950] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/main.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid*\x1b[01;32m\x1b[K mainThreadFunction\x1b[m\x1b[K(void*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[9.053312] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/main.cpp:94:32:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Karg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[9.053502] (tp1) StderrLine: {'line': b'   94 | void *mainThreadFunction(\x1b[01;35m\x1b[Kvoid *arg\x1b[m\x1b[K)\n'}
+[9.053658] (tp1) StderrLine: {'line': b'      |                          \x1b[01;35m\x1b[K~~~~~~^~~\x1b[m\x1b[K\n'}
+[9.088795] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/Perception.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<float, std::allocator<float> > Perception::\x1b[01;32m\x1b[KgetLatestSonarRanges\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[9.089286] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/Perception.cpp:153:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Knumbytes\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[9.089476] (tp1) StderrLine: {'line': b'  153 |     int \x1b[01;35m\x1b[Knumbytes\x1b[m\x1b[K = sonarROS.data.size();\n'}
+[9.089629] (tp1) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[9.089777] (tp1) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/tp1/src/Perception.cpp:154:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Knumfields\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[9.089953] (tp1) StderrLine: {'line': b'  154 |     int \x1b[01;35m\x1b[Knumfields\x1b[m\x1b[K = sonarROS.fields.size();\n'}
+[9.090105] (tp1) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[9.129701] (-) TimerEvent: {}
+[9.230441] (-) TimerEvent: {}
+[9.332257] (-) TimerEvent: {}
+[9.435461] (-) TimerEvent: {}
+[9.536144] (-) TimerEvent: {}
+[9.638848] (-) TimerEvent: {}
+[9.739600] (-) TimerEvent: {}
+[9.842847] (-) TimerEvent: {}
+[9.951141] (-) TimerEvent: {}
+[10.051754] (-) TimerEvent: {}
+[10.152187] (-) TimerEvent: {}
+[10.252586] (-) TimerEvent: {}
+[10.352985] (-) TimerEvent: {}
+[10.453346] (-) TimerEvent: {}
+[10.553775] (-) TimerEvent: {}
+[10.654185] (-) TimerEvent: {}
+[10.754609] (-) TimerEvent: {}
+[10.854932] (-) TimerEvent: {}
+[10.955285] (-) TimerEvent: {}
+[11.055700] (-) TimerEvent: {}
+[11.156093] (-) TimerEvent: {}
+[11.246049] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:47\x1b[m\x1b[K,\n'}
+[11.246359] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:15\x1b[m\x1b[K,\n'}
+[11.246475] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/phi_p3dx.cpp:1\x1b[m\x1b[K:\n'}
+[11.246576] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArRobot.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArRobot::\x1b[01;32m\x1b[KsetDoNotSwitchBaud\x1b[m\x1b[K(bool)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.246738] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArRobot.h:1075:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KdoNotSwitchBaud\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.246820] (phi_aria) StderrLine: {'line': b' 1075 |   AREXPORT void setDoNotSwitchBaud(\x1b[01;35m\x1b[Kbool doNotSwitchBaud\x1b[m\x1b[K)\n'}
+[11.246888] (phi_aria) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~~~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.256276] (-) TimerEvent: {}
+[11.316209] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArActionColorFollow.h:33\x1b[m\x1b[K,\n'}
+[11.316542] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/ArActionGroups.h:30\x1b[m\x1b[K,\n'}
+[11.316632] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:57\x1b[m\x1b[K:\n'}
+[11.316704] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[Kzoom\x1b[m\x1b[K(int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.316968] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:118:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KzoomValue\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.317304] (phi_aria) StderrLine: {'line': b'  118 |   AREXPORT virtual bool zoom(\x1b[01;35m\x1b[Kint zoomValue\x1b[m\x1b[K) { return false; }\n'}
+[11.317455] (phi_aria) StderrLine: {'line': b'      |                              \x1b[01;35m\x1b[K~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[11.317580] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KzoomRel\x1b[m\x1b[K(int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.317705] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:120:37:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KzoomValue\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.317840] (phi_aria) StderrLine: {'line': b'  120 |   AREXPORT virtual bool zoomRel(\x1b[01;35m\x1b[Kint zoomValue\x1b[m\x1b[K) { return false; }\n'}
+[11.317940] (phi_aria) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[11.318011] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KsetGain\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.318079] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:166:40:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kgain\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.318150] (phi_aria) StderrLine: {'line': b'  166 |   AREXPORT virtual bool setGain(\x1b[01;35m\x1b[Kdouble gain\x1b[m\x1b[K) const { return false; }\n'}
+[11.318233] (phi_aria) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[11.318297] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual double ArPTZ::\x1b[01;32m\x1b[KgetGain\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.318362] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:168:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kgain\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.318429] (phi_aria) StderrLine: {'line': b'  168 |   AREXPORT virtual double getGain(\x1b[01;35m\x1b[Kdouble gain\x1b[m\x1b[K) const { return 0; }\n'}
+[11.318492] (phi_aria) StderrLine: {'line': b'      |                                   \x1b[01;35m\x1b[K~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[11.318569] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KsetFocus\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.318659] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:174:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfocus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.318745] (phi_aria) StderrLine: {'line': b'  174 |   AREXPORT virtual bool setFocus(\x1b[01;35m\x1b[Kdouble focus\x1b[m\x1b[K) const { return false; }\n'}
+[11.318810] (phi_aria) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[11.318875] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual double ArPTZ::\x1b[01;32m\x1b[KgetFocus\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.318993] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:176:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfocus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.319104] (phi_aria) StderrLine: {'line': b'  176 |   AREXPORT virtual double getFocus(\x1b[01;35m\x1b[Kdouble focus\x1b[m\x1b[K) const { return 0; }\n'}
+[11.319182] (phi_aria) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[11.319247] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KpacketHandler\x1b[m\x1b[K(ArBasePacket*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.319312] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:215:53:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kpacket\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.319389] (phi_aria) StderrLine: {'line': b'  215 |   AREXPORT virtual bool packetHandler(\x1b[01;35m\x1b[KArBasePacket *packet\x1b[m\x1b[K) { return false; }\n'}
+[11.319488] (phi_aria) StderrLine: {'line': b'      |                                       \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[11.324096] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:47\x1b[m\x1b[K,\n'}
+[11.324280] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:15\x1b[m\x1b[K,\n'}
+[11.324366] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:1\x1b[m\x1b[K:\n'}
+[11.324430] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArRobot.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArRobot::\x1b[01;32m\x1b[KsetDoNotSwitchBaud\x1b[m\x1b[K(bool)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.324528] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArRobot.h:1075:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KdoNotSwitchBaud\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.324625] (phi_aria) StderrLine: {'line': b' 1075 |   AREXPORT void setDoNotSwitchBaud(\x1b[01;35m\x1b[Kbool doNotSwitchBaud\x1b[m\x1b[K)\n'}
+[11.324713] (phi_aria) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~~~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.339895] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:72\x1b[m\x1b[K:\n'}
+[11.340266] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionTriangleDriveTo::Data::\x1b[01;32m\x1b[KsetLinesAndVertex\x1b[m\x1b[K(std::map<int, ArLineFinderSegment*>*, ArPose)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.340525] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:191:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.340704] (phi_aria) StderrLine: {'line': b'  191 |       myVertex = \x1b[01;35m\x1b[Kvertex\x1b[m\x1b[K;\n'}
+[11.340849] (phi_aria) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[11.341083] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArDeviceConnection.h:30\x1b[m\x1b[K,\n'}
+[11.341148] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/ArSerialConnection.h:30\x1b[m\x1b[K,\n'}
+[11.341224] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:30\x1b[m\x1b[K:\n'}
+[11.341288] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.341366] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[11.341428] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[11.341523] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionTriangleDriveTo::Data::\x1b[01;32m\x1b[KsetFinal\x1b[m\x1b[K(ArPose)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.341624] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:194:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.341722] (phi_aria) StderrLine: {'line': b'  194 |     void setFinal(ArPose final) { myFinalSet = true; myFinal = \x1b[01;35m\x1b[Kfinal\x1b[m\x1b[K; }\n'}
+[11.341811] (phi_aria) StderrLine: {'line': b'      |                                                                \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[11.341911] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.342011] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[11.342102] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[11.342193] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionTriangleDriveTo::Data::\x1b[01;32m\x1b[KsetApproach\x1b[m\x1b[K(ArPose)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.342321] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:196:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.342426] (phi_aria) StderrLine: {'line': b'  196 |     { myApproachSet = true; myApproach = \x1b[01;35m\x1b[Kapproach\x1b[m\x1b[K; }\n'}
+[11.342525] (phi_aria) StderrLine: {'line': b'      |                                          \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[11.342611] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.342709] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[11.342809] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[11.356438] (-) TimerEvent: {}
+[11.385810] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArActionColorFollow.h:33\x1b[m\x1b[K,\n'}
+[11.386176] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/ArActionGroups.h:30\x1b[m\x1b[K,\n'}
+[11.386278] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:57\x1b[m\x1b[K:\n'}
+[11.386339] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[Kzoom\x1b[m\x1b[K(int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.386406] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:118:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KzoomValue\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.386469] (phi_aria) StderrLine: {'line': b'  118 |   AREXPORT virtual bool zoom(\x1b[01;35m\x1b[Kint zoomValue\x1b[m\x1b[K) { return false; }\n'}
+[11.386527] (phi_aria) StderrLine: {'line': b'      |                              \x1b[01;35m\x1b[K~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[11.386584] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KzoomRel\x1b[m\x1b[K(int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.386660] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:120:37:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KzoomValue\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.386731] (phi_aria) StderrLine: {'line': b'  120 |   AREXPORT virtual bool zoomRel(\x1b[01;35m\x1b[Kint zoomValue\x1b[m\x1b[K) { return false; }\n'}
+[11.386788] (phi_aria) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[11.386844] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KsetGain\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.386932] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:166:40:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kgain\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.387030] (phi_aria) StderrLine: {'line': b'  166 |   AREXPORT virtual bool setGain(\x1b[01;35m\x1b[Kdouble gain\x1b[m\x1b[K) const { return false; }\n'}
+[11.387122] (phi_aria) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[11.387181] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual double ArPTZ::\x1b[01;32m\x1b[KgetGain\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.387257] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:168:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kgain\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.387320] (phi_aria) StderrLine: {'line': b'  168 |   AREXPORT virtual double getGain(\x1b[01;35m\x1b[Kdouble gain\x1b[m\x1b[K) const { return 0; }\n'}
+[11.387381] (phi_aria) StderrLine: {'line': b'      |                                   \x1b[01;35m\x1b[K~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[11.387436] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KsetFocus\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.387500] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:174:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfocus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.387563] (phi_aria) StderrLine: {'line': b'  174 |   AREXPORT virtual bool setFocus(\x1b[01;35m\x1b[Kdouble focus\x1b[m\x1b[K) const { return false; }\n'}
+[11.387620] (phi_aria) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[11.387677] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual double ArPTZ::\x1b[01;32m\x1b[KgetFocus\x1b[m\x1b[K(double) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.387734] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:176:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfocus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.387840] (phi_aria) StderrLine: {'line': b'  176 |   AREXPORT virtual double getFocus(\x1b[01;35m\x1b[Kdouble focus\x1b[m\x1b[K) const { return 0; }\n'}
+[11.387899] (phi_aria) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[11.387955] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ArPTZ::\x1b[01;32m\x1b[KpacketHandler\x1b[m\x1b[K(ArBasePacket*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.388013] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArPTZ.h:215:53:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kpacket\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.388071] (phi_aria) StderrLine: {'line': b'  215 |   AREXPORT virtual bool packetHandler(\x1b[01;35m\x1b[KArBasePacket *packet\x1b[m\x1b[K) { return false; }\n'}
+[11.388127] (phi_aria) StderrLine: {'line': b'      |                                       \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[11.403945] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:72\x1b[m\x1b[K:\n'}
+[11.404291] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionTriangleDriveTo::Data::\x1b[01;32m\x1b[KsetLinesAndVertex\x1b[m\x1b[K(std::map<int, ArLineFinderSegment*>*, ArPose)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.404627] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:191:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.404719] (phi_aria) StderrLine: {'line': b'  191 |       myVertex = \x1b[01;35m\x1b[Kvertex\x1b[m\x1b[K;\n'}
+[11.404787] (phi_aria) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[11.404849] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArDeviceConnection.h:30\x1b[m\x1b[K,\n'}
+[11.404962] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/ArSerialConnection.h:30\x1b[m\x1b[K,\n'}
+[11.405023] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:30\x1b[m\x1b[K:\n'}
+[11.405086] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.405159] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[11.405219] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[11.405278] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionTriangleDriveTo::Data::\x1b[01;32m\x1b[KsetFinal\x1b[m\x1b[K(ArPose)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.405339] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:194:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.405401] (phi_aria) StderrLine: {'line': b'  194 |     void setFinal(ArPose final) { myFinalSet = true; myFinal = \x1b[01;35m\x1b[Kfinal\x1b[m\x1b[K; }\n'}
+[11.405460] (phi_aria) StderrLine: {'line': b'      |                                                                \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[11.405518] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.405583] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[11.405642] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[11.405701] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionTriangleDriveTo::Data::\x1b[01;32m\x1b[KsetApproach\x1b[m\x1b[K(ArPose)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.405762] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionTriangleDriveTo.h:196:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.405824] (phi_aria) StderrLine: {'line': b'  196 |     { myApproachSet = true; myApproach = \x1b[01;35m\x1b[Kapproach\x1b[m\x1b[K; }\n'}
+[11.405882] (phi_aria) StderrLine: {'line': b'      |                                          \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[11.405940] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.406039] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[11.406101] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[11.433711] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArDeviceConnection.h:31\x1b[m\x1b[K:\n'}
+[11.433879] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:\x1b[m\x1b[K At global scope:\n'}
+[11.433948] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:196:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArBasePacket::\x1b[01;32m\x1b[KduplicatePacket\x1b[m\x1b[K(ArBasePacket*)\x1b[m\x1b[K\xe2\x80\x99 was hidden [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverloaded-virtual=\x07-Woverloaded-virtual=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.434024] (phi_aria) StderrLine: {'line': b'  196 |   AREXPORT virtual void \x1b[01;35m\x1b[KduplicatePacket\x1b[m\x1b[K(ArBasePacket *packet);\n'}
+[11.434084] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.434142] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArLMS2xx.h:30\x1b[m\x1b[K,\n'}
+[11.434198] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/ArSick.h:33\x1b[m\x1b[K,\n'}
+[11.434253] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:87\x1b[m\x1b[K:\n'}
+[11.434309] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArLMS2xxPacket.h:78:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  by \xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArLMS2xxPacket::\x1b[01;32m\x1b[KduplicatePacket\x1b[m\x1b[K(ArLMS2xxPacket*)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.434368] (phi_aria) StderrLine: {'line': b'   78 |   AREXPORT virtual void \x1b[01;36m\x1b[KduplicatePacket\x1b[m\x1b[K(ArLMS2xxPacket *packet);\n'}
+[11.434431] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.443064] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArSick.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArSick::\x1b[01;32m\x1b[KsetMinRange\x1b[m\x1b[K(unsigned int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.443245] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArSick.h:206:33:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KminRange\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.443317] (phi_aria) StderrLine: {'line': b'  206 |   void setMinRange(\x1b[01;35m\x1b[Kunsigned int minRange\x1b[m\x1b[K) { }\n'}
+[11.443402] (phi_aria) StderrLine: {'line': b'      |                    \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[11.450446] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:\x1b[m\x1b[K At global scope:\n'}
+[11.450612] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:109:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArBasePacket::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2)\x1b[m\x1b[K\xe2\x80\x99 was hidden [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverloaded-virtual=\x07-Woverloaded-virtual=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.450749] (phi_aria) StderrLine: {'line': b'  109 |   AREXPORT virtual void \x1b[01;35m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2 val);\n'}
+[11.450818] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.450878] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:91\x1b[m\x1b[K:\n'}
+[11.450937] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArDPPTU.h:84:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  by \xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArDPPTUPacket::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.450998] (phi_aria) StderrLine: {'line': b'   84 |   AREXPORT virtual void \x1b[01;36m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(int val);\n'}
+[11.451056] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.451750] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:109:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArBasePacket::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2)\x1b[m\x1b[K\xe2\x80\x99 was hidden [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverloaded-virtual=\x07-Woverloaded-virtual=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.451871] (phi_aria) StderrLine: {'line': b'  109 |   AREXPORT virtual void \x1b[01;35m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2 val);\n'}
+[11.451939] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.452001] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:92\x1b[m\x1b[K:\n'}
+[11.452060] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArVCC4.h:149:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  by \xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArVCC4Packet::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte4)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.452121] (phi_aria) StderrLine: {'line': b'  149 |   AREXPORT virtual void \x1b[01;36m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte4 val);\n'}
+[11.452180] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.456647] (-) TimerEvent: {}
+[11.483581] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArDeviceConnection.h:31\x1b[m\x1b[K:\n'}
+[11.483917] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:\x1b[m\x1b[K At global scope:\n'}
+[11.484020] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:196:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArBasePacket::\x1b[01;32m\x1b[KduplicatePacket\x1b[m\x1b[K(ArBasePacket*)\x1b[m\x1b[K\xe2\x80\x99 was hidden [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverloaded-virtual=\x07-Woverloaded-virtual=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.484104] (phi_aria) StderrLine: {'line': b'  196 |   AREXPORT virtual void \x1b[01;35m\x1b[KduplicatePacket\x1b[m\x1b[K(ArBasePacket *packet);\n'}
+[11.484168] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.484242] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArLMS2xx.h:30\x1b[m\x1b[K,\n'}
+[11.484299] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/ArSick.h:33\x1b[m\x1b[K,\n'}
+[11.484356] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:87\x1b[m\x1b[K:\n'}
+[11.484412] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArLMS2xxPacket.h:78:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  by \xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArLMS2xxPacket::\x1b[01;32m\x1b[KduplicatePacket\x1b[m\x1b[K(ArLMS2xxPacket*)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.484470] (phi_aria) StderrLine: {'line': b'   78 |   AREXPORT virtual void \x1b[01;36m\x1b[KduplicatePacket\x1b[m\x1b[K(ArLMS2xxPacket *packet);\n'}
+[11.484527] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.497066] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArSick.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArSick::\x1b[01;32m\x1b[KsetMinRange\x1b[m\x1b[K(unsigned int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.497249] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArSick.h:206:33:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KminRange\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.497335] (phi_aria) StderrLine: {'line': b'  206 |   void setMinRange(\x1b[01;35m\x1b[Kunsigned int minRange\x1b[m\x1b[K) { }\n'}
+[11.497396] (phi_aria) StderrLine: {'line': b'      |                    \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[11.503669] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:\x1b[m\x1b[K At global scope:\n'}
+[11.503831] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:109:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArBasePacket::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2)\x1b[m\x1b[K\xe2\x80\x99 was hidden [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverloaded-virtual=\x07-Woverloaded-virtual=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.503905] (phi_aria) StderrLine: {'line': b'  109 |   AREXPORT virtual void \x1b[01;35m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2 val);\n'}
+[11.503967] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.504027] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:91\x1b[m\x1b[K:\n'}
+[11.504085] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArDPPTU.h:84:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  by \xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArDPPTUPacket::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.504144] (phi_aria) StderrLine: {'line': b'   84 |   AREXPORT virtual void \x1b[01;36m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(int val);\n'}
+[11.504201] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.504790] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArBasePacket.h:109:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArBasePacket::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2)\x1b[m\x1b[K\xe2\x80\x99 was hidden [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverloaded-virtual=\x07-Woverloaded-virtual=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.504905] (phi_aria) StderrLine: {'line': b'  109 |   AREXPORT virtual void \x1b[01;35m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte2 val);\n'}
+[11.504971] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.505031] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:92\x1b[m\x1b[K:\n'}
+[11.505089] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArVCC4.h:149:25:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  by \xe2\x80\x98\x1b[01m\x1b[Kvirtual void ArVCC4Packet::\x1b[01;32m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte4)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.505148] (phi_aria) StderrLine: {'line': b'  149 |   AREXPORT virtual void \x1b[01;36m\x1b[Kbyte2ToBuf\x1b[m\x1b[K(ArTypes::Byte4 val);\n'}
+[11.505204] (phi_aria) StderrLine: {'line': b'      |                         \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.525605] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArMapInterface.h:82\x1b[m\x1b[K,\n'}
+[11.525875] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:98\x1b[m\x1b[K:\n'}
+[11.526012] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapObject.h:299:15:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.526133] (phi_aria) StderrLine: {'line': b'  299 |   public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapObject *,\n'}
+[11.526263] (phi_aria) StderrLine: {'line': b'      |               \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.526374] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/13/bits/unique_ptr.h:37\x1b[m\x1b[K,\n'}
+[11.526491] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/13/memory:78\x1b[m\x1b[K,\n'}
+[11.526607] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:169\x1b[m\x1b[K,\n'}
+[11.526761] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:4\x1b[m\x1b[K:\n'}
+[11.526882] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[11.527004] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[11.527131] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.528035] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArMapInterface.h:83\x1b[m\x1b[K:\n'}
+[11.528162] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapUtils.h:370:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.528279] (phi_aria) StderrLine: {'line': b'  370 | struct ArMapFileLineCompare : public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapFileLine &, const ArMapFileLine &, bool>\n'}
+[11.528383] (phi_aria) StderrLine: {'line': b'      |                                           \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.528446] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[11.528509] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[11.528581] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.531902] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapUtils.h:453:48:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.532185] (phi_aria) StderrLine: {'line': b'  453 | struct ArMapFileLineGroupCompare : public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapFileLineGroup &,\n'}
+[11.532259] (phi_aria) StderrLine: {'line': b'      |                                                \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.532319] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[11.532377] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[11.532433] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.532489] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapUtils.h:471:31:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.532556] (phi_aria) StderrLine: {'line': b'  471 |                   public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapFileLineGroup &,\n'}
+[11.532614] (phi_aria) StderrLine: {'line': b'      |                               \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.532675] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[11.532733] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[11.532789] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.535123] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArMapInterface.h:82\x1b[m\x1b[K,\n'}
+[11.535269] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:98\x1b[m\x1b[K:\n'}
+[11.535337] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapObject.h:299:15:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.535401] (phi_aria) StderrLine: {'line': b'  299 |   public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapObject *,\n'}
+[11.535461] (phi_aria) StderrLine: {'line': b'      |               \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.535519] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/13/bits/unique_ptr.h:37\x1b[m\x1b[K,\n'}
+[11.535576] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/13/memory:78\x1b[m\x1b[K,\n'}
+[11.535632] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:169\x1b[m\x1b[K,\n'}
+[11.535688] (phi_aria) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:4\x1b[m\x1b[K:\n'}
+[11.535743] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[11.535800] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[11.535856] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.536728] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/ArMapInterface.h:83\x1b[m\x1b[K:\n'}
+[11.536847] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapUtils.h:370:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.536916] (phi_aria) StderrLine: {'line': b'  370 | struct ArMapFileLineCompare : public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapFileLine &, const ArMapFileLine &, bool>\n'}
+[11.536976] (phi_aria) StderrLine: {'line': b'      |                                           \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.537049] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[11.537106] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[11.537164] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.540132] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapUtils.h:453:48:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.540344] (phi_aria) StderrLine: {'line': b'  453 | struct ArMapFileLineGroupCompare : public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapFileLineGroup &,\n'}
+[11.540508] (phi_aria) StderrLine: {'line': b'      |                                                \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.540643] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[11.540773] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[11.540879] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.541171] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArMapUtils.h:471:31:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Arg1, class _Arg2, class _Result> struct std::binary_function\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.541309] (phi_aria) StderrLine: {'line': b'  471 |                   public std::\x1b[01;35m\x1b[Kbinary_function\x1b[m\x1b[K<const ArMapFileLineGroup &,\n'}
+[11.541376] (phi_aria) StderrLine: {'line': b'      |                               \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.541435] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/stl_function.h:131:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[11.541493] (phi_aria) StderrLine: {'line': b'  131 |     struct \x1b[01;36m\x1b[Kbinary_function\x1b[m\x1b[K\n'}
+[11.541549] (phi_aria) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.556847] (-) TimerEvent: {}
+[11.613005] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:116\x1b[m\x1b[K:\n'}
+[11.613186] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionMovementParameters.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionMovementParameters::\x1b[01;32m\x1b[KenableOnceFromSector\x1b[m\x1b[K(ArMapObject*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.613260] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionMovementParameters.h:53:51:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KmapObject\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.613327] (phi_aria) StderrLine: {'line': b'   53 |   AREXPORT void enableOnceFromSector(\x1b[01;35m\x1b[KArMapObject *mapObject\x1b[m\x1b[K)\n'}
+[11.613389] (phi_aria) StderrLine: {'line': b'      |                                      \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[11.614914] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:116\x1b[m\x1b[K:\n'}
+[11.615038] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionMovementParameters.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArActionMovementParameters::\x1b[01;32m\x1b[KenableOnceFromSector\x1b[m\x1b[K(ArMapObject*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.615113] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArActionMovementParameters.h:53:51:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KmapObject\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.615194] (phi_aria) StderrLine: {'line': b'   53 |   AREXPORT void enableOnceFromSector(\x1b[01;35m\x1b[KArMapObject *mapObject\x1b[m\x1b[K)\n'}
+[11.615271] (phi_aria) StderrLine: {'line': b'      |                                      \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[11.651334] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:128\x1b[m\x1b[K:\n'}
+[11.651507] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArLaserFilter.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void* ArLaserFilter::\x1b[01;32m\x1b[KrunThread\x1b[m\x1b[K(void*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.651575] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArLaserFilter.h:71:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Karg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.651637] (phi_aria) StderrLine: {'line': b'   71 |   AREXPORT virtual void *runThread(\x1b[01;35m\x1b[Kvoid *arg\x1b[m\x1b[K) { return NULL; }\n'}
+[11.651696] (phi_aria) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~~~~~^~~\x1b[m\x1b[K\n'}
+[11.657017] (-) TimerEvent: {}
+[11.660316] (phi_aria) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/Aria/include/Aria.h:128\x1b[m\x1b[K:\n'}
+[11.660474] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArLaserFilter.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void* ArLaserFilter::\x1b[01;32m\x1b[KrunThread\x1b[m\x1b[K(void*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.660543] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ArLaserFilter.h:71:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Karg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.660618] (phi_aria) StderrLine: {'line': b'   71 |   AREXPORT virtual void *runThread(\x1b[01;35m\x1b[Kvoid *arg\x1b[m\x1b[K) { return NULL; }\n'}
+[11.660677] (phi_aria) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~~~~~^~~\x1b[m\x1b[K\n'}
+[11.738321] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KPhiROS2Aria::\x1b[01;32m\x1b[KPhiROS2Aria\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.738485] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:67:10:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KPhiROS2Aria::publish_sonar\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.738554] (phi_aria) StderrLine: {'line': b'   67 |     bool \x1b[01;35m\x1b[Kpublish_sonar\x1b[m\x1b[K;\n'}
+[11.738613] (phi_aria) StderrLine: {'line': b'      |          \x1b[01;35m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.738724] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:63:10:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kbool PhiROS2Aria::publish_aria_lasers\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.738794] (phi_aria) StderrLine: {'line': b'   63 |     bool \x1b[01;35m\x1b[Kpublish_aria_lasers\x1b[m\x1b[K;\n'}
+[11.738863] (phi_aria) StderrLine: {'line': b'      |          \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.738926] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:5:1:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.738988] (phi_aria) StderrLine: {'line': b'    5 | \x1b[01;35m\x1b[KPhiROS2Aria\x1b[m\x1b[K::PhiROS2Aria() : Node("phi_aria_p3dx"),\n'}
+[11.739044] (phi_aria) StderrLine: {'line': b'      | \x1b[01;35m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.739098] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:63:10:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KPhiROS2Aria::publish_aria_lasers\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.739157] (phi_aria) StderrLine: {'line': b'   63 |     bool \x1b[01;35m\x1b[Kpublish_aria_lasers\x1b[m\x1b[K;\n'}
+[11.739211] (phi_aria) StderrLine: {'line': b'      |          \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.739266] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/include/PhiROS2Aria.hpp:50:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[KArFunctorC<PhiROS2Aria> PhiROS2Aria::myPublishCB\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.739323] (phi_aria) StderrLine: {'line': b'   50 |     ArFunctorC<PhiROS2Aria> \x1b[01;35m\x1b[KmyPublishCB\x1b[m\x1b[K;\n'}
+[11.739377] (phi_aria) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.739430] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:5:1:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.739485] (phi_aria) StderrLine: {'line': b'    5 | \x1b[01;35m\x1b[KPhiROS2Aria\x1b[m\x1b[K::PhiROS2Aria() : Node("phi_aria_p3dx"),\n'}
+[11.739538] (phi_aria) StderrLine: {'line': b'      | \x1b[01;35m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.757203] (-) TimerEvent: {}
+[11.762976] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid PhiROS2Aria::\x1b[01;32m\x1b[Kpublish\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.763143] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:249:22:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::__cxx11::list<ArSensorReading*>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.763215] (phi_aria) StderrLine: {'line': b'  249 |         for(int i=0;\x1b[01;35m\x1b[Ki<readings->size()/2\x1b[m\x1b[K;i++)\n'}
+[11.763276] (phi_aria) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.763334] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:251:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kimplicitly-declared \xe2\x80\x98\x1b[01m\x1b[Kconstexpr ArPose& ArPose::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-copy\x07-Wdeprecated-copy\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.763406] (phi_aria) StderrLine: {'line': b'  251 |         poseTaken = (*it)->getPoseTaken(\x1b[01;35m\x1b[K)\x1b[m\x1b[K;\n'}
+[11.763463] (phi_aria) StderrLine: {'line': b'      |                                         \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[11.763519] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/Aria/include/ariaUtil.h:676:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kbecause \xe2\x80\x98\x1b[01m\x1b[KArPose\x1b[m\x1b[K\xe2\x80\x99 has user-provided \xe2\x80\x98\x1b[01m\x1b[KArPose::\x1b[01;32m\x1b[KArPose\x1b[m\x1b[K(const ArPose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.763584] (phi_aria) StderrLine: {'line': b'  676 |   \x1b[01;36m\x1b[KArPose\x1b[m\x1b[K(const ArPose &pose) :\n'}
+[11.763642] (phi_aria) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[11.774919] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:\x1b[m\x1b[K In static member function \xe2\x80\x98\x1b[01m\x1b[Kstatic bool PhiROS2Aria::\x1b[01;32m\x1b[KsimStatPacketHandler\x1b[m\x1b[K(ArRobotPacket*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.775095] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:575:14:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Ka\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.775171] (phi_aria) StderrLine: {'line': b'  575 |         char \x1b[01;35m\x1b[Ka\x1b[m\x1b[K = packet->bufToByte(); // unused byte\n'}
+[11.775250] (phi_aria) StderrLine: {'line': b'      |              \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[11.775309] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:576:14:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kb\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.775398] (phi_aria) StderrLine: {'line': b'  576 |         char \x1b[01;35m\x1b[Kb\x1b[m\x1b[K = packet->bufToByte(); // unused byte\n'}
+[11.775571] (phi_aria) StderrLine: {'line': b'      |              \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[11.775779] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:580:13:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Ksimint\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.776053] (phi_aria) StderrLine: {'line': b'  580 |         int \x1b[01;35m\x1b[Ksimint\x1b[m\x1b[K = packet->bufToUByte2();\n'}
+[11.776135] (phi_aria) StderrLine: {'line': b'      |             \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[11.776211] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:581:13:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Krealint\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.776274] (phi_aria) StderrLine: {'line': b'  581 |         int \x1b[01;35m\x1b[Krealint\x1b[m\x1b[K = packet->bufToUByte2();\n'}
+[11.776335] (phi_aria) StderrLine: {'line': b'      |             \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[11.776392] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:582:13:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Klastint\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.776459] (phi_aria) StderrLine: {'line': b'  582 |         int \x1b[01;35m\x1b[Klastint\x1b[m\x1b[K = packet->bufToUByte2();\n'}
+[11.776516] (phi_aria) StderrLine: {'line': b'      |             \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[11.776572] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:587:13:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[KrealZ\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.776630] (phi_aria) StderrLine: {'line': b'  587 |         int \x1b[01;35m\x1b[KrealZ\x1b[m\x1b[K = packet->bufToByte4();\n'}
+[11.776721] (phi_aria) StderrLine: {'line': b'      |             \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[11.776837] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:620:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kuser\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.776927] (phi_aria) StderrLine: {'line': b'  620 |         unsigned char \x1b[01;35m\x1b[Kuser\x1b[m\x1b[K = packet->bufToUByte(); // unused byte\n'}
+[11.777020] (phi_aria) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[11.777081] (phi_aria) StderrLine: {'line': b'\x1b[01m\x1b[K/home/richa/ros2_ws/src/phi_aria/src/PhiROS2Aria.cpp:622:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kloaded\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.777141] (phi_aria) StderrLine: {'line': b'  622 |         unsigned char \x1b[01;35m\x1b[Kloaded\x1b[m\x1b[K = packet->bufToUByte(); // unused byte\n'}
+[11.777197] (phi_aria) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[11.857386] (-) TimerEvent: {}
+[11.957794] (-) TimerEvent: {}
+[12.058150] (-) TimerEvent: {}
+[12.158548] (-) TimerEvent: {}
+[12.258991] (-) TimerEvent: {}
+[12.359298] (-) TimerEvent: {}
+[12.459671] (-) TimerEvent: {}
+[12.560084] (-) TimerEvent: {}
+[12.660446] (-) TimerEvent: {}
+[12.760860] (-) TimerEvent: {}
+[12.861232] (-) TimerEvent: {}
+[12.963132] (-) TimerEvent: {}
+[13.063605] (-) TimerEvent: {}
+[13.165958] (-) TimerEvent: {}
+[13.267839] (-) TimerEvent: {}
+[13.369749] (-) TimerEvent: {}
+[13.471734] (-) TimerEvent: {}
+[13.573147] (-) TimerEvent: {}
+[13.675169] (-) TimerEvent: {}
+[13.777467] (-) TimerEvent: {}
+[13.879911] (-) TimerEvent: {}
+[13.981997] (-) TimerEvent: {}
+[14.082634] (-) TimerEvent: {}
+[14.184285] (-) TimerEvent: {}
+[14.286843] (-) TimerEvent: {}
+[14.387312] (-) TimerEvent: {}
+[14.487709] (-) TimerEvent: {}
+[14.589323] (-) TimerEvent: {}
+[14.689952] (-) TimerEvent: {}
+[14.791337] (-) TimerEvent: {}
+[14.893349] (-) TimerEvent: {}
+[14.993894] (-) TimerEvent: {}
+[15.096337] (-) TimerEvent: {}
+[15.197794] (-) TimerEvent: {}
+[15.300110] (-) TimerEvent: {}
+[15.402223] (-) TimerEvent: {}
+[15.504906] (-) TimerEvent: {}
+[15.605800] (-) TimerEvent: {}
+[15.706377] (-) TimerEvent: {}
+[15.808363] (-) TimerEvent: {}
+[15.911489] (-) TimerEvent: {}
+[16.013520] (-) TimerEvent: {}
+[16.116686] (-) TimerEvent: {}
+[16.218796] (-) TimerEvent: {}
+[16.322390] (-) TimerEvent: {}
+[16.424686] (-) TimerEvent: {}
+[16.528500] (-) TimerEvent: {}
+[16.630953] (-) TimerEvent: {}
+[16.735166] (-) TimerEvent: {}
+[16.837800] (-) TimerEvent: {}
+[16.942262] (-) TimerEvent: {}
+[17.044135] (-) TimerEvent: {}
+[17.149132] (-) TimerEvent: {}
+[17.249960] (-) TimerEvent: {}
+[17.355142] (-) TimerEvent: {}
+[17.458441] (-) TimerEvent: {}
+[17.564305] (-) TimerEvent: {}
+[17.665090] (-) TimerEvent: {}
+[17.766347] (-) TimerEvent: {}
+[17.869965] (-) TimerEvent: {}
+[17.970574] (-) TimerEvent: {}
+[18.074504] (-) TimerEvent: {}
+[18.181390] (-) TimerEvent: {}
+[18.283201] (-) TimerEvent: {}
+[18.390826] (-) TimerEvent: {}
+[18.499261] (-) TimerEvent: {}
+[18.607757] (-) TimerEvent: {}
+[18.716297] (-) TimerEvent: {}
+[18.824801] (-) TimerEvent: {}
+[18.926956] (-) TimerEvent: {}
+[19.027295] (-) TimerEvent: {}
+[19.127671] (-) TimerEvent: {}
+[19.228038] (-) TimerEvent: {}
+[19.328453] (-) TimerEvent: {}
+[19.428841] (-) TimerEvent: {}
+[19.529218] (-) TimerEvent: {}
+[19.629593] (-) TimerEvent: {}
+[19.729974] (-) TimerEvent: {}
+[19.830347] (-) TimerEvent: {}
+[19.930691] (-) TimerEvent: {}
+[20.031011] (-) TimerEvent: {}
+[20.131323] (-) TimerEvent: {}
+[20.231664] (-) TimerEvent: {}
+[20.332037] (-) TimerEvent: {}
+[20.432466] (-) TimerEvent: {}
+[20.532799] (-) TimerEvent: {}
+[20.633135] (-) TimerEvent: {}
+[20.733500] (-) TimerEvent: {}
+[20.833944] (-) TimerEvent: {}
+[20.934439] (-) TimerEvent: {}
+[21.034776] (-) TimerEvent: {}
+[21.136415] (-) TimerEvent: {}
+[21.238405] (-) TimerEvent: {}
+[21.340467] (-) TimerEvent: {}
+[21.442558] (-) TimerEvent: {}
+[21.544790] (-) TimerEvent: {}
+[21.646498] (-) TimerEvent: {}
+[21.755589] (-) TimerEvent: {}
+[21.855994] (-) TimerEvent: {}
+[21.956799] (-) TimerEvent: {}
+[22.057444] (-) TimerEvent: {}
+[22.158064] (-) TimerEvent: {}
+[22.172751] (phi_aria) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable phi_p3dx\x1b[0m\n'}
+[22.260320] (-) TimerEvent: {}
+[22.360775] (-) TimerEvent: {}
+[22.461272] (-) TimerEvent: {}
+[22.561840] (-) TimerEvent: {}
+[22.664427] (-) TimerEvent: {}
+[22.766086] (-) TimerEvent: {}
+[22.866850] (-) TimerEvent: {}
+[22.967302] (-) TimerEvent: {}
+[23.067753] (-) TimerEvent: {}
+[23.171041] (-) TimerEvent: {}
+[23.271569] (-) TimerEvent: {}
+[23.374793] (-) TimerEvent: {}
+[23.475278] (-) TimerEvent: {}
+[23.561553] (tp1) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable navigation\x1b[0m\n'}
+[23.576638] (-) TimerEvent: {}
+[23.679938] (-) TimerEvent: {}
+[23.780549] (-) TimerEvent: {}
+[23.881109] (-) TimerEvent: {}
+[23.981831] (-) TimerEvent: {}
+[24.083237] (-) TimerEvent: {}
+[24.186623] (-) TimerEvent: {}
+[24.287191] (-) TimerEvent: {}
+[24.389507] (-) TimerEvent: {}
+[24.492006] (-) TimerEvent: {}
+[24.592905] (-) TimerEvent: {}
+[24.695682] (-) TimerEvent: {}
+[24.798629] (-) TimerEvent: {}
+[24.899133] (-) TimerEvent: {}
+[24.951990] (phi_aria) StdoutLine: {'line': b'[100%] Built target phi_p3dx\n'}
+[24.965904] (phi_aria) CommandEnded: {'returncode': 0}
+[24.967061] (phi_aria) JobProgress: {'identifier': 'phi_aria', 'progress': 'install'}
+[24.973248] (tp1) StdoutLine: {'line': b'[100%] Built target navigation\n'}
+[24.977892] (phi_aria) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/richa/ros2_ws/build/phi_aria'], 'cwd': '/home/richa/ros2_ws/build/phi_aria', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'richa', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'GIT_ASKPASS': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.2.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/Aria/lib', 'WT_PROFILE_ID': '{61c54bbd-c2c6-5271-96e7-009a87ff44bf}', 'HOME': '/home/richa', 'TERM_PROGRAM_VERSION': '1.121.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-ada0bc41-7454-4612-93b4-1f7a2bd6d543.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/richa/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'richa', 'NAME': 'Code', 'WSL_INTEROP': '/run/WSL/103250_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/bin/remote-cli:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NGX:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/MinGW/bin:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python312/python.exe:/mnt/c/Users/richa/OneDrive/Área de Trabalho/Code/API/.venv/Scripts/python.exe:/mnt/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python311/Scripts/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python311/:/mnt/c/Users/richa/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python312/python.exe:/mnt/c/Users/richa/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Graphviz/bin:/mnt/c/Users/richa/AppData/Local/nvm:/mnt/c/nvm4w/nodejs:/mnt/c/Users/richa/AppData/Roaming/npm:/snap/bin', 'WT_SESSION': '59314b17-4214-463e-8fcd-73ef445093ce', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-45f538cd7a.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/home/richa/ros2_ws/install/tp1:/home/richa/ros2_ws/install/phi_aria:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/richa/ros2_ws/build/phi_aria', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/richa/ros2_ws/install/tp1:/home/richa/ros2_ws/install/phi_aria:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'WSLENV': 'ELECTRON_RUN_AS_NODE/w:WT_SESSION:WT_PROFILE_ID:'}), 'shell': False}
+[24.986556] (tp1) CommandEnded: {'returncode': 0}
+[24.987762] (phi_aria) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[24.987900] (tp1) JobProgress: {'identifier': 'tp1', 'progress': 'install'}
+[24.988449] (tp1) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/richa/ros2_ws/build/tp1'], 'cwd': '/home/richa/ros2_ws/build/tp1', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'richa', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'GIT_ASKPASS': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.2.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/Aria/lib', 'WT_PROFILE_ID': '{61c54bbd-c2c6-5271-96e7-009a87ff44bf}', 'HOME': '/home/richa', 'TERM_PROGRAM_VERSION': '1.121.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-ada0bc41-7454-4612-93b4-1f7a2bd6d543.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/richa/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'richa', 'NAME': 'Code', 'WSL_INTEROP': '/run/WSL/103250_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/home/richa/.vscode-server/bin/f6cfa2ea2403534de03f069bdf160d06451ed282/bin/remote-cli:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NGX:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/MinGW/bin:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python312/python.exe:/mnt/c/Users/richa/OneDrive/Área de Trabalho/Code/API/.venv/Scripts/python.exe:/mnt/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python311/Scripts/:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python311/:/mnt/c/Users/richa/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/richa/AppData/Local/Programs/Python/Python312/python.exe:/mnt/c/Users/richa/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Graphviz/bin:/mnt/c/Users/richa/AppData/Local/nvm:/mnt/c/nvm4w/nodejs:/mnt/c/Users/richa/AppData/Roaming/npm:/snap/bin', 'WT_SESSION': '59314b17-4214-463e-8fcd-73ef445093ce', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-45f538cd7a.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/home/richa/ros2_ws/install/tp1:/home/richa/ros2_ws/install/phi_aria:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/richa/ros2_ws/build/tp1', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/richa/ros2_ws/install/tp1:/home/richa/ros2_ws/install/phi_aria:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'WSLENV': 'ELECTRON_RUN_AS_NODE/w:WT_SESSION:WT_PROFILE_ID:'}), 'shell': False}
+[24.989458] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/lib/phi_aria/phi_p3dx\n'}
+[24.995285] (phi_aria) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/richa/ros2_ws/install/phi_aria/lib/phi_aria/phi_p3dx" to ""\n'}
+[24.995447] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description\n'}
+[24.996261] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/urdf\n'}
+[24.996557] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/urdf/pioneer3dx_wheel.xacro\n'}
+[24.996937] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/urdf/common.xacro\n'}
+[24.997173] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/urdf/p3dx.urdf.xacro\n'}
+[24.997458] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/urdf/sick_lms100.urdf.xacro\n'}
+[24.997589] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/sensors_meshes\n'}
+[24.997898] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/sensors_meshes/sick_lms100.stl\n'}
+[24.998504] (tp1) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[24.999319] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/lib/tp1/navigation\n'}
+[24.999597] (-) TimerEvent: {}
+[24.999882] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes\n'}
+[25.000188] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes/back_rim.stl\n'}
+[25.003584] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes/front_rim.stl\n'}
+[25.006764] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes/caster_hubcap.stl\n'}
+[25.007371] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes/left_hubcap.stl\n'}
+[25.007561] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes/caster_wheel.stl\n'}
+[25.007952] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes/right_hubcap.stl\n'}
+[25.008692] (tp1) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/richa/ros2_ws/install/tp1/lib/tp1/navigation" to ""\n'}
+[25.008861] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes/left_wheel.stl\n'}
+[25.009166] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/launch\n'}
+[25.009451] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes/back_sonar.stl\n'}
+[25.009684] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes/chassis.stl\n'}
+[25.009875] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes/right_wheel.stl\n'}
+[25.010061] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes/front_sonar.stl\n'}
+[25.010615] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/launch/p3dx-rosaria.launch.py\n'}
+[25.010872] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes/top.stl\n'}
+[25.011136] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/config\n'}
+[25.011375] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/config/p3dx.rviz\n'}
+[25.011491] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/description/p3dx_meshes/caster_swivel.stl\n'}
+[25.011762] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/ament_index/resource_index/package_run_dependencies/phi_aria\n'}
+[25.012222] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/ament_index/resource_index/parent_prefix_path/phi_aria\n'}
+[25.012520] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/ament_index/resource_index/package_run_dependencies/tp1\n'}
+[25.012997] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/environment/ament_prefix_path.sh\n'}
+[25.013301] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/environment/ament_prefix_path.dsv\n'}
+[25.013553] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/environment/path.sh\n'}
+[25.013868] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/environment/path.dsv\n'}
+[25.014175] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/local_setup.bash\n'}
+[25.014409] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/local_setup.sh\n'}
+[25.014784] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/ament_index/resource_index/parent_prefix_path/tp1\n'}
+[25.015267] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/local_setup.zsh\n'}
+[25.015514] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.sh\n'}
+[25.015930] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/environment/ament_prefix_path.dsv\n'}
+[25.016022] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/environment/path.sh\n'}
+[25.016088] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/environment/path.dsv\n'}
+[25.016159] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/local_setup.bash\n'}
+[25.016242] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/local_setup.sh\n'}
+[25.016420] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/local_setup.zsh\n'}
+[25.016744] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/local_setup.dsv\n'}
+[25.017076] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/package.dsv\n'}
+[25.017425] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/local_setup.dsv\n'}
+[25.017623] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/package.dsv\n'}
+[25.017860] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/ament_index/resource_index/packages/phi_aria\n'}
+[25.018167] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/cmake/phi_ariaConfig.cmake\n'}
+[25.018369] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/cmake/phi_ariaConfig-version.cmake\n'}
+[25.018595] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/ament_index/resource_index/packages/tp1\n'}
+[25.018873] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/cmake/tp1Config.cmake\n'}
+[25.019154] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/cmake/tp1Config-version.cmake\n'}
+[25.019352] (phi_aria) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/phi_aria/share/phi_aria/package.xml\n'}
+[25.019471] (tp1) StdoutLine: {'line': b'-- Installing: /home/richa/ros2_ws/install/tp1/share/tp1/package.xml\n'}
+[25.020747] (phi_aria) CommandEnded: {'returncode': 0}
+[25.040702] (phi_aria) JobEnded: {'identifier': 'phi_aria', 'rc': 0}
+[25.042532] (tp1) CommandEnded: {'returncode': 0}
+[25.058613] (tp1) JobEnded: {'identifier': 'tp1', 'rc': 0}
+[25.060064] (-) EventReactorShutdown: {}

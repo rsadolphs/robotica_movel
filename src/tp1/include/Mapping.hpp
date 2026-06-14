@@ -28,6 +28,10 @@ struct History{
     std::vector<float> laserReadings;
 };
 
+
+std::vector<Cell> getVisitedCells();
+std::vector<Cell> getFrontiers();
+
 void saveHistoryToFile(const std::string& filename);
 
 #endif // MAPPING_HPP

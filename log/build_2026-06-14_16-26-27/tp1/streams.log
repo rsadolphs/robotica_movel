@@ -1,0 +1,23 @@
+[0.022s] Invoking command in '/home/richa/ros2_ws/build/tp1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/richa/ros2_ws/build/tp1 -- -j12 -l12
+[0.118s] [ 14%] [32mBuilding CXX object CMakeFiles/navigation.dir/src/Mapping.cpp.o[0m
+[2.740s] [01m[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:26:8:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct CellKey[m[K’
+[2.741s]    26 | struct [01;31m[KCellKey[m[K {
+[2.741s]       |        [01;31m[K^~~~~~~[m[K
+[2.741s] In file included from [01m[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:1[m[K:
+[2.741s] [01m[K/home/richa/ros2_ws/src/tp1/include/Mapping.hpp:33:8:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct CellKey[m[K’
+[2.741s]    33 | struct [01;36m[KCellKey[m[K {
+[2.741s]       |        [01;36m[K^~~~~~~[m[K
+[2.741s] [01m[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:35:8:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct CellKeyHash[m[K’
+[2.741s]    35 | struct [01;31m[KCellKeyHash[m[K {
+[2.741s]       |        [01;31m[K^~~~~~~~~~~[m[K
+[2.741s] [01m[K/home/richa/ros2_ws/src/tp1/include/Mapping.hpp:42:8:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct CellKeyHash[m[K’
+[2.742s]    42 | struct [01;36m[KCellKeyHash[m[K {
+[2.742s]       |        [01;36m[K^~~~~~~~~~~[m[K
+[2.772s] [01m[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:[m[K In function ‘[01m[Kvoid*[01;32m[K mappingThreadFunction[m[K(void*)[m[K’:
+[2.772s] [01m[K/home/richa/ros2_ws/src/tp1/src/Mapping.cpp:383:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Karg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.772s]   383 | void* mappingThreadFunction([01;35m[Kvoid* arg[m[K)
+[2.772s]       |                             [01;35m[K~~~~~~^~~[m[K
+[3.683s] gmake[2]: *** [CMakeFiles/navigation.dir/build.make:132: CMakeFiles/navigation.dir/src/Mapping.cpp.o] Error 1
+[3.684s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Error 2
+[3.684s] gmake: *** [Makefile:146: all] Error 2
+[3.688s] Invoked command in '/home/richa/ros2_ws/build/tp1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/richa/ros2_ws/build/tp1 -- -j12 -l12

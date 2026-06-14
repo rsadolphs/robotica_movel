@@ -1,0 +1,10 @@
+[ 14%] [32m[1mLinking CXX executable navigation[0m
+/usr/bin/ld: CMakeFiles/navigation.dir/src/Rendering.cpp.o: warning: relocation against `visitedCells' in read-only section `.text'
+/usr/bin/ld: CMakeFiles/navigation.dir/src/Rendering.cpp.o: in function `renderingThreadFunction(void*)':
+Rendering.cpp:(.text+0x4dd): undefined reference to `visitedCells'
+/usr/bin/ld: Rendering.cpp:(.text+0x6bd): undefined reference to `visitedCells'
+/usr/bin/ld: warning: creating DT_TEXTREL in a PIE
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/navigation.dir/build.make:306: navigation] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/navigation.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
