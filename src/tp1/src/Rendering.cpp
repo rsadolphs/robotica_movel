@@ -11,8 +11,10 @@
 #include <mutex>
 #include <unistd.h>
 #include <set>
+#include <atomic>
 
 extern Position robotPosition;
+extern std::atomic<char> pressedKey;
 
 
 GridInfo calculateGridSize(const std::vector<Cell>& visitedCells) {
@@ -120,27 +122,52 @@ void drawChar(float x, float y, float pixelSize, char c, float r, float g, float
         {0b111,0b101,0b111,0b001,0b111}, //9
     };
 
-    static const unsigned char parenL[5] = {0b010,0b100,0b100,0b100,0b010};
-    static const unsigned char parenR[5] = {0b010,0b001,0b001,0b001,0b010};
-    static const unsigned char dot[5]    = {0b000,0b000,0b000,0b000,0b010};
-    static const unsigned char comma[5]  = {0b000,0b000,0b000,0b010,0b100};
+    static const unsigned char letters[][5] = {
+        {0b010,0b101,0b111,0b101,0b101}, // A
+        {0b110,0b101,0b110,0b101,0b110}, // B (not used)
+        {0b111,0b100,0b100,0b100,0b111}, // C
+        {0b110,0b101,0b101,0b101,0b110}, // D (not used)
+        {0b111,0b100,0b110,0b100,0b111}, // E
+        {0b111,0b100,0b110,0b100,0b100}, // F (not used)
+        {0b111,0b100,0b101,0b101,0b111}, // G (not used)
+        {0b101,0b101,0b111,0b101,0b101}, // H (not used)
+        {0b111,0b010,0b010,0b010,0b111}, // I
+        {0b001,0b001,0b001,0b101,0b010}, // J (not used)
+        {0b101,0b101,0b110,0b101,0b101}, // K (not used)
+        {0b100,0b100,0b100,0b100,0b111}, // L
+        {0b101,0b111,0b111,0b101,0b101}, // M
+        {0b101,0b111,0b111,0b111,0b101}, // N
+        {0b111,0b101,0b101,0b101,0b111}, // O
+        {0b110,0b101,0b110,0b100,0b100}, // P
+        {0b111,0b101,0b101,0b111,0b001}, // Q (not used)
+        {0b110,0b101,0b110,0b101,0b101}, // R
+        {0b111,0b100,0b111,0b001,0b111}, // S
+        {0b111,0b010,0b010,0b010,0b010}, // T
+        {0b101,0b101,0b101,0b101,0b111}, // U (not used)
+        {0b101,0b101,0b101,0b101,0b010}, // V (not used)
+        {0b101,0b101,0b111,0b111,0b101}, // W (not used)
+        {0b101,0b101,0b010,0b101,0b101}, // X
+        {0b101,0b101,0b010,0b010,0b010}, // Y (not used)
+        {0b111,0b001,0b010,0b100,0b111}, // Z (not used)
+    };
+
+    static const unsigned char colon[5] = {0b000,0b010,0b000,0b010,0b000};
 
     const unsigned char* glyph = nullptr;
-    unsigned char local[5];
+    unsigned char local[5] = {0,0,0,0,0};
 
     if (c >= '0' && c <= '9') {
         glyph = font3x5[c - '0'];
-    } else if (c == '(') {
-        glyph = parenL;
-    } else if (c == ')') {
-        glyph = parenR;
-    } else if (c == '.') {
-        glyph = dot;
-    } else if (c == ',') {
-        glyph = comma;
+    } else if (c >= 'A' && c <= 'Z') {
+        int idx = c - 'A';
+        if (idx >= 0 && idx < static_cast<int>(sizeof(letters) / 5)) {
+            glyph = letters[idx];
+        }
+    } else if (c == ':') {
+        glyph = colon;
+    } else if (c == ' ') {
+        glyph = local;
     } else {
-        // unknown -> space
-        for (int i=0;i<5;i++) local[i]=0;
         glyph = local;
     }
 
@@ -172,6 +199,130 @@ void drawString(float x, float y, float pixelSize, const std::string &s, float r
         drawChar(cx, y, pixelSize, c, r, g, b);
         cx += pixelSize * 4.0f; // advance (3 pixels + 1 spacing)
     }
+}
+
+struct Button {
+    float x, y, width, height;
+    std::string label;
+    char actionKey;
+    bool active;
+
+    bool contains(float px, float py) const {
+        return px >= x && px <= x + width && py >= y && py <= y + height;
+    }
+};
+
+static bool explorationTimerActive = false;
+static double explorationTimerStart = 0.0;
+static double explorationTimerLast = 0.0;
+
+static Button makeControlButton(int width, int height, float xFactor, char actionKey, bool active) {
+    float buttonSize = height * 0.65f;
+    float buttonY = (height - buttonSize) * 0.5f;
+    float buttonX = width * xFactor;
+    return { buttonX, buttonY, buttonSize, buttonSize, "", actionKey, active };
+}
+
+static void drawButton(const Button &button) {
+    bool isToggle = (button.actionKey == 'T');
+    bool isStart = false;
+    if (isToggle) {
+        isStart = !explorationTimerActive; // show play when not active
+    } else {
+        isStart = (button.actionKey == '2');
+    }
+
+    float baseR, baseG, baseB;
+    if (isToggle) {
+        // toggle: green for play, red for pause
+        if (isStart) { baseR = 0.05f; baseG = 0.55f; baseB = 0.15f; }
+        else { baseR = 0.55f; baseG = 0.05f; baseB = 0.05f; }
+    } else {
+        baseR = isStart ? 0.05f : 0.4f;
+        baseG = isStart ? 0.55f : 0.05f;
+        baseB = isStart ? 0.15f : 0.15f;
+    }
+
+    float highlight = button.active ? 0.18f : 0.0f;
+    glColor3f(baseR + highlight, baseG + highlight, baseB + highlight);
+    glBegin(GL_QUADS);
+        glVertex2f(button.x, button.y);
+        glVertex2f(button.x + button.width, button.y);
+        glVertex2f(button.x + button.width, button.y + button.height);
+        glVertex2f(button.x, button.y + button.height);
+    glEnd();
+
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glLineWidth(2.0f);
+    glBegin(GL_LINE_LOOP);
+        glVertex2f(button.x, button.y);
+        glVertex2f(button.x + button.width, button.y);
+        glVertex2f(button.x + button.width, button.y + button.height);
+        glVertex2f(button.x, button.y + button.height);
+    glEnd();
+    glLineWidth(1.0f);
+
+    float cx = button.x + button.width * 0.5f;
+    float cy = button.y + button.height * 0.5f;
+    if (isStart) {
+        float half = button.width * 0.18f;
+        glBegin(GL_TRIANGLES);
+            glVertex2f(cx - half * 0.8f, cy - half * 1.2f);
+            glVertex2f(cx - half * 0.8f, cy + half * 1.2f);
+            glVertex2f(cx + half * 1.2f, cy);
+        glEnd();
+    } else {
+        float barW = button.width * 0.14f;
+        float barH = button.height * 0.55f;
+        float gap = button.width * 0.10f;
+        float leftX = cx - gap * 0.5f - barW;
+        float rightX = cx + gap * 0.5f;
+        float topY = cy + barH * 0.5f;
+        float botY = cy - barH * 0.5f;
+        glBegin(GL_QUADS);
+            glVertex2f(leftX, botY);
+            glVertex2f(leftX + barW, botY);
+            glVertex2f(leftX + barW, topY);
+            glVertex2f(leftX, topY);
+            glVertex2f(rightX, botY);
+            glVertex2f(rightX + barW, botY);
+            glVertex2f(rightX + barW, topY);
+            glVertex2f(rightX, topY);
+        glEnd();
+    }
+}
+
+static void drawControlPanel(int width, int height) {
+    glColor3f(0.10f, 0.10f, 0.14f);
+    glBegin(GL_QUADS);
+        glVertex2f(0.0f, 0.0f);
+        glVertex2f(width, 0.0f);
+        glVertex2f(width, height);
+        glVertex2f(0.0f, height);
+    glEnd();
+
+    // single toggle button (play / pause)
+    Button toggleButton = makeControlButton(width, height, 0.08f, 'T', explorationTimerActive);
+    drawButton(toggleButton);
+
+    double elapsed = explorationTimerActive ? (glfwGetTime() - explorationTimerStart) : explorationTimerLast;
+    int totalSeconds = static_cast<int>(elapsed + 0.5);
+    std::string timerText = (totalSeconds < 10 ? "0" : "") + std::to_string(totalSeconds);
+
+    float fontSize = 12.0f;
+    float textWidth = timerText.size() * fontSize * 4.0f;
+    float textX = width - textWidth - width * 0.08f;
+    float textY = height * 0.60f;
+
+    glColor3f(0.16f, 0.16f, 0.24f);
+    glBegin(GL_QUADS);
+        glVertex2f(textX - 10.0f, textY - 6.0f);
+        glVertex2f(textX + textWidth + 10.0f, textY - 6.0f);
+        glVertex2f(textX + textWidth + 10.0f, textY + 30.0f);
+        glVertex2f(textX - 10.0f, textY + 30.0f);
+    glEnd();
+
+    drawString(textX, textY + 20.0f, fontSize, timerText, 1.0f, 1.0f, 1.0f);
 }
 
 static void drawPotentialField()
@@ -219,6 +370,51 @@ static void drawPotentialField()
         glVertex2f(fieldState.maxX + 1.0f, y);
     }
     glEnd();
+}
+
+static void updateExplorationTimer(bool active) {
+    if (active && !explorationTimerActive) {
+        // starting or resuming: keep previously accumulated time
+        explorationTimerActive = true;
+        explorationTimerStart = glfwGetTime() - explorationTimerLast;
+    }
+    if (!active && explorationTimerActive) {
+        // pausing: store accumulated elapsed time
+        explorationTimerActive = false;
+        explorationTimerLast = glfwGetTime() - explorationTimerStart;
+    }
+}
+
+static void setExplorationActive(bool active) {
+    if (active != explorationTimerActive) {
+        updateExplorationTimer(active);
+    }
+}
+
+static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
+    (void)mods;
+    if (button != GLFW_MOUSE_BUTTON_LEFT || action != GLFW_PRESS) return;
+
+    int width, height;
+    glfwGetWindowSize(window, &width, &height);
+    double xPos, yPos;
+    glfwGetCursorPos(window, &xPos, &yPos);
+    float mx = static_cast<float>(xPos);
+    float my = static_cast<float>(height - yPos);
+
+    float controlHeight = std::max(80, height / 8);
+    Button toggleButton = makeControlButton(width, controlHeight, 0.08f, 'T', false);
+    if (toggleButton.contains(mx, my)) {
+        if (!explorationTimerActive) {
+            // start exploration
+            pressedKey = '2';
+            setExplorationActive(true);
+        } else {
+            // stop exploration (same as space)
+            pressedKey = ' ';
+            setExplorationActive(false);
+        }
+    }
 }
 
 struct RadarCoord {
@@ -433,7 +629,7 @@ void* renderingThreadFunction(void* arg) {
     (void)arg;
     if (!glfwInit()) return NULL;
 
-    int width = 600, height = 600;
+    int width = 1200, height = 900;
 
     GLFWwindow* window = glfwCreateWindow(width, height, "Mapping", NULL, NULL);
     if (!window) {
@@ -441,25 +637,8 @@ void* renderingThreadFunction(void* arg) {
         return NULL;
     }
 
-    // Criar segunda janela (radar)
-    int radarWidth = 500, radarHeight = 500;
-    GLFWwindow* radarWindow = glfwCreateWindow(radarWidth, radarHeight, "Radar / Mini-Map", NULL, window);
-    if (!radarWindow) {
-        glfwDestroyWindow(window);
-        glfwTerminate();
-        return NULL;
-    }
-
-    int fieldWidth = 500, fieldHeight = 500;
-    GLFWwindow* fieldWindow = glfwCreateWindow(fieldWidth, fieldHeight, "Potential Field", NULL, window);
-    if (!fieldWindow) {
-        glfwDestroyWindow(radarWindow);
-        glfwDestroyWindow(window);
-        glfwTerminate();
-        return NULL;
-    }
-
     glfwMakeContextCurrent(window);
+    glfwSetMouseButtonCallback(window, mouseButtonCallback);
 
     glMatrixMode(GL_MODELVIEW);
     glClearColor(1, 1, 1, 1);
@@ -469,7 +648,7 @@ void* renderingThreadFunction(void* arg) {
 
     float radarRadius = 10.0f;  // Raio de 10 metros no radar
 
-    while (!glfwWindowShouldClose(window) && !glfwWindowShouldClose(radarWindow) && !glfwWindowShouldClose(fieldWindow)) {
+    while (!glfwWindowShouldClose(window)) {
 
        std::vector<Cell> cells = getVisitedCells();
 
@@ -495,6 +674,26 @@ void* renderingThreadFunction(void* arg) {
             firstFrame = false;
         }
 
+        int fbWidth, fbHeight;
+        glfwGetFramebufferSize(window, &fbWidth, &fbHeight);
+        int controlHeight = std::max(80, fbHeight / 8);
+        int mapHeight = fbHeight - controlHeight;
+        int rightWidth = fbWidth / 3;
+        int leftWidth = fbWidth - rightWidth;
+        int halfHeight = mapHeight / 2;
+
+        glEnable(GL_SCISSOR_TEST);
+
+        // Map panel (left)
+        glViewport(0, controlHeight, leftWidth, mapHeight);
+        glScissor(0, controlHeight, leftWidth, mapHeight);
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        glOrtho(newGrid.inicio, newGrid.fim,
+                newGrid.inicio, newGrid.fim,
+                -1.0, 1.0);
+        glMatrixMode(GL_MODELVIEW);
+
         glClearColor(0.7f, 0.7f, 0.7f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
@@ -510,73 +709,74 @@ void* renderingThreadFunction(void* arg) {
         }
         glEnd();
 
-        // desenha células visitadas
         for (const auto& cell : cells)
         {
             drawCell(cell);
         }
 
-        // Desenha o robô no mapa principal (triângulo apontando na yaw)
-        // Converte pose do robô (metros) para coordenadas de célula
-        // cellSizeCentimeters em Mapping.cpp é 10
+        // desenha rastro do robô
+        std::vector<Position> path = getRobotPath();
+        if (path.size() > 1)
+        {
+            glColor3f(1.0f, 0.0f, 0.0f);
+            glLineWidth(1.0f);
+            glBegin(GL_LINE_STRIP);
+            for (const auto& pose : path)
+            {
+                float px = pose.x * 100.0f / cellSizeCentimeters;
+                float py = pose.y * 100.0f / cellSizeCentimeters;
+                glVertex2f(px, py);
+            }
+            glEnd();
+            glLineWidth(1.0f);
+        }
+
         float robotCellX = robotPosition.x * 100.0f / 10.0f;
         float robotCellY = robotPosition.y * 100.0f / 10.0f;
 
         float theta = robotPosition.theta;
-
-        // Vetor frontal: 0 rad aponta para +X (direita)
         float fx = std::cos(theta);
         float fy = std::sin(theta);
-
-        // Perpendicular (to the right)
         float px = -fy;
         float py = fx;
 
-        // Triplica o tamanho solicitado
-        float size = 1.8f; // comprimento do triângulo
+        float size = 1.8f;
         float halfBack = size * 0.5f;
         float halfWidth = size * 0.35f;
 
         float tipX = robotCellX + fx * size;
         float tipY = robotCellY + fy * size;
-
         float baseCenterX = robotCellX - fx * halfBack;
         float baseCenterY = robotCellY - fy * halfBack;
-
         float base1X = baseCenterX + px * halfWidth;
         float base1Y = baseCenterY + py * halfWidth;
-
         float base2X = baseCenterX - px * halfWidth;
         float base2Y = baseCenterY - py * halfWidth;
 
-        glColor3f(0.0f, 0.4f, 0.0f); // verde escuro
+        glColor3f(0.0f, 0.4f, 0.0f);
         glBegin(GL_TRIANGLES);
             glVertex2f(tipX, tipY);
             glVertex2f(base1X, base1Y);
             glVertex2f(base2X, base2Y);
         glEnd();
 
-        glfwSwapBuffers(window);
-
-        // ====== RENDERIZAR JANELA RADAR ======
-        glfwMakeContextCurrent(radarWindow);
-        
+        // Radar panel (top-right)
+        glViewport(leftWidth, controlHeight + halfHeight, rightWidth, halfHeight);
+        glScissor(leftWidth, controlHeight + halfHeight, rightWidth, halfHeight);
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         glOrtho(-15.0f, 15.0f, -15.0f, 15.0f, -1.0f, 1.0f);
         glMatrixMode(GL_MODELVIEW);
 
         glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
 
         drawRadar(0.0f, 0.0f, radarRadius);
 
-        glfwSwapBuffers(radarWindow);
-
-        // ====== RENDERIZAR JANELA DO CAMPO POTENCIAL ======
-        glfwMakeContextCurrent(fieldWindow);
-
+        // Potential field panel (middle-right)
+        glViewport(leftWidth, controlHeight, rightWidth, halfHeight);
+        glScissor(leftWidth, controlHeight, rightWidth, halfHeight);
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         glOrtho(newGrid.inicio, newGrid.fim,
@@ -585,13 +785,27 @@ void* renderingThreadFunction(void* arg) {
         glMatrixMode(GL_MODELVIEW);
 
         glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
 
         drawPotentialField();
 
-        glfwSwapBuffers(fieldWindow);
+        // Control strip (bottom)
+        glViewport(0, 0, fbWidth, controlHeight);
+        glScissor(0, 0, fbWidth, controlHeight);
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        glOrtho(0.0f, static_cast<float>(fbWidth), 0.0f, static_cast<float>(controlHeight), -1.0f, 1.0f);
+        glMatrixMode(GL_MODELVIEW);
 
+        glClearColor(0.08f, 0.08f, 0.10f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+        glLoadIdentity();
+
+        drawControlPanel(fbWidth, controlHeight);
+        glDisable(GL_SCISSOR_TEST);
+        
+        glfwSwapBuffers(window);
         glfwPollEvents();
         
         usleep(16666);  // ~60 Hz
@@ -599,8 +813,6 @@ void* renderingThreadFunction(void* arg) {
     
     saveHistoryToFile("mapping_history.txt");
     glfwDestroyWindow(window);
-    glfwDestroyWindow(radarWindow);
-    glfwDestroyWindow(fieldWindow);
     glfwTerminate();
     return NULL;
 }

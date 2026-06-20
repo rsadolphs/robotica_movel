@@ -38,6 +38,27 @@ void Action::exploreEnvironment(
     robotPosition = {poseData[0], poseData[1], poseData[2]};
     lasers = lasersData;
 
+    std::vector<Cell> visitedCells = getVisitedCells();
+    std::vector<Cell> frontiers = getFrontiers();
+
+    if (!frontierSeen && !frontiers.empty())
+    {
+        frontierSeen = true;
+    }
+
+    if (frontiers.empty())
+    {
+        if (explorationStarted && frontierSeen)
+        {
+            explorationEnded = true;
+            explorationStarted = false;
+        }
+
+        linVel = 0.0f;
+        angVel = 0.0f;
+        return;
+    }
+
     Potential::updateRobotPose(robotPosition.x, robotPosition.y, robotPosition.theta);
     Potential::TargetYaw target = Potential::getLatestTargetYaw();
 
@@ -138,11 +159,46 @@ float Action::getAngularVelocity()
     return angVel;
 }
 
+bool Action::explorationEndedByNoFrontiers() const
+{
+    return explorationEnded;
+}
+
+void Action::clearExplorationEnded()
+{
+    explorationEnded = false;
+}
+
 MotionControl Action::handlePressedKey(char key)
 {
     MotionControl mc;
     mc.mode=MANUAL;
     mc.direction=STOP;
+
+    if (key != lastKey)
+    {
+        if (key == '2')
+        {
+            explorationStarted = true;
+            explorationEnded = false;
+            frontierSeen = false;
+        }
+        else if (key == '1')
+        {
+            explorationStarted = false;
+            explorationEnded = false;
+            frontierSeen = false;
+        }
+        else if (key == 'w' || key == 'W' || key == 's' || key == 'S' ||
+                 key == 'a' || key == 'A' || key == 'd' || key == 'D' ||
+                 key == ' ')
+        {
+            explorationStarted = false;
+            explorationEnded = false;
+            frontierSeen = false;
+        }
+        lastKey = key;
+    }
 
     if(key=='1'){
         mc.mode=MANUAL;

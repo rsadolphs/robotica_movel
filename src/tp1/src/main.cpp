@@ -1,5 +1,6 @@
 #include <iostream>
 #include <pthread.h>
+#include <atomic>
 
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/twist.hpp>
@@ -14,7 +15,7 @@
 
 using std::placeholders::_1;
 using namespace std::chrono_literals;
-char pressedKey;
+std::atomic<char> pressedKey;
 
 class NavigationNode : public rclcpp::Node
 {
@@ -56,6 +57,11 @@ private:
     else if (mc.mode == EXPLORE)
     {
       action_.exploreEnvironment(lasers, sonars, pose);
+      if (action_.explorationEndedByNoFrontiers())
+      {
+        pressedKey = 's';
+        action_.clearExplorationEnded();
+      }
     }
 
     action_.correctVelocitiesIfInvalid();

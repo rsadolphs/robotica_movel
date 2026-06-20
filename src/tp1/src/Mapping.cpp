@@ -347,6 +347,21 @@ void saveHistoryToFile(
     }
 }
 
+std::vector<Position> getRobotPath()
+{
+    std::lock_guard<std::mutex> lock(visitedCellsMutex);
+
+    std::vector<Position> path;
+    path.reserve(history.size());
+
+    for (const auto& h : history)
+    {
+        path.push_back(h.pose);
+    }
+
+    return path;
+}
+
 // ======================================================
 // IDENTIFICAR CELULAS VISITADAS
 // ======================================================

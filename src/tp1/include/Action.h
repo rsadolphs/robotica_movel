@@ -30,6 +30,8 @@ public:
     );
 
     MotionControl handlePressedKey(char key);
+    bool explorationEndedByNoFrontiers() const;
+    void clearExplorationEnded();
 
     void correctVelocitiesIfInvalid();
     float getLinearVelocity();
@@ -40,6 +42,10 @@ private:
     float angVel;
     float yawIntegral;
     float yawPreviousError;
+    bool explorationStarted = false;
+    bool frontierSeen = false;
+    bool explorationEnded = false;
+    char lastKey = 'x';
 };
 
 #endif // ACTION_H

@@ -109,7 +109,7 @@ static FieldState computeFieldState(
     }
 
     std::vector<float> nextValues = state.values;
-    const int maxIterations = 100;
+    const int maxIterations = 200;
     const float tolerance = 1e-4f;
 
     for (int iter = 0; iter < maxIterations; ++iter)

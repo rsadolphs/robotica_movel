@@ -32,8 +32,9 @@ struct History{
 
 std::vector<Cell> getVisitedCells();
 std::vector<Cell> getFrontiers();
+std::vector<Position> getRobotPath();
 
-void saveHistoryToFile(const std::string& filename);
+void saveHistoryToFile(const std::string&filename);
 
 // tamanho da célula em centímetros (definido em Mapping.cpp)
 extern int cellSizeCentimeters;

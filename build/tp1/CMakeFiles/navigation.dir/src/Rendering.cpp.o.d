@@ -214,4 +214,6 @@ CMakeFiles/navigation.dir/src/Rendering.cpp.o: \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/stl_set.h \
  /usr/include/c++/13/bits/stl_multiset.h \
- /usr/include/c++/13/bits/erase_if.h
+ /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/atomic \
+ /usr/include/c++/13/bits/atomic_base.h \
+ /usr/include/c++/13/bits/atomic_lockfree_defines.h
