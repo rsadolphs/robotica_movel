@@ -35,4 +35,7 @@ std::vector<Cell> getFrontiers();
 
 void saveHistoryToFile(const std::string& filename);
 
+// tamanho da célula em centímetros (definido em Mapping.cpp)
+extern int cellSizeCentimeters;
+
 #endif // MAPPING_HPP

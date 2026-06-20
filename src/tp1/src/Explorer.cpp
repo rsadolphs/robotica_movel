@@ -221,6 +221,50 @@ detectFrontierClusters()
     return clusters;
 }
 
+void logClusterInfo(std::vector<FrontierCluster> clusters){
+    std::cout
+    << "\nClusters encontrados: "
+    << clusters.size()
+    << "\n";
+
+    for(size_t i = 0; i < clusters.size(); ++i)
+    {
+        const auto& cluster =
+            clusters[i];
+
+        std::cout
+            << "Cluster "
+            << i
+            << "\n";
+
+        std::cout
+            << "  Tamanho: "
+            << cluster.cells.size()
+            << "\n";
+
+        std::cout
+            << "  Centroide geometrico: ("
+            << cluster.centroidX
+            << ", "
+            << cluster.centroidY
+            << ")\n";
+
+        std::cout
+            << "  Centroide livre: ("
+            << cluster.freeCentroid.x
+            << ", "
+            << cluster.freeCentroid.y
+            << ")\n";
+
+        std::cout
+            << "  Fronteira central: ("
+            << cluster.frontierCenter.x
+            << ", "
+            << cluster.frontierCenter.y
+            << ")\n";
+    }
+}
+
 void* explorerThreadFunction(void* arg)
 {
     while(rclcpp::ok())
@@ -228,7 +272,7 @@ void* explorerThreadFunction(void* arg)
         auto clusters =
             detectFrontierClusters();
 
-        std::cout << "\nClusters encontrados: " << clusters.size() << std::endl;
+        logClusterInfo(clusters);
 
         // escolher melhor cluster
 

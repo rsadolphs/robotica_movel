@@ -18,4 +18,11 @@ struct Color {
     float b;
 };
 
+struct RadarPoint {
+    float x;
+    float y;
+    Color color;
+    float radius;  // raio do ponto (ex: para markers)
+};
+
 #endif // RENDERING_HPP
