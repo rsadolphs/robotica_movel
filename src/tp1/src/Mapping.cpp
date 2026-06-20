@@ -433,7 +433,7 @@ void* mappingThreadFunction(void* arg)
 
         updateCellsFromLaser();
 
-        usleep(50000); // 20Hz
+        usleep(20000); // 50Hz
     }
 
     return nullptr;

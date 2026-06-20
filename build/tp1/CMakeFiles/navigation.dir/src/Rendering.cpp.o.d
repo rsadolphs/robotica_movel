@@ -143,6 +143,7 @@ CMakeFiles/navigation.dir/src/Rendering.cpp.o: \
  /usr/include/c++/13/bits/basic_string.tcc \
  /home/richa/ros2_ws/src/tp1/include/Explorer.hpp \
  /home/richa/ros2_ws/src/tp1/include/Mapping.hpp \
+ /home/richa/ros2_ws/src/tp1/include/Potential.hpp \
  /usr/include/GLFW/glfw3.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \

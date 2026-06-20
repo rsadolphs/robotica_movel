@@ -1,6 +1,7 @@
 #include "Rendering.hpp"
 #include "Mapping.hpp"
 #include "Explorer.hpp"
+#include "Potential.hpp"
 #include <GLFW/glfw3.h>
 #include <vector>
 #include <cmath>
@@ -122,7 +123,7 @@ void drawChar(float x, float y, float pixelSize, char c, float r, float g, float
     static const unsigned char parenL[5] = {0b010,0b100,0b100,0b100,0b010};
     static const unsigned char parenR[5] = {0b010,0b001,0b001,0b001,0b010};
     static const unsigned char dot[5]    = {0b000,0b000,0b000,0b000,0b010};
-    static const unsigned char comma[5]  = {0b000,0b000,0b000,0b000,0b010};
+    static const unsigned char comma[5]  = {0b000,0b000,0b000,0b010,0b100};
 
     const unsigned char* glyph = nullptr;
     unsigned char local[5];
@@ -171,6 +172,53 @@ void drawString(float x, float y, float pixelSize, const std::string &s, float r
         drawChar(cx, y, pixelSize, c, r, g, b);
         cx += pixelSize * 4.0f; // advance (3 pixels + 1 spacing)
     }
+}
+
+static void drawPotentialField()
+{
+    Potential::FieldState fieldState = Potential::getLatestFieldState();
+    if (!fieldState.valid)
+        return;
+
+    auto index = [&](int x, int y) {
+        return (y - fieldState.minY) * fieldState.width + (x - fieldState.minX);
+    };
+
+    for (int y = fieldState.minY; y <= fieldState.maxY; ++y)
+    {
+        for (int x = fieldState.minX; x <= fieldState.maxX; ++x)
+        {
+            int idx = index(x, y);
+            if (!fieldState.active[idx])
+                continue;
+
+            float value = fieldState.values[idx];
+            float clamped = std::min(1.0f, std::max(0.0f, value));
+            float r = clamped;
+            float g = 0.0f;
+            float b = 1.0f - clamped;
+
+            glColor3f(r, g, b);
+            glBegin(GL_QUADS);
+                glVertex2f(x, y);
+                glVertex2f(x + 1.0f, y);
+                glVertex2f(x + 1.0f, y + 1.0f);
+                glVertex2f(x, y + 1.0f);
+            glEnd();
+        }
+    }
+
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glBegin(GL_LINES);
+    for (int x = fieldState.minX; x <= fieldState.maxX; ++x) {
+        glVertex2f(x, fieldState.minY);
+        glVertex2f(x, fieldState.maxY + 1.0f);
+    }
+    for (int y = fieldState.minY; y <= fieldState.maxY; ++y) {
+        glVertex2f(fieldState.minX, y);
+        glVertex2f(fieldState.maxX + 1.0f, y);
+    }
+    glEnd();
 }
 
 struct RadarCoord {
@@ -382,6 +430,7 @@ void drawRadar(float radarCenterX, float radarCenterY, float radarRadius) {
 
 
 void* renderingThreadFunction(void* arg) {
+    (void)arg;
     if (!glfwInit()) return NULL;
 
     int width = 600, height = 600;
@@ -401,6 +450,15 @@ void* renderingThreadFunction(void* arg) {
         return NULL;
     }
 
+    int fieldWidth = 500, fieldHeight = 500;
+    GLFWwindow* fieldWindow = glfwCreateWindow(fieldWidth, fieldHeight, "Potential Field", NULL, window);
+    if (!fieldWindow) {
+        glfwDestroyWindow(radarWindow);
+        glfwDestroyWindow(window);
+        glfwTerminate();
+        return NULL;
+    }
+
     glfwMakeContextCurrent(window);
 
     glMatrixMode(GL_MODELVIEW);
@@ -411,7 +469,7 @@ void* renderingThreadFunction(void* arg) {
 
     float radarRadius = 10.0f;  // Raio de 10 metros no radar
 
-    while (!glfwWindowShouldClose(window) && !glfwWindowShouldClose(radarWindow)) {
+    while (!glfwWindowShouldClose(window) && !glfwWindowShouldClose(radarWindow) && !glfwWindowShouldClose(fieldWindow)) {
 
        std::vector<Cell> cells = getVisitedCells();
 
@@ -516,14 +574,33 @@ void* renderingThreadFunction(void* arg) {
 
         glfwSwapBuffers(radarWindow);
 
+        // ====== RENDERIZAR JANELA DO CAMPO POTENCIAL ======
+        glfwMakeContextCurrent(fieldWindow);
+
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        glOrtho(newGrid.inicio, newGrid.fim,
+                newGrid.inicio, newGrid.fim,
+                -1.0, 1.0);
+        glMatrixMode(GL_MODELVIEW);
+
+        glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glLoadIdentity();
+
+        drawPotentialField();
+
+        glfwSwapBuffers(fieldWindow);
+
         glfwPollEvents();
         
-        usleep(50000);  // ~20 Hz
+        usleep(16666);  // ~60 Hz
     }
     
     saveHistoryToFile("mapping_history.txt");
     glfwDestroyWindow(window);
     glfwDestroyWindow(radarWindow);
+    glfwDestroyWindow(fieldWindow);
     glfwTerminate();
     return NULL;
 }

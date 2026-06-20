@@ -724,5 +724,7 @@ CMakeFiles/navigation.dir/src/main.cpp.o: \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist_with_covariance__traits.hpp \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/odometry__type_support.hpp \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/rosidl_generator_cpp__visibility_control.hpp \
+ /home/richa/ros2_ws/src/tp1/include/Potential.hpp \
+ /home/richa/ros2_ws/src/tp1/include/Mapping.hpp \
  /home/richa/ros2_ws/src/tp1/include/Utils.h \
  /home/richa/ros2_ws/src/tp1/include/Mapping.hpp

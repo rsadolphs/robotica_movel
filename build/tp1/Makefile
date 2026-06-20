@@ -306,6 +306,30 @@ src/Perception.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Perception.cpp.s
 .PHONY : src/Perception.cpp.s
 
+src/Potential.o: src/Potential.cpp.o
+.PHONY : src/Potential.o
+
+# target to build an object file
+src/Potential.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Potential.cpp.o
+.PHONY : src/Potential.cpp.o
+
+src/Potential.i: src/Potential.cpp.i
+.PHONY : src/Potential.i
+
+# target to preprocess a source file
+src/Potential.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Potential.cpp.i
+.PHONY : src/Potential.cpp.i
+
+src/Potential.s: src/Potential.cpp.s
+.PHONY : src/Potential.s
+
+# target to generate assembly for a file
+src/Potential.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation.dir/build.make CMakeFiles/navigation.dir/src/Potential.cpp.s
+.PHONY : src/Potential.cpp.s
+
 src/Rendering.o: src/Rendering.cpp.o
 .PHONY : src/Rendering.o
 
@@ -406,6 +430,9 @@ help:
 	@echo "... src/Perception.o"
 	@echo "... src/Perception.i"
 	@echo "... src/Perception.s"
+	@echo "... src/Potential.o"
+	@echo "... src/Potential.i"
+	@echo "... src/Potential.s"
 	@echo "... src/Rendering.o"
 	@echo "... src/Rendering.i"
 	@echo "... src/Rendering.s"

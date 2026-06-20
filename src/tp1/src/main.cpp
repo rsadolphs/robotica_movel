@@ -8,6 +8,7 @@
 
 #include "Action.h"
 #include "Perception.h"
+#include "Potential.hpp"
 #include "Utils.h"
 #include "Mapping.hpp"
 
@@ -28,7 +29,7 @@ public:
                                                                          std::bind(&Perception::receiveSonar, &perception, _1));
     sub_pose = this->create_subscription<nav_msgs::msg::Odometry>("/pose", 100,
                                                                     std::bind(&Perception::recievePose, &perception, _1));
-    timer_ = this->create_wall_timer(100ms, std::bind(&NavigationNode::timer_callback, this));
+    timer_ = this->create_wall_timer(50ms, std::bind(&NavigationNode::timer_callback, this));
   }
 
 private:
@@ -112,19 +113,21 @@ int main(int argc, char **argv)
 
   rclcpp::init(argc, argv);
 
-  pthread_t mainThread, keyboardThread, mappingThread, renderingThread, explorerThread;
+  pthread_t mainThread, keyboardThread, mappingThread, renderingThread, explorerThread, potentialThread;
 
   pthread_create(&(mainThread), NULL, mainThreadFunction, NULL);
   pthread_create(&(keyboardThread), NULL, keyboardThreadFunction, NULL);
   pthread_create(&(mappingThread), NULL, mappingThreadFunction, NULL);
   pthread_create(&(renderingThread), NULL, renderingThreadFunction, NULL);
   pthread_create(&(explorerThread), NULL, explorerThreadFunction, NULL);
+  pthread_create(&(potentialThread), NULL, Potential::potentialThreadFunction, NULL);
 
   pthread_join(mainThread, 0);
   pthread_join(keyboardThread, 0);
   pthread_join(mappingThread, 0);
   pthread_join(renderingThread, 0);
   pthread_join(explorerThread, 0);
+  pthread_join(potentialThread, 0);
 
   rclcpp::shutdown();
 

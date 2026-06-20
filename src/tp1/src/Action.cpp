@@ -1,8 +1,18 @@
 #include "Action.h"
+#include "Potential.hpp"
 #include "Utils.h"
 #include "Mapping.hpp"
 
 #include <vector>
+#include <cmath>
+#include <limits>
+
+static float normalizeAngle(float angle)
+{
+    while (angle > M_PI) angle -= 2.0f * M_PI;
+    while (angle <= -M_PI) angle += 2.0f * M_PI;
+    return angle;
+}
 
 // Variables
 
@@ -15,6 +25,8 @@ Action::Action()
 {
     linVel = 0.0;
     angVel = 0.0;
+    yawIntegral = 0.0f;
+    yawPreviousError = 0.0f;
 }
 
 void Action::exploreEnvironment(
@@ -22,10 +34,46 @@ void Action::exploreEnvironment(
     std::vector<float> sonarsData, 
     std::vector<float> poseData
 ){
-    // Sensing: Get robot position and laser data from /pose and /lasers topics
+    (void)sonarsData;
     robotPosition = {poseData[0], poseData[1], poseData[2]};
     lasers = lasersData;
 
+    Potential::updateRobotPose(robotPosition.x, robotPosition.y, robotPosition.theta);
+    Potential::TargetYaw target = Potential::getLatestTargetYaw();
+
+    if (!target.valid)
+    {
+        linVel = 0.0f;
+        angVel = 0.0f;
+        return;
+    }
+
+    float yawError = normalizeAngle(target.yaw - robotPosition.theta);
+    const float dt = 0.05f;
+    const float kp = 1.2f;
+    const float ki = 0.02f;
+    const float kd = 0.1f;
+
+    yawIntegral += yawError * dt;
+    float derivative = (yawError - yawPreviousError) / dt;
+    yawPreviousError = yawError;
+
+    float angular = kp * yawError + ki * yawIntegral + kd * derivative;
+    const float maxAngular = 0.8f;
+    if (angular > maxAngular) angular = maxAngular;
+    if (angular < -maxAngular) angular = -maxAngular;
+
+    float yawAbs = std::fabs(yawError);
+    float linear = 0.0f;
+    if (yawAbs < 0.25f) {
+        linear = 0.18f;
+    }
+    else {
+        linear = 0.0f;
+    }
+
+    linVel = linear;
+    angVel = angular;
 }
 
 void Action::manualRobotMotion(
@@ -34,6 +82,7 @@ void Action::manualRobotMotion(
     std::vector<float> sonarsData, 
     std::vector<float> poseData
 ){
+    (void)sonarsData;
     // Sensing: Get robot position and laser data from /pose and /lasers topics
     robotPosition = {poseData[0], poseData[1], poseData[2]};
     lasers = lasersData;

@@ -38,6 +38,8 @@ public:
 private:
     float linVel;
     float angVel;
+    float yawIntegral;
+    float yawPreviousError;
 };
 
 #endif // ACTION_H
