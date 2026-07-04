@@ -2,16 +2,65 @@
 #include "Potential.hpp"
 #include "Utils.h"
 #include "Mapping.hpp"
+#include "Explorer.hpp"
 
 #include <vector>
 #include <cmath>
 #include <limits>
+#include <algorithm>
 
 static float normalizeAngle(float angle)
 {
     while (angle > M_PI) angle -= 2.0f * M_PI;
     while (angle <= -M_PI) angle += 2.0f * M_PI;
     return angle;
+}
+
+static float computeRadarBiasFromClusters(
+    const std::vector<FrontierCluster>& clusters,
+    float robotCellX,
+    float robotCellY,
+    float robotTheta)
+{
+    float leftWeight = 0.0f;
+    float rightWeight = 0.0f;
+    const float visibleHalfAngle = M_PI; // count clusters across the full relative semicircle
+    const float maxRangeCells = 25.0f;
+
+    for (const auto& cluster : clusters)
+    {
+        if (cluster.cells.empty())
+            continue;
+
+        const float dx = cluster.centroidX - robotCellX;
+        const float dy = cluster.centroidY - robotCellY;
+        const float distance = std::hypot(dx, dy);
+        if (distance < 1e-3f || distance > maxRangeCells)
+            continue;
+
+        float relAngle = normalizeAngle(std::atan2(dy, dx) - robotTheta);
+        if (std::fabs(relAngle) > visibleHalfAngle)
+            continue;
+
+        const float weight = static_cast<float>(cluster.cells.size()) / std::max(1.0f, distance);
+        if (relAngle > 0.0f)
+        {
+            leftWeight += weight;
+        }
+        else if (relAngle < 0.0f)
+        {
+            rightWeight += weight;
+        }
+    }
+
+    const float totalWeight = leftWeight + rightWeight;
+    if (totalWeight < 1e-3f)
+        return 0.0f;
+
+    float bias = (rightWeight - leftWeight) / totalWeight;
+    if (bias > 1.0f) bias = 1.0f;
+    if (bias < -1.0f) bias = -1.0f;
+    return bias * 0.25f;
 }
 
 // Variables
@@ -60,6 +109,7 @@ void Action::exploreEnvironment(
     }
 
     Potential::updateRobotPose(robotPosition.x, robotPosition.y, robotPosition.theta);
+    Potential::setDirectionalBias(0.0f);
     Potential::TargetYaw target = Potential::getLatestTargetYaw();
 
     if (!target.valid)
@@ -87,15 +137,95 @@ void Action::exploreEnvironment(
     float yawAbs = std::fabs(yawError);
     float linear = 0.0f;
     if (yawAbs < 0.25f) {
-        linear = 0.18f;
+        linear = 0.4f;
     }
     else {
-        linear = 0.0f;
+        linear = 0.05f;
     }
 
     linVel = linear;
     angVel = angular;
 }
+
+void Action::exploreEnvironmentRadar(
+    std::vector<float> lasersData,
+    std::vector<float> sonarsData,
+    std::vector<float> poseData
+){
+    (void)sonarsData;
+    robotPosition = {poseData[0], poseData[1], poseData[2]};
+    lasers = lasersData;
+
+    std::vector<Cell> visitedCells = getVisitedCells();
+    std::vector<Cell> frontiers = getFrontiers();
+
+    if (!frontierSeen && !frontiers.empty())
+    {
+        frontierSeen = true;
+    }
+
+    if (frontiers.empty())
+    {
+        if (explorationStarted && frontierSeen)
+        {
+            explorationEnded = true;
+            explorationStarted = false;
+        }
+
+        linVel = 0.0f;
+        angVel = 0.0f;
+        return;
+    }
+
+    Potential::updateRobotPose(robotPosition.x, robotPosition.y, robotPosition.theta);
+
+    const float robotCellX = robotPosition.x * 100.0f / 10.0f;
+    const float robotCellY = robotPosition.y * 100.0f / 10.0f;
+    const auto radarClusters = detectFrontierClusters();
+    const float radarBias = computeRadarBiasFromClusters(
+        radarClusters,
+        robotCellX,
+        robotCellY,
+        robotPosition.theta);
+    Potential::setDirectionalBias(radarBias);
+
+    Potential::TargetYaw target = Potential::getLatestTargetYaw();
+
+    if (!target.valid)
+    {
+        linVel = 0.0f;
+        angVel = 0.0f;
+        return;
+    }
+
+    float yawError = normalizeAngle(target.yaw - robotPosition.theta);
+    const float dt = 0.05f;
+    const float kp = 1.2f;
+    const float ki = 0.02f;
+    const float kd = 0.1f;
+
+    yawIntegral += yawError * dt;
+    float derivative = (yawError - yawPreviousError) / dt;
+    yawPreviousError = yawError;
+
+    float angular = kp * yawError + ki * yawIntegral + kd * derivative;
+    const float maxAngular = 0.8f;
+    if (angular > maxAngular) angular = maxAngular;
+    if (angular < -maxAngular) angular = -maxAngular;
+
+    float yawAbs = std::fabs(yawError);
+    float linear = 0.0f;
+    if (yawAbs < 0.25f) {
+        linear = 0.4f;
+    }
+    else {
+        linear = 0.05f;
+    }
+
+    linVel = linear;
+    angVel = angular;
+}
+
 
 void Action::manualRobotMotion(
     MovingDirection direction,
@@ -177,7 +307,7 @@ MotionControl Action::handlePressedKey(char key)
 
     if (key != lastKey)
     {
-        if (key == '2')
+        if (key == '2' || key == '3')
         {
             explorationStarted = true;
             explorationEnded = false;
@@ -205,6 +335,9 @@ MotionControl Action::handlePressedKey(char key)
         mc.direction=STOP;
     }else if(key=='2'){
         mc.mode=EXPLORE;
+        mc.direction=AUTO;
+    }else if(key=='3'){
+        mc.mode=EXPLORE_RADAR;
         mc.direction=AUTO;
     }else if(key=='w' or key=='W'){
         mc.mode=MANUAL;

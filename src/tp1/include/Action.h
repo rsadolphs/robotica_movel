@@ -3,7 +3,7 @@
 
 #include <vector>
 
-enum MotionMode {MANUAL, EXPLORE};
+enum MotionMode {MANUAL, EXPLORE, EXPLORE_RADAR};
 enum MovingDirection {STOP, FRONT, BACK, LEFT, RIGHT, AUTO};
 
 typedef struct
@@ -24,6 +24,11 @@ public:
         std::vector<float> pose
     );
     void exploreEnvironment(
+        std::vector<float> lasers, 
+        std::vector<float> sonars, 
+        std::vector<float> pose
+    );
+    void exploreEnvironmentRadar(
         std::vector<float> lasers, 
         std::vector<float> sonars, 
         std::vector<float> pose

@@ -63,6 +63,15 @@ private:
         action_.clearExplorationEnded();
       }
     }
+    else if (mc.mode == EXPLORE_RADAR)
+    {
+      action_.exploreEnvironmentRadar(lasers, sonars, pose);
+      if (action_.explorationEndedByNoFrontiers())
+      {
+        pressedKey = 's';
+        action_.clearExplorationEnded();
+      }
+    }
 
     action_.correctVelocitiesIfInvalid();
 

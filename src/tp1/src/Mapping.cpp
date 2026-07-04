@@ -164,7 +164,7 @@ void increaseOccupancy(const Cell& c)
         stored.himm >= 10.0f;
 
     stored.properties.isFree =
-        stored.himm <= 5.0f;
+        stored.himm <= 7.5f; // lower threshold: treat intermediate cells as free
 
     updateFrontierNeighborhood(key);
 }
@@ -187,7 +187,7 @@ void increaseFree(const Cell& c)
         stored.himm >= 10.0f;
 
     stored.properties.isFree =
-        stored.himm <= 5.0f;
+        stored.himm <= 7.5f; // lower threshold: treat intermediate cells as free
 
     updateFrontierNeighborhood(key);
 }

@@ -96,6 +96,77 @@ void drawCircle(float centerX, float centerY, float radius, int segments = 100) 
     glEnd();
 }
 
+static void drawDirectionalBiasOverlay(float robotWorldX, float robotWorldY, float robotTheta, float visionRadius, float bias, int segments = 40)
+{
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    auto drawSector = [&](float startAngle, float endAngle, float r, float g, float b, float a) {
+        glColor4f(r, g, b, a);
+        glBegin(GL_TRIANGLE_FAN);
+        glVertex2f(robotWorldX, robotWorldY);
+        for (int i = 0; i <= segments; ++i)
+        {
+            float t = static_cast<float>(i) / static_cast<float>(segments);
+            float angle = startAngle + t * (endAngle - startAngle);
+            float x = robotWorldX + visionRadius * std::cos(angle);
+            float y = robotWorldY + visionRadius * std::sin(angle);
+            glVertex2f(x, y);
+        }
+        glEnd();
+    };
+
+    const bool rightPreferred = bias > 0.0f;
+    const bool leftPreferred = bias < 0.0f;
+    const float alphaPreferred = 0.22f;
+    const float alphaNonPreferred = 0.12f;
+
+    float preferredColorR = rightPreferred ? 0.0f : 0.0f;
+    float preferredColorG = rightPreferred ? 0.8f : 0.8f;
+    float preferredColorB = rightPreferred ? 0.0f : 0.0f;
+    float nonPreferredColorR = rightPreferred ? 1.0f : 0.8f;
+    float nonPreferredColorG = rightPreferred ? 0.3f : 0.2f;
+    float nonPreferredColorB = rightPreferred ? 0.3f : 0.0f;
+
+    if (bias > 0.0f)
+    {
+        drawSector(robotTheta, robotTheta - M_PI_2, preferredColorR, preferredColorG, preferredColorB, alphaPreferred);
+        drawSector(robotTheta, robotTheta + M_PI_2, nonPreferredColorR, nonPreferredColorG, nonPreferredColorB, alphaNonPreferred);
+    }
+    else if (bias < 0.0f)
+    {
+        drawSector(robotTheta, robotTheta + M_PI_2, preferredColorR, preferredColorG, preferredColorB, alphaPreferred);
+        drawSector(robotTheta, robotTheta - M_PI_2, nonPreferredColorR, nonPreferredColorG, nonPreferredColorB, alphaNonPreferred);
+    }
+    else
+    {
+        drawSector(robotTheta, robotTheta + M_PI_2, 0.5f, 0.5f, 0.5f, 0.12f);
+        drawSector(robotTheta, robotTheta - M_PI_2, 0.5f, 0.5f, 0.5f, 0.12f);
+    }
+
+    glColor4f(0.0f, 0.0f, 0.0f, 0.35f);
+    glLineWidth(1.0f);
+    glBegin(GL_LINE_STRIP);
+    for (int i = 0; i <= segments; ++i)
+    {
+        float angle = robotTheta + i * (M_PI_2 / segments);
+        float x = robotWorldX + visionRadius * std::cos(angle);
+        float y = robotWorldY + visionRadius * std::sin(angle);
+        glVertex2f(x, y);
+    }
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    for (int i = 0; i <= segments; ++i)
+    {
+        float angle = robotTheta - i * (M_PI_2 / segments);
+        float x = robotWorldX + visionRadius * std::cos(angle);
+        float y = robotWorldY + visionRadius * std::sin(angle);
+        glVertex2f(x, y);
+    }
+    glEnd();
+    glDisable(GL_BLEND);
+}
+
 void drawPoint(float x, float y, float size, float r, float g, float b) {
     glColor3f(r, g, b);
     glBegin(GL_QUADS);
@@ -212,31 +283,31 @@ struct Button {
     }
 };
 
+static bool exploreModeActive = false;
+static bool radarModeActive = false;
 static bool explorationTimerActive = false;
 static double explorationTimerStart = 0.0;
 static double explorationTimerLast = 0.0;
 
-static Button makeControlButton(int width, int height, float xFactor, char actionKey, bool active) {
+static Button makeControlButton(int width, int height, float xFactor, char actionKey, bool active, const std::string& label = "") {
     float buttonSize = height * 0.65f;
     float buttonY = (height - buttonSize) * 0.5f;
     float buttonX = width * xFactor;
-    return { buttonX, buttonY, buttonSize, buttonSize, "", actionKey, active };
+    return { buttonX, buttonY, buttonSize, buttonSize, label, actionKey, active };
 }
 
 static void drawButton(const Button &button) {
-    bool isToggle = (button.actionKey == 'T');
-    bool isStart = false;
-    if (isToggle) {
-        isStart = !explorationTimerActive; // show play when not active
-    } else {
-        isStart = (button.actionKey == '2');
-    }
+    bool isStartButton = (button.actionKey == 'T');
+    bool isRadarButton = (button.actionKey == '3');
+    bool isStart = !button.active; // show play when inactive, pause when active
 
     float baseR, baseG, baseB;
-    if (isToggle) {
-        // toggle: green for play, red for pause
+    if (isStartButton) {
         if (isStart) { baseR = 0.05f; baseG = 0.55f; baseB = 0.15f; }
         else { baseR = 0.55f; baseG = 0.05f; baseB = 0.05f; }
+    } else if (isRadarButton) {
+        if (button.active) { baseR = 0.05f; baseG = 0.55f; baseB = 0.15f; }
+        else { baseR = 0.20f; baseG = 0.20f; baseB = 0.20f; }
     } else {
         baseR = isStart ? 0.05f : 0.4f;
         baseG = isStart ? 0.55f : 0.05f;
@@ -264,7 +335,10 @@ static void drawButton(const Button &button) {
 
     float cx = button.x + button.width * 0.5f;
     float cy = button.y + button.height * 0.5f;
-    if (isStart) {
+    if (!button.label.empty()) {
+        float labelSize = std::max(8.0f, button.width * 0.22f);
+        drawString(cx - button.width * 0.20f, cy - button.height * 0.10f, labelSize, button.label, 1.0f, 1.0f, 1.0f);
+    } else if (isStart) {
         float half = button.width * 0.18f;
         glBegin(GL_TRIANGLES);
             glVertex2f(cx - half * 0.8f, cy - half * 1.2f);
@@ -301,9 +375,11 @@ static void drawControlPanel(int width, int height) {
         glVertex2f(0.0f, height);
     glEnd();
 
-    // single toggle button (play / pause)
-    Button toggleButton = makeControlButton(width, height, 0.08f, 'T', explorationTimerActive);
+    // control buttons
+    Button toggleButton = makeControlButton(width, height, 0.08f, 'T', exploreModeActive);
+    Button radarButton = makeControlButton(width, height, 0.20f, '3', radarModeActive);
     drawButton(toggleButton);
+    drawButton(radarButton);
 
     double elapsed = explorationTimerActive ? (glfwGetTime() - explorationTimerStart) : explorationTimerLast;
     int totalSeconds = static_cast<int>(elapsed + 0.5);
@@ -426,14 +502,34 @@ static void mouseButtonCallback(GLFWwindow* window, int button, int action, int 
 
     float controlHeight = std::max(80, height / 8);
     Button toggleButton = makeControlButton(width, controlHeight, 0.08f, 'T', false);
+    Button radarButton = makeControlButton(width, controlHeight, 0.20f, '3', false, "RAD");
     if (toggleButton.contains(mx, my)) {
-        if (!explorationTimerActive) {
-            // start exploration
+        if (!exploreModeActive) {
+            // start exploration and stop radar if it was active
             pressedKey = '2';
+            exploreModeActive = true;
+            if (radarModeActive) {
+                radarModeActive = false;
+            }
             setExplorationActive(true);
         } else {
-            // stop exploration (same as space)
+            // stop exploration
             pressedKey = ' ';
+            exploreModeActive = false;
+            setExplorationActive(false);
+        }
+    } else if (radarButton.contains(mx, my)) {
+        if (!radarModeActive) {
+            // start radar mode and stop exploration if it was active
+            pressedKey = '3';
+            radarModeActive = true;
+            if (exploreModeActive) {
+                exploreModeActive = false;
+            }
+            setExplorationActive(true);
+        } else {
+            pressedKey = ' ';
+            radarModeActive = false;
             setExplorationActive(false);
         }
     }
@@ -803,6 +899,10 @@ void* renderingThreadFunction(void* arg) {
         float robotCellX = robotPosition.x * 100.0f / 10.0f;
         float robotCellY = robotPosition.y * 100.0f / 10.0f;
         float theta = robotPosition.theta;
+        float visionRadius = Potential::getVisionRadius();
+        float bias = Potential::getDirectionalBias();
+
+        drawDirectionalBiasOverlay(robotCellX, robotCellY, theta, visionRadius, bias);
 
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();

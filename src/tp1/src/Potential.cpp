@@ -1,7 +1,9 @@
 #include "Potential.hpp"
 #include "Mapping.hpp"
+#include <algorithm>
 #include <cmath>
 #include <mutex>
+#include <queue>
 #include <unistd.h>
 #include <rclcpp/rclcpp.hpp>
 
@@ -13,6 +15,10 @@ static std::mutex stateMutex;
 static float robotX = 0.0f;
 static float robotY = 0.0f;
 static float robotTheta = 0.0f;
+static float robotVisionRadius = 20.0f; // cells
+static float leftZoneFactor = 1.0f;
+static float rightZoneFactor = 1.0f;
+static float currentDirectionalBias = 0.0f;
 
 static TargetYaw latestTarget;
 static FieldState latestField;
@@ -48,10 +54,20 @@ static inline int fieldIndex(int x, int y, int minX, int minY, int width)
     return (y - minY) * width + (x - minX);
 }
 
+static float normalizeAngle(float angle)
+{
+    while (angle > M_PI) angle -= 2.0f * M_PI;
+    while (angle <= -M_PI) angle += 2.0f * M_PI;
+    return angle;
+}
+
 static FieldState computeFieldState(
     const std::vector<Cell>& visitedCells,
     const std::vector<Cell>& frontiers)
 {
+    // Solve discrete Laplace equation with Dirichlet BC (occupied=1, frontier=0)
+    // using Gauss-Seidel with SOR (over-relaxation). This follows the idea
+    // used in classical potential field approaches (e.g. Prestes 2003).
     FieldState state;
     if (visitedCells.empty())
         return state;
@@ -70,97 +86,150 @@ static FieldState computeFieldState(
 
     std::vector<char> fixed(state.width * state.height, 0);
 
+    // Initialize field values and Dirichlet boundaries
     for (const auto& cell : visitedCells)
     {
         int idx = fieldIndex(cell.x, cell.y, minX, minY, state.width);
         if (cell.properties.isOccupied)
         {
-            state.values[idx] = 1.0f;
-            fixed[idx] = 1;
+            state.values[idx] = 1.0f; // high potential on obstacles
             state.active[idx] = 1;
+            fixed[idx] = 1;
         }
         else if (cell.properties.isFrontier)
         {
-            state.values[idx] = 0.0f;
-            fixed[idx] = 1;
+            state.values[idx] = 0.0f; // low potential on frontiers (goals)
             state.active[idx] = 1;
+            fixed[idx] = 1;
         }
         else if (cell.properties.isFree)
         {
-            state.values[idx] = 0.5f;
-            fixed[idx] = 0;
+            state.values[idx] = 0.5f; // initial guess for free cells
             state.active[idx] = 1;
+            fixed[idx] = 0;
         }
         else
         {
             // unknown / unobserved cell: leave inactive
             state.values[idx] = 0.5f;
-            fixed[idx] = 0;
             state.active[idx] = 0;
+            fixed[idx] = 0;
         }
     }
 
+    // Enforce frontier cells as Dirichlet (in case frontiers include new cells)
     for (const auto& frontier : frontiers)
     {
         int idx = fieldIndex(frontier.x, frontier.y, minX, minY, state.width);
+        if (!state.active[idx])
+            continue;
         state.values[idx] = 0.0f;
         fixed[idx] = 1;
-        state.active[idx] = 1;
     }
 
-    std::vector<float> nextValues = state.values;
-    const int maxIterations = 200;
-    const float tolerance = 1e-4f;
+    // SOR parameters: compute optimal omega using spectral radius
+    // Formula (from Prestes 2003 / SOR theory):
+    // rho = 0.5 * [cos(pi/Lx) + cos(pi/Ly)]
+    // omega = 2 / (1 + sqrt(1 - rho^2))
+    float Lx = static_cast<float>(state.width);
+    float Ly = static_cast<float>(state.height);
+    
+    float rho = 0.5f * (std::cos(M_PI / Lx) + std::cos(M_PI / Ly));
+    float rho_sq = rho * rho;
+    
+    // Clamp rho^2 to avoid sqrt of negative (edge cases in very small grids)
+    rho_sq = std::max(0.0f, std::min(0.9999f, rho_sq));
+    
+    float omega = 2.0f / (1.0f + std::sqrt(1.0f - rho_sq));
+    omega = std::min(1.99f, std::max(1.0f, omega)); // keep in (1, 2) range
+    
+    const int maxIterations = 80; // allow more iterations with optimal omega
+    const float tolerance = 1e-5f;
 
     for (int iter = 0; iter < maxIterations; ++iter)
     {
         float maxChange = 0.0f;
 
-        for (int y = minY; y <= maxY; ++y)
+        for (int y = state.minY; y <= state.maxY; ++y)
         {
-            for (int x = minX; x <= maxX; ++x)
+            for (int x = state.minX; x <= state.maxX; ++x)
             {
                 int idx = fieldIndex(x, y, minX, minY, state.width);
-            if (!state.active[idx] || fixed[idx])
-                continue;
+                if (!state.active[idx] || fixed[idx])
+                    continue;
 
-            float sum = 0.0f;
-            int count = 0;
+                float sum = 0.0f;
+                int count = 0;
 
-            if (x > minX)
-            {
-                int nidx = idx - 1;
-                if (state.active[nidx]) { sum += state.values[nidx]; count += 1; }
-            }
-            if (x < maxX)
-            {
-                int nidx = idx + 1;
-                if (state.active[nidx]) { sum += state.values[nidx]; count += 1; }
-            }
-            if (y > minY)
-            {
-                int nidx = idx - state.width;
-                if (state.active[nidx]) { sum += state.values[nidx]; count += 1; }
-            }
-            if (y < maxY)
-            {
-                int nidx = idx + state.width;
-                if (state.active[nidx]) { sum += state.values[nidx]; count += 1; }
-            }
+                // 4-neighbors
+                if (x > state.minX)
+                {
+                    int nidx = idx - 1;
+                    if (state.active[nidx]) { sum += state.values[nidx]; ++count; }
+                }
+                if (x < state.maxX)
+                {
+                    int nidx = idx + 1;
+                    if (state.active[nidx]) { sum += state.values[nidx]; ++count; }
+                }
+                if (y > state.minY)
+                {
+                    int nidx = idx - state.width;
+                    if (state.active[nidx]) { sum += state.values[nidx]; ++count; }
+                }
+                if (y < state.maxY)
+                {
+                    int nidx = idx + state.width;
+                    if (state.active[nidx]) { sum += state.values[nidx]; ++count; }
+                }
 
-            if (count > 0)
-            {
-                float value = sum / static_cast<float>(count);
-                nextValues[idx] = value;
-                maxChange = std::max(maxChange, std::fabs(value - state.values[idx]));
+                if (count == 0)
+                    continue;
+
+                float newVal = sum / static_cast<float>(count);
+                // SOR update
+                float updated = state.values[idx] + omega * (newVal - state.values[idx]);
+                maxChange = std::max(maxChange, std::fabs(updated - state.values[idx]));
+                state.values[idx] = updated;
             }
         }
-        }
-
-        state.values.swap(nextValues);
 
         if (maxChange < tolerance)
             break;
+    }
+
+    // Diagnostics: compute statistics to detect pathological cases
+    int countActive = 0;
+    int countFixed = 0;
+    float minVal = 1e9f, maxVal = -1e9f, sumVal = 0.0f;
+    for (size_t i = 0; i < state.values.size(); ++i)
+    {
+        if (state.active[i])
+        {
+            ++countActive;
+            if (fixed[i]) ++countFixed;
+            float v = state.values[i];
+            minVal = std::min(minVal, v);
+            maxVal = std::max(maxVal, v);
+            sumVal += v;
+        }
+    }
+
+    if (countActive > 0)
+    {
+        float mean = sumVal / static_cast<float>(countActive);
+        if (countFixed == countActive || mean > 0.95f)
+        {
+            RCLCPP_WARN(rclcpp::get_logger("Potential"),
+                        "Field all-fixed/near-1 (ω=%.3f fixed=%d active=%d mean=%.3f min=%.3f max=%.3f)",
+                        omega, countFixed, countActive, mean, minVal, maxVal);
+        }
+        else if (mean > 0.8f)
+        {
+            RCLCPP_INFO(rclcpp::get_logger("Potential"),
+                        "Field high (ω=%.3f mean=%.3f fixed=%d/%d)",
+                        omega, mean, countFixed, countActive);
+        }
     }
 
     state.valid = true;
@@ -233,7 +302,8 @@ static float sampleField(const FieldState& state, float x, float y)
     if (totalW <= 0.0f)
         return 0.5f;
 
-    return result0 * (1.0f - wy) + result1 * wy;
+    float sampled = result0 * (1.0f - wy) + result1 * wy;
+    return sampled;
 }
 
 static TargetYaw computeTargetYaw(const FieldState& state)
@@ -250,15 +320,24 @@ static TargetYaw computeTargetYaw(const FieldState& state)
     if (rx < state.minX || rx > state.maxX || ry < state.minY || ry > state.maxY)
         return target;
 
-    float gradX = 0.0f;
-    float gradY = 0.0f;
+    float fx = std::cos(robotTheta);
+    float fy = std::sin(robotTheta);
+    float lx = -fy;
+    float ly = fx;
 
-    // 1-cell radius central difference gradient
-    gradX = (sampleField(state, rx + 1.0f, ry) - sampleField(state, rx - 1.0f, ry)) * 0.5f;
-    gradY = (sampleField(state, rx, ry + 1.0f) - sampleField(state, rx, ry - 1.0f)) * 0.5f;
+    float sampleForward = sampleField(state, rx + fx, ry + fy);
+    float sampleBackward = sampleField(state, rx - fx, ry - fy);
+    float sampleLeft = sampleField(state, rx + lx, ry + ly);
+    float sampleRight = sampleField(state, rx - lx, ry - ly);
 
-    float targetX = -gradX;
-    float targetY = -gradY;
+    float gradForward = (sampleForward - sampleBackward) * 0.5f;
+    float gradSide = (sampleLeft - sampleRight) * 0.5f;
+
+    float targetForward = -gradForward;
+    float targetLeft = -gradSide;
+
+    float targetX = targetForward * fx + targetLeft * lx;
+    float targetY = targetForward * fy + targetLeft * ly;
     float norm = std::hypot(targetX, targetY);
 
     if (norm < 1e-4f)
@@ -266,7 +345,15 @@ static TargetYaw computeTargetYaw(const FieldState& state)
 
     targetX /= norm;
     targetY /= norm;
-    target.yaw = std::atan2(targetY, targetX);
+    float rawYaw = std::atan2(targetY, targetX);
+
+    // Apply a small directional bias as an angular offset rather than warping the entire field.
+    // Positive bias means prefer the right side, so rotate the target yaw slightly clockwise.
+    float maxBiasAngle = M_PI / 12.0f; // 15 degrees max
+    float biasAngle = currentDirectionalBias * maxBiasAngle;
+    rawYaw = normalizeAngle(rawYaw - biasAngle);
+
+    target.yaw = rawYaw;
     target.valid = true;
     return target;
 }
@@ -277,6 +364,43 @@ void updateRobotPose(float x, float y, float theta)
     robotX = x * 100.0f / cellSizeCentimeters;
     robotY = y * 100.0f / cellSizeCentimeters;
     robotTheta = theta;
+}
+
+void setDirectionalPreference(float leftFactor, float rightFactor)
+{
+    std::lock_guard<std::mutex> lock(stateMutex);
+    leftZoneFactor = leftFactor;
+    rightZoneFactor = rightFactor;
+}
+
+void setDirectionalBias(float bias)
+{
+    std::lock_guard<std::mutex> lock(stateMutex);
+    constexpr float scale = 0.35f;
+    float clamped = std::max(-1.0f, std::min(1.0f, bias));
+    currentDirectionalBias = clamped;
+    // Positive bias should prefer the right side, so lower the potential on the right
+    // and raise it on the left. The robot then moves toward lower potential values.
+    leftZoneFactor = std::clamp(1.0f + clamped * scale, 0.5f, 2.0f);
+    rightZoneFactor = std::clamp(1.0f - clamped * scale, 0.5f, 2.0f);
+}
+
+void setVisionRadius(float radiusCells)
+{
+    std::lock_guard<std::mutex> lock(stateMutex);
+    robotVisionRadius = radiusCells;
+}
+
+float getVisionRadius()
+{
+    std::lock_guard<std::mutex> lock(stateMutex);
+    return robotVisionRadius;
+}
+
+float getDirectionalBias()
+{
+    std::lock_guard<std::mutex> lock(stateMutex);
+    return currentDirectionalBias;
 }
 
 TargetYaw getLatestTargetYaw()

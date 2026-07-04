@@ -24,6 +24,11 @@ struct TargetYaw {
 };
 
 void updateRobotPose(float x, float y, float theta);
+void setDirectionalPreference(float leftFactor, float rightFactor);
+void setDirectionalBias(float bias);
+void setVisionRadius(float radiusCells);
+float getVisionRadius();
+float getDirectionalBias();
 TargetYaw getLatestTargetYaw();
 FieldState getLatestFieldState();
 void* potentialThreadFunction(void* arg);
