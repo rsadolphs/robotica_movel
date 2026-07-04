@@ -253,6 +253,7 @@ static TargetYaw computeTargetYaw(const FieldState& state)
     float gradX = 0.0f;
     float gradY = 0.0f;
 
+    // 1-cell radius central difference gradient
     gradX = (sampleField(state, rx + 1.0f, ry) - sampleField(state, rx - 1.0f, ry)) * 0.5f;
     gradY = (sampleField(state, rx, ry + 1.0f) - sampleField(state, rx, ry - 1.0f)) * 0.5f;
 

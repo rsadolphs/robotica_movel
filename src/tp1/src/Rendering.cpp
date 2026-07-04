@@ -329,7 +329,29 @@ static void drawPotentialField()
 {
     Potential::FieldState fieldState = Potential::getLatestFieldState();
     if (!fieldState.valid)
+    {
+        // fallback background when field not available
+        auto cells = getVisitedCells();
+        GridInfo grid = calculateGridSize(cells);
+        glColor3f(0.10f, 0.10f, 0.12f);
+        glBegin(GL_QUADS);
+            glVertex2f(grid.inicio, grid.inicio);
+            glVertex2f(grid.fim, grid.inicio);
+            glVertex2f(grid.fim, grid.fim);
+            glVertex2f(grid.inicio, grid.fim);
+        glEnd();
+        // subtle grid lines
+        // glColor3f(0.18f, 0.18f, 0.18f);
+        // glBegin(GL_LINES);
+        // for (float i = grid.inicio; i <= grid.fim; i += grid.passo) {
+        //     glVertex2f(i, grid.inicio);
+        //     glVertex2f(i, grid.fim);
+        //     glVertex2f(grid.inicio, i);
+        //     glVertex2f(grid.fim, i);
+        // }
+        // glEnd();
         return;
+    }
 
     auto index = [&](int x, int y) {
         return (y - fieldState.minY) * fieldState.width + (x - fieldState.minX);
@@ -359,17 +381,17 @@ static void drawPotentialField()
         }
     }
 
-    glColor3f(0.2f, 0.2f, 0.2f);
-    glBegin(GL_LINES);
-    for (int x = fieldState.minX; x <= fieldState.maxX; ++x) {
-        glVertex2f(x, fieldState.minY);
-        glVertex2f(x, fieldState.maxY + 1.0f);
-    }
-    for (int y = fieldState.minY; y <= fieldState.maxY; ++y) {
-        glVertex2f(fieldState.minX, y);
-        glVertex2f(fieldState.maxX + 1.0f, y);
-    }
-    glEnd();
+    // glColor3f(0.2f, 0.2f, 0.2f);
+    // glBegin(GL_LINES);
+    // for (int x = fieldState.minX; x <= fieldState.maxX; ++x) {
+    //     glVertex2f(x, fieldState.minY);
+    //     glVertex2f(x, fieldState.maxY + 1.0f);
+    // }
+    // for (int y = fieldState.minY; y <= fieldState.maxY; ++y) {
+    //     glVertex2f(fieldState.minX, y);
+    //     glVertex2f(fieldState.maxX + 1.0f, y);
+    // }
+    // glEnd();
 }
 
 static void updateExplorationTimer(bool active) {
@@ -625,6 +647,53 @@ void drawRadar(float radarCenterX, float radarCenterY, float radarRadius) {
 }
 
 
+static void drawRobotTriangleInMapPanel(
+    float robotWorldX,
+    float robotWorldY,
+    float robotTheta,
+    float viewMinX,
+    float viewMaxX,
+    float viewMinY,
+    float viewMaxY,
+    float viewportWidth,
+    float viewportHeight,
+    float triangleSizePx)
+{
+    float worldWidth = viewMaxX - viewMinX;
+    float worldHeight = viewMaxY - viewMinY;
+    if (worldWidth <= 0.0f || worldHeight <= 0.0f) {
+        return;
+    }
+
+    float screenX = ((robotWorldX - viewMinX) / worldWidth) * viewportWidth;
+    float screenY = ((robotWorldY - viewMinY) / worldHeight) * viewportHeight;
+
+    float fx = std::cos(robotTheta);
+    float fy = std::sin(robotTheta);
+    float px = -fy;
+    float py = fx;
+
+    float size = triangleSizePx;
+    float halfBack = size * 0.5f;
+    float halfWidth = size * 0.35f;
+
+    float tipX = screenX + fx * size;
+    float tipY = screenY + fy * size;
+    float baseCenterX = screenX - fx * halfBack;
+    float baseCenterY = screenY - fy * halfBack;
+    float base1X = baseCenterX + px * halfWidth;
+    float base1Y = baseCenterY + py * halfWidth;
+    float base2X = baseCenterX - px * halfWidth;
+    float base2Y = baseCenterY - py * halfWidth;
+
+    glColor3f(0.0f, 0.4f, 0.0f);
+    glBegin(GL_TRIANGLES);
+        glVertex2f(tipX, tipY);
+        glVertex2f(base1X, base1Y);
+        glVertex2f(base2X, base2Y);
+    glEnd();
+}
+
 void* renderingThreadFunction(void* arg) {
     (void)arg;
     if (!glfwInit()) return NULL;
@@ -699,15 +768,15 @@ void* renderingThreadFunction(void* arg) {
         glLoadIdentity();
 
         // desenha grid
-        glColor3f(0.0f, 1.0f, 1.0f);  // cyan
-        glBegin(GL_LINES);
-        for (float i = currentGrid.inicio; i <= currentGrid.fim; i += currentGrid.passo) {
-            glVertex2f(i, currentGrid.inicio);
-            glVertex2f(i, currentGrid.fim);
-            glVertex2f(currentGrid.inicio, i);
-            glVertex2f(currentGrid.fim, i);
-        }
-        glEnd();
+        // glColor3f(0.0f, 1.0f, 1.0f);  // cyan
+        // glBegin(GL_LINES);
+        // for (float i = currentGrid.inicio; i <= currentGrid.fim; i += currentGrid.passo) {
+        //     glVertex2f(i, currentGrid.inicio);
+        //     glVertex2f(i, currentGrid.fim);
+        //     glVertex2f(currentGrid.inicio, i);
+        //     glVertex2f(currentGrid.fim, i);
+        // }
+        // glEnd();
 
         for (const auto& cell : cells)
         {
@@ -733,32 +802,25 @@ void* renderingThreadFunction(void* arg) {
 
         float robotCellX = robotPosition.x * 100.0f / 10.0f;
         float robotCellY = robotPosition.y * 100.0f / 10.0f;
-
         float theta = robotPosition.theta;
-        float fx = std::cos(theta);
-        float fy = std::sin(theta);
-        float px = -fy;
-        float py = fx;
 
-        float size = 1.8f;
-        float halfBack = size * 0.5f;
-        float halfWidth = size * 0.35f;
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        glOrtho(0.0f, static_cast<float>(leftWidth), 0.0f, static_cast<float>(mapHeight), -1.0f, 1.0f);
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
 
-        float tipX = robotCellX + fx * size;
-        float tipY = robotCellY + fy * size;
-        float baseCenterX = robotCellX - fx * halfBack;
-        float baseCenterY = robotCellY - fy * halfBack;
-        float base1X = baseCenterX + px * halfWidth;
-        float base1Y = baseCenterY + py * halfWidth;
-        float base2X = baseCenterX - px * halfWidth;
-        float base2Y = baseCenterY - py * halfWidth;
-
-        glColor3f(0.0f, 0.4f, 0.0f);
-        glBegin(GL_TRIANGLES);
-            glVertex2f(tipX, tipY);
-            glVertex2f(base1X, base1Y);
-            glVertex2f(base2X, base2Y);
-        glEnd();
+        drawRobotTriangleInMapPanel(
+            robotCellX,
+            robotCellY,
+            theta,
+            newGrid.inicio,
+            newGrid.fim,
+            newGrid.inicio,
+            newGrid.fim,
+            static_cast<float>(leftWidth),
+            static_cast<float>(mapHeight),
+            16.0f);
 
         // Radar panel (top-right)
         glViewport(leftWidth, controlHeight + halfHeight, rightWidth, halfHeight);
